@@ -1,0 +1,19 @@
+body
+{
+/*	overflow:hidden;*/
+	padding:0;
+}
+.sample
+{
+	background:red;	
+	transition: all 3s ease;
+	background-position:right bottom;
+}
+.firstPic
+{
+            left:250px;
+            opacity: 0.5;
+            height: 150px;
+            width: 150px;
+}
+
