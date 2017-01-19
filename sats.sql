@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2017 at 07:21 AM
--- Server version: 5.6.16
--- PHP Version: 5.5.9
+-- Generation Time: Jan 19, 2017 at 10:37 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `sats`
@@ -26,15 +26,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `account_table`
 --
 
-CREATE TABLE IF NOT EXISTS `account_table` (
+CREATE TABLE `account_table` (
   `emp_id` varchar(30) NOT NULL,
   `first_name` varchar(99) NOT NULL,
   `middle_name` varchar(99) DEFAULT NULL,
   `last_name` varchar(99) NOT NULL,
   `department` varchar(99) NOT NULL,
   `password` varchar(300) NOT NULL,
-  `status` int(1) NOT NULL,
-  PRIMARY KEY (`emp_id`)
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -42,27 +41,8 @@ CREATE TABLE IF NOT EXISTS `account_table` (
 --
 
 INSERT INTO `account_table` (`emp_id`, `first_name`, `middle_name`, `last_name`, `department`, `password`, `status`) VALUES
-('CLN00001', 'Carlo', 'Lucas', 'Cuevas', 'Canteen', 'CLN00001', 1),
-('CLN00002', 'Redalyn', 'Grampon', 'Crispino', 'Canteen', 'CLN00002', 1),
-('CLN00003', 'd', 'b', 'a', 'Canteen', 'CLN00003', 1),
-('CLN00004', 'e', 'i', 'x', 'Canteen', 'CLN00004', 1),
-('CLN00005', 'f', 'Lucas', 'w', 'Canteen', 'CLN00005', 1),
-('CLN00006', 'g', 'k', 'y', 'Canteen', 'CLN00006', 1),
-('CLN00007', 'h', 'p', 't', 'Canteen', 'CLN00007', 1),
-('CLN00008', 'j', 'o', 's', 'Canteen', 'CLN00008', 1),
-('CLN00009', 'k', 'q', 'r', 'Canteen', 'CLN00009', 1),
-('CLN00010', '1', '1', '1', 'Canteen', 'CLN00010', 1),
-('CLN00011', '2', '2', '2', 'Canteen', 'CLN00011', 1),
-('CLN00012', '3', '3', '3', 'Canteen', 'CLN00012', 1),
-('CLN00013', '4', '4', '4', 'Canteen', 'CLN00013', 1),
-('CLN00014', '5', '5', '5', 'Canteen', 'CLN00014', 1),
-('CLN00015', '5', '5', '5', 'Canteen', 'CLN00015', 1),
-('CLN00016', '5', '5', '5', 'Canteen', 'CLN00016', 1),
-('CLN00017', '5', '5', '5', 'Canteen', 'CLN00017', 1),
-('CLN00018', '5', '5', '5', 'Canteen', 'CLN00018', 1),
-('CLN00019', '5', '5', '5', 'Canteen', 'CLN00019', 1),
-('CLN00020', '5', '5', '5', 'Canteen', 'CLN00020', 1),
-('CLN00021', '5', '5', '5', 'Canteen', 'CLN00021', 1);
+('CLN0025A', 'ARISTEO', 'A', 'VILLAFUERTE', 'IT', 'CLN0025A', 1),
+('CLN0291A', 'EDWARD DAVE', 'F.', 'MIRAVETE', 'BUILDING ADMIN', 'CLN0291A', 1);
 
 -- --------------------------------------------------------
 
@@ -70,13 +50,12 @@ INSERT INTO `account_table` (`emp_id`, `first_name`, `middle_name`, `last_name`,
 -- Table structure for table `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
+CREATE TABLE `admin` (
   `emp_id` varchar(30) NOT NULL,
   `first_name` varchar(99) NOT NULL,
   `middle_name` varchar(99) NOT NULL,
   `last_name` varchar(99) NOT NULL,
-  `password` varchar(99) NOT NULL,
-  PRIMARY KEY (`emp_id`)
+  `password` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -93,7 +72,7 @@ INSERT INTO `admin` (`emp_id`, `first_name`, `middle_name`, `last_name`, `passwo
 -- Table structure for table `audit_trail`
 --
 
-CREATE TABLE IF NOT EXISTS `audit_trail` (
+CREATE TABLE `audit_trail` (
   `action` varchar(255) NOT NULL,
   `date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -101,14 +80,41 @@ CREATE TABLE IF NOT EXISTS `audit_trail` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `borrow_request`
+--
+
+CREATE TABLE `borrow_request` (
+  `request_code` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `condition_id` int(2) NOT NULL,
+  `old_loc_id` int(11) NOT NULL,
+  `new_loc_id` int(11) NOT NULL,
+  `transfer_to` varchar(30) NOT NULL,
+  `released_from` varchar(30) NOT NULL,
+  `remarks` varchar(300) DEFAULT NULL,
+  `date_request` datetime NOT NULL,
+  `date_borrow` datetime NOT NULL,
+  `emp_approval` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `borrow_request`
+--
+
+INSERT INTO `borrow_request` (`request_code`, `id`, `qty`, `condition_id`, `old_loc_id`, `new_loc_id`, `transfer_to`, `released_from`, `remarks`, `date_request`, `date_borrow`, `emp_approval`) VALUES
+(1, 14, 1, 1, 19, 11, 'CLN0291A', 'CLN0025A', NULL, '2017-01-19 17:12:51', '2017-01-20 09:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `condition_info`
 --
 
-CREATE TABLE IF NOT EXISTS `condition_info` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `condition_info` varchar(300) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+CREATE TABLE `condition_info` (
+  `id` int(2) NOT NULL,
+  `condition_info` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `condition_info`
@@ -127,9 +133,8 @@ INSERT INTO `condition_info` (`id`, `condition_info`) VALUES
 -- Table structure for table `ctrl_sy`
 --
 
-CREATE TABLE IF NOT EXISTS `ctrl_sy` (
-  `sy` varchar(4) NOT NULL,
-  PRIMARY KEY (`sy`)
+CREATE TABLE `ctrl_sy` (
+  `sy` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -145,20 +150,25 @@ INSERT INTO `ctrl_sy` (`sy`) VALUES
 -- Table structure for table `location`
 --
 
-CREATE TABLE IF NOT EXISTS `location` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `location` varchar(300) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+CREATE TABLE `location` (
+  `id` int(2) NOT NULL,
+  `location` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `location`
 --
 
 INSERT INTO `location` (`id`, `location`) VALUES
-(8, 'e'),
-(9, 'bbb'),
-(10, 'Canteen - Kitchen');
+(11, '2ND FLOOR- 201'),
+(12, '2ND FLOOR- 202'),
+(13, '2NDFLOOR- 203'),
+(14, '2ND FLOOR- 204'),
+(15, '2ND FLOOR- 207'),
+(16, '2ND FLOOR- 208'),
+(17, '2ND FLOOR- 209'),
+(18, '2ND FLOOR- 211'),
+(19, '2ND FLOOR- 212');
 
 -- --------------------------------------------------------
 
@@ -166,22 +176,18 @@ INSERT INTO `location` (`id`, `location`) VALUES
 -- Table structure for table `major_category`
 --
 
-CREATE TABLE IF NOT EXISTS `major_category` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `major_category` (
+  `id` int(2) NOT NULL,
   `description` varchar(999) NOT NULL,
-  `depreciate_yr` int(2) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `depreciate_yr` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `major_category`
 --
 
 INSERT INTO `major_category` (`id`, `description`, `depreciate_yr`) VALUES
-(7, 'Leasehold Improvements', 5),
-(8, 'Office and School Equipment', 5),
-(9, 'Office Furnitures & Fixtures', 5),
-(10, 'School Furnitures & Fixtures', 5);
+(11, 'SCHOOL & OFFICE EQUIPMENT', 5);
 
 -- --------------------------------------------------------
 
@@ -189,29 +195,19 @@ INSERT INTO `major_category` (`id`, `description`, `depreciate_yr`) VALUES
 -- Table structure for table `minor_category`
 --
 
-CREATE TABLE IF NOT EXISTS `minor_category` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `minor_category` (
+  `id` int(2) NOT NULL,
   `major_id` int(2) NOT NULL,
-  `description` varchar(999) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `description` varchar(999) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `minor_category`
 --
 
 INSERT INTO `minor_category` (`id`, `major_id`, `description`) VALUES
-(3, 10, 'Chairs'),
-(4, 8, 'Drinking Fountain'),
-(5, 8, 'Emergency Light'),
-(6, 8, 'Fire Extinguisher'),
-(7, 8, 'Gas Stove'),
-(8, 10, 'Shelf'),
-(9, 10, 'Sink'),
-(10, 10, 'Tables'),
-(11, 8, 'Trash Bin'),
-(12, 9, 'Tables'),
-(13, 7, 'Tables');
+(14, 11, 'PROJECTOR'),
+(15, 11, 'AIRCON');
 
 -- --------------------------------------------------------
 
@@ -219,8 +215,8 @@ INSERT INTO `minor_category` (`id`, `major_id`, `description`) VALUES
 -- Table structure for table `property`
 --
 
-CREATE TABLE IF NOT EXISTS `property` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `property` (
+  `id` int(10) NOT NULL,
   `pcode` varchar(50) DEFAULT NULL,
   `sno` varchar(50) DEFAULT NULL,
   `description` varchar(999) NOT NULL,
@@ -230,18 +226,24 @@ CREATE TABLE IF NOT EXISTS `property` (
   `uom` varchar(20) DEFAULT NULL,
   `cost` double(13,2) NOT NULL,
   `date_acquired` datetime NOT NULL,
-  `or_number` varchar(999) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `or_number` varchar(999) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `property`
 --
 
 INSERT INTO `property` (`id`, `pcode`, `sno`, `description`, `brand`, `model`, `minor_category`, `uom`, `cost`, `date_acquired`, `or_number`) VALUES
-(1, '008-2013-0812', '123456789', 'Epson Printer', 'Epson', 'Epson', 3, '', 150.00, '2017-01-04 09:25:25', '370124'),
-(2, 'Pcode123', '12345789', 'Describing the Item', 'branded item', 'modelling of item', 3, '', 200.00, '1996-10-10 00:00:00', '370123'),
-(3, 'Pcode456', '12345789', 'Describing the Item', 'branded item', 'modelling of item', 3, '', 150.00, '1996-10-11 00:00:00', '370124');
+(5, 'CLNOSE342014-013', 'BO42CJAF08-05', 'LED PROJECTOR CASIO XJ-A240', '', '', 14, 'PC/S', 40000.00, '2017-01-19 13:59:41', '4010000000493'),
+(6, 'CLNOSE342014-001', 'B042CJAF08-057241', 'LED Projector CASIO XJ-A240', '', '', 14, 'PC/S', 40000.00, '2017-01-19 14:23:27', '4010000000493'),
+(7, 'CLNOSE14-2014-003', '8275930000018', 'FCU - Ceiling Cassette (3.0TR)Gree Model#FP-180XD/B-T', '', '', 15, 'PC/S', 566.40, '2017-01-19 14:26:26', '4010000000283'),
+(8, 'CLNOSE342014-014', 'B042CJAF08-063596', 'LED Projector CASIO XJ-A240', '', '', 14, 'PC/S', 40000.00, '2017-01-19 14:29:14', '4010000000493'),
+(9, 'CLNOSE342014-023', 'B042CJAF08-063732', 'LED Projector CASIO XJ-A240', '', '', 14, 'PC/S', 40000.00, '2017-01-19 14:34:06', '4010000000493'),
+(10, 'CLNOSE342014-040', 'B042CJAF08-064058', 'LED Projector CASIO XJ-A240', '', '', 14, 'PC/S', 40000.00, '2017-01-19 14:37:38', '4010000000493'),
+(11, 'CLNOSE342014-006', 'B042CJAF08-057432', 'LED Projector CASIO XJ-A240', '', '', 14, 'PC/S', 40000.00, '2017-01-19 14:41:13', '4010000000493'),
+(12, 'CLNOSE342014-021', 'B042CJAF08-063710', 'LED Projector CASIO XJ-A240', '', '', 14, 'PC/S', 40000.00, '2017-01-19 14:47:29', '4010000000493'),
+(13, 'CLNOSE342014-028', 'B042CJAF08-063844', 'LED Projector CASIO XJ-A240', '', '', 14, 'PC/S', 40000.00, '2017-01-19 14:49:47', '4010000000493'),
+(14, 'CLNOSE342014-002', 'B042CJAF08-057308', 'LED Projector CASIO XJ-A240', '', '', 14, 'PC/S', 40000.00, '2017-01-19 14:51:23', '4010000000493');
 
 -- --------------------------------------------------------
 
@@ -249,14 +251,13 @@ INSERT INTO `property` (`id`, `pcode`, `sno`, `description`, `brand`, `model`, `
 -- Table structure for table `property_accountability`
 --
 
-CREATE TABLE IF NOT EXISTS `property_accountability` (
+CREATE TABLE `property_accountability` (
   `emp_id` varchar(30) NOT NULL,
   `property_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   `location_id` int(11) NOT NULL,
   `condition_id` int(2) NOT NULL,
-  `remarks` varchar(999) DEFAULT NULL,
-  PRIMARY KEY (`emp_id`,`condition_id`,`property_id`,`location_id`)
+  `remarks` varchar(999) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -264,9 +265,16 @@ CREATE TABLE IF NOT EXISTS `property_accountability` (
 --
 
 INSERT INTO `property_accountability` (`emp_id`, `property_id`, `qty`, `location_id`, `condition_id`, `remarks`) VALUES
-('CLN00005', 1, 1, 10, 1, NULL),
-('CLN00005', 2, 1, 10, 2, NULL),
-('CLN00005', 3, 1, 10, 2, NULL);
+('CLN0025A', 5, 1, 11, 1, NULL),
+('CLN0025A', 6, 1, 12, 1, NULL),
+('CLN0025A', 8, 1, 13, 1, NULL),
+('CLN0025A', 9, 1, 14, 1, NULL),
+('CLN0025A', 10, 1, 15, 1, NULL),
+('CLN0025A', 11, 1, 16, 1, NULL),
+('CLN0025A', 12, 1, 17, 1, NULL),
+('CLN0025A', 13, 1, 18, 1, NULL),
+('CLN0025A', 14, 1, 19, 1, NULL),
+('CLN0291A', 7, 1, 13, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -274,10 +282,9 @@ INSERT INTO `property_accountability` (`emp_id`, `property_id`, `qty`, `location
 -- Table structure for table `sub_property`
 --
 
-CREATE TABLE IF NOT EXISTS `sub_property` (
+CREATE TABLE `sub_property` (
   `property_id` int(11) NOT NULL,
-  `sub_property_id` int(11) NOT NULL,
-  PRIMARY KEY (`property_id`,`sub_property_id`)
+  `sub_property_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -286,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `sub_property` (
 -- Table structure for table `sub_property_history`
 --
 
-CREATE TABLE IF NOT EXISTS `sub_property_history` (
+CREATE TABLE `sub_property_history` (
   `property_id` int(11) NOT NULL,
   `sub_property_id` int(11) NOT NULL,
   `date` datetime NOT NULL
@@ -298,10 +305,18 @@ CREATE TABLE IF NOT EXISTS `sub_property_history` (
 -- Table structure for table `temp_property_accountability`
 --
 
-CREATE TABLE IF NOT EXISTS `temp_property_accountability` (
-  `pcode` varchar(50) NOT NULL,
-  PRIMARY KEY (`pcode`)
+CREATE TABLE `temp_property_accountability` (
+  `pcode` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `temp_property_accountability`
+--
+
+INSERT INTO `temp_property_accountability` (`pcode`) VALUES
+('CLNOSE14-2014-003'),
+('CLNOSE342014-001'),
+('CLNOSE342014-013');
 
 -- --------------------------------------------------------
 
@@ -309,7 +324,7 @@ CREATE TABLE IF NOT EXISTS `temp_property_accountability` (
 -- Table structure for table `transfer_request`
 --
 
-CREATE TABLE IF NOT EXISTS `transfer_request` (
+CREATE TABLE `transfer_request` (
   `request_code` int(11) NOT NULL,
   `id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
@@ -320,8 +335,7 @@ CREATE TABLE IF NOT EXISTS `transfer_request` (
   `released_from` varchar(30) NOT NULL,
   `remarks` varchar(300) DEFAULT NULL,
   `date_request` datetime NOT NULL,
-  `emp_approval` int(1) NOT NULL,
-  PRIMARY KEY (`id`,`condition_id`,`old_loc_id`,`released_from`,`request_code`)
+  `emp_approval` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -330,7 +344,7 @@ CREATE TABLE IF NOT EXISTS `transfer_request` (
 -- Table structure for table `transfer_request_history`
 --
 
-CREATE TABLE IF NOT EXISTS `transfer_request_history` (
+CREATE TABLE `transfer_request_history` (
   `ctrl_no` varchar(30) NOT NULL,
   `sy` varchar(4) NOT NULL,
   `no` int(11) NOT NULL,
@@ -343,32 +357,120 @@ CREATE TABLE IF NOT EXISTS `transfer_request_history` (
   `transfer_to` varchar(30) NOT NULL,
   `released_from` varchar(30) NOT NULL,
   `remarks` varchar(300) DEFAULT NULL,
-  `date_approved` datetime NOT NULL,
-  PRIMARY KEY (`id`,`condition_id`,`old_loc_id`,`released_from`,`ctrl_no`)
+  `date_approved` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `transfer_request_history`
+-- Indexes for dumped tables
 --
 
-INSERT INTO `transfer_request_history` (`ctrl_no`, `sy`, `no`, `request_code`, `id`, `qty`, `condition_id`, `old_loc_id`, `new_loc_id`, `transfer_to`, `released_from`, `remarks`, `date_approved`) VALUES
-('CLN-1617-00001O', '1617', 1, 1, 2, 1, 1, 1, 1, 'CLN00002', 'CLN00001', NULL, '2016-11-25 09:57:30'),
-('CLN-1617-00002O', '1617', 2, 1, 2, 1, 1, 1, 1, 'CLN00002', 'CLN00001', NULL, '2016-11-25 10:01:25'),
-('CLN-1617-00003O', '1617', 3, 1, 2, 1, 1, 1, 2, 'CLN00002', 'CLN00001', NULL, '2016-11-25 10:46:25'),
-('CLN-1617-00004O', '1617', 4, 1, 2, 2, 1, 1, 5, 'CLN00002', 'CLN00001', NULL, '2016-11-25 12:02:18'),
-('CLN-1617-00005O', '1617', 5, 1, 2, 2, 1, 1, 5, 'CLN00002', 'CLN00001', NULL, '2016-11-25 12:03:32'),
-('CLN-1617-00006O', '1617', 6, 1, 2, 2, 1, 1, 5, 'CLN00002', 'CLN00001', NULL, '2016-11-25 12:06:26'),
-('CLN-1617-00007O', '1617', 7, 1, 2, 1, 1, 1, 5, 'CLN00002', 'CLN00001', NULL, '2016-11-25 12:08:13'),
-('CLN-1617-00008O', '1617', 8, 1, 2, 2, 1, 1, 2, 'CLN00002', 'CLN00001', NULL, '2016-11-25 12:08:49'),
-('CLN-1617-00010O', '1617', 10, 1, 2, 8, 1, 1, 4, 'CLN00002', 'CLN00001', NULL, '2016-11-25 12:12:26'),
-('CLN-1617-00009O', '1617', 9, 1, 2, 8, 1, 1, 4, 'CLN00001', 'CLN00002', NULL, '2016-11-25 12:10:25'),
-('CLN-1617-00010O', '1617', 10, 1, 2, 3, 1, 2, 4, 'CLN00002', 'CLN00001', NULL, '2016-11-25 12:12:26'),
-('CLN-1617-00009O', '1617', 9, 1, 2, 3, 1, 2, 4, 'CLN00001', 'CLN00002', NULL, '2016-11-25 12:10:25'),
-('CLN-1617-00011O', '1617', 11, 1, 2, 1, 1, 2, 3, 'CLN00003', 'CLN00002', '', '2016-12-02 11:50:16'),
-('CLN-1617-00010O', '1617', 10, 1, 2, 2, 1, 5, 4, 'CLN00002', 'CLN00001', NULL, '2016-11-25 12:12:26'),
-('CLN-1617-00009O', '1617', 9, 1, 2, 2, 1, 5, 4, 'CLN00001', 'CLN00002', NULL, '2016-11-25 12:10:25'),
-('CLN-1617-00012O', '1617', 12, 2, 2, 1, 3, 2, 1, 'CLN00001', 'CLN00002', '', '2016-12-02 11:50:18');
+--
+-- Indexes for table `account_table`
+--
+ALTER TABLE `account_table`
+  ADD PRIMARY KEY (`emp_id`);
 
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`emp_id`);
+
+--
+-- Indexes for table `condition_info`
+--
+ALTER TABLE `condition_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ctrl_sy`
+--
+ALTER TABLE `ctrl_sy`
+  ADD PRIMARY KEY (`sy`);
+
+--
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `major_category`
+--
+ALTER TABLE `major_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `minor_category`
+--
+ALTER TABLE `minor_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `property`
+--
+ALTER TABLE `property`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `property_accountability`
+--
+ALTER TABLE `property_accountability`
+  ADD PRIMARY KEY (`emp_id`,`condition_id`,`property_id`,`location_id`);
+
+--
+-- Indexes for table `sub_property`
+--
+ALTER TABLE `sub_property`
+  ADD PRIMARY KEY (`property_id`,`sub_property_id`);
+
+--
+-- Indexes for table `temp_property_accountability`
+--
+ALTER TABLE `temp_property_accountability`
+  ADD PRIMARY KEY (`pcode`);
+
+--
+-- Indexes for table `transfer_request`
+--
+ALTER TABLE `transfer_request`
+  ADD PRIMARY KEY (`id`,`condition_id`,`old_loc_id`,`released_from`,`request_code`);
+
+--
+-- Indexes for table `transfer_request_history`
+--
+ALTER TABLE `transfer_request_history`
+  ADD PRIMARY KEY (`id`,`condition_id`,`old_loc_id`,`released_from`,`ctrl_no`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `condition_info`
+--
+ALTER TABLE `condition_info`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `major_category`
+--
+ALTER TABLE `major_category`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `minor_category`
+--
+ALTER TABLE `minor_category`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `property`
+--
+ALTER TABLE `property`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
