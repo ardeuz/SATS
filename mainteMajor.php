@@ -48,9 +48,12 @@
   </div>
   <div data-role="dialog" data-overlay="true" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="editMajorDialog" data-close-button="true">
     <input type="hidden" id="editMajorID" />
-    <h5 class='text-light'>Update Location</h5>
+    <h5 class='text-light'>Update Major Category</h5>
     <div class="input-control full-size">
       <input type="text" id="majorValue"/>
+    </div>
+    <div class="input-control full-size">
+      <input type="text" id="dep_year"/>
     </div>
     <button class="button success" onclick="updateMajor()"> Update</button>
     <!-- <div class="input-control"/>
