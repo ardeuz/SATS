@@ -43,8 +43,7 @@
 					"transfer_to" => $_SESSION['account']['emp_id'],
 					"released_from" => $propertyTransferList[$i]->{'property'}['emp_id'],
 					"date_request" => $dateToday,
-					"date_borrow"=> $propertyTransferList[$i]->{'dateBorrow'},
-					"time_borrow"=> $propertyTransferList[$i]->{'timeBorrow'}
+					"date_borrow"=> $propertyTransferList[$i]->{'dateBorrow'}
 				]);
 			}
 		}

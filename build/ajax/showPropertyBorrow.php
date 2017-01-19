@@ -15,7 +15,6 @@
 				$employee->{'last_name'} = $propertyTransferList[$i]->{'property'}['last_name'];
 				$employee->{'department'} = $propertyTransferList[$i]->{'property'}['department'];
 				$employee->{'dateBorrow'} = $propertyTransferList[$i]->{'dateBorrow'};
-				$employee->{'timeBorrow'} = $propertyTransferList[$i]->{'timeBorrow'};
 
 				array_push($employeeList, $employee);
 			} else {
@@ -36,7 +35,6 @@
 					$employee->{'last_name'} = $propertyTransferList[$i]->{'property'}['last_name'];
 					$employee->{'department'} = $propertyTransferList[$i]->{'property'}['department'];
 					$employee->{'dateBorrow'} = $propertyTransferList[$i]->{'property'}['dateBorrow'];
-					$employee->{'timeBorrow'} = $propertyTransferList[$i]->{'property'}['timeBorrow'];
 
 					array_push($employeeList, $employee);
 				}
@@ -55,8 +53,7 @@
 		            <span class='sub-header'>" . $employeeList[$i]->{'first_name'} . " " . $employeeList[$i]->{'last_name'}
 		            . "</span>
 		            <p><small>" . $employeeList[$i]->{'department'}  . " Department</small></p>
-							  <p><small>Time Borrow: " . $employeeList[$i]->{'timeBorrow'}  . "</small></p>
-							  <p><small>Date Borrow: " . $employeeList[$i]->{'dateBorrow'}  . "</small></p>
+							  <p><small>Date To be Returned: " . date("M d, Y H:i A", strtotime($employeeList[$i]->{'dateBorrow'}))  . "</small></p>
 		            <hr class='thin' />";
 
 		            echo "<div style='overflow-y: scroll; height: 200px'>";
@@ -88,7 +85,7 @@
 		            <hr class='thin' />
 		            <button onclick='requestTransfer(\"" . $employeeList[$i]->{'emp_id'} . "\")' class='button place-right'>
 		            	<span class='mif-truck mif-ani-pass mif-ani-slow'></span>
-		            	Request Transfer
+		            	Request Borrow
 		        	</button>
 		    </div>";
 
