@@ -107,6 +107,8 @@ function updateUser(){
 					icon: "<span class='mif-pencil icon'></span>",
 					type: "success"
 			});
+			requestAccountability();
+			hideMetroDialog("#editUser");
 			console.log(data);
 			//success
 		}

@@ -1,35 +1,4 @@
 showSelect();
-
-
-function addNewLocation(){
-    var newLoc = $("#newLoc").val();
-    $.post("build/ajax/addNewLocation.php",{ newLoc : newLoc },function(data)
-    {
-      var res = parseInt(data);
-      if(res == -1){
-        $.Notify({
-          caption: 'Insert Failed',
-            content: 'Location already Exists' ,
-            icon: "<span class='mif-floppy-disk icon'></span>",
-            type: "warning"
-        });
-
-      }
-      else if(res == 1){
-        $.Notify({
-          caption: 'Insert Success',
-            content: 'Location Successfully Added' ,
-            icon: "<span class='mif-floppy-disk icon'></span>",
-            type: "success"
-        });
-        $('#newLoc').val('');
-        hideMetroDialog('#addNewLocation');
-
-    } else {
-      console.log(data);
-    }
-  });
-}
 function addNewMajor()
 {
   var newMajor = $("#newMaj").val();

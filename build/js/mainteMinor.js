@@ -8,18 +8,18 @@ function requestAccountability()
 		$('#history_request_div').show();
 	});
 }
-function EditMajor(propertyCode,location)
+function EditMinor(propertyCode,location)
 {
 	var propertyID = parseInt(propertyCode);
   $("#minorValue").val(location);
 	$("#editMinorID").val(propertyID);
 	// ano ano ieedit dine
 }
-function updateMajor()
+function updateMinor()
 {
-  var majorID = $("#editMinorID").val();
-  var majorValue = $("#minorValue").val();
-  $.post("build/ajax/updateMajor.php",{majorID : majorID, majorValue : majorValue},function(data)
+  var minorID = $("#editMinorID").val();
+  var minorValue = $("#minorValue").val();
+  $.post("build/ajax/updateMinor.php",{minorID : minorID, minorValue : minorValue},function(data)
   {
     var result = parseInt(data);
     console.log(data);
@@ -88,8 +88,8 @@ function deleteMinor()
 					icon: "<span class='mif-bin icon'></span>",
 					type: "alert"
 			});
-			hideMetroDialog('#deleteMajorDialog');
       requestAccountability();
+			hideMetroDialog('#deleteMinorDialog');
 		}
 		 else {
 			console.log(data);

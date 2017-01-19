@@ -105,6 +105,7 @@ function DeleteProperty()
 					icon: "<span class='mif-bin icon'></span>",
 					type: "alert"
 			});
+			requestAccountability();
 			hideMetroDialog('#deletePropertyDialog');
 		}
 		 else {

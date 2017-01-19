@@ -27,18 +27,21 @@ function ViewProperty(propertyId)
 						}
 		});
 }
-function EditMajor(propertyCode,location)
+function EditMajor(propertyCode,location,depyear)
 {
 	var propertyID = parseInt(propertyCode);
   $("#majorValue").val(location);
 	$("#editMajorID").val(propertyID);
+	$("#dep_year").val(depyear);
+	console.log(dep_year);
 	// ano ano ieedit dine
 }
 function updateMajor()
 {
   var majorID = $("#editMajorID").val();
-  var majorValue = $("#majorValue").val();
-  $.post("build/ajax/updateMajor.php",{majorID : majorID, majorValue : majorValue},function(data)
+	var majorValue = $("#majorValue").val();
+	var depreYear = $("#dep_year").val();
+  $.post("build/ajax/updateMajor.php",{majorID : majorID, majorValue : majorValue, depreYear:depreYear },function(data)
   {
     var result = parseInt(data);
     console.log(data);

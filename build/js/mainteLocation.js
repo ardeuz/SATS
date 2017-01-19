@@ -43,7 +43,7 @@ function updateLocation()
     var result = parseInt(data);
     if(result == 1)
     {
-      console.log("update Complete");
+			console.log(result);
       $.Notify({
         caption: 'Update Success',
           content: 'Location is not been changed' ,
@@ -53,7 +53,7 @@ function updateLocation()
     }
     else if(result == 2)
     {
-      console.log("update Comp");
+      console.log(result);
       $.Notify({
         caption: 'Update Failed',
           content: 'Server Error' ,
@@ -63,7 +63,7 @@ function updateLocation()
     }
     else if(result == 3)
     {
-      console.log("update");
+			console.log(result);
       hideMetroDialog("#editLocationDialog");
       requestAccountability();
       $.Notify({
@@ -75,7 +75,7 @@ function updateLocation()
     }
     else if(result == 4)
     {
-      console.log("updat");
+			console.log(result);
       hideMetroDialog("#editLocationDialog");
       requestAccountability();
       $.Notify({
@@ -120,4 +120,34 @@ function deleteLocation()
 			//problem with the server
 		}
 	});
+}
+function addNewLocation(){
+    var newLoc = $("#newLoc").val();
+    $.post("build/ajax/addNewLocation.php",{ newLoc : newLoc },function(data)
+    {
+      var res = parseInt(data);
+      if(res == -1){
+        $.Notify({
+          caption: 'Insert Failed',
+            content: 'Location already Exists' ,
+            icon: "<span class='mif-floppy-disk icon'></span>",
+            type: "warning"
+        });
+
+      }
+      else if(res == 1){
+        $.Notify({
+          caption: 'Insert Success',
+            content: 'Location Successfully Added' ,
+            icon: "<span class='mif-floppy-disk icon'></span>",
+            type: "success"
+        });
+        $('#newLoc').val('');
+				requestAccountability();
+        hideMetroDialog('#addNewLocation');
+
+    } else {
+      console.log(data);
+    }
+  });
 }
