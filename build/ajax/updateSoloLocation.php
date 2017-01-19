@@ -4,7 +4,7 @@
   $locationID = $_POST['locationID'];
   $locationValue = $_POST['locationValue'];
   $locationDatas = $db->get("location",['location','id'],['id'=>$locationID]);
-  if($locationDatas['location'] != $locationValue && $db->select("location",["location[!]"=>$locationValue]))
+  if($locationDatas['location'] != $locationValue && $db->has("location",["location[!]"=>$locationValue]))
   {
     echo 3;
     $db->update("location",["location"=>$locationValue],["id"=>$locationID]);
@@ -19,7 +19,6 @@
     // Same
     echo 1;
   }
-
   else {
     echo 2;
   }

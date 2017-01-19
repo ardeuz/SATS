@@ -14,7 +14,7 @@ $emp_id = $_SESSION['account']['emp_id'];
 
 if(isset($_POST['showAccounts']))
 {
-    $prowareDatas = $db->select("major_category", ["id","description","depreciate_yr"
+    $prowareDatas = $db->select("minor_category", ["id","description"
     ]);
 ?>
 <table class="dataTable border bordered hovered full-size" >
@@ -35,8 +35,8 @@ foreach ($prowareDatas as $prowareData)
   <tr>
   <td>
     <div class="toolbar">
-    <button class="toolbar-button button primary" onclick="showMetroDialog('#editMajorDialog'); EditMajor('<?php echo $prowareData['id']; ?>','<?php echo $prowareData['description']; ?>','<?php echo $prowareData['depreciate_yr'];?>')"><span class="mif-pencil icon"></span></button>
-    <button class="toolbar-button button primary" onclick="showMetroDialog('#deleteMajorDialog'); deleteMajorValidation('<?php echo $prowareData['id']; ?>', '<?php echo $prowareData['description']; ?>');"><span class="mif-bin icon"></span></button></div>
+    <button class="toolbar-button button primary" onclick="showMetroDialog('#editMinorDialog'); EditMinor('<?php echo $prowareData['id']; ?>','<?php echo $prowareData['description']; ?>');"><span class="mif-pencil icon"></span></button>
+    <button class="toolbar-button button primary" onclick="showMetroDialog('#deleteMinorDialog'); deleteMinorValidation('<?php echo $prowareData['id']; ?>', '<?php echo $prowareData['description']; ?>');"><span class="mif-bin icon"></span></button></div>
   </td>
   <td><?php echo $prowareData['description']?></td>
   </tr>
