@@ -80,10 +80,11 @@ function ViewProperty(propertyId)
 						}
 		});
 }
-function EditProperty(propertyCode)
+function EditProperty(propertyCode,minorID)
 {
 	var propertyID = parseInt(propertyCode);
 	$("#propertyId").val(propertyID);
+	$("#minorID").val(minorID);
 	// ano ano ieedit dine
 }
 function DeletePropertyValidation(propertyCode,pcode)
