@@ -10,15 +10,7 @@
     $emppass = $_POST["emppass"];
     $confirmpass = $_POST["confirmpass"];
     $accountDatas = $db->get("account_table",["password"],['emp_id'=>$emp_id]);
-    if($emppass != $confirmpass)
-    {
-      echo 3;
-    }
-    elseif($accountDatas['password'] != $oldpass)
-    {
-      echo 2;
-    }
-    elseif($emppass == $confirmpass)
+    if($oldpass == null && $emppass == null && $confirmpass == null)
     {
       echo 1;
       $db->update("account_table",
@@ -27,11 +19,36 @@
           "last_name"=>$emplast,
           "middle_name"=>$empmiddle,
           "department"=>$empdepartment,
-          "password"=>$emppass
         ],
         [
           "emp_id"=>$emp_id
         ]
       );
+    }
+    else{
+      if($emppass != $confirmpass)
+      {
+        echo 3;
+      }
+      elseif($accountDatas['password'] != $oldpass)
+      {
+        echo 2;
+      }
+      elseif($emppass == $confirmpass)
+      {
+        echo 1;
+        $db->update("account_table",
+          [
+            "first_name"=>$empfirst,
+            "last_name"=>$emplast,
+            "middle_name"=>$empmiddle,
+            "department"=>$empdepartment,
+            "password"=>$emppass
+          ],
+          [
+            "emp_id"=>$emp_id
+          ]
+        );
+      }
     }
 ?>

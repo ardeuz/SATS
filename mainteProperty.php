@@ -140,12 +140,45 @@
       <button class="button warning" onclick="addProperty()">Add Property</button>
     </div>
   </div>
-  <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="editPropertyDialog" data-close-button="true" style="overflow-y:scroll;">
-    <h3 class="padding20 text-light header">Edit Property</h3>
+  <div data-role="dialog" class="padding20" data-overlay="true"  data-width="30%"  class= data-overlay-color="op-dark" data-overlay-click-close="true" id="editPropertyDialog" data-close-button="true">
+    <h3 class="text-light header">Edit Property</h3>
     <input type="hidden" id="propertyId" />
-    <!-- <div class="input-control"/>
-      edittable values here
-    </div> -->
+    <div class="input-control full-size">
+      <input type="text" id="editPropertyCode"/>
+    </div>
+    <div class="input-control full-size">
+      <input type="text" id="editSerialNumber"/>
+    </div>
+    <div class="input-control full-size">
+      <textarea type="text" id="editPropertyDescription" placeholder="Description"></textarea>
+    </div>
+    <div class="input-control full-size">
+      <input type="text" id="editPropertyValue"/>
+    </div>
+    <div class="input-control full-size">
+      <input type="text" id="editModel"/>
+    </div>
+    <div class="input-control full-size" data-role="select">
+      <select>
+        <option disabled selected><?php ?></option>
+        <?php
+          $editMinorId = $_POST['minorID'];
+          $editMinorCategoryDatas = $db->select('minor_category',['id','description']);
+          foreach ($editMinorCategoryDatas as $editMinorCategoryData) {
+            echo '<option value='.$editMinorCategoryData['id'].'>'.$editMinorCategoryData['description'].'</option>';
+          }
+        ?>
+      </select>
+    </div>
+    <div class="input-control full-size">
+      <input type="text" id="editUom" placeholder="Unit of Measurement"/>
+    </div>
+    <div class="input-control full-size">
+      <input type="text" id="editCost" placeholder="Cost"/>
+    </div>
+    <div class="input-control full-size"/>
+      <input type="text" id="ornumber" placeholder="OR Number"/>
+    </div>
   </div>
   <div data-role="dialog" data-overlay="true" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="deletePropertyDialog" data-close-button="true">
     <input type="hidden" id="deletePropertyID" />
