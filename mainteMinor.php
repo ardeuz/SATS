@@ -43,6 +43,26 @@
             </center>
           </div>
         </div>
+        <div data-role="dialog" data-overlay="true" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="editMinorDialog" data-close-button="true">
+          <input type="hidden" id="editMinorID" />
+          <h5 class='text-light'>Update Minor Category</h5>
+          <div class="input-control full-size">
+            <input type="text" id="minorValue"/>
+          </div>
+          <button class="button success" onclick="updateMinor()"> Update</button>
+          <!-- <div class="input-control"/>
+            edittable values here
+          </div> -->
+        </div>
+        <div data-role="dialog" data-overlay="true" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="deleteMinorDialog" data-close-button="true">
+          <input type="hidden" id="deleteMinorID" />
+          <h5 class="text-light">Are you sure you want to Delete? <br/><b><span id="minorVal"></span></b></h5>
+          <button class="button danger" onclick="deleteMinor()"> Delete</button>
+          <button class="button default" onclick="hideMetroDialog('deleteMinorID')"> Cancel</button>
+          <!-- <div class="input-control"/>
+            edittable values here
+          </div> -->
+        </div>
   </div>
   </body>
   <script src="build/js/jquery.dataTables.min.js"></script>
