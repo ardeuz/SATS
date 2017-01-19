@@ -62,7 +62,7 @@
     <input type="hidden" id="deleteLocationID" />
     <h5 class="text-light">Are you sure you want to Delete? <br/><b><span id="location"></span></b></h5>
     <button class="button danger" onclick="deleteLocation()"> Delete</button>
-    <button class="button default" onclick="hideMetroDialog('deleteLocationDialog')"> Cancel</button>
+    <button class="button default" onclick="hideMetroDialog('#deleteLocationDialog')"> Cancel</button>
     <!-- <div class="input-control"/>
       edittable values here
     </div> -->
