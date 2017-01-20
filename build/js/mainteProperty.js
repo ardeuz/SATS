@@ -81,7 +81,7 @@ function ViewProperty(propertyId)
 						}
 		});
 }
-function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost, qty)
+function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost)
 {
 	var propertyID = parseInt(propertyCode);
 	$("#propertyId").val(propertyID);
@@ -94,7 +94,6 @@ function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, br
 	$("#ornumber").val(orNumber);
 	$("#editUom").val(uom);
 	$("#editCost").val(cost);
-	$("#editQty").val(qty);
 
 	// ano ano ieedit dine
 }
@@ -110,17 +109,15 @@ function updateProperty()
 	var editUom = $("#editUom").val();
 	var editCost = $("#editCost").val();
 	var editMinorId = $("#editMinorId").val();
-	var editQty = $("#editQty").val();
-	$.post("build/ajax/updateProperty.php" , {propertyId:propertyId , editPropertyCode:editPropertyCode, editSerialNumber:editSerialNumber , editPropertyDescription:editPropertyDescription, editBrand:editBrand, editModel:editModel, ornumber:ornumber , editUom:editUom , editCost:editCost , editMinorId:editMinorId , editQty:editQty },function(data){
-
+	$.post("build/ajax/updateProperty.php" , {propertyId:propertyId , editPropertyCode:editPropertyCode, editSerialNumber:editSerialNumber , editPropertyDescription:editPropertyDescription, editBrand:editBrand, editModel:editModel, ornumber:ornumber , editUom:editUom , editCost:editCost , editMinorId:editMinorId  },function(data){
 		var result = parseInt(data);
 		if(result == 1)
 		{
 			$.Notify({
 				caption: 'Update Property Success',
 					content: 'Property Updated',
-					icon: "<span class='mif-check mif-ani-heartbeat icon'></span>",
-					type: "successs"
+					icon: "<span class='mif-checkmark mif-ani-heartbeat mif-ani-fast icon'></span>",
+					type: "success"
 			});
 			hideMetroDialog("#editPropertyDialog");
 			requestAccountability();
@@ -129,21 +126,12 @@ function updateProperty()
 		{
 			$.Notify({
 				caption: 'Update Failed',
-					content: 'Property Deleted',
+					content: 'Property Code and Serial number must have a value',
 					icon: "<span class='mif-cross mif-ani-flash icon'></span>",
 					type: "alert"
 			});
 		}
 		else if(result == 3)
-		{
-			$.Notify({
-				caption: 'Update Failed',
-					content: 'Property Deleted' ,
-					icon: "<span class='mif-cross mif-ani-flash icon'></span>",
-					type: "alert"
-			});
-		}
-		else if(result == 4)
 		{
 			$.Notify({
 				caption: 'Update Failed',
