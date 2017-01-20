@@ -16,12 +16,14 @@
 
     <link href="build/css/metro.css" rel="stylesheet">
     <link href="build/css/backend.css" rel="stylesheet">
+    <link href="build/css/metro-colors.min.css" rel="stylesheet">
+    <link href="build/css/metro-schemes.min.css" rel="stylesheet">
+
     <link href="build/css/admin.css" rel="stylesheet">
     <link href="build/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="build/css/metro-icons.css" rel="stylesheet">
     <link href="build/css/metro-responsive.css" rel="stylesheet">
-    <link href="build/css/metro-schemes.min.css" rel="stylesheet">
-    <link href="build/css/metro-colors.min.css" rel="stylesheet">
+
     <script src="build/js/jquery-2-1-3.min.js"></script>
     <script src="build/js/metro.js"></script>
 
@@ -140,32 +142,32 @@
       <button class="button warning" onclick="addProperty()">Add Property</button>
     </div>
   </div>
-  <div data-role="dialog" class="padding20" data-overlay="true"  data-width="30%"  class= data-overlay-color="op-dark" data-overlay-click-close="true" id="editPropertyDialog" data-close-button="true">
-    <h3 class="text-light header">Edit Property</h3>
+  <div data-role="dialog" data-place = "top-center" class="padding20" data-overlay="true"  data-width="30%"  data-overlay-color="op-dark" data-overlay-click-close="true" id="editPropertyDialog" data-close-button="true">
+    <h3 class="text-light header">Edit Property <span id="propertyName"></span></h3>
     <input type="hidden" id="propertyId" />
     <div class="input-control full-size">
-      <input type="text" id="editPropertyCode"/>
+      <input type="text" id="editPropertyCode" placeholder="Property Code"/>
     </div>
     <div class="input-control full-size">
-      <input type="text" id="editSerialNumber"/>
+      <input type="text" id="editSerialNumber" placeholder="Serial Number"/>
+    </div>
+    <div class="input-control full-size textarea">
+      <textarea type="text" id="editPropertyDescription" placeholder="Property Description"></textarea>
     </div>
     <div class="input-control full-size">
-      <textarea type="text" id="editPropertyDescription" placeholder="Description"></textarea>
+      <input type="text" id="editBrand" placeholder="Property Brand" />
     </div>
     <div class="input-control full-size">
-      <input type="text" id="editPropertyValue"/>
+      <input type="text" id="editModel" placeholder="Property Model"/>
     </div>
-    <div class="input-control full-size">
-      <input type="text" id="editModel"/>
-    </div>
-    <div class="input-control full-size" data-role="select">
-      <select>
-        <option disabled selected><?php ?></option>
+    <div class="input-control full-size select" data-role="select" data-placeholder="Minor Category">
+      <select id="editMinorId"style="display:none;" >
+        <option selected disabled value=0>Select a Minor Category</option>
         <?php
-          $editMinorId = $_POST['minorID'];
-          $editMinorCategoryDatas = $db->select('minor_category',['id','description']);
-          foreach ($editMinorCategoryDatas as $editMinorCategoryData) {
-            echo '<option value='.$editMinorCategoryData['id'].'>'.$editMinorCategoryData['description'].'</option>';
+          $editMinorDatas=$db->select("minor_category",["id","description"]);
+          foreach($editMinorDatas as $editMinorData)
+          {
+            echo "<option value=".$editMinorData['id'].">".$editMinorData['description']."</option>";
           }
         ?>
       </select>
@@ -179,6 +181,10 @@
     <div class="input-control full-size"/>
       <input type="text" id="ornumber" placeholder="OR Number"/>
     </div>
+    <div class="input-control full-size"/>
+      <input type="text" id="editQty" placeholder="Quantity"/>
+    </div>
+    <button class="button primary" onclick="updateProperty();"><span class="mif-pencil icon"></span> Update Property</button>
   </div>
   <div data-role="dialog" data-overlay="true" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="deletePropertyDialog" data-close-button="true">
     <input type="hidden" id="deletePropertyID" />
