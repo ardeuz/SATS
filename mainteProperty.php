@@ -181,9 +181,6 @@
     <div class="input-control full-size"/>
       <input type="text" id="ornumber" placeholder="OR Number"/>
     </div>
-    <div class="input-control full-size"/>
-      <input type="text" id="editQty" placeholder="Quantity"/>
-    </div>
     <button class="button primary" onclick="updateProperty();"><span class="mif-pencil icon"></span> Update Property</button>
   </div>
   <div data-role="dialog" data-overlay="true" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="deletePropertyDialog" data-close-button="true">
