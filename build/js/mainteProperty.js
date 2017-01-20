@@ -13,6 +13,7 @@ $(document).ready(function() {
 	$("#locations").select2();
 	$("#accountCategory").select2();
 	$("#minorCategory").select2();
+	$("#editMinorId").select2();
 });
 function addProperty(){
   var pcode = $("#pcode").val();
@@ -80,12 +81,78 @@ function ViewProperty(propertyId)
 						}
 		});
 }
-function EditProperty(propertyCode,minorID)
+function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost, qty)
 {
 	var propertyID = parseInt(propertyCode);
 	$("#propertyId").val(propertyID);
-	$("#minorID").val(minorID);
+	$("#propertyName").html(pcode);
+	$("#editPropertyCode").val(pcode);
+	$("#editSerialNumber").val(serialNumber);
+	$("#editPropertyDescription").val(propertyDescription);
+	$("#editBrand").val(brand);
+	$("#editModel").val(model);
+	$("#ornumber").val(orNumber);
+	$("#editUom").val(uom);
+	$("#editCost").val(cost);
+	$("#editQty").val(qty);
+
 	// ano ano ieedit dine
+}
+function updateProperty()
+{
+	var propertyId = $("#propertyId").val();
+	var editPropertyCode = $("#editPropertyCode").val();
+	var editSerialNumber = $("#editSerialNumber").val();
+	var editPropertyDescription = $("#editPropertyDescription").val();
+	var editBrand = $("#editBrand").val();
+	var editModel = $("#editModel").val();
+	var ornumber = $("#ornumber").val();
+	var editUom = $("#editUom").val();
+	var editCost = $("#editCost").val();
+	var editMinorId = $("#editMinorId").val();
+	var editQty = $("#editQty").val();
+	$.post("build/ajax/updateProperty.php" , {propertyId:propertyId , editPropertyCode:editPropertyCode, editSerialNumber:editSerialNumber , editPropertyDescription:editPropertyDescription, editBrand:editBrand, editModel:editModel, ornumber:ornumber , editUom:editUom , editCost:editCost , editMinorId:editMinorId , editQty:editQty },function(data){
+
+		var result = parseInt(data);
+		if(result == 1)
+		{
+			$.Notify({
+				caption: 'Update Property Success',
+					content: 'Property Updated',
+					icon: "<span class='mif-check mif-ani-heartbeat icon'></span>",
+					type: "successs"
+			});
+			hideMetroDialog("#editPropertyDialog");
+			requestAccountability();
+		}
+		else if(result == 2)
+		{
+			$.Notify({
+				caption: 'Update Failed',
+					content: 'Property Deleted',
+					icon: "<span class='mif-cross mif-ani-flash icon'></span>",
+					type: "alert"
+			});
+		}
+		else if(result == 3)
+		{
+			$.Notify({
+				caption: 'Update Failed',
+					content: 'Property Deleted' ,
+					icon: "<span class='mif-cross mif-ani-flash icon'></span>",
+					type: "alert"
+			});
+		}
+		else if(result == 4)
+		{
+			$.Notify({
+				caption: 'Update Failed',
+					content: 'Server Error',
+					icon: "<span class='mif-cross mif-ani-flash icon'></span>",
+					type: "alert"
+			});
+		}
+	});
 }
 function DeletePropertyValidation(propertyCode,pcode)
 {
