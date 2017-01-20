@@ -8,6 +8,39 @@ function requestAccountability()
 		$('#history_request_div').show();
 	});
 }
+function addNewMajor()
+{
+  var newMajor = $("#newMaj").val();
+  var depYear = $("#depYear").val();
+  $.post("build/ajax/addNewMajorCategory.php",{ newMajor : newMajor , depYear : depYear },function(data)
+  {
+      var res = parseInt(data);
+      if(res == -1){
+        $.Notify({
+          caption: 'Insert Failed',
+            content: 'Major Category already Exists' ,
+            icon: "<span class='mif-floppy-disk icon'></span>",
+            type: "warning"
+        });
+      }
+      else if(res == 1){
+        $.Notify({
+          caption: 'Insert Success',
+            content: 'Major Category Successfully Added' ,
+            icon: "<span class='mif-floppy-disk icon'></span>",
+            type: "success"
+        });
+        $('#newMaj').val('');
+        $('#depYear').val('');
+        requestAccountability();
+        hideMetroDialog('#addNewMajorCategory');
+
+    } else {
+      console.log(data);
+    }
+  });
+}
+
 function ViewProperty(propertyId)
 {
 		var propertyID = parseInt(propertyId);
