@@ -31,7 +31,17 @@
         ]
       ]))
       {
-        echo "<span class='mif-mail mif-ani-ring mif-ani-shuttle fg-lightOrange'></span>";
+        echo "<span class='mif-notification mif-ani-flash mif-ani-fast fg-white'></span>";
+      }
+      elseif($db->has("borrow_request",
+      ["AND" =>
+        [
+          "released_from" => $_SESSION['account']['emp_id'],
+          "emp_approval" => 0
+        ]
+      ]))
+      {
+        echo "<span class='mif-notification mif-ani-flash mif-ani-fast fg-white'></span>";
       }
 
       ?>  </a>
@@ -48,7 +58,7 @@
               ]
             ]))
             {
-              echo "<span class='super mif-mail mif-ani-ring mif-ani-shuttle fg-lightOrange'></span>";
+              echo "<span class='super mif-notification mif-ani-flash mif-ani-fast fg-white'></span>";
             }
 
             ?>
@@ -56,7 +66,20 @@
         </li>
         <li class="divider"></li>
         <li <?php if ($thisPage == "Borrow Request") {echo "class='active'";} ?>>
-          <a href="BorrowRequest.php">Borrow Request</a>
+          <a href="BorrowRequest.php">Borrow Request    <?php
+
+            if($db->has("borrow_request",
+            ["AND" =>
+              [
+                "released_from" => $_SESSION['account']['emp_id'],
+                "emp_approval" => 0
+              ]
+            ]))
+            {
+              echo " <span class='super mif-notification hv-black mif-ani-flash mif-ani-fast fg-red'></span>";
+            }
+
+            ?></a>
           <li class="divider"></li>
           <li <?php if ($thisPage == "Owner Request") {echo "class='active'";} ?>>
             <a href="OwnRequest.php">My Request</a>

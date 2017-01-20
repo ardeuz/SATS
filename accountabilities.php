@@ -33,7 +33,7 @@
     <hr class="thin bg-grayLighter">
     <div id="tableProware"></div>
   </div>
-  <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="70%" data-width="70%" data-overlay-click-close="true" id="prowaredialog" data-close-button="true" style="overflow-y:scroll;">
+  <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="85%" data-width="50%" data-overlay-click-close="true" id="prowaredialog" data-close-button="true" style="overflow-y:scroll;">
     <h3 class="padding20 text-light header">Property Information</h3>
     <div class="padding20" id="propertyInformations" style="padding-top:0;" ></div>
   </div>
