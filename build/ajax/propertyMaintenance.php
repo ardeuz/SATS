@@ -23,7 +23,13 @@ if(isset($_POST['showAccounts']))
       "property.pcode",
       "property.sno",
       "property.description",
+      "property.brand",
+      "property.model",
+      "property.minor_category",
+      "property.uom",
+      "property.cost",
       "property.date_acquired",
+      "property.or_number",
       "property_accountability.qty",
       "major_category.depreciate_yr"
     ]);
@@ -54,7 +60,7 @@ foreach ($prowareDatas as $prowareData)
   <tr>
   <td>
     <div class="toolbar"><button class="toolbar-button button primary adminView" onclick="showMetroDialog('#adminAccountabilityDialog'); ViewProperty('<?php echo $prowareData['id']; ?>');"><span class="mif-eye icon"></span></button>
-    <button class="toolbar-button button primary adminView" onclick="showMetroDialog('#editPropertyDialog'); EditProperty('<?php echo $prowareData['id']; ?>');"><span class="mif-pencil icon"></span></button>
+    <button class="toolbar-button button primary adminView" onclick="showMetroDialog('#editPropertyDialog'); EditProperty('<?php echo $prowareData['id'];?>','<?php echo $prowareData['pcode'];?>' , '<?php echo $prowareData['sno'];?>' , '<?php echo $prowareData['description'];?>' , '<?php echo $prowareData['brand'];?>' , '<?php echo $prowareData['model'];?>' ,<?php echo $prowareData['or_number'];?> , '<?php echo $prowareData['uom'];?>' , <?php echo $prowareData['cost'];?> , <?php echo $prowareData['qty'];?> , <?php echo $prowareData['minor_category'];?> );"><span class="mif-pencil icon"></span></button>
     <button class="toolbar-button button primary adminView" onclick="showMetroDialog('#deletePropertyDialog'); DeletePropertyValidation('<?php echo $prowareData['id']; ?>', '<?php echo $prowareData['pcode']; ?>');"><span class="mif-bin icon"></span></button></div>
   </td>
   <td><?php echo $prowareData['pcode']?></td>
