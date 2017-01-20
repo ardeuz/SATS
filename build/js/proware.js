@@ -135,10 +135,9 @@ function itemDistribute()
   var quantity = $("#quantity").val();
   var itemLocation = $("#itemLocation").val();
   var itemCondition = $("#itemCondition").val();
-  console.log(propertyId + quantity + itemLocation + itemCondition + emp_id);
   $.post("build/ajax/itemDistribute.php",{ propertyId:propertyId , quantity:quantity , itemLocation:itemLocation , itemCondition:itemCondition , emp_id:emp_id , oldCondition:oldCondition , oldLocation:oldLocation },function(data)
   {
-    console.log(data);
+      console.log(data);
       var result = parseInt(data);
       if(result == 0){
         //nabaklas na
@@ -148,6 +147,7 @@ function itemDistribute()
         icon: "<span class='mif-checkmark icon'></span>",
         type: "success"
         });
+        hideMetroDialog("#propertyDistribution");
         prowareTable();
         // success
       }
