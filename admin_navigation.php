@@ -27,7 +27,7 @@
         <ul class="d-menu shadow"  data-role="dropdown">
             <li class="menu-title">List of Adding</li>
             <div>
-              <li class="<?php if($thisPage=='TransferRequest'){echo 'active';} ?>"><a href="admin_request.php"><span class="mif-file-text icon"></span> Transfer Request
+              <li class="<?php if($thisPage=='TransferRequest'){echo 'active';} ?>"><a href="admin_transfer_request.php"><span class="mif-file-text icon"></span> Transfer Request
                 <?php
 
                 if($db->has("transfer_request",
@@ -41,7 +41,20 @@
                   echo "<span class='super mif-mail mif-ani-ring mif-ani-shuttle fg-lightOrange'></span>";
                 }
                 ?></a></li>
-              <li><a href="#"><span class="mif-image icon"></span> Borrow Request</a></li>
+              <li class="<?php if($thisPage=='BorrowRequest'){echo 'active';} ?>"><a href="admin_borrow_request.php"><span class="mif-image icon"></span> Borrow Request
+                <?php
+
+                if($db->has("transfer_request",
+                ["AND" =>
+                  [
+                    "released_from" => $_SESSION['account']['emp_id'],
+                    "emp_approval" => 0
+                  ]
+                ]))
+                {
+                  echo "<span class='super mif-mail mif-ani-ring mif-ani-shuttle fg-lightOrange'></span>";
+                }
+                ?></a></li>
             </div>
         </ul>
     </li>
