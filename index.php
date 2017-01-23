@@ -52,14 +52,38 @@ require_once('connection.php');
       }
       else
       {
-        $message = "<p class='bg-red fg-white padding10 no-margin-top'>Wrong Username or Password</p>";
+        $adminDatas = $db->select("admin",
+          ["first_name","last_name","emp_id"],
+          [
+            "AND" => [
+              "emp_id" => $_POST['Uname'],
+              "password" => $_POST['UPass']
+              ]
+          ]);
+        if(count($adminDatas) == 1)
+        {
+          foreach ($adminDatas as $adminData) {
+            $_SESSION['account'] = $adminData;
+            header("location:admin.php");
+          }
+        }
+        else{
+          $message = "<p class='bg-red fg-white padding10 no-margin-top'>Wrong Username or Password</p>";
+        }
       }
 
     }
   }
-if(isset($_SESSION['account']['username']))
+if(isset($_SESSION['account']['emp_id']))
 {
-      header ("location:accountabilities.php");
+  if($db->has("account_table",['emp_id'=>$_SESSION['account']['emp_id']]))
+  {
+    header ("location:accountabilities.php");
+  }
+  elseif($db->has("admin",['emp_id'=>$_SESSION['account']['emp_id']]))
+  {
+    header ("location:admin.php");
+  }
 }
 
 ?>
