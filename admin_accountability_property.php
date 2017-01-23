@@ -35,17 +35,19 @@
             <h1 class="text-light fg-brown">Property Accountability Of<span class="mif-notification place-right text-light"></span></h1>
             <?php
               if (isset($_GET['emp_id'])) {
-                $accountData = $db->get("account_table", ["first_name", "last_name", "department"], ["emp_id" => $_GET['emp_id']]);
+                $accountData = $db->get("account_table", ["emp_id","first_name", "last_name", "department"], ["emp_id" => $_GET['emp_id']]);
 
                 echo "<div>";
                 echo "<h4 class='text-normal'>" . $accountData['last_name'] . ', ' . $accountData['first_name'] . "</h4>";
 
-                echo "<span class='text-light'>" . $accountData['department'] . " Department</span>";
-
+                echo "<span class='text-light'>" . $accountData['department'] . " Department</span><br/>";
+                echo "<a href='build/ajax/exportPropertyPerAccount.php?emp_id=".$accountData['emp_id']."' class='button default'>Export Property List</a>";
                 echo "<button class='button place-right bg-blue fg-white' onclick='showMetroDialog(\"#uploadPhysicalCount\")'>Upload Physical Count</button>";
                 echo "</div>";
               }
             ?>
+            <br />
+            <br />
             <br />
             <hr class="thin bg-grayLighter">
             <div id="history_request_div"  style="display:none;"></div>
