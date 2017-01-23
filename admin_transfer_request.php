@@ -54,7 +54,7 @@
   </div>
   </body>
   <script src="build/js/jquery.dataTables.min.js"></script>
-  <script src='build/js/adminRequest.js'></script>
+  <script src='build/js/adminTransferRequest.js'></script>
   <script src="build/js/select2.min.js"></script>
   <script src="build/js/admin.js"></script>
 </html>
