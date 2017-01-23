@@ -1,7 +1,7 @@
 <?php
   require_once('../../connection.php');
 
-  $sql = "SELECT pcode, description, sno, brand, model, uom, cost, date_acquired, or_number FROM property";
+  $sql = "SELECT account_table.emp_id, last_name, first_name, pcode, description, sno, brand, model, uom, cost, date_acquired, or_number FROM property inner join property_accountability on property.id = property_accountability.property_id inner join account_table on property_accountability.emp_id = account_table.emp_id";
   $rec = mysqli_query($conn, $sql);
 
   $num_fields = mysqli_num_fields($rec);
