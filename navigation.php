@@ -14,14 +14,35 @@
     <li <?php if ($thisPage == "accountabilities") {echo "class='active'";} ?>>
       <a href="accountabilities.php">Accountabilities</a>
     </li>
-    <li <?php if ($thisPage == "transfer") {echo "class='active'";} ?> >
-      <a href="transfer.php">Transfer</a>
+    <li <?php if($thisPage == "borrow" || $thisPage == "transfer") {echo "class='active'";}?>>
+      <a hreaf="" class="dropdown-toggle"> Request For</a>
+      <ul class="d-menu" data-role="dropdown">
+        <li <?php if ($thisPage == "transfer") {echo "class='active'";} ?> >
+          <a href="transfer.php">Transfer</a>
+        </li>
+        <li <?php if ($thisPage == "borrow") {echo "class='active'";} ?> >
+          <a href="borrow.php">Borrow</a>
+        </li>
+      </ul>
     </li>
-    <li <?php if ($thisPage == "borrow") {echo "class='active'";} ?> >
-      <a href="borrow.php">Borrow</a>
-    </li>
-    <li <?php if ($thisPage == "TransferRequest" ||  $thisPage == "Borrow Request" || $thisPage == "Own Request") {echo "class='active'";} ?> >
-      <a  href="" class="dropdown-toggle"> Request <?php
+  </ul>
+
+
+  <div class="app-bar-element place-right">
+    <div class="app-bar-menu ">
+      <span class="dropdown-toggle"> <?php echo $_SESSION['account']['last_name'].', '. $_SESSION['account']['first_name']; ?></span>
+      <div class="app-bar-drop-container bg-white padding10 place-right no-margin-top block-shadow fg-dark" data-role="dropdown" data-no-close="true" style="width: 320px">
+        <ul class="unstyled-list fg-dark ">
+          <li onClick="" class="fg-white2 fg-hover-grayLight" data-hotkey="alt+1">Help</li>
+          <li onClick="" class="fg-white2 fg-hover-grayLight">Change Password</li>
+          <li class="fg-white2 fg-hover-grayLight place-right"><a href="?logout=1" class="fg-white2 fg-hover-grayLight text-light padding0" style="border:0 transparent;background:transparent">Log Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ul class="app-bar-menu place-right">
+    <li class="<?php if ($thisPage == "TransferRequest" ||  $thisPage == "Borrow Request") {echo "active";} ?> place-right" >
+      <a  href="" class="dropdown-toggle"> Notification <?php
 
       if($db->has("transfer_request",
       ["AND" =>
@@ -81,24 +102,12 @@
 
             ?></a>
           <li class="divider"></li>
-          <li <?php if ($thisPage == "Owner Request") {echo "class='active'";} ?>>
-            <a href="OwnRequest.php">My Request</a>
-          </li>
+
         </li>
       </ul>
+      <li <?php if ($thisPage == "Owner Request") {echo "class='active'";} ?>>
+        <a href="OwnRequest.php">My Request</a>
+      </li>
     </li>
   </ul>
-
-  <div class="app-bar-element place-right">
-    <div class="app-bar-menu ">
-      <span class="dropdown-toggle"><span class="mif-cog"></span> <?php echo $_SESSION['account']['last_name'].', '. $_SESSION['account']['first_name']; ?></span>
-      <div class="app-bar-drop-container bg-white padding10 place-right no-margin-top block-shadow fg-dark" data-role="dropdown" data-no-close="true" style="width: 320px">
-        <ul class="unstyled-list fg-dark ">
-          <!-- <li onClick="edit('#dialog1')" class="fg-white2 fg-hover-grayLight" data-hotkey="alt+1">My Account</li>
-          <li onClick="edit('#dialogs')" class="fg-white2 fg-hover-grayLight">Change Password</li> -->
-          <li class="fg-white2 fg-hover-grayLight place-right"><a href="?logout=1" class="fg-white2 fg-hover-grayLight text-light padding0" style="border:0 transparent;background:transparent">Log Out</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </div>
