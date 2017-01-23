@@ -79,7 +79,7 @@
               ]
             ]))
             {
-              echo "<span class='super mif-notification mif-ani-flash mif-ani-fast fg-white'></span>";
+              echo "<span class='super mif-notification mif-ani-flash mif-ani-fast fg-red'></span>";
             }
 
             ?>
