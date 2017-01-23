@@ -21,7 +21,7 @@ $('body').delegate('.adminConfirmation','click',function(){
 	if (confirm("Approve transfer for this request?")) {
 		var adConfirm= $(this).attr('idAdminUp');
 
-		$.post("build/ajax/insertBorrowHistory.php",{request_code:adConfirm},function(data)
+		$.post("build/ajax/insertTransferHistory.php",{request_code:adConfirm},function(data)
 	  {
 				console.log(data);
 
