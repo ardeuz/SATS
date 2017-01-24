@@ -6,7 +6,7 @@
 		exit();
 	}
 
-  $sql = "SELECT ctrl_no, SUM(id) AS items_transferred, CONCAT(b.last_name, ', ', b.first_name) AS transfer_to, CONCAT(c.last_name, ', ', c.first_name) AS released_from, date_approved FROM transfer_request_history AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id LEFT JOIN account_table AS c ON a.transfer_to=c.emp_id GROUP BY ctrl_no";
+  $sql = "SELECT ctrl_no, SUM(id) AS items_transferred, CONCAT(b.last_name, ', ', b.first_name) AS transfer_to, CONCAT(c.last_name, ', ', c.first_name) AS released_from, date_approved FROM transfer_request_history AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id LEFT JOIN account_table AS c ON a.released_from=c.emp_id GROUP BY ctrl_no";
 
   $transferHistoryDatas = $db->query($sql)->fetchAll();
   $historyCount = count($transferHistoryDatas);

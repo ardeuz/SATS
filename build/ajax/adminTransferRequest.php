@@ -87,6 +87,6 @@
 	}
 
 	if (count($transferRequestGroupDatas) <= 0) {
-		echo "<h2>There's no any Transfer Request</h2>;
+		echo "<h2>There's no any Transfer Request</h2>";
 	}
 ?>
