@@ -32,6 +32,7 @@
   <link href="build/css/inventory.css" rel="stylesheet">
   <script src="build/js/jquery-2-1-3.min.js"></script>
   <script src="build/js/jquery.dataTables.min.js"></script>
+  <script src="build/js/select2.min.js"></script>
   <script src="build/js/metro.js"></script>
   <script src="build/js/transfer.js"></script>
 </head>
@@ -62,8 +63,8 @@
                 <input type="hidden" id="locationId"/>
                 <div class="padding20" style="padding-top:0">
                 <span>Transfer to your new Location:</span>
-                <div class="input-control select full-size">
-                        <select id="location">
+                <div class="input-control select full-size" data-role="select">
+                        <select id="location" style="display:none;">
                         </select>
                 </div>
                 <br>
