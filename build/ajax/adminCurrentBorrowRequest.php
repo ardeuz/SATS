@@ -9,7 +9,7 @@
 
 	$emp_id = $_SESSION['account']['emp_id'];
 	//============make the card=================//
-	$sql = "SELECT request_code, transfer_to, released_from, date_request, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS transfer_to, CONCAT(c.last_name, ', ', c.first_name) AS released_from, b.department FROM borrow_request AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id LEFT JOIN account_table AS c ON a.released_from=c.emp_id WHERE emp_approval=1 AND date_approved = 0 GROUP BY request_code";
+	$sql = "SELECT request_code, transfer_to, released_from, date_request, date_approved, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS transfer_to, CONCAT(c.last_name, ', ', c.first_name) AS released_from, b.department FROM borrow_request AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id LEFT JOIN account_table AS c ON a.released_from=c.emp_id WHERE emp_approval=1 AND date_approved != 0 GROUP BY request_code";
 
 	$transferRequestGroupDatas = $db->query($sql)->fetchAll();
 
@@ -20,7 +20,7 @@
 	foreach ($transferRequestGroupDatas as $transferRequestGroupData) {
 		echo "
 		<div class='cell size-p30 padding0 shadow align-left'>
-				<div class='bg-green padding0 fg-green'>.</div>
+				<div class='bg-amber padding0 fg-green'>.</div>
 				<div class='cell padding10'>
 
 					<small>Request From</small>
@@ -62,15 +62,6 @@
 	            echo "
 	            	</div>
 	            </div>
-          		<hr class='thin' />
-          		<button class='button danger place-right'>
-          			<span class='mif-cross'></span>
-        			</button>
-
-        			<button class='button success place-right adminConfirmation' idAdminUp=". $transferRequestGroupData['request_code'] .">
-        				<span class='mif-checkmark'></span>
-        				Accept
-    					</button>
 						</div>";
 
 				    if ($cardCount == 3) {
@@ -87,7 +78,7 @@
 	}
 
 	if (count($transferRequestGroupDatas) <= 0) {
-		echo "<h2 class='text-light'><center>There is no any Borrow request.</center></h2
+		echo "<h2 class='text-light'><center>There is no any Current Borrow request.</center></h2
 		<small></small>";
 	}
 ?>

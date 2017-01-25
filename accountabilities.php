@@ -32,10 +32,20 @@
     <h1 class="text-light">Accountabilities<span class="mif-stack2 place-right"></span></h1>
     <hr class="thin bg-grayLighter">
     <div id="tableProware"></div>
+    <br/>
+    <br/>
+    <br/>
+    <h1 class="text-light">Borrowed Property<span class="mif-paper-plane place-right"></span></h1>
+    <hr class="thin bg-grayLighter">
+    <div id="tableBorrowedProware"></div>
   </div>
   <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="85%" data-width="50%" data-overlay-click-close="true" id="prowaredialog" data-close-button="true" style="overflow-y:scroll;">
     <h3 class="padding20 text-light header">Property Information</h3>
     <div class="padding20" id="propertyInformations" style="padding-top:0;" ></div>
+  </div>
+  <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="85%" data-width="50%" data-overlay-click-close="true" id="borrowedDialog" data-close-button="true" style="overflow-y:scroll;">
+    <h3 class="padding20 text-light header">Property Information</h3>
+    <div class="padding20" id="currentBorrowInformations" style="padding-top:0;" ></div>
   </div>
   <div data-role="dialog" data-overlay="true" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" data-height="auto" data-width="30%" id="propertyDistribution" data-close-button="true">
     <h3 class=" text-light header">Distribute Property</h3>
