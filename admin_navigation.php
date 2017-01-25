@@ -22,7 +22,7 @@
     <li class="<?php if($thisPage == 'Admin'){echo 'active';}?>"><a href="admin.php"><span class="mif-home icon"></span> Home</a></li>
     <li class="divider"></li>
     <li class="menu-title">Viewing</li>
-    <li class="<?php if($thisPage=='TransferRequest' || $thisPage=='BorrowRequest'){echo 'active';} ?>">
+    <li class="<?php if($thisPage =='TransferRequest' || $thisPage=='BorrowRequest'){echo 'active';} ?>">
         <a href="#" class="dropdown-toggle"><span class="mif-sd-card icon"></span> Request</a>
         <ul class="d-menu shadow"  data-role="dropdown">
             <li class="menu-title">List of Adding</li>
