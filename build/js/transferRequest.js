@@ -29,16 +29,17 @@ $('body').delegate('.showConfirmation','click',function()
         {
             if(data==1)
             {
-                $.Notify({
-                    caption: "Transfer Confirmation Success",
-                    content: "the request have been approved",
-                    icon: "<span class='mif-checkmark icon'></span>",
-                    type: "success"
-                });
+              $.Notify({
+                  caption: "Transfer Confirmation Success",
+                  content: "the request have been approved",
+                  icon: "<span class='mif-checkmark icon'></span>",
+                  type: "success"
+              });
+              location.reload();
 
-                showRequestForms();
             }
         });
+
     }
 });
 

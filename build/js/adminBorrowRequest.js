@@ -8,6 +8,12 @@ function requestCall()
 		$('#approved_request_div').html(data);
 		$('#approved_request_div').show();
 	});
+	$.post("build/ajax/adminCurrentBorrowRequest.php",{showRequest:1},function(data)
+	{
+		$('#current_approved_loader').hide();
+		$('#current_approved_request_div').html(data);
+		$('#current_approved_request_div').show();
+	});
 
 	$.post("build/ajax/showHistoryBorrowRequest.php",{showRequest:1},function(data)
 	{

@@ -1,6 +1,7 @@
 
 
 $(document).ready(function() {
+    borrowTable();
     prowareTable();
 
   $('body').delegate('.prowareView','click',function()
@@ -23,6 +24,29 @@ $(document).ready(function() {
               success : function(prowareInformation)
               {
                   $("#propertyInformations").html(prowareInformation);
+              }
+      });
+  });
+  $('body').delegate('.currentBorrowView','click',function()
+  {
+      var viewP = $(this).attr("borrowIdPv");
+      var viewC = $(this).attr("borrowConditionPv");
+      var viewL = $(this).attr("borrowLocationPv");
+      $.ajax
+      ({
+              url : 'build/ajax/borrowedTable.php',
+              async : false,
+              type : 'POST',
+              data :
+              {
+                  showInformation : 1,
+                  prowareID : viewP,
+                  condition_id: viewC,
+                  location_id: viewL
+              },
+              success : function(prowareInformation)
+              {
+                  $("#currentBorrowInformations").html(prowareInformation);
               }
       });
   });
@@ -105,6 +129,23 @@ function prowareTable()
       success : function(proware)
       {
           $("#tableProware").html(proware);
+      }
+    });
+}
+function borrowTable()
+{
+    $.ajax
+    ({
+      url : 'build/ajax/borrowedTable.php',
+      async : false,
+      type : 'POST',
+      data :
+      {
+          showTable : 1
+      },
+      success : function(borrowTable)
+      {
+          $("#tableBorrowedProware").html(borrowTable);
       }
     });
 }
