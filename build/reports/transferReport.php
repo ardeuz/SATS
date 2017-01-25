@@ -96,7 +96,7 @@
           <br/>
           <br/>
           <br/>
-          <span>___________________________________________</span>
+          <span>________________________________</span>
           <br/>
           <span>PAMO</span>
         </td>
@@ -105,9 +105,19 @@
           <br/>
           <br/>
           <br/>
-          <span>___________________________________________</span>
+          <span>________________________________</span>
           <br/>
           <span>M.C.I - School Admin</span>
+        </td>
+        <td>
+          <span class="text-light"><b>Received By:</b></span>
+          <br/>
+          <br/>
+          <br/>
+          <span>________________________________</span>
+          <br/>
+          <span><?php $accountDatas=$db->get("transfer_request_history",["[><]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"]);
+          echo $accountDatas['last_name'].', '. $accountDatas['first_name'];?></span>
         </td>
         <td class='align-right'>
           <span class="text-light"><b>*CONDITION-DESCRIPTION</b></span>
