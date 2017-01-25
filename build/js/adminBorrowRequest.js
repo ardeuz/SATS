@@ -21,14 +21,14 @@ $('body').delegate('.adminConfirmation','click',function(){
 	if (confirm("Approve Borrow for this request?")) {
 		var adConfirm= $(this).attr('idAdminUp');
 
-		$.post("build/ajax/insertBorrowHistory.php",{request_code:adConfirm},function(data)
+		$.post("build/ajax/updateBorrowApproved.php",{request_code:adConfirm},function(data)
 	  {
 				console.log(data);
 
 				var result = parseInt(data);
 				if (result == 1) {
 					$.Notify({
-							caption: "Transfer request approved.",
+							caption: "Borrow request approved.",
 							content: "Item successfully aproved." ,
 							icon: "<span class='mif-pencil icon'></span>",
 							type: "success"
