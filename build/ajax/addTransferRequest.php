@@ -29,6 +29,15 @@
 					]
 				])) { //check if already requested
 				$notReserveCount++;
+			} else if ($db->has("borrow_request", [
+				"AND" => [
+						"id" => $propertyTransferList[$i]->{'property'}['id'],
+						"condition_id" => $propertyTransferList[$i]->{'property'}['condition_id'],
+						"old_loc_id" => $propertyTransferList[$i]->{'property'}['location_id'],
+						"released_from" => $propertyTransferList[$i]->{'property'}['emp_id']
+					]
+				])) {
+				$notReserveCount++;
 			} else {
 				$hasRequest = true;
 
@@ -51,13 +60,13 @@
 	//=========advance response============//
 	if ($hasRequest && $notReserveCount > 0) {
 		$msgResponse->{'code'} = 2;
-		$msgResponse->{'msg'} = "You have already request " . $notReserveCount . " items for transfer in this request." ;
+		$msgResponse->{'msg'} = $notReserveCount . " items are already on the borrowing/transferring queue.";
 	} else if ($hasRequest) {
 		$msgResponse->{'code'} = 1;
 		$msgResponse->{'msg'} = "Successfully requested.";
 	} else if (!$hasRequest) {
 		$msgResponse->{'code'} = -1;
-		$msgResponse->{'msg'} = "You have already request these properties.";
+		$msgResponse->{'msg'} = "Item(s) are already on the borrowing/transferring queue.";
 	}
 
 	echo json_encode($msgResponse);
