@@ -52,7 +52,8 @@
         ]
       ]))
       {
-        echo "<span class='mif-notification mif-ani-flash mif-ani-fast fg-white'></span>";
+        echo "<span class='super mif-notification mif-ani-flash mif-ani-fast'></span>";
+
       }
       elseif($db->has("borrow_request",
       ["AND" =>
@@ -62,7 +63,8 @@
         ]
       ]))
       {
-        echo "<span class='mif-notification mif-ani-flash mif-ani-fast fg-white'></span>";
+        echo "<span class='super mif-notification mif-ani-flash mif-ani-fast'></span>";
+
       }
 
       ?>  </a>
@@ -79,7 +81,14 @@
               ]
             ]))
             {
-              echo "<span class='super mif-notification mif-ani-flash mif-ani-fast fg-red'></span>";
+              $transferRequestCount = $db->count("transfer_request",
+              ["AND" =>
+                [
+                  "released_from" => $_SESSION['account']['emp_id'],
+                  "emp_approval" => 0
+                ]
+              ]);
+              echo '<span class="mif-ani-flash mif-ani-fast fg-red">'.$transferRequestCount.'</span>';
             }
 
             ?>
@@ -97,7 +106,14 @@
               ]
             ]))
             {
-              echo " <span class='super mif-notification hv-black mif-ani-flash mif-ani-fast fg-red'></span>";
+              $borrowRequestCount = $db->count("borrow_request",
+              ["AND" =>
+                [
+                  "released_from" => $_SESSION['account']['emp_id'],
+                  "emp_approval" => 0
+                ]
+              ]);
+              echo '<span class="mif-ani-flash mif-ani-fast fg-red">'.$borrowRequestCount.'</span>';
             }
 
             ?></a>
