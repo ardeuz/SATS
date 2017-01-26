@@ -23,35 +23,27 @@ function prowareTable()
 			}
 	});
 }
-
-$('body').delegate('.prowareView','click',function()
+function borrowView(viewP,conditionPv,locationPv,employee)
 {
-var viewP = $(this).attr("idPv");
-var conditionPv = $(this).attr("conditionPv");
-var locationPv = $(this).attr("locationPv");
-var employee=$(this).attr('idE');
-    $.ajax
-    ({
-    		url : 'transferTable.php',
-    		async : false,
-    		type : 'POST',
-    		data :
-    		{
-    			showInformation : 1,
-    			prowareID : viewP,
-          emp_id:employee,
-          condition_id: conditionPv,
-          location_id: locationPv
-    		},
-    		success : function(prowareInformation)
-    		{
-    			$("#propertyInformations").html(prowareInformation);
-    		}
-    });
-});
-
-
-
+	$.ajax
+	({
+			url : 'borrowTable.php',
+			async : false,
+			type : 'POST',
+			data :
+			{
+				showInformation : 1,
+				prowareID : viewP,
+				emp_id:employee,
+				condition_id: conditionPv,
+				location_id: locationPv
+			},
+			success : function(prowareInformation)
+			{
+				$("#propertyBorrowInformations").html(prowareInformation);
+			}
+	});
+}
 $(function(){
     $('.sidebar').on('click', 'li', function(){
         if (!$(this).hasClass('active')) {

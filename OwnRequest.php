@@ -22,7 +22,6 @@
     <script src="build/js/jquery-2-1-3.min.js"></script>
     <script src="build/js/jquery.dataTables.min.js"></script>
     <script src="build/js/metro.js"></script>
-    <script src="build/js/OwnRequest.js"></script>
 
   </head>
   <body>
@@ -114,10 +113,10 @@
       <h1 class="text-light fg-lightOrange">My Borrow Request<span class="mif-notification place-right text-light"></span></h1>
       <hr class="thin bg-grayLighter">
       <center>
-        <div class="container grid padding10" id="requestForm">
+        <div class="container grid padding10" id="requestFormBorrow">
           <?php
             $emp_id = $_SESSION['account']['emp_id'];
-            $sql="SELECT request_code, transfer_to, released_from, date_request, date_borrow, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS emp_name, b.department FROM borrow_request AS a LEFT JOIN account_table AS b ON a.released_from=b.emp_id WHERE transfer_to='$emp_id' GROUP BY request_code";
+            $sql="SELECT id, condition_id, old_loc_id, request_code, transfer_to, released_from, date_request, date_borrow, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS emp_name, b.department FROM borrow_request AS a LEFT JOIN account_table AS b ON a.released_from=b.emp_id WHERE transfer_to='$emp_id' GROUP BY request_code";
 
             $borrowRequestGroupDatas = $db->query($sql)->fetchAll();
 
@@ -130,7 +129,7 @@
               if ($borrowRequestGroupData['emp_approval'] == $REQUEST_PENDING) {
               $color = 'orange';
               } else if ($borrowRequestGroupData['emp_approval'] == $REQUEST_APPROVED) {
-              $color = 'green';
+              $color = 'orange';
               }
 
               echo "
@@ -169,6 +168,8 @@
 
                     echo "
                       </div>
+                      <button class='button button-default' onclick=approveInHistory(".$borrowRequestGroupData['request_code'].")>Returned Request</button>
+
                     </div>
                   </div>";
 
@@ -194,6 +195,6 @@
         </div>
       </center>
     </div>
-
+    <script src="build/js/owner.js"></script>
   </body>
 </html>

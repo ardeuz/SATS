@@ -29,7 +29,7 @@
 					]
 				])) { //check if already requested
 					$notReserveCount++;
-			} else if ($db->("transfer_request", [
+			} else if ($db->has("transfer_request", [
 				"AND" => [
 						"id" => $propertyTransferList[$i]->{'property'}['id'],
 						"condition_id" => $propertyTransferList[$i]->{'property'}['condition_id'],

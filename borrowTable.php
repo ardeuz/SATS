@@ -46,7 +46,7 @@
         ?>
           <td>
             <div class="toolbar">
-              <button class="toolbar-button button primary prowareView" idPv='<?php echo $transferData['id']?>' idE='<?php echo $transferData['emp_id']?>' conditionPv='<?php echo $transferData['condition_id']; ?>' locationPv='<?php echo $transferData['location_id']; ?>' onclick="showMetroDialog('#viewdialog')">
+              <button class="toolbar-button button primary" onclick="borrowView(<?php echo $transferData['id']?>,<?php echo $transferData['condition_id']; ?>,<?php echo $transferData['location_id']; ?>,'<?php echo $transferData['emp_id'] ?>');showMetroDialog('#viewdialog')">
                 <span class="mif-eye icon"></span>
               </button>
 

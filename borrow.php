@@ -82,8 +82,8 @@
                 <button class="button danger" onclick="hideMetroDialog('#transferdialog');"><span class="mif-cross fg-white"> Cancel</span>
                 </div>
              </div>
-              <div   data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="70%" data-width="70%" data-overlay-click-close="true" id="viewdialog" data-close-button="true" style="overflow-y:scroll;">
-                <div class="padding20" id="propertyInformations" style="padding-top:0;">
+              <div   data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="80%" data-width="50%" data-overlay-click-close="true" id="viewdialog" data-close-button="true" style="overflow-y:scroll;">
+                <div class="padding20" id="propertyBorrowInformations" style="padding-top:0;">
 
                 </div>
 

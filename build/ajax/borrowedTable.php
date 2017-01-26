@@ -28,10 +28,10 @@ foreach ($prowareDatas as $prowareData)
 {
 ?>
 
-<tr class="bg-lightRed fg-white">
+<tr class="<?php if($prowareData['date_approved'] <= date('Y-m-d H:i:s')){ echo 'bg-red fg-white';} elseif($prowareData['date_approved'] >= date('Y-m-d H:i:s',strtotime( date('Y-m-d H:i:s').'+30 minutes'))){echo 'bg-orange fg-white';} else{ echo 'bg-green fg-white';}?>">
 </td>
 <td>
-<div class="toolbar"><button class="toolbar-button button primary currentBorrowView" borrowIdPv='<?php echo $prowareData['id']?>' borrowConditionPv='<?php echo $prowareData['condition_id']; ?>' borrowLocationPv='<?php echo $prowareData['new_loc_id']; ?>' onclick="showMetroDialog('#borrowedDialog')"><span class="mif-eye icon"></span></button>
+<div class="toolbar"><button class="toolbar-button button primary" onclick="currentBorrowView(<?php echo $prowareData['id']?>,<?php echo $prowareData['condition_id']; ?>,<?php echo $prowareData['new_loc_id']; ?>);showMetroDialog('#borrowedDialog')"><span class="mif-eye icon"></span></button>
 </div>
 </td>
 <td><?php echo $prowareData['pcode']?></td>
@@ -63,7 +63,7 @@ $id = $_POST['prowareID'];
 $condition_id = $_POST['condition_id'];
 $location_id =$_POST['location_id'];
 
-$prowareInfoDatas=$db->query("SELECT b.pcode , b.sno , b.description as property_description, b.brand , b.model , c.description as major_description, d.description as minor_description, a.qty, b.uom, e.location, b.cost from borrow_request as a left join property as b on a.id = b.id left join minor_category as d on  b.minor_category = d.id left join major_category as c on d.major_id = c.id left join location as e on a.new_loc_id = e.id  WHERE a.id=$id AND a.new_loc_id = $location_id AND a.condition_id = $condition_id AND a.released_from = '$emp_id'")->fetchAll();
+$prowareInfoDatas=$db->query("SELECT b.pcode , b.sno , b.description as property_description, b.brand , b.model , c.description as major_description, d.description as minor_description, a.qty, b.uom, e.location, b.cost from borrow_request as a left join property as b on a.id = b.id left join minor_category as d on  b.minor_category = d.id left join major_category as c on d.major_id = c.id left join location as e on a.new_loc_id = e.id  WHERE a.id=$id AND a.new_loc_id = $location_id AND a.condition_id = $condition_id")->fetchAll();
 ?>
 <table class="table border bordered striped" style="overflow-y:hidden; " style="height:50%;">
 <tbody>
