@@ -26,12 +26,9 @@ function prowareTable()
 	});
 }
 
-$('body').delegate('.prowareView','click',function()
+function transferView(viewP,conditionPv,locationPv,employee)
 {
-var viewP = $(this).attr("idPv");
-var conditionPv = $(this).attr("conditionPv");
-var locationPv = $(this).attr("locationPv");
-var employee=$(this).attr('idE');
+
     $.ajax
     ({
     		url : 'transferTable.php',
@@ -39,18 +36,20 @@ var employee=$(this).attr('idE');
     		type : 'POST',
     		data :
     		{
-    			showInformation : 1,
-    			prowareID : viewP,
-          emp_id:employee,
-          condition_id: conditionPv,
-          location_id: locationPv
+					prowareID : viewP,
+					emp_id:employee,
+					condition_id: conditionPv,
+					location_id: locationPv,
+    			showInformation : 1
+
     		},
     		success : function(prowareInformation)
     		{
+
     			$("#propertyInformations").html(prowareInformation);
     		}
     });
-});
+}
 
 
 

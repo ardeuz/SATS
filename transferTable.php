@@ -46,7 +46,7 @@
         ?>
           <td>
             <div class="toolbar">
-              <button class="toolbar-button button primary prowareView" idPv='<?php echo $transferData['id']?>' idE='<?php echo $transferData['emp_id']?>' conditionPv='<?php echo $transferData['condition_id']; ?>' locationPv='<?php echo $transferData['location_id']; ?>' onclick="showMetroDialog('#viewdialog')">
+              <button class="toolbar-button button primary" onclick="transferView(<?php echo $transferData['id']?>,<?php echo $transferData['condition_id']; ?>,<?php echo $transferData['location_id']; ?>,'<?php echo $transferData['emp_id']?>');showMetroDialog('#viewdialog')">
                 <span class="mif-eye icon"></span>
               </button>
 
@@ -84,7 +84,7 @@ $condition_id = $_POST['condition_id'];
 $location_id =$_POST['location_id'];
 $employee_name = $_POST['emp_id'];
 
-$transferInfoDatas=$db->query("SELECT b.pcode , b.sno , b.description as property_description, b.brand , b.model , c.description as major_description, d.description as minor_description, a.qty, b.uom, e.location, b.cost, f.condition_info , g.first_name, g.last_name, g.department  from property_accountability as a left join property as b on a.property_id = b.id left join minor_category as d on  b.minor_category = d.id left join major_category as c on d.major_id = c.id left join location as e on a.location_id = e.id left join condition_info as f on a.condition_id = f.id left join account_table as g on a.emp_id = g.emp_id  WHERE a.property_id=$id AND a.location_id=$location_id AND a.condition_id = $condition_id AND a.emp_id = '$employee_name'")->fetchAll();
+$transferInfoDatas=$db->query("SELECT b.pcode , b.sno , b.description as property_description, b.brand , b.model , c.description as major_description, d.description as minor_description, a.qty, b.uom, e.location, b.cost, f.condition_info , g.first_name, g.last_name, g.department from property_accountability as a left join property as b on a.property_id = b.id left join minor_category as d on b.minor_category = d.id left join major_category as c on d.major_id = c.id left join location as e on a.location_id = e.id left join condition_info as f on a.condition_id = f.id left join account_table as g on a.emp_id = g.emp_id WHERE a.property_id = $id AND a.location_id = $location_id AND a.condition_id = $condition_id AND a.emp_id = '$employee_name' ")->fetchAll();
 ?>
 
 <table class="table border bordered striped" style="overflow-y:hidden; " style="height:50%;">
