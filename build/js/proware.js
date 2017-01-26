@@ -27,11 +27,10 @@ $(document).ready(function() {
               }
       });
   });
-  $('body').delegate('.currentBorrowView','click',function()
+
+});
+function currentBorrowView(viewP ,viewC ,viewL)
   {
-      var viewP = $(this).attr("borrowIdPv");
-      var viewC = $(this).attr("borrowConditionPv");
-      var viewL = $(this).attr("borrowLocationPv");
       $.ajax
       ({
               url : 'build/ajax/borrowedTable.php',
@@ -49,9 +48,7 @@ $(document).ready(function() {
                   $("#currentBorrowInformations").html(prowareInformation);
               }
       });
-  });
-});
-
+  }
 function updateLocation(propertyId, conditionId, oldLocationId) {
 	var newLocationId = $("#location" + propertyId + oldLocationId + conditionId).val();
 
