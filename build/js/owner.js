@@ -1,3 +1,4 @@
+showRequests();
 function  approveInHistory(request_code){
   $.post('build/ajax/insertBorrowHistory.php',{request_code:request_code }, function(data){
       var result = parseInt(data);
@@ -10,6 +11,8 @@ function  approveInHistory(request_code){
               icon: "<span class='mif-checkmark icon'></span>",
               type: "success"
           });
+          showRequests();
+          
       }
       else if(result == 2)
       {
@@ -32,5 +35,9 @@ function  approveInHistory(request_code){
   });
 }
 function showRequests(){
-  
+  $.post("build/ajax/showBorrowRequest.php",{showBorrows : 1 },function(data){
+    $('#requestFormBorrowPreloader').hide();
+    $('#requestFormBorrow').html(data);
+    $('#requestFormBorrow').show();
+  });
 }

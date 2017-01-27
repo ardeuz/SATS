@@ -29,8 +29,8 @@
         <div class="row" style="height: 100%;">
         <?php include_once('admin_navigation.php'); ?>
           <div class="cell auto-size padding20 no-margin-top grid container place-right" id="style-4" style="overflow-y:scroll;height:100%;">
-            <h1 class="text-light fg-green">Manage Accounts<span class="mif-user place-right text-light"></span></h1>
-            <p class='text-normal fg-red'>Colored Rows are locked.</p>
+            <h1 class="text-light fg-darkBrown">Repair Item<span class="mif-ani-fast mif-ani-shuttle
+              mif-wrench place-right text-light"></span></h1>
             <button class="button warning" onclick="showMetroDialog('#addNewUser')"><span class="mi-usert icon"></span> Add User</button>
             <button class="button success place-right" onclick="showMetroDialog('#importUsers')"><span class="mi-usert icon"></span> Import User</button>
 

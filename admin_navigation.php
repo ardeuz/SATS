@@ -23,7 +23,17 @@
     <li class="divider"></li>
     <li class="menu-title">Viewing</li>
     <li class="<?php if($thisPage =='TransferRequest' || $thisPage=='BorrowRequest'){echo 'active';} ?>">
-        <a href="#" class="dropdown-toggle"><span class="mif-sd-card icon"></span> Request</a>
+        <a href="#" class="dropdown-toggle"><span class="mif-sd-card <?php if($db->has('transfer_request',
+          [
+            'emp_approval' => 1
+          ]
+        ) || $db->has('borrow_request',
+          [
+            'emp_approval' => 1
+          ]
+        )){
+          echo 'mif-ani-heartbeat mif-ani-fast';
+        }?> icon"></span> Request </a>
         <ul class="d-menu shadow"  data-role="dropdown">
             <li class="menu-title">List of Adding</li>
             <div>
@@ -31,20 +41,24 @@
                 <?php
 
                 if($db->has("transfer_request",
-                ["AND" =>
                   [
-                    "released_from" => $_SESSION['account']['emp_id'],
-                    "emp_approval" => 0
+                    "emp_approval" => 1
                   ]
-                ]))
+                ))
+
                 {
-                  echo "<span class='super mif-mail mif-ani-ring mif-ani-shuttle fg-lightOrange'></span>";
+                  $transferRequestCounted = $db->count("transfer_request",
+                    [
+                      "emp_approval" => 1
+                    ]
+                    );
+                  echo "<small class='super mif-ani-flash fg-white'>&nbsp;".$transferRequestCounted."</small>";
                 }
                 ?></a></li>
               <li class="<?php if($thisPage=='BorrowRequest'){echo 'active';} ?>"><a href="admin_borrow_request.php"><span class="mif-image icon"></span> Borrow Request
                 <?php
 
-                if($db->has("transfer_request",
+                if($db->has("borrow_request",
                 ["AND" =>
                   [
                     "released_from" => $_SESSION['account']['emp_id'],
@@ -52,7 +66,16 @@
                   ]
                 ]))
                 {
-                  echo "<span class='super mif-mail mif-ani-ring mif-ani-shuttle fg-lightOrange'></span>";
+                  $borrowRequestCounted = $db->count("borrow_request",
+                  ["AND" =>
+                    [
+                      "released_from" => $_SESSION['account']['emp_id'],
+                      "emp_approval" => 0
+                    ]
+                  ]);
+                  {
+                    echo "<small class='super mif-ani-flash fg-white'>&nbsp;".$borrowRequestCounted."</small>";
+                  }
                 }
                 ?></a></li>
             </div>
@@ -72,7 +95,7 @@
         <a href="#"  class="dropdown-toggle"><span class="mif-file-text icon"></span>Accountabilities Of</a>
         <ul class="d-menu shadow"  data-role="dropdown">
             <li class="menu-title ">List of Accounts</li>
-            <div style="height:200px;overflow-y:scroll;" id="style-4">
+            <div style="height:150px;overflow-y:scroll;" id="style-4">
               <?php
                 $accountDatas = $db->select("account_table", ["emp_id", "first_name", "last_name", "department"], ["ORDER" => "last_name"]);
 

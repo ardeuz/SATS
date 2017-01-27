@@ -38,5 +38,7 @@
 			"date_actual_returned" => $dateToday
 		]); //insert things to history
 	}
+	$db->delete("borrow_request",["request_code" => $request_code]);
+	//deletions of borrows
 	echo 1;
 ?>
