@@ -98,5 +98,5 @@
   </div>
   </body>
   <script src="build/js/jquery.dataTables.min.js"></script>
-  <script src="build/js/admin_manage_account.js"></script>
+  <script src="build/js/accountability_repair.js"></script>
 </html>
