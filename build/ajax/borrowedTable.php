@@ -6,7 +6,7 @@ require_once('../../connection.php');
   if(isset($_POST['showTable']))
   {
 
-      $prowareDatas = $db->query("SELECT a.id AS id, b.pcode, b.sno , b.description, c.location, d.condition_info, a.transfer_to, e.department, a.qty, a.condition_id, b.uom, a.new_loc_id, concat(f.last_name,', ',f.first_name) as borrowedTo, a.date_approved from borrow_request AS a left join property AS b on a.id = b.id left join location AS c on a.new_loc_id = c.id left join condition_info AS d on a.condition_id = d.id inner join account_table as e on a.transfer_to = e.emp_id inner join account_table as f on a.released_from = f.emp_id WHERE a.transfer_to='$emp_id'")-> fetchAll();
+      $prowareDatas = $db->query("SELECT a.id AS id, b.pcode, b.sno , b.description, c.location, d.condition_info, a.transfer_to, e.department, a.qty, a.condition_id, b.uom, a.new_loc_id, concat(f.last_name,', ',f.first_name) as borrowedTo, a.date_approved from borrow_request AS a left join property AS b on a.id = b.id left join location AS c on a.new_loc_id = c.id left join condition_info AS d on a.condition_id = d.id inner join account_table as e on a.transfer_to = e.emp_id inner join account_table as f on a.released_from = f.emp_id WHERE a.transfer_to='$emp_id' AND date_approved!=0")-> fetchAll();
 
 ?>
 <table id="table1" class="dataTable border bordered hovered ">
