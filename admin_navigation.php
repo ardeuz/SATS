@@ -59,20 +59,16 @@
                 <?php
 
                 if($db->has("borrow_request",
-                ["AND" =>
                   [
-                    "released_from" => $_SESSION['account']['emp_id'],
-                    "emp_approval" => 0
+                    "emp_approval" => 1
                   ]
-                ]))
+                ))
                 {
                   $borrowRequestCounted = $db->count("borrow_request",
-                  ["AND" =>
                     [
-                      "released_from" => $_SESSION['account']['emp_id'],
-                      "emp_approval" => 0
+                      "emp_approval" => 1
                     ]
-                  ]);
+                  );
                   {
                     echo "<small class='super mif-ani-flash fg-white'>&nbsp;".$borrowRequestCounted."</small>";
                   }
