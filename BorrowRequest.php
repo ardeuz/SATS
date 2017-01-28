@@ -40,6 +40,6 @@
       </center>
     </div>
   </body>
-  <script src="build/js/BorrowRequest.js"></script>
+  <script src="build/js/borrowRequest.js"></script>
 
 </html>

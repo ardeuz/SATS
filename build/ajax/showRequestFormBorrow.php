@@ -55,7 +55,9 @@
 		            }
 
 		            echo "
+
 		            </div>
+								<button class='button button-default' onclick=approveInHistory(".$transferRequestGroupData['request_code'].")>Returned Request</button>
 		            </div>";
 
 		            if ($requestType == $REQUEST_PENDING) {
@@ -72,7 +74,8 @@
 		            }
 
 
-		    echo "</div>";
+		    echo "
+				</div>";
 
 		    if ($cardCount == 3) {
 		    	echo "</div>";

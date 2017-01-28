@@ -1,5 +1,5 @@
 showRequestForms();
-
+showRequest();
 function confirmYes()
 {
         $.Notify({
@@ -79,15 +79,52 @@ $(function(){
         }
     })
 });
+function  approveInHistory(request_code){
+  $.post('build/ajax/insertBorrowHistory.php',{request_code:request_code }, function(data){
+      var result = parseInt(data);
+      console.log(data);
+      if(result == 1 )
+      {
+          $.Notify({
+              caption: "Item Returned Success",
+              content: "Item successfully returned",
+              icon: "<span class='mif-checkmark icon'></span>",
+              type: "success"
+          });
+          showRequest();
 
+      }
+      else if(result == 2)
+      {
+        $.Notify({
+            caption: "Item Returned Failed",
+            content: "Item error",
+            icon: "<span class='mif-checkmark icon'></span>",
+            type: "alert"
+        });
+      }
+      else if(result == 3)
+      {
+        $.Notify({
+            caption: "Item Returned Failed",
+            content: "Server Error",
+            icon: "<span class='mif-checkmark icon'></span>",
+            type: "warning"
+        });
+      }
+  });
+}
 function showRequestForms()
 {
     $.post("build/ajax/showRequestFormBorrow.php",{requestType:0},function(request)
     {
         $("#requestForm").html(request);
     });
-    $.post("build/ajax/showRequestFormBorrow.php",{requestType:1},function(approved)
-    {
-        $("#approvedRequest").html(approved);
-    });
+}
+function showRequest()
+{
+  $.post("build/ajax/showRequestFormBorrow.php",{requestType:1},function(approved)
+  {
+      $("#approvedRequest").html(approved);
+  });
 }
