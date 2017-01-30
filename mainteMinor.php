@@ -35,6 +35,8 @@
             <h1 class="text-light"><span class="mif-cogs icon"></span> Edit Minor Category</h1>
             <hr class="thin bg-grayLighter">
             <button class="button primary" onclick="showMetroDialog('#addNewMinorCategory')">Add Minor Category</button>
+            <button class="button success place-right" onclick="showMetroDialog('#importMinor')"><span class="mi-usert icon"></span> Import Bulk Category</button>
+
             <div id="history_request_div"  style="display:none;"></div>
 
             <!--pre loader-->
@@ -42,6 +44,31 @@
               <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="history_loader"></div>
             </center>
           </div>
+        </div>
+        <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="importMinor" data-close-button="true" >
+          <h3 class=" text-light header">Upload CSV</h3>
+          <small><b></b></small>
+          <span class="text-light"><small ><b>Column Order:</b> ID, Description</small></span>
+
+          <form action="build/ajax/adminImportMinor.php" method="POST" enctype="multipart/form-data">
+            <div class="input-control file full-size" data-role="input">
+                <input type="file" name="import_minor">
+                <button class="button" type="button"><span class="mif-folder"></span></button>
+            </div>
+            <br/>
+            <div class="input-control" style="width:100%;">
+              <select name="categoryValue" id="minorSelect" style="display:none;">
+                <?php
+                  $majorCategories = $db->select("major_category",["id","description"]);
+                  foreach($majorCategories as $majorCategorie)
+                  {
+                    echo '<option value='.$majorCategorie['id'].'>'.$majorCategorie['description'].'</option>';
+                  }
+                ?>
+              </select>
+            </div>
+            <button class="button warning" type="submit">Upload File</button>
+          </form>
         </div>
         <div data-role="dialog" data-overlay="true" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="editMinorDialog" data-close-button="true">
           <input type="hidden" id="editMinorID" />

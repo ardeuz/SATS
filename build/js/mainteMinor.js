@@ -1,4 +1,8 @@
 requestAccountability();
+$(document).ready(function(){
+		$("#minorSelect").select2();
+
+});
 function requestAccountability()
 {
 	$.post("build/ajax/minorCategoryMaintenance.php",{showAccounts:1},function(data)
