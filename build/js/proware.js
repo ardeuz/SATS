@@ -51,65 +51,73 @@ function currentBorrowView(viewP ,viewC ,viewL)
   }
 function updateLocation(propertyId, conditionId, oldLocationId) {
 	var newLocationId = $("#location" + propertyId + oldLocationId + conditionId).val();
+  if(confirm("Changing its condition will may vary to its history"))
+  {
+  	$.post("build/ajax/updateLocation.php", {id: propertyId, new_location_id: newLocationId, condition_id : conditionId, old_location_id : oldLocationId}, function(data) {
+  		var result = parseInt(data);
 
-	$.post("build/ajax/updateLocation.php", {id: propertyId, new_location_id: newLocationId, condition_id : conditionId, old_location_id : oldLocationId}, function(data) {
-		var result = parseInt(data);
-
-		if (result == 1)
-    {
-      $.Notify({
-      	caption: 'Update Success',
-          content: 'Location successfully Updated' ,
-          icon: "<span class='mif-pencil icon'></span>",
-          type: "success"
-      });
-		}
-    else if(result == 2)
-    {
-      prowareTable();
-    }
-    else
-    {
-			console.log(data);
-      $.Notify({
-        caption: 'Update Failed',
-        content: 'Location Update failed' ,
-        icon: "<span class='mif-pencil icon'></span>",
-        type: "alert"
+  		if (result == 1)
+      {
+        $.Notify({
+        	caption: 'Update Success',
+            content: 'Location successfully Updated' ,
+            icon: "<span class='mif-pencil icon'></span>",
+            type: "success"
         });
-		}
-	});
+        prowareTable();
+
+  		}
+      else if(result == 2)
+      {
+        prowareTable();
+      }
+      else
+      {
+  			console.log(data);
+        $.Notify({
+          caption: 'Update Failed',
+          content: 'Location Update failed' ,
+          icon: "<span class='mif-pencil icon'></span>",
+          type: "alert"
+          });
+  		}
+  	});
+  }
 }
 function updateCondition(propertyId, locationId, oldConditionId) {
 	var newConditionId = $("#condition" + propertyId + locationId + oldConditionId).val();
+  if(confirm("Changing its condition will may vary to its history"))
+  {
+  	$.post("build/ajax/updateCondition.php", {id: propertyId, new_condition_id: newConditionId, location_id : locationId, old_condition_id : oldConditionId}, function(data) {
+  		var result = parseInt(data);
 
-	$.post("build/ajax/updateCondition.php", {id: propertyId, new_condition_id: newConditionId, location_id : locationId, old_condition_id : oldConditionId}, function(data) {
-		var result = parseInt(data);
-
-		if (result == 1)
-    {
-      $.Notify({
-      	caption: 'Update Success',
-          content: 'Condition successfully Updated' ,
-          icon: "<span class='mif-pencil icon'></span>",
-          type: "success"
-      });
-		}
-    else if(result == 2)
-    {
-      prowareTable();
-    }
-    else
-    {
-			console.log(data);
-      $.Notify({
-        caption: 'Update Failed',
-        content: 'Condition Update failed' ,
-        icon: "<span class='mif-pencil icon'></span>",
-        type: "alert"
+  		if (result == 1)
+      {
+        $.Notify({
+        	caption: 'Update Success',
+            content: 'Condition successfully Updated' ,
+            icon: "<span class='mif-pencil icon'></span>",
+            type: "success"
         });
-		}
-	});
+        prowareTable();
+        
+  		}
+      else if(result == 2)
+      {
+        prowareTable();
+      }
+      else
+      {
+  			console.log(data);
+        $.Notify({
+          caption: 'Update Failed',
+          content: 'Condition Update failed' ,
+          icon: "<span class='mif-pencil icon'></span>",
+          type: "alert"
+          });
+  		}
+    });
+  }
 }
 
 function prowareTable()

@@ -8,7 +8,7 @@
   $location_id = $_POST['location_id'];
   $new_condition_id = $_POST['new_condition_id'];
   $old_condition_id = $_POST['old_condition_id'];
-
+	$dateToday = date('Y-m-d H:i:s');
 	//check if going to merge
 	if ($db->has("property_accountability", [
 		"AND" => [
@@ -67,4 +67,9 @@
 			'old_location_id' => $location_id
 		]
 	]);
+	// insert to audit trail
+	$propertyName = $db->get("property","pcode",["id"=>$id]);
+	$oldCond = $db->get("condition_info","condition_info",["id" => $old_condition_id]);
+	$newCond = $db->get("condition_info","condition_info",["id" => $new_condition_id]);
+	$db->insert("audit_trail_condition",["action" => $emp_id." updated the condition of ".$propertyName." from ".$oldCond." to ".$newCond ,"date" => $dateToday]);
 ?>
