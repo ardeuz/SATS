@@ -65,6 +65,7 @@ foreach ($prowareDatas as $prowareData)
     <div class="input-control select" style="width:300px; border-radius:0px;" data-role="select">
       <select style="display:none;" id="selectAccount"
       onchange='changeAccountability(<?php echo  $prowareData["id"] . ', ' . "\"$prowarePcode\""; ?>)'>
+        <option value="0" selected disabled> Select User</option>
           <?php
           foreach($selectAccounts as $selectAccount)
           {

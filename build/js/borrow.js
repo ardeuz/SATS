@@ -61,6 +61,8 @@ function insertQuantity()
     var locationId = $("#locationId").val();
     var qtty= parseInt($("#quantity").val());
     var locationTransfer = $("#location").val();
+		var dates = new Date();
+		dates.getDate();
 		var dateBorrow = $("#dateBorrow").val();
     if (locationTransfer == "-1" || locationTransfer == null) {
         $.Notify({
@@ -76,7 +78,7 @@ function insertQuantity()
             icon: "<span class='mif-cross icon'></span>",
             type: "alert"
         });
-    } else if (dateBorrow == null) {
+    } else if (dateBorrow <= dates) {
         $.Notify({
             caption: "Invalid Date",
             content: "Please specifi the Date ",
@@ -92,7 +94,7 @@ function insertQuantity()
         }, 1000);
 
         $.post("build/ajax/insertPropertyBorrow.php", {id: propertyid, emp_id: empId, qty:qtty, condition_id: conditionId, location_id: locationId, location: locationTransfer, dateBorrow:dateBorrow}, function(data) {
-
+					//more validations
             $.Notify({
                 caption: "Borrow List Updated.",
                 content: "Item successfully updated." ,
