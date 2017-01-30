@@ -26,8 +26,7 @@ foreach ($prowareDatas as $prowareData)
 {
 ?>
 
-<tr>
-</td>
+<tr class="<?php if($prowareData['condition_id'] == 4){echo 'bg-orange';} elseif($prowareData['condition_id'] == 5){echo 'bg-red';} elseif($prowareData['condition_id'] == 3 ){echo 'bg-green';}elseif($prowareData['condition_id'] <= 2 ){echo 'bg-white';}?>">
 <td>
 <div class="toolbar"><button class="toolbar-button button primary prowareView" idPv='<?php echo $prowareData['id']?>' conditionPv='<?php echo $prowareData['condition_id']; ?>' locationPv='<?php echo $prowareData['location_id']; ?>' onclick="showMetroDialog('#prowaredialog')"><span class="mif-eye icon"></span></button>
  <button class="toolbar-button button primary" onclick="showMetroDialog('#propertyDistribution');distributeProperty(<?php echo $prowareData['id']?>,'<?php echo  $prowareData['pcode'] ?>','<?php echo $emp_id;?>',<?php echo $prowareData['condition_id']?>,<?php echo $prowareData['location_id']?>)" ><span class="mif-unlink icon"></span></button>

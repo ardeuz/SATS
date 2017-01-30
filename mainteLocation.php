@@ -70,7 +70,7 @@
   <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="importLocation" data-close-button="true" >
     <h3 class=" text-light header">Upload CSV</h3>
     <small><b></b></small>
-    <span class="text-light"><small ><b>Column Order:</b> ID, Description, Depreciate Year</small></span>
+    <span class="text-light"><small ><b>Column Order:</b> ID, Location</small></span>
 
     <form action="build/ajax/adminImportLocation.php" method="POST" enctype="multipart/form-data">
       <div class="input-control file full-size" data-role="input">
