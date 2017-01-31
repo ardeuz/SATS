@@ -23,6 +23,7 @@ if(isset($_POST['showAccounts']))
 <td class="sortable-column">Quantity</td>
 <td class="sortable-column">Condition</td>
 <td class="sortable-column">Employee Name</td>
+<td class="sortable-column">is Borrowed</td>
 </tr>
 </thead>
 <tbody>
@@ -34,7 +35,7 @@ foreach ($prowareDatas as $prowareData)
   $yearToday = date('Y');
 ?>
 
-<tr class="<?php if($prowareData['condition_id']==5 || ($yearToday - $acquiredYear) >= $depreciateYear){echo 'bg-orange fg-white'; } ?>">
+<tr class="<?php if($prowareData['condition_id']==5 || ($yearToday - $acquiredYear) >= $depreciateYear){echo 'bg-lightOrange fg-white'; } ?>">
 </td>
 <td>
 <div class="toolbar"><button class="toolbar-button button primary adminView" idPv='<?php echo $prowareData['id']?>' conditionPv='<?php echo $prowareData['condition_id']; ?>' locationPv='<?php echo $prowareData['location_id']; ?>' onclick="showMetroDialog('#adminAccountabilityDialog')"><span class="mif-eye icon"></span></button></div>
@@ -65,6 +66,16 @@ foreach ($prowareDatas as $prowareData)
 </div>
 </td>
 <td><?php echo $prowareData['emp_name']; ?></td>
+<td><?php
+if($db->has("borrow_request",["[><]property"=>'id',"[><]account_table"=>["transfer_to"=>"emp_id"]],["released_from"=>$prowareData['emp_id']])){
+  $accountName = $db->get("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"]);
+  echo "Borrowed By ". $accountName["last_name"].', '.$accountName['first_name'];
+}
+else{
+  echo "Not Borrowed";
+}
+
+ ?></td>
 
 </tr>
 <?php
