@@ -92,7 +92,7 @@
         <a href="#"  class="dropdown-toggle"><span class="mif-file-text icon"></span>Accountabilities Of</a>
         <ul class="d-menu shadow"  data-role="dropdown">
             <li class="menu-title ">List of Accounts</li>
-            <div style="height:150px;overflow-y:scroll;" id="style-4">
+            <div style="height:250px;overflow-y:scroll;overflow-x: hidden;" id="style-4">
               <?php
                 $accountDatas = $db->select("account_table", ["emp_id", "first_name", "last_name", "department"], ["ORDER" => "last_name"]);
 
