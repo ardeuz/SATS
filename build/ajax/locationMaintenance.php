@@ -17,7 +17,7 @@ if(isset($_POST['showAccounts']))
     $prowareDatas = $db->select("location", ["id","location"
     ]);
 ?>
-<table class="dataTable border bordered hovered full-size">
+<table class="dataTable border bordered hovered full-size" id="adminMainteLocation">
 <thead>
 <tr>
 <td class="sortable-column">Maintenance</td>

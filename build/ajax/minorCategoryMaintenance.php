@@ -17,7 +17,7 @@ if(isset($_POST['showAccounts']))
     $prowareDatas = $db->select("minor_category", ["id","description"
     ]);
 ?>
-<table class="dataTable border bordered hovered full-size" >
+<table class="dataTable border bordered hovered full-size" id="adminMainteMinor">
 <thead>
 <tr>
 <td class="sortable-column">Maintenance</td>

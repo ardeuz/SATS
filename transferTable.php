@@ -11,7 +11,7 @@
     on a.property_id = b.id left join location AS c on a.location_id = c.id left join
     condition_info AS d on a.condition_id = d.id inner join account_table as e on a.emp_id = e.emp_id WHERE a.emp_id !='$emp_id'")-> fetchAll();
 ?>
-    <table id='transferTable' class="dataTable border bordered hovered">
+    <table id='transferTable' class="dataTable border bordered hovered" id="showTransferTable">
       <thead>
         <tr>
           <td class="auto size">Maintenance</td>

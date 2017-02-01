@@ -13,7 +13,7 @@
   if($historyCount != 0)
   {
 ?>
-<table class="dataTable border bordered hovered full-size">
+<table class="dataTable border bordered hovered full-size" id="adminShowHistoryTransfer">
     <thead>
       <tr>
         <td class="sortable-column"></td>

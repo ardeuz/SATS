@@ -36,7 +36,7 @@ if(isset($_POST['showAccounts']))
     $selectAccounts = $db->select("account_table",['emp_id' , 'last_name' , 'first_name' ,'department'],["status"=>1]);
 
 ?>
-<table class="dataTable border bordered hovered full-size">
+<table class="dataTable border bordered hovered full-size" id="adminPropertyMainte">
 <thead>
 <tr>
 <td class="sortable-column">Maintenance</td>

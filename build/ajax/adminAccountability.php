@@ -14,7 +14,7 @@ if(isset($_POST['showAccounts']))
     condition_info AS d on a.condition_id = d.id left join account_table as e on a.emp_id = e.emp_id left join minor_category as f on f.id=b.minor_category left join major_category as g on f.major_id=g.id")-> fetchAll();
 ?>
 
-<table class="dataTable border bordered hovered full-size" >
+<table class="dataTable border bordered hovered full-size" id="adminAccountability">
 <thead>
 <tr>
 <td class="sortable-column"></td>

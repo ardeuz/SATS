@@ -3,7 +3,7 @@
   require_once('../../connection.php');
   include ('../../validatePage.php');
 ?>
-<table class="dataTable border bordered hovered full-size" id="table1">
+<table class="dataTable border bordered hovered full-size" id="accountsTable">
 <thead>
 <tr>
 <td class="sortable-column">Employee ID</td>
@@ -17,7 +17,7 @@
 </tbody>
 </table>
 <script type="text/javascript">
-  var accounts = $('#table1').DataTable({
+  var accounts = $('#accountsTable').DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": "build/server_side/adminServerUsers.php"

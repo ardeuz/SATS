@@ -13,7 +13,7 @@ if(isset($_GET['showAccounts']))
     property AS b on a.property_id = b.id left join location AS c on a.location_id = c.id left join
     condition_info AS d on a.condition_id = d.id inner join account_table as e on a.emp_id = e.emp_id where a.emp_id='$employee'")->fetchAll();
 ?>
-<table class="dataTable border bordered hovered full-size">
+<table class="dataTable border bordered hovered full-size" id="adminPropertyAccountability">
 <thead>
 <tr>
 <td class="sortable-column"></td>
