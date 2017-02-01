@@ -1,10 +1,14 @@
-requestAccountability();
+$(document).ready(function()
+{
+	requestAccountability();
+});
 
 function requestAccountability()
 {
 
 	$.post("build/ajax/adminManageAccount.php",{showAccounts:1},function(data)
 	{
+
 		$('#history_loader').hide();
 		$('#history_request_div').html(data);
 		$('#history_request_div').show();
@@ -25,7 +29,6 @@ function activateAccount(emp_id)
 			icon: "<span class='mif-pencil icon'></span>",
 			type: "success"
 			});
-			requestAccountability();
 		});
 	}
 	else
@@ -38,7 +41,6 @@ function activateAccount(emp_id)
 			icon: "<span class='mif-pencil icon'></span>",
 			type: "success"
 			});
-			requestAccountability();
 		});
 		console.log('property not checked');
 	}
@@ -76,7 +78,6 @@ function addNewUser(){
         var department = $("#department").val('');
         var password = $("#password").val('');
         hideMetroDialog('#addNewUser');
-				requestAccountability();
       }
     });
 }
@@ -155,7 +156,6 @@ function deleteUser()
 					icon: "<span class='mif-bin icon'></span>",
 					type: "alert"
 			});
-			requestAccountability()
 			hideMetroDialog('#deleteUser');
 		}
 		 else {

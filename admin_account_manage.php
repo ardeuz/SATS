@@ -26,6 +26,7 @@
     <link href="build/css/metro-schemes.min.css" rel="stylesheet">
     <link href="build/css/metro-colors.min.css" rel="stylesheet">
     <script src="build/js/jquery-2-1-3.min.js"></script>
+    <script src="build/js/jquery.dataTables.min.js"></script>
     <script src="build/js/select2.min.js"></script>
     <script src="build/js/metro.js"></script>
   </head>
@@ -102,6 +103,5 @@
     </div>
   </div>
   </body>
-  <script src="build/js/jquery.dataTables.min.js"></script>
   <script src="build/js/admin_manage_account.js"></script>
 </html>

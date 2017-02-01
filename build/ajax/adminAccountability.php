@@ -2,6 +2,7 @@
   session_start();
   require_once('../../connection.php');
   include ('../../validatePage.php');
+  require_once ('../dataTables/ssp.php');
 
 
 $emp_id = $_SESSION['account']['emp_id'];
@@ -13,7 +14,7 @@ if(isset($_POST['showAccounts']))
     condition_info AS d on a.condition_id = d.id left join account_table as e on a.emp_id = e.emp_id left join minor_category as f on f.id=b.minor_category left join major_category as g on f.major_id=g.id")-> fetchAll();
 ?>
 
-<table class="dataTable border bordered hovered full-size">
+<table class="dataTable border bordered hovered full-size" >
 <thead>
 <tr>
 <td class="sortable-column"></td>
@@ -67,7 +68,7 @@ foreach ($prowareDatas as $prowareData)
 </td>
 <td><?php echo $prowareData['emp_name']; ?></td>
 <td><?php
-if($db->has("borrow_request",["[><]property"=>'id',"[><]account_table"=>["transfer_to"=>"emp_id"]],["released_from"=>$prowareData['emp_id']])){
+if($db->has("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$prowareData['emp_id'], ]])){
   $accountName = $db->get("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"]);
   echo "Borrowed By ". $accountName["last_name"].', '.$accountName['first_name'];
 }
