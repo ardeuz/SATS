@@ -36,7 +36,6 @@ function addNewMinor()
         });
         document.getElementById('newMinor').value='';
         $("#majorCat select").val(0);
-				requestAccountability();
         hideMetroDialog('#addNewMinorCategory');
 
     } else {
@@ -83,7 +82,6 @@ function updateMinor()
     {
       console.log("update");
       hideMetroDialog("#editMinorDialog");
-      requestAccountability();
       $.Notify({
 				caption: 'Update Success',
 					content: 'Major Category has been updated' ,
@@ -95,7 +93,6 @@ function updateMinor()
     {
       console.log("updat");
       hideMetroDialog("#editMinorDialog");
-      requestAccountability();
       $.Notify({
         caption: 'Update Success',
           content: 'Major Category is already Recorded' ,
@@ -124,7 +121,6 @@ function deleteMinor()
 					icon: "<span class='mif-bin icon'></span>",
 					type: "alert"
 			});
-      requestAccountability();
 			hideMetroDialog('#deleteMinorDialog');
 		}
 		 else {
