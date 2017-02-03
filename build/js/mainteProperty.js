@@ -120,7 +120,6 @@ function updateProperty()
 					type: "success"
 			});
 			hideMetroDialog("#editPropertyDialog");
-			requestAccountability();
 		}
 		else if(result == 2)
 		{
@@ -161,7 +160,6 @@ function DeleteProperty()
 					icon: "<span class='mif-bin icon'></span>",
 					type: "alert"
 			});
-			requestAccountability();
 			hideMetroDialog('#deletePropertyDialog');
 		}
 		 else {

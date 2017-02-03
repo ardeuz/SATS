@@ -17,7 +17,7 @@ if(isset($_POST['showAccounts']))
     $prowareDatas = $db->select("major_category", ["id","description","depreciate_yr"
     ]);
 ?>
-<table class="dataTable border bordered hovered full-size" id="adminMainteMinor">
+<table class="dataTable border bordered hovered full-size" id="adminMainteMajor">
 <thead>
 <tr>
 <td class="sortable-column">Maintenance</td>
@@ -25,32 +25,21 @@ if(isset($_POST['showAccounts']))
 </tr>
 </thead>
 <tbody>
-<?php
-//query here for 1 time querying
-
-foreach ($prowareDatas as $prowareData)
-{
-?>
-
-  <tr>
-  <td>
-    <div class="toolbar">
-    <button class="toolbar-button button primary" onclick="showMetroDialog('#editMajorDialog'); EditMajor('<?php echo $prowareData['id']; ?>','<?php echo $prowareData['description']; ?>','<?php echo $prowareData['depreciate_yr'];?>')"><span class="mif-pencil icon"></span></button>
-    <button class="toolbar-button button primary" onclick="showMetroDialog('#deleteMajorDialog'); deleteMajorValidation('<?php echo $prowareData['id']; ?>', '<?php echo $prowareData['description']; ?>');"><span class="mif-bin icon"></span></button></div>
-  </td>
-  <td><?php echo $prowareData['description']?></td>
-  </tr>
-<?php
-}
-?>
 </tbody>
 </table>
 <script type="text/javascript">
-$(".dataTable").dataTable({
-'searching' : true,
-'paging' : true,
-'lengthChange' : false
-});
+  var accounts = $('#adminMainteMajor').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": "build/server_side/adminServerMainteMajor.php",
+    oLanguage : {
+      sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    }
+  });
+  setInterval(function() {
+    accounts.ajax.reload(null,false);
+    console.log(1);
+  }, 10000);
 </script>
 <?php
 exit();

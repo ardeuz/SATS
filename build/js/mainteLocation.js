@@ -65,7 +65,6 @@ function updateLocation()
     {
 			console.log(result);
       hideMetroDialog("#editLocationDialog");
-      requestAccountability();
       $.Notify({
 				caption: 'Update Success',
 					content: 'Location Deleted' ,
@@ -77,7 +76,6 @@ function updateLocation()
     {
 			console.log(result);
       hideMetroDialog("#editLocationDialog");
-      requestAccountability();
       $.Notify({
         caption: 'Update Success',
           content: 'Location is already Recorded' ,
@@ -107,7 +105,6 @@ function deleteLocation()
 					type: "alert"
 			});
 			hideMetroDialog('#deleteLocationDialog');
-      requestAccountability();
 		}
 		 else {
 			console.log(data);
@@ -143,7 +140,6 @@ function addNewLocation(){
             type: "success"
         });
         $('#newLoc').val('');
-				requestAccountability();
         hideMetroDialog('#addNewLocation');
 
     } else {

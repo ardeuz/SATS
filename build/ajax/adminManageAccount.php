@@ -20,7 +20,10 @@
   var accounts = $('#accountsTable').DataTable({
     "processing": true,
     "serverSide": true,
-    "ajax": "build/server_side/adminServerUsers.php"
+    "ajax": "build/server_side/adminServerUsers.php",
+    oLanguage : {
+      sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    }
   });
   setInterval(function() {
     accounts.ajax.reload(null,false);

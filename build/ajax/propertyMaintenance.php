@@ -14,27 +14,6 @@ $emp_id = $_SESSION['account']['emp_id'];
 
 if(isset($_POST['showAccounts']))
 {
-    $prowareDatas = $db->select("property", [
-      "[>]minor_category" => ["minor_category" => "id"],
-      "[>]major_category" => ["minor_category.major_id" => "id"],
-      "[>]property_accountability" => ["id" => "property_id"]
-    ], [
-      "property.id",
-      "property.pcode",
-      "property.sno",
-      "property.description",
-      "property.brand",
-      "property.model",
-      "property.minor_category",
-      "property.uom",
-      "property.cost",
-      "property.date_acquired",
-      "property.or_number",
-      "property_accountability.qty",
-      "major_category.depreciate_yr"
-    ]);
-    $selectAccounts = $db->select("account_table",['emp_id' , 'last_name' , 'first_name' ,'department'],["status"=>1]);
-
 ?>
 <table class="dataTable border bordered hovered full-size" id="adminPropertyMainte">
 <thead>
@@ -45,39 +24,22 @@ if(isset($_POST['showAccounts']))
 <td class="sortable-column">Quantity</td>
 </tr>
 </thead>
-<tbody>
-<?php
-//query here for 1 time querying
-
-foreach ($prowareDatas as $prowareData)
-{
-  $depreciateYear = $prowareData['depreciate_yr'];
-  $acquiredYear = date('Y', strtotime($prowareData['date_acquired']));
-  $yearToday = date('Y');
-  $prowarePcode = $prowareData['pcode'];
-?>
-
-  <tr>
-  <td>
-    <div class="toolbar"><button class="toolbar-button button primary adminView" onclick="showMetroDialog('#adminAccountabilityDialog'); ViewProperty('<?php echo $prowareData['id']; ?>');"><span class="mif-eye icon"></span></button>
-    <button class="toolbar-button button primary adminView" onclick="showMetroDialog('#editPropertyDialog'); EditProperty('<?php echo $prowareData['id'];?>','<?php echo $prowareData['pcode'];?>' , '<?php echo $prowareData['sno'];?>' , '<?php echo $prowareData['description'];?>' , '<?php echo $prowareData['brand'];?>' , '<?php echo $prowareData['model'];?>' ,<?php echo $prowareData['or_number'];?> , '<?php echo $prowareData['uom'];?>' , <?php echo $prowareData['cost'];?> , <?php echo $prowareData['minor_category'];?> );"><span class="mif-pencil icon"></span></button>
-    <button class="toolbar-button button primary adminView" onclick="showMetroDialog('#deletePropertyDialog'); DeletePropertyValidation('<?php echo $prowareData['id']; ?>', '<?php echo $prowareData['pcode']; ?>');"><span class="mif-bin icon"></span></button></div>
-  </td>
-  <td><?php echo $prowareData['pcode']?></td>
-  <td><?php echo $prowareData['sno']?></td>
-  <td><?php echo $prowareData['qty']?></td>
-  </tr>
-<?php
-}
-?>
 </tbody>
 </table>
 <script type="text/javascript">
-$(".dataTable").dataTable({
-'searching' : true,
-'paging' : true,
-'lengthChange' : false
-});
+  var accounts = $('#adminPropertyMainte').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": "build/server_side/adminServerMainteProperty.php",
+    oLanguage : {
+      sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    }
+
+  });
+  setInterval(function() {
+    accounts.ajax.reload(null,false);
+    console.log(1);
+  }, 10000);
 </script>
 <?php
 exit();

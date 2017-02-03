@@ -25,32 +25,21 @@ if(isset($_POST['showAccounts']))
 </tr>
 </thead>
 <tbody>
-<?php
-//query here for 1 time querying
-
-foreach ($prowareDatas as $prowareData)
-{
-?>
-
-  <tr>
-  <td>
-    <div class="toolbar">
-    <button class="toolbar-button button primary" onclick="showMetroDialog('#editLocationDialog'); EditLocation('<?php echo $prowareData['id']; ?>','<?php echo $prowareData['location']; ?>');"><span class="mif-pencil icon"></span></button>
-    <button class="toolbar-button button primary" onclick="showMetroDialog('#deleteLocationDialog'); DeleteLocationValidation('<?php echo $prowareData['id']; ?>', '<?php echo $prowareData['location']; ?>');"><span class="mif-bin icon"></span></button></div>
-  </td>
-  <td><?php echo $prowareData['location']?></td>
-  </tr>
-<?php
-}
-?>
 </tbody>
 </table>
 <script type="text/javascript">
-$(".dataTable").dataTable({
-'searching' : true,
-'paging' : true,
-'lengthChange' : false
-});
+  var accounts = $('#adminMainteLocation').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": "build/server_side/adminServerMainteLocation.php",
+    oLanguage : {
+      sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    }
+  });
+  setInterval(function() {
+    accounts.ajax.reload(null,false);
+    console.log(1);
+  }, 10000);
 </script>
 <?php
 exit();

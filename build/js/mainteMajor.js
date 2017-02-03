@@ -32,7 +32,6 @@ function addNewMajor()
         });
         $('#newMaj').val('');
         $('#depYear').val('');
-        requestAccountability();
         hideMetroDialog('#addNewMajorCategory');
 
     } else {
@@ -102,7 +101,6 @@ function updateMajor()
     {
       console.log("update");
       hideMetroDialog("#editMajorDialog");
-      requestAccountability();
       $.Notify({
 				caption: 'Update Success',
 					content: 'Major Category has been updated' ,
@@ -114,7 +112,6 @@ function updateMajor()
     {
       console.log("updat");
       hideMetroDialog("#editMajorDialog");
-      requestAccountability();
       $.Notify({
         caption: 'Update Success',
           content: 'Major Category is already Recorded' ,
@@ -144,7 +141,6 @@ function deleteMajor()
 					type: "alert"
 			});
 			hideMetroDialog('#deleteMajorDialog');
-      requestAccountability();
 		}
 		 else {
 			console.log(data);
