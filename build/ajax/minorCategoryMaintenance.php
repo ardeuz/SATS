@@ -25,32 +25,18 @@ if(isset($_POST['showAccounts']))
 </tr>
 </thead>
 <tbody>
-<?php
-//query here for 1 time querying
-
-foreach ($prowareDatas as $prowareData)
-{
-?>
-
-  <tr>
-  <td>
-    <div class="toolbar">
-    <button class="toolbar-button button primary" onclick="showMetroDialog('#editMinorDialog'); EditMinor('<?php echo $prowareData['id']; ?>','<?php echo $prowareData['description']; ?>');"><span class="mif-pencil icon"></span></button>
-    <button class="toolbar-button button primary" onclick="showMetroDialog('#deleteMinorDialog'); deleteMinorValidation('<?php echo $prowareData['id']; ?>', '<?php echo $prowareData['description']; ?>');"><span class="mif-bin icon"></span></button></div>
-  </td>
-  <td><?php echo $prowareData['description']?></td>
-  </tr>
-<?php
-}
-?>
 </tbody>
 </table>
 <script type="text/javascript">
-$(".dataTable").dataTable({
-'searching' : true,
-'paging' : true,
-'lengthChange' : false
-});
+  var accounts = $('#adminMainteMinor').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": "build/server_side/adminServerMainteMinor.php"
+  });
+  setInterval(function() {
+    accounts.ajax.reload(null,false);
+    console.log(1);
+  }, 30000);
 </script>
 <?php
 exit();
