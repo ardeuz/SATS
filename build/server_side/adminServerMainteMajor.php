@@ -3,7 +3,7 @@
   $table = "major_category";
   $pkey = "id";
   $column = array(
-    array('db' => '`u`.`depreciate_yr`', 'dt' => 0,'field'=> 'depreciate_yr'),
+    array('db' => '`u`.`depreciate_yr`', 'dt' => 'depreciate_yr','field'=> 'depreciate_yr'),
     array('db' => '`u`.`id`', 'dt' => 0,'field'=> 'id' ,'formatter' => function($id,$row)
       {
         $ids = $row['id'];

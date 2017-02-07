@@ -28,68 +28,21 @@ if(isset($_POST['showAccounts']))
 </tr>
 </thead>
 <tbody>
-<?php
-foreach ($prowareDatas as $prowareData)
-{
-  $depreciateYear = $prowareData['depreciate_yr'];
-  $acquiredYear = date('Y', strtotime($prowareData['date_acquired']));
-  $yearToday = date('Y');
-?>
-
-<tr class="<?php if($prowareData['condition_id']==5 || ($yearToday - $acquiredYear) >= $depreciateYear){echo 'bg-lightOrange fg-white'; } ?>">
-</td>
-<td>
-<div class="toolbar"><button class="toolbar-button button primary adminView" idPv='<?php echo $prowareData['id']?>' conditionPv='<?php echo $prowareData['condition_id']; ?>' locationPv='<?php echo $prowareData['location_id']; ?>' onclick="showMetroDialog('#adminAccountabilityDialog')"><span class="mif-eye icon"></span></button></div>
-</td>
-<td><?php echo $prowareData['pcode']?></td>
-<td><?php echo $prowareData['sno']?></td>
-<td>
-<?php echo $prowareData['location']; ?>
-</td>
-<td><?php echo $prowareData['qty']; ?></td>
-<td>
-<div class="input-control select">
-<select onchange='<?php echo "updateAdminCondition(" . $prowareData['id'] . ", " . $prowareData['location_id'] . ", " . $prowareData['condition_id']  . ", \"". $prowareData['emp_id']. "\")"; ?>' id='<?php echo "condition" . $prowareData["id"] . $prowareData["location_id"] . $prowareData["condition_id"] .  $prowareData['emp_id']; ?>'>
-<?php
-  $conditionDatas = $db->select("condition_info", ["id","condition_info"]);
-  foreach ($conditionDatas as $conditionData){
-    if ($prowareData['condition_id'] == $conditionData['id']) //if this is the location
-      {
-          echo "<option value='" . $conditionData['id'] . "' selected>" . $conditionData['condition_info'] . "</option>";
-      }
-      else
-      {
-          echo "<option value='" . $conditionData['id'] . "'>" . $conditionData['condition_info'] . "</option>";
-      }
-  }
-?>
-</select>
-</div>
-</td>
-<td><?php echo $prowareData['emp_name']; ?></td>
-<td><?php
-if($db->has("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$prowareData['emp_id'], ]])){
-  $accountName = $db->get("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"]);
-  echo "Borrowed By ". $accountName["last_name"].', '.$accountName['first_name'];
-}
-else{
-  echo "Not Borrowed";
-}
-
- ?></td>
-
-</tr>
-<?php
-}
-?>
 </tbody>
 </table>
 <script type="text/javascript">
-$("table").dataTable({
-'searching' : true,
-'paging' : true,
-'lengthChange' : false
-});
+  var accounts = $('#adminAccountability').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": "build/server_side/adminServerAccountability.php",
+    oLanguage : {
+      sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    }
+  });
+  // setInterval(function() {
+  //   accounts.ajax.reload(null,false);
+  //   console.log(1);
+  // }, 10000);
 </script>
 <?php
 exit();

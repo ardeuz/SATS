@@ -4,7 +4,7 @@
   session_start();
 
 	$id = $_POST['id'];
-  $emp_id = 'CLN00002';
+  $emp_id = $_POST['empid'];
   $location_id = $_POST['location_id'];
   $new_condition_id = $_POST['new_condition_id'];
   $old_condition_id = $_POST['old_condition_id'];

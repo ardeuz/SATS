@@ -15,7 +15,7 @@
     //loop through the csv file and insert into database
 		while ($data = fgetcsv($handle,1000,",","'")) {
 			if ($data[0]) {
-        
+
 					$propertyId = $db->insert("property", [
 						"pcode" => $data[0],
 						"sno" => $data[1],
@@ -23,16 +23,16 @@
 						"brand" => $data[3],
 						"model" => $data[4],
 						"minor_category" => $_POST['minorcategory'],
-            "uom" => $data[6],
-            "cost" => $data[7],
-            "date_acquired" => $data[8],
-            "or_number" => $data[9]
+            "uom" => $data[5],
+            "cost" => $data[6],
+            "date_acquired" => $data[7],
+            "or_number" => $data[8]
 					]);
 
           $db->insert("property_accountability", [
             "emp_id" => $_POST['accountability'],
             "property_id" => $propertyId,
-            "qty" => $data[10],
+            "qty" => $data[9],
             "location_id" => $_POST['location'],
             "condition_id" => $_POST['condition']
           ]);

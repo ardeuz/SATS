@@ -29,7 +29,6 @@ if(isset($_POST['showAccounts']))
     ], [
       "property_accountability.property_id" => null
     ]);
-    $selectAccounts = $db->select("account_table",['emp_id' , 'last_name' , 'first_name' ,'department'],["status"=>1]);
 
 ?>
 <table class="dataTable border bordered hovered full-size" id="adminAccountabilityNot">
@@ -43,51 +42,21 @@ if(isset($_POST['showAccounts']))
 </tr>
 </thead>
 <tbody>
-<?php
-//query here for 1 time querying
-
-foreach ($prowareDatas as $prowareData)
-{
-  $depreciateYear = $prowareData['depreciate_yr'];
-  $acquiredYear = date('Y', strtotime($prowareData['date_acquired']));
-  $yearToday = date('Y');
-  $prowarePcode = $prowareData['pcode'];
-?>
-
-  <tr class="<?php if(($yearToday - $acquiredYear) >= $depreciateYear){echo 'bg-orange fg-white'; } ?>">
-  <td>
-    <div class="toolbar"><button class="toolbar-button button primary adminView" idPv='<?php echo $prowareData['id']?>'  onclick="showMetroDialog('#adminAccountabilityDialog')"><span class="mif-eye icon"></span></button></div>
-  </td>
-  <td><?php echo $prowareData['pcode']?></td>
-  <td><?php echo $prowareData['sno']?></td>
-  <td><?php echo $prowareData['qty']?></td>
-  <td>
-    <div class="input-control select" style="width:300px; border-radius:0px;" data-role="select">
-      <select style="display:none;" id="selectAccount"
-      onchange='changeAccountability(<?php echo  $prowareData["id"] . ', ' . "\"$prowarePcode\""; ?>)'>
-        <option value="0" selected disabled> Select User</option>
-          <?php
-          foreach($selectAccounts as $selectAccount)
-          {
-            echo "
-              <option value=". $selectAccount['emp_id'] ."> ". $selectAccount['last_name'] .", ". $selectAccount['first_name']." - ". $selectAccount['department']. "</option> ";
-          }
-          ?>
-      </select>
-    </div>
-  </td>
-  </tr>
-<?php
-}
-?>
 </tbody>
 </table>
 <script type="text/javascript">
-$(".dataTable").dataTable({
-'searching' : true,
-'paging' : true,
-'lengthChange' : false
+var accountsNot = $('#adminAccountabilityNot').DataTable({
+  "processing": true,
+  "serverSide": true,
+  "ajax": "build/server_side/adminServerAccountabilityNot.php",
+  oLanguage : {
+    sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+  }
 });
+setInterval(function() {
+  accounts.ajax.reload(null,false);
+  console.log(1);
+}, 10000);
 </script>
 <?php
 exit();

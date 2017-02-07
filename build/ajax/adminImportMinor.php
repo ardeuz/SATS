@@ -14,10 +14,9 @@
 
     //loop through the csv file and insert into database
 		while ($data = fgetcsv($handle,1000,",","'")) {
-			if ($data[0]) {
+			if ($data[1]) {
 
 					$propertyId = $db->insert("minor_category", [
-						"id" => $data[0],
 						"major_id" => $categoryValue,
 						"description" => $data[1],
 					]);

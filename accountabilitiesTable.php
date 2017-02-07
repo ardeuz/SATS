@@ -2,7 +2,7 @@
 session_start();
 require_once('connection.php');
 
-  $emp_id = $_SESSION['account']['emp_id'];
+$emp_id = $_SESSION['account']['emp_id'];
 
   if(isset($_POST['showTable']))
   {
@@ -21,70 +21,22 @@ require_once('connection.php');
   </tr>
   </thead>
 <tbody>
-<?php
-foreach ($prowareDatas as $prowareData)
-{
-?>
-
-<tr class="<?php if($prowareData['condition_id'] == 4){echo 'bg-orange';} elseif($prowareData['condition_id'] == 5){echo 'bg-red';} elseif($prowareData['condition_id'] == 3 ){echo 'bg-green';}elseif($prowareData['condition_id'] <= 2 ){echo 'bg-white';}?>">
-<td>
-<div class="toolbar"><button class="toolbar-button button primary prowareView" idPv='<?php echo $prowareData['id']?>' conditionPv='<?php echo $prowareData['condition_id']; ?>' locationPv='<?php echo $prowareData['location_id']; ?>' onclick="showMetroDialog('#prowaredialog')"><span class="mif-eye icon"></span></button>
- <!-- <button class="toolbar-button button primary" onclick="showMetroDialog('#propertyDistribution');distributeProperty(<?php echo $prowareData['id']?>,'<?php echo  $prowareData['pcode'] ?>','<?php echo $emp_id;?>',<?php echo $prowareData['condition_id']?>,<?php echo $prowareData['location_id']?>)" ><span class="mif-unlink icon"></span></button> -->
- <!-- <button class="toolbar-button button primary" onclick="showMetroDialog('#propertyRepair');repairProperty(<?php echo $prowareData['id']?>,'<?php echo  $prowareData['pcode'] ?>','<?php echo $emp_id;?>',<?php echo $prowareData['condition_id']?>,<?php echo $prowareData['location_id']?>)" ><span class="mif-wrench icon"></span></button> -->
-</div>
-</td>
-<td><?php echo $prowareData['pcode']?></td>
-<td><?php echo $prowareData['sno']?></td>
-<td><?php echo $prowareData['description']?></td>
-<td>
-<div class="input-control select">
-<select onchange='<?php echo "updateLocation(" . $prowareData['id'] . ", " .$prowareData['condition_id'] . ", " . $prowareData['location_id'] . ")"; ?>' id='<?php echo "location" . $prowareData['id'] . $prowareData['location_id'] . $prowareData['condition_id']; ?>'>
-<?php
-$locationDatas = $db->select("location", ["id","location"]);
-  foreach ($locationDatas as $locationData){
-    if ($prowareData['location_id'] == $locationData['id']) //if this is the location
-      {
-          echo "<option value='" . $locationData['id'] . "' selected>" . $locationData['location'] . "</option>";
-      }
-      else
-      {
-          echo "<option value='" . $locationData['id'] . "'>" . $locationData['location'] . "</option>";
-      }
-  }
-?>
-</select>
-</div>
-</td>
-<td><?php echo $prowareData['qty']; ?></td>
-<td>
-<div class="input-control select">
-<select onchange='<?php echo "updateCondition(" . $prowareData['id'] . ", " . $prowareData['location_id'] . ", " . $prowareData['condition_id'] . ")"; ?>' id='<?php echo "condition" . $prowareData['id'] . $prowareData['location_id'] . $prowareData['condition_id']; ?>'>
-<?php
-  $conditionDatas = $db->select("condition_info", ["id","condition_info"]);
-  foreach ($conditionDatas as $conditionData){
-    if ($prowareData['condition_id'] == $conditionData['id']) //if this is the location
-      {
-          echo "<option value='" . $conditionData['id'] . "' selected>" . $conditionData['condition_info'] . "</option>";
-      }
-      else
-      {
-          echo "<option value='" . $conditionData['id'] . "'>" . $conditionData['condition_info'] . "</option>";
-      }
-  }
-?>
-</select>
-</div>
-</td>
-</tr>
-<?php
-}
-?>
 </tbody>
 </table>
 <script type="text/javascript">
-var table = $("#table1").dataTable({
-
+var userShowAccountabilities = $("#showAccountabilities").DataTable({
+  "processing": true,
+  "serverSide": true,
+  "ajax": "build/server_side/userShowAccountabilities.php",
+  oLanguage : {
+    sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+  }
 });
+setInterval(function() {
+  accounts.ajax.reload(null,false);
+  console.log(1);
+  }, 10000);
+
 </script>
 <?php
 exit();
