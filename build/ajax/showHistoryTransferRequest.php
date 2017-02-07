@@ -25,25 +25,22 @@
       </tr>
     </thead>
     <tbody>
-    <?php
-    foreach ($transferHistoryDatas as $transferHistoryData)
-      {
-      ?>
-      <tr>
-        <td><div class="toolbar"><button class="toolbar-button button primary"onclick="window.open('build/reports/transferReport.php?ctrl_no=<?php echo $transferHistoryData['ctrl_no']?>', '', '');"><span class="mif-print icon"></span></button></div></td>
-        <td><?php echo $transferHistoryData['ctrl_no']?> </td>
-        <td><?php echo $transferHistoryData['items_transferred']?> </td>
-        <td><?php echo $transferHistoryData['transfer_to']?> </td>
-        <td><?php echo $transferHistoryData['released_from']?> </td>
-        <td><?php echo date('M d, Y H:i:A', strtotime($transferHistoryData['date_approved'])); ?> </td>
-      <?php
-      }
-      ?>
     </tbody>
   </table>
 <script>
-$("table").dataTable({
+var adminShowHistoryTransfer = $("#adminShowHistoryTransfer").DataTable({
+  "processing": true,
+  "serverSide": true,
+  "ajax": "build/server_side/adminServerShowTransferHistory.php",
+  oLanguage : {
+    sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+  }
 });
+setInterval(function() {
+  accounts.ajax.reload(null,false);
+  console.log(1);
+  }, 10000);
+
 </script>
 <?php
 }
