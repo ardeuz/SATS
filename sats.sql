@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50616
 File Encoding         : 65001
 
-Date: 2017-02-03 17:33:37
+Date: 2017-02-07 18:10:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -741,7 +741,7 @@ CREATE TABLE `property` (
   `minor_category` int(2) NOT NULL,
   `uom` varchar(20) DEFAULT NULL,
   `cost` double(13,2) NOT NULL,
-  `date_acquired` datetime NOT NULL,
+  `date_acquired` date NOT NULL,
   `or_number` varchar(999) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
@@ -749,13 +749,13 @@ CREATE TABLE `property` (
 -- ----------------------------
 -- Records of property
 -- ----------------------------
-INSERT INTO `property` VALUES ('5', 'CLNOSE342014-013', 'BO42CJAF08-05', 'LED PROJECTOR CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19 13:59:41', '4010000000493');
-INSERT INTO `property` VALUES ('8', 'CLNOSE342014-014', 'B042CJAF08-063596', 'LED Projector CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19 14:29:14', '4010000000493');
-INSERT INTO `property` VALUES ('9', 'CLNOSE342014-023', 'B042CJAF08-063732', 'LED Projector CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19 14:34:06', '4010000000493');
-INSERT INTO `property` VALUES ('10', 'CLNOSE342014-040', 'B042CJAF08-064058', 'LED Projector CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19 14:37:38', '4010000000493');
-INSERT INTO `property` VALUES ('11', 'CLNOSE342014-006', 'B042CJAF08-057432', 'LED Projector CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19 14:41:13', '4010000000493');
-INSERT INTO `property` VALUES ('12', 'CLNOSE342014-021', 'B042CJAF08-063710', 'LED Projector CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19 14:47:29', '4010000000493');
-INSERT INTO `property` VALUES ('15', '1', '1', '1', '1', '1', '0', '1', '1.00', '2017-01-31 16:02:49', '1');
+INSERT INTO `property` VALUES ('5', 'CLNOSE342014-013', 'BO42CJAF08-05', 'LED PROJECTOR CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19', '4010000000493');
+INSERT INTO `property` VALUES ('8', 'CLNOSE342014-014', 'B042CJAF08-063596', 'LED Projector CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19', '4010000000493');
+INSERT INTO `property` VALUES ('9', 'CLNOSE342014-023', 'B042CJAF08-063732', 'LED Projector CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19', '4010000000493');
+INSERT INTO `property` VALUES ('10', 'CLNOSE342014-040', 'B042CJAF08-064058', 'LED Projector CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19', '4010000000493');
+INSERT INTO `property` VALUES ('11', 'CLNOSE342014-006', 'B042CJAF08-057432', 'LED Projector CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19', '4010000000493');
+INSERT INTO `property` VALUES ('12', 'CLNOSE342014-021', 'B042CJAF08-063710', 'LED Projector CASIO XJ-A240', '', '', '14', 'PC/S', '40000.00', '2017-01-19', '4010000000493');
+INSERT INTO `property` VALUES ('15', '1', '1', '1', '1', '1', '0', '1', '1.00', '2017-01-31', '1');
 
 -- ----------------------------
 -- Table structure for `property_accountability`
@@ -774,7 +774,7 @@ CREATE TABLE `property_accountability` (
 -- ----------------------------
 -- Records of property_accountability
 -- ----------------------------
-INSERT INTO `property_accountability` VALUES ('CLN0083A', '10', '0', '0', '0', null);
+INSERT INTO `property_accountability` VALUES ('CLN0083A', '10', '0', '0', '3', null);
 
 -- ----------------------------
 -- Table structure for `sub_property`
@@ -880,7 +880,25 @@ DROP VIEW IF EXISTS `propertyaccountability`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `propertyaccountability` AS select `a`.`property_id` AS `id`,`b`.`pcode` AS `pcode`,`b`.`sno` AS `sno`,`b`.`description` AS `description`,`c`.`location` AS `location`,`d`.`condition_info` AS `condition_info`,`a`.`emp_id` AS `emp_id`,`e`.`department` AS `department`,`a`.`qty` AS `qty`,`a`.`condition_id` AS `condition_id`,`b`.`uom` AS `uom`,`a`.`location_id` AS `location_id`,concat(`e`.`last_name`,', ',`e`.`first_name`) AS `emp_name` from ((((`property_accountability` `a` left join `property` `b` on((`a`.`property_id` = `b`.`id`))) left join `location` `c` on((`a`.`location_id` = `c`.`id`))) left join `condition_info` `d` on((`a`.`condition_id` = `d`.`id`))) join `account_table` `e` on((`a`.`emp_id` = `e`.`emp_id`)));
 
 -- ----------------------------
+-- View structure for `propertyaccountabilitynot`
+-- ----------------------------
+DROP VIEW IF EXISTS `propertyaccountabilitynot`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `propertyaccountabilitynot` AS select `a`.`property_id` AS `id`,`b`.`pcode` AS `pcode`,`b`.`sno` AS `sno`,`b`.`description` AS `description`,`c`.`location` AS `location`,`d`.`condition_info` AS `condition_info`,`a`.`emp_id` AS `emp_id`,`e`.`department` AS `department`,`a`.`qty` AS `qty`,`a`.`condition_id` AS `condition_id`,`b`.`uom` AS `uom`,`a`.`location_id` AS `location_id`,concat(`e`.`last_name`,', ',`e`.`first_name`) AS `emp_name` from ((((`property_accountability` `a` left join `property` `b` on((`a`.`property_id` = `b`.`id`))) left join `location` `c` on((`a`.`location_id` = `c`.`id`))) left join `condition_info` `d` on((`a`.`condition_id` = `d`.`id`))) join `account_table` `e` on((`a`.`emp_id` = `e`.`emp_id`))) where (`a`.`emp_id` = NULL);
+
+-- ----------------------------
 -- View structure for `propertymainteview`
 -- ----------------------------
 DROP VIEW IF EXISTS `propertymainteview`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `propertymainteview` AS select `property`.`id` AS `id`,`property`.`pcode` AS `pcode`,`property`.`sno` AS `sno`,`property`.`description` AS `description`,`property`.`brand` AS `brand`,`property`.`model` AS `model`,`property`.`minor_category` AS `minor_category`,`property`.`uom` AS `uom`,`property`.`cost` AS `cost`,`property`.`date_acquired` AS `date_acquired`,`property`.`or_number` AS `or_number`,`property_accountability`.`qty` AS `qty`,`major_category`.`depreciate_yr` AS `depreciate_yr` from (((`property` left join `minor_category` on((`property`.`minor_category` = `minor_category`.`id`))) left join `major_category` on((`minor_category`.`major_id` = `major_category`.`id`))) left join `property_accountability` on((`property`.`id` = `property_accountability`.`property_id`)));
+
+-- ----------------------------
+-- View structure for `showpropertyborrow`
+-- ----------------------------
+DROP VIEW IF EXISTS `showpropertyborrow`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `showpropertyborrow` AS select `a`.`ctrl_no` AS `ctrl_no`,`a`.`qty` AS `qty`,concat(`b`.`last_name`,', ',`b`.`first_name`) AS `borrowed_to`,concat(`c`.`last_name`,', ',`c`.`first_name`) AS `released_from`,`a`.`date_approved` AS `date_approved` from ((`borrow_request_history` `a` left join `account_table` `b` on((`a`.`borrowed_to` = `b`.`emp_id`))) left join `account_table` `c` on((`a`.`borrowed_to` = `c`.`emp_id`))) group by `a`.`ctrl_no`;
+
+-- ----------------------------
+-- View structure for `showpropertytransfer`
+-- ----------------------------
+DROP VIEW IF EXISTS `showpropertytransfer`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `showpropertytransfer` AS select `a`.`ctrl_no` AS `ctrl_no`,count(`a`.`id`) AS `items_transferred`,concat(`b`.`last_name`,', ',`b`.`first_name`) AS `transfer_to`,concat(`c`.`last_name`,', ',`c`.`first_name`) AS `released_from`,`a`.`date_approved` AS `date_approved` from ((`transfer_request_history` `a` left join `account_table` `b` on((`a`.`transfer_to` = `b`.`emp_id`))) left join `account_table` `c` on((`a`.`released_from` = `c`.`emp_id`))) group by `a`.`ctrl_no`;
