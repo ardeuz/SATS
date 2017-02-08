@@ -20,6 +20,10 @@
     array('db' => '`u`.`id`', 'dt' => 5,'field'=> 'id' ,'formatter' => function($id,$rows)
       {
         include_once ("../../connection.php");
+        $ids = $rows['id'];
+        $conditionId = $rows['condition_id'];
+        $locationId = $rows['location_id'];
+        $empId = $rows['emp_id'];
         $selectAccounts = $db->select("account_table",['emp_id' , 'last_name' , 'first_name' ,'department'],["status"=>1]);
         $maintenance = '
         <div class="input-control select">
@@ -46,16 +50,17 @@
       }),
       array('db' => '`u`.`emp_name`', 'dt' => 6,'field' => "emp_name"),
       array('db' => '`u`.`emp_id`', 'dt' => 7,'field' => "emp_id","formatter" => function($employeeId,$row){
+        include_once ("../../connection2.php");
 
-        // $empId = $row[0];
-        // if($db->has("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$empId, ]])){
-        //   $accountName = $db->get("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"]);
-        //   return "Borrowed By ". $accountName["last_name"].', '.$accountName['first_name'];
-        // }
-        // else{
-        //   return "Not Borrowed";
-        // }
-        return "hello";
+        $empId = $row[0];
+        if($db2->has("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$empId, ]])){
+          $accountName = $db2->get("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"]);
+          return "Borrowed By ". $accountName["last_name"].', '.$accountName['first_name'];
+        }
+        else{
+          return "Not Borrowed";
+        }
+        // return "hello";
       })
   );
   $sql_details = array(
