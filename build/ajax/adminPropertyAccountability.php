@@ -68,8 +68,18 @@ foreach ($prowareDatas as $prowareData)
 </tbody>
 </table>
 <script type="text/javascript">
-$("table").dataTable({
+var adminPropertyAccountability = $('#adminPropertyAccountability').DataTable({
+  "processing": true,
+  "serverSide": true,
+  "ajax": "build/server_side/adminServerPropertyAccountability.php",
+  oLanguage : {
+    sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+  }
 });
+setInterval(function() {
+  accounts.ajax.reload(null,false);
+  console.log(1);
+}, 10000);
 </script>
 <?php
 exit();

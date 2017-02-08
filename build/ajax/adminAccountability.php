@@ -39,10 +39,10 @@ if(isset($_POST['showAccounts']))
       sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     }
   });
-  // setInterval(function() {
-  //   accounts.ajax.reload(null,false);
-  //   console.log(1);
-  // }, 10000);
+  setInterval(function() {
+    accounts.ajax.reload(null,false);
+    console.log(1);
+  }, 10000);
 </script>
 <?php
 exit();
