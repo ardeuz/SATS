@@ -21,8 +21,8 @@
     <link href="build/css/inventory.css" rel="stylesheet">
     <script src="build/js/jquery-2-1-3.min.js"></script>
     <script src="build/js/select2.min.js"></script>
-    <script src="build/js/metro.js"></script>
     <script src="build/js/jquery.dataTables.min.js"></script>
+    <script src="build/js/metro.js"></script>
     <script src="build/js/proware.js"></script>
 
 </head>

@@ -42,7 +42,7 @@
 
             ?>
 
-            <button id='transfer_icon_span' class="cycle-button large-button shadow fab bg-cyan fg-white" data-role="popover" data-popover-mode="mouseenter" data-popover-position="left" data-popover-text="View Transfer List" data-popover-shadow="true"data-popover-background="bg-cyan" data-popover-color="fg-white" onclick="showMetroDialog('#transferlist')">
+            <button id='transfer_icon_span' class="cycle-button large-button shadow fab bg-cyan fg-white" data-role="popover" data-popover-mode="mouseenter" data-popover-position="left" data-popover-text="View Borrow List" data-popover-shadow="true"data-popover-background="bg-cyan" data-popover-color="fg-white" onclick="showMetroDialog('#transferlist')">
                 <span class='mif-tab'></span>
             </button>
 

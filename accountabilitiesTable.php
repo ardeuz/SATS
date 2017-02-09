@@ -4,11 +4,10 @@ require_once('connection.php');
 
 $emp_id = $_SESSION['account']['emp_id'];
 
-  if(isset($_POST['showTable']))
-  {
-      $prowareDatas = $db->query("SELECT a.property_id AS id, b.pcode, b.sno , b.description, c.location, d.condition_info, a.emp_id, e.department, a.qty, a.condition_id, b.uom, a.location_id from property_accountability AS a left join property AS b on a.property_id = b.id left join location AS c on a.location_id = c.id left join condition_info AS d on a.condition_id = d.id inner join account_table as e on a.emp_id = e.emp_id WHERE a.emp_id='$emp_id'")-> fetchAll();
+if(isset($_POST['showTable']))
+{
 ?>
-<table id="table1" class="dataTable border bordered hovered" id="showAccountabilities">
+<table class="dataTable border bordered hovered" id="showAccountabilities">
   <thead>
   <tr>
   <td class="sortable-column">Maintenance</td>
@@ -33,7 +32,7 @@ var userShowAccountabilities = $("#showAccountabilities").DataTable({
   }
 });
 setInterval(function() {
-  accounts.ajax.reload(null,false);
+  userShowAccountabilities.ajax.reload(null,false);
   console.log(1);
   }, 10000);
 

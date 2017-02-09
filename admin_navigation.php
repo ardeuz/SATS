@@ -112,7 +112,8 @@
                       <div>
                         $full_name
                       </div>
-                      <small>" . $accountData['department'] . " Department</small>
+                      <small>" . $accountData['department'] . " Department</small><br/>
+                      <small>Employee ID: " . $accountData['emp_id'] . "</small>
                     </a>
                   </li>";
                 }
@@ -139,6 +140,7 @@
         <ul class="d-menu shadow"  data-role="dropdown">
             <div style="height:150px;overflow-y:scroll;" id="style-4">
               <li class="<?php if($thisPage == 'EditProperty'){echo 'active'; } ?>"><a href="mainteProperty.php"><span class="mif-arrow-right icon"></span> Property</a></li>
+              <li class="<?php if($thisPage == 'EditSubProperty'){echo 'active'; } ?>"><a href="mainteSubProperty.php"><span class="mif-arrow-right icon"></span> Sub Property</a></li>
               <li class="<?php if($thisPage == 'EditLocation'){echo 'active'; } ?>"><a href="mainteLocation.php"><span class="mif-arrow-right icon"></span> Location</a></li>
               <li class="<?php if($thisPage == 'EditMajorCat'){echo 'active'; } ?>"><a href="mainteMajor.php"><span class="mif-arrow-right icon"></span> Major Category</a></li>
               <li class="<?php if($thisPage == 'EditMinorCat'){echo 'active'; } ?>"><a href="mainteMinor.php"><span class="mif-arrow-right icon"></span> Minor Category</a></li>
