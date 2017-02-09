@@ -6,12 +6,8 @@
 
   if(isset($_POST['showTable']))
   {
-
-    $transferDatas = $db->query("SELECT a.property_id AS id, b.pcode, b.sno , b.description, c.location, d.condition_info, a.emp_id, e.department, a.qty, a.condition_id, b.uom, a.location_id from property_accountability AS a left join property AS b
-    on a.property_id = b.id left join location AS c on a.location_id = c.id left join
-    condition_info AS d on a.condition_id = d.id inner join account_table as e on a.emp_id = e.emp_id WHERE a.emp_id !='$emp_id'")-> fetchAll();
 ?>
-    <table id='transferTable' class="dataTable border bordered hovered" id="showTransferTable">
+    <table class="dataTable border bordered hovered" id="showTransferTable">
       <thead>
         <tr>
           <td class="auto size">Maintenance</td>
@@ -25,52 +21,21 @@
         </tr>
       </thead>
       <tbody>
-        <?php
-        foreach ($transferDatas as $transferData ) {
-          $color = "";
-
-          if ($db->has("transfer_request", [
-    				"AND" => [
-    						"id" => $transferData['id'],
-    						"condition_id" => $transferData['condition_id'],
-    						"old_loc_id" => $transferData['location_id'],
-    						"released_from" => $transferData['emp_id']
-    					]
-    				])) {
-              $color = 'amber';
-            } else {
-              $color = 'white';
-            }
-
-            echo "<tr class='bg-$color'>";
-        ?>
-          <td>
-            <div class="toolbar">
-              <button class="toolbar-button button primary" onclick="transferView(<?php echo $transferData['id']?>,<?php echo $transferData['condition_id']; ?>,<?php echo $transferData['location_id']; ?>,'<?php echo $transferData['emp_id']?>');showMetroDialog('#viewdialog')">
-                <span class="mif-eye icon"></span>
-              </button>
-
-              <button class="toolbar-button button primary transferView" idTv='<?php echo $transferData['id']; ?>' onclick="transferItem( <?php echo $transferData['id'] . ", " . $transferData['qty'] . ", '" . $transferData['emp_id'] . "', " . $transferData['condition_id'] ." ,".$transferData['location_id'] ?> ); ">
-                <span class="mif-plus icon"></span>
-              </button>
-            </div>
-          </td>
-          <td><?php echo $transferData['pcode']?></td>
-          <td><?php echo $transferData['sno']?></td>
-          <td><?php echo $transferData['description']?></td>
-          <td><?php echo $transferData['location']?></td>
-          <td><?php echo $transferData['condition_info']; ?></td>
-          <td><?php echo $transferData['qty']?></td>
-          <td><?php echo $transferData['department']?></td>
-        </tr>
-        <?php
-        }
-        ?>
       </tbody>
     </table>
     <script>
-    $("#transferTable").DataTable({
-  	});
+    var showTransferTable = $('#showTransferTable').DataTable({
+      "processing": true,
+      "serverSide": true,
+      "ajax": "build/server_side/userShowTransfer.php",
+      oLanguage : {
+        sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+      }
+    });
+    setInterval(function() {
+      showTransferTable.ajax.reload(null,false);
+      console.log(1);
+    }, 10000);
     </script>
 
 <?php

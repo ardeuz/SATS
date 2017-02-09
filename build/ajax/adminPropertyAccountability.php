@@ -5,13 +5,10 @@
 
 
 $emp_id = $_SESSION['account']['emp_id'];
-
+$_SESSION['employee'] = $_GET['emp_id'];
 if(isset($_GET['showAccounts']))
 {
     $employee =  $_GET['emp_id'];
-    $prowareDatas = $db->query("SELECT a.property_id AS id, b.pcode, b.sno , b.description, c.location AS location, d.condition_info, a.emp_id, e.department AS department, a.qty AS qty, a.condition_id AS condition_id,b.uom AS uom,a.location_id AS location_id, CONCAT(e.last_name, ', ', e.first_name) AS emp_name from property_accountability AS a left join
-    property AS b on a.property_id = b.id left join location AS c on a.location_id = c.id left join
-    condition_info AS d on a.condition_id = d.id inner join account_table as e on a.emp_id = e.emp_id where a.emp_id='$employee'")->fetchAll();
 ?>
 <table class="dataTable border bordered hovered full-size" id="adminPropertyAccountability">
 <thead>
@@ -25,46 +22,6 @@ if(isset($_GET['showAccounts']))
 </tr>
 </thead>
 <tbody>
-<?php
-foreach ($prowareDatas as $prowareData)
-{
-?>
-
-<tr>
-</td>
-<td>
-<div class="toolbar"><button class="toolbar-button button primary adminView" idPv='<?php echo $prowareData['id']?>' conditionPv='<?php echo $prowareData['condition_id']; ?>' locationPv='<?php echo $prowareData['location_id']; ?>' onclick="showMetroDialog('#adminAccountabilityDialog')"><span class="mif-eye icon"></span></button></div>
-</td>
-<td><?php echo $prowareData['pcode']?></td>
-<td><?php echo $prowareData['sno']?></td>
-<td>
-<?php echo $prowareData['location']; ?>
-</td>
-<td><?php echo $prowareData['qty']; ?></td>
-<td>
-<div class="input-control select">
-<select onchange='<?php echo "updateAdminCondition(" . $prowareData['id'] . ", " . $prowareData['location_id'] . ", " . $prowareData['condition_id']  . ", \"". $prowareData['emp_id']. "\")"; ?>' id='<?php echo "condition" . $prowareData["id"] . $prowareData["location_id"] . $prowareData["condition_id"] .  $prowareData['emp_id']; ?>'>
-<?php
-  $conditionDatas = $db->select("condition_info", ["id","condition_info"]);
-  foreach ($conditionDatas as $conditionData){
-    if ($prowareData['condition_id'] == $conditionData['id']) //if this is the location
-      {
-          echo "<option value='" . $conditionData['id'] . "' selected>" . $conditionData['condition_info'] . "</option>";
-      }
-      else
-      {
-          echo "<option value='" . $conditionData['id'] . "'>" . $conditionData['condition_info'] . "</option>";
-      }
-  }
-?>
-</select>
-</div>
-</td>
-
-</tr>
-<?php
-}
-?>
 </tbody>
 </table>
 <script type="text/javascript">
@@ -77,7 +34,7 @@ var adminPropertyAccountability = $('#adminPropertyAccountability').DataTable({
   }
 });
 setInterval(function() {
-  accounts.ajax.reload(null,false);
+  adminPropertyAccountability.ajax.reload(null,false);
   console.log(1);
 }, 10000);
 </script>

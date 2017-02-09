@@ -54,7 +54,7 @@ var accountsNot = $('#adminAccountabilityNot').DataTable({
   }
 });
 setInterval(function() {
-  accounts.ajax.reload(null,false);
+  accountsNot.ajax.reload(null,false);
   console.log(1);
 }, 10000);
 </script>

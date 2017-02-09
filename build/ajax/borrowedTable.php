@@ -5,11 +5,8 @@ require_once('../../connection.php');
   $emp_id = $_SESSION['account']['emp_id'];
   if(isset($_POST['showTable']))
   {
-
-      $prowareDatas = $db->query("SELECT a.id AS id, b.pcode, b.sno , b.description, c.location, d.condition_info, a.transfer_to, e.department, a.qty, a.condition_id, b.uom, a.new_loc_id, concat(f.last_name,', ',f.first_name) as borrowedTo, a.date_approved from borrow_request AS a left join property AS b on a.id = b.id left join location AS c on a.new_loc_id = c.id left join condition_info AS d on a.condition_id = d.id inner join account_table as e on a.transfer_to = e.emp_id inner join account_table as f on a.released_from = f.emp_id WHERE a.transfer_to='$emp_id' AND date_approved!=0")-> fetchAll();
-
 ?>
-<table id="table1" class="dataTable border bordered hovered" id="userBorrowTable">
+<table class="dataTable border bordered hovered" id="userBorrowTable">
   <thead>
   <tr>
   <td class="sortable-column"></td>
@@ -23,35 +20,21 @@ require_once('../../connection.php');
   </tr>
   </thead>
 <tbody>
-<?php
-foreach ($prowareDatas as $prowareData)
-{
-?>
-
-<tr class="<?php if($prowareData['date_approved'] <= date('Y-m-d H:i:s')){ echo 'bg-red fg-white';} elseif($prowareData['date_approved'] >= date('Y-m-d H:i:s',strtotime( date('Y-m-d H:i:s').'+30 minutes'))){echo 'bg-orange fg-white';} else{ echo 'bg-green fg-white';}?>">
-</td>
-<td>
-<div class="toolbar"><button class="toolbar-button button primary" onclick="currentBorrowView(<?php echo $prowareData['id']?>,<?php echo $prowareData['condition_id']; ?>,<?php echo $prowareData['new_loc_id']; ?>);showMetroDialog('#borrowedDialog')"><span class="mif-eye icon"></span></button>
-</div>
-</td>
-<td><?php echo $prowareData['pcode']?></td>
-<td><?php echo $prowareData['sno']?></td>
-<td><?php echo $prowareData['description']?></td>
-<td><?php echo $prowareData['condition_id']?></td>
-<td><?php echo $prowareData['qty']; ?></td>
-<td><?php echo $prowareData['borrowedTo']?></td>
-<td><?php echo $prowareData['date_approved']?></td>
-</td>
-</tr>
-<?php
-}
-?>
 </tbody>
 </table>
 <script type="text/javascript">
-var table = $("#table1").dataTable({
-
+var userBorrowTable = $('#userBorrowTable').DataTable({
+  "processing": true,
+  "serverSide": true,
+  "ajax": "build/server_side/userShowBorrow.php",
+  oLanguage : {
+    sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+  }
 });
+setInterval(function() {
+  userBorrowTable.ajax.reload(null,false);
+  console.log(1);
+}, 30000);
 </script>
 <?php
 exit();
