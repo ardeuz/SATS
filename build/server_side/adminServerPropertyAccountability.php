@@ -1,10 +1,11 @@
 <?php
+  session_start();
   require( '../dataTables/ssp.php' );
-  $empId = $_GET['emp_id'];
   $table = "propertyAccountability";
   $pkey = "id";
   $columns = array(
     array('db' => '`u`.`condition_id`', 'dt' => 0,'field'=> 'condition_id'),
+    array('db' => '`u`.`emp_id`', 'dt' => 0,'field'=> 'emp_id'),
     array('db' => '`u`.`location_id`', 'dt' => 0,'field'=> 'location_id'),
     array('db' => '`u`.`id`', 'dt' => 0,'field'=> 'id',"formatter" => function($id,$row)
     {
@@ -60,7 +61,8 @@
 
   // select nalang
   $joinQuery = "FROM `propertyAccountability` AS `u`";
-  $extraWhere = "emp_id = '$empId'";
+
+  $extraWhere = "emp_id=\"".$_SESSION['employee']."\"";
   echo json_encode(
     SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery , $extraWhere  )
   );

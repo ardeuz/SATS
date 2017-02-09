@@ -1,4 +1,5 @@
 <?php
+  include_once("../../medoo.php");
   require( '../dataTables/ssp.php' );
   $table = "propertyAccountability";
   $pkey = "id";
@@ -19,7 +20,20 @@
     array('db' => '`u`.`qty`', 'dt' => 4,'field' => "qty"),
     array('db' => '`u`.`id`', 'dt' => 5,'field'=> 'id' ,'formatter' => function($id,$rows)
       {
-        include_once ("../../connection.php");
+        $db = new medoo([
+          // required
+          'database_type' => 'mysql',
+          'database_name' => 'sats',
+          'server' => 'localhost',
+          'username' => 'root',
+          'password' => '',
+          'charset' => 'utf8',
+
+          'option' => [
+              PDO::ATTR_ERRMODE,
+              PDO::ERRMODE_EXCEPTION
+          ]
+        ]);
         $ids = $rows['id'];
         $conditionId = $rows['condition_id'];
         $locationId = $rows['location_id'];
@@ -47,9 +61,24 @@
         ';
 
         return $maintenance;
+        // return "hello";
       }),
       array('db' => '`u`.`emp_name`', 'dt' => 6,'field' => "emp_name"),
       array('db' => '`u`.`emp_id`', 'dt' => 7,'field' => "emp_id","formatter" => function($employeeId,$row){
+        $db2 = new medoo([
+          // required
+          'database_type' => 'mysql',
+          'database_name' => 'sats',
+          'server' => 'localhost',
+          'username' => 'root',
+          'password' => '',
+          'charset' => 'utf8',
+
+          'option' => [
+              PDO::ATTR_ERRMODE,
+              PDO::ERRMODE_EXCEPTION
+          ]
+        ]);
         include_once ("../../connection2.php");
 
         $empId = $row[0];
@@ -60,7 +89,7 @@
         else{
           return "Not Borrowed";
         }
-        // return "hello";
+        return "hello";
       })
   );
   $sql_details = array(
