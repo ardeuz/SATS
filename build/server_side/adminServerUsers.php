@@ -4,8 +4,17 @@
   $pkey = "emp_id";
   $column = array(
     array('db' => '`u`.`emp_id`', 'dt' => 0,'field' => "emp_id"),
-    array('db' => '`u`.`first_name`', 'dt' => 1,'field' => "first_name"),
-    array('db' => '`u`.`middle_name`', 'dt' => 2,'field' => "middle_name"),
+    array('db' => '`u`.`middle_name`', 'dt' => 1,'field' => "middle_name"),
+    array('db' => '`u`.`last_name`', 'dt' => 1,'field' => "last_name"),
+    array('db' => '`u`.`first_name`', 'dt' => 1,'field' => "first_name","formatter" => function($first_name,$rows)
+    {
+      $fn = $rows['first_name'];
+      $mn = $rows['middle_name'];
+      $ln = $rows['last_name'];
+
+        return $ln.", ".$fn." ".$mn;
+    }),
+    array('db' => '`u`.`department`', 'dt' => 2,'field' => "department"),
     array('db' => '`u`.`emp_id`', 'dt' => 3,'field'=> 'emp_id' ,'formatter' => function($emp_id,$row)
       {
         $empId = $row[0];
