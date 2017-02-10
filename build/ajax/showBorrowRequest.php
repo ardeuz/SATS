@@ -57,6 +57,7 @@
 
           echo "
             </div>
+            <button class='button button-default ' onclick=approveInHistory(".$borrowRequestGroupData['request_code'].")><span class='mif-chevron-right mif-ani-fast mif-ani-ripple '></span>&nbsp; Return Item &nbsp;<span class='mif-chevron-left mif-ani-fast mif-ani-ripple'></span></button>
 
           </div>
         </div>";

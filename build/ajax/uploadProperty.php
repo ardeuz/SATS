@@ -6,10 +6,9 @@
   ob_start("ob_gzhandler");
 
   require_once("../../connection.php");
-
-  if (is_uploaded_file($_FILES['physical_count_csv']['tmp_name'])) {
+  if (is_uploaded_file($_FILES['physical']['tmp_name'])) {
     //get the csv file
-    $file = $_FILES['physical_count_csv']['tmp_name'];
+    $file = $_FILES['physical']['tmp_name'];
     $handle = fopen($file,"r");
 
     //loop through the csv file and insert into database
@@ -39,6 +38,6 @@
 			}
 		}
 
-    header ("Location: ../../admin_accountabilities.php");
+    header("location:../../admin_accountabilities.php");
   }
 ?>

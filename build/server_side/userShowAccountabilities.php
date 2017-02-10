@@ -1,6 +1,7 @@
 <?php
   session_start();
   require( '../dataTables/ssp.php' );
+  require( '../../medoo.php' );
   $emp_id = $_SESSION['account']['emp_id'];
   $table = "propertyAccountability";
   $pkey = "id";
@@ -20,7 +21,20 @@
     array('db' => '`u`.`description`', 'dt' => 3,'field' => "description"),
     array('db' => '`u`.`location`', 'dt' => 4,'field'=> 'location' ,'formatter' => function($id,$rows)
       {
-        include ("../../connection.php");
+        $db = new medoo([
+          // required
+          'database_type' => 'mysql',
+          'database_name' => 'sats',
+          'server' => 'localhost',
+          'username' => 'root',
+          'password' => '',
+          'charset' => 'utf8',
+
+          'option' => [
+              PDO::ATTR_ERRMODE,
+              PDO::ERRMODE_EXCEPTION
+          ]
+        ]);
         $ids = $rows['id'];
         $locationId = $rows['location_id'];
         $conditionId = $rows['condition_id'];
@@ -49,7 +63,20 @@
       }),
       array('db' => '`u`.`qty`', 'dt' => 5,'field' => "qty"),
       array('db' => '`u`.`condition_info`', 'dt' => 6,'field' => "condition_info","formatter" => function($employeeId,$rows){
-        include ("../../connection2.php");
+        $db2 = new medoo([
+          // required
+          'database_type' => 'mysql',
+          'database_name' => 'sats',
+          'server' => 'localhost',
+          'username' => 'root',
+          'password' => '',
+          'charset' => 'utf8',
+
+          'option' => [
+              PDO::ATTR_ERRMODE,
+              PDO::ERRMODE_EXCEPTION
+          ]
+        ]);
         $ids = $rows['id'];
         $locationId = $rows['location_id'];
         $conditionId = $rows['condition_id'];

@@ -61,7 +61,7 @@
           <p class='text-light'><small><b>Column Order:</b> Property Code, Serial Number, Description, Brand, Model, UOM, Cost, Date Aquired, OR Number, Quantity</small></p>
           <form action="build/ajax/uploadProperty.php" method="POST" enctype="multipart/form-data">
               <div class="input-control file full-size" data-role="input">
-                  <input type="file" name="physical_count_csv">
+                  <input type="file" name="physical">
                   <button class="button" type="button"><span class="mif-folder"></span></button>
               </div>
               <div class="input-control" style="width:300px;" data-role="select">

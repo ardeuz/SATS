@@ -38,6 +38,7 @@
             <h1 class="text-light fg-green">Manage Accounts<span class="mif-user place-right text-light"></span></h1>
             <p class='text-normal fg-red'>Colored Rows are locked.</p>
             <button class="button warning" onclick="showMetroDialog('#addNewUser')"><span class="mi-usert icon"></span> Add User</button>
+            <a href='build/ajax/exportUser.php' class="button success">Export Property List</a>
             <button class="button success place-right" onclick="showMetroDialog('#importUsers')"><span class="mi-usert icon"></span> Import User</button>
 
             <hr class="thin bg-grayLighter">
