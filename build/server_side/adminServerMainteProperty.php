@@ -27,13 +27,14 @@
         $minorCat = $row['minor_category'];
         $maintenance = '
         <div class="toolbar"><button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#adminAccountabilityDialog\'); ViewProperty('.$ids.');"><span class="mif-eye icon"></span></button>
-        <button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#editPropertyDialog\'); EditProperty('.$ids.',\''.$pcode.'\' , '.$sno.' , \''.$description.'\' , \''.$brand.'\' , \''.$model.'\' ,'.$orNo.' , \''.$uom.'\' ,'.$cost.', '.$minorCat.' );"><span class="mif-pencil icon"></span></button>
+        <button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#editPropertyDialog\'); EditProperty('.$ids.', \''.$pcode.'\' , \''.$sno.'\' , \''.$description.'\' , \''.$brand.'\' , \''.$model.'\' ,\''.$orNo.'\' , \''.$uom.'\' ,'.$cost.', '.$minorCat.' );"><span class="mif-pencil icon"></span></button>
           <button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#deletePropertyDialog\'); DeletePropertyValidation(\''.$ids.'\',\''.$pcode.'\');"><span class="mif-bin icon"></span></button></div>';
         return $maintenance;
       }),
     array('db' => '`u`.`pcode`', 'dt' => 1,'field' => "pcode"),
     array('db' => '`u`.`sno`', 'dt' => 2,'field'=> 'sno'),
-    array('db' => '`u`.`qty`', 'dt' => 3,'field'=> 'qty')
+    array('db' => '`u`.`description`', 'dt' => 3,'field'=> 'description'),
+    array('db' => '`u`.`qty`', 'dt' => 4,'field'=> 'qty')
 
   );
   $sql_details = array(

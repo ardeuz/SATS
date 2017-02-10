@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include_once ("../../medoo.php");
   require( '../dataTables/ssp.php' );
   $table = "propertyAccountability";
   $pkey = "id";
@@ -21,7 +22,20 @@
     array('db' => '`u`.`qty`', 'dt' => 4,'field' => "qty"),
     array('db' => '`u`.`id`', 'dt' => 5,'field'=> 'id' ,'formatter' => function($id,$rows)
       {
-        include_once ("../../connection.php");
+        $db = new medoo([
+          // required
+          'database_type' => 'mysql',
+          'database_name' => 'sats',
+          'server' => 'localhost',
+          'username' => 'root',
+          'password' => '',
+          'charset' => 'utf8',
+
+          'option' => [
+              PDO::ATTR_ERRMODE,
+              PDO::ERRMODE_EXCEPTION
+          ]
+        ]);
         $ids = $rows['id'];
         $conditionId = $rows['condition_id'];
         $locationId = $rows['location_id'];

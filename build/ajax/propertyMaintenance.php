@@ -21,6 +21,7 @@ if(isset($_POST['showAccounts']))
 <td class="sortable-column">Maintenance</td>
 <td class="sortable-column">Property Code</td>
 <td class="sortable-column">Serial Number</td>
+<td class="sortable-column">description</td>
 <td class="sortable-column">Quantity</td>
 </tr>
 </thead>
@@ -39,7 +40,10 @@ if(isset($_POST['showAccounts']))
   setInterval(function() {
     accounts.ajax.reload(null,false);
     console.log(1);
-  }, 10000);
+  }, 10000);  setInterval(function() {
+      accounts.ajax.reload(null,false);
+      console.log(1);
+    }, 10000);
 </script>
 <?php
 exit();

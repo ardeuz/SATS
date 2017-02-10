@@ -215,7 +215,7 @@ foreach ($prowareInfoDatas as $prowareInfoData)
           ], [
             "AND" => [
               'id[!]' => $prowareInfoData['property_id'],
-              'id[!]' => $db->select("sub_property", "sub_property_id", ["property_id[!]" => $prowareInfoData['property_id']])
+              'id[!]' => $db->get("sub_property", "sub_property_id", ["property_id" => $prowareInfoData['property_id']])
             ]
           ]);
 
