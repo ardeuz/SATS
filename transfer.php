@@ -55,7 +55,7 @@
                     <hr class="thin bg-grayLighter">
                     <div id="tableTransfer"></div>
                 </div>
-             <div   data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="auto" data-width="27%" data-overlay-click-close="true" id="transferdialog" data-close-button="true">
+             <div  data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="auto" data-width="27%" data-overlay-click-close="true" id="transferdialog" data-close-button="true">
              	<h3 class="padding20 text-light header">Transfer Item </h3>
                 <input type="hidden" id="propertyid"/>
                 <input type="hidden" id="empId"/>

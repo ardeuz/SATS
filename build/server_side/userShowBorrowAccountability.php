@@ -16,7 +16,7 @@
       $empId = $row['emp_id'];
       $qty = $row['qty'];
       $viewing = '<div class="toolbar"><button class="toolbar-button button primary" onclick="borrowView('.$ids.','.$conditionIds.','.$locationIds.',\''.$empId.'\');showMetroDialog(\'#viewdialog\')"><span class="mif-eye icon"></span></button>
-      <button class="toolbar-button button primary transferView" idTv='.$ids.' onclick="transferItem('.$ids.','.$qty.',\''.$empId.'\','.$conditionIds.');showMetroDialog(\'#borrowedDialog\')"><span class="mif-plus icon"></span></button>
+      <button class="toolbar-button button primary transferView" idTv='.$ids.' onclick="transferItem('.$ids.','.$qty.',\''.$empId.'\','.$conditionIds.','.$locationIds.');showMetroDialog(\'#borrowedDialog\')"><span class="mif-plus icon"></span></button>
       </div>';
       return $viewing;
     }),

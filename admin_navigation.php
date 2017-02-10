@@ -150,7 +150,7 @@
     </li>
     <li  class="<?php if($thisPage=='Repair'){echo 'active';} ?>"><a href="accountability_repair.php"><span class="mif-wrench icon"></span> Repair</a></li>
     <li class="menu-title">Settings</li>
-    <li><a href="#"><span class="mif-cog icon"></span> Account Settings</a></li>
+    <li  class="<?php if($thisPage == 'accountSetting'){echo 'active'; } ?>"><a href="adminAccountSetting.php"><span class="mif-cog icon"></span> Account Settings</a></li>
     <li><a href="?logout=1"><span class="mif-exit icon"></span> Logout</a></li>
     <li class="divider"></li>
     <li class="menu-title"></<li>

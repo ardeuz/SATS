@@ -70,7 +70,7 @@ function insertQuantity()
     var locationId = $("#locationId").val();
     var qtty= parseInt($("#quantity").val());
     var locationTransfer = $("#location").val();
-
+		console.log(locationId);
     if (locationTransfer == "-1" || locationTransfer == null) {
 
         $.Notify({

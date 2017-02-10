@@ -73,8 +73,10 @@
                      <input type="number" min="1" id="quantity" value='1' />
                 </div>
                 <span>Return Date:</span>
-                <div class='input-control full-size'>
-                  <input type="datetime-local" id="dateBorrow" />
+
+                <div class='input-control text full-size' data-role ="datepicker">
+                  <input type="text" id="dateBorrow"/>
+                  <button class="button"><span class="mif-calendar"></span></button>
                 </div>
 
                 <button class="button button-primary" onclick="insertQuantity();"><span class="mif-plus"></span>
