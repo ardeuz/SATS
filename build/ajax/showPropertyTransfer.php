@@ -1,7 +1,7 @@
 <?php
 	if (isset($_SESSION['propertyTransferList'])) {
 		$propertyTransferList = $_SESSION['propertyTransferList'];
-
+		
 		//===========count employees to be get=============//
 		$employeeList = array();
 		for ($i = 0; $i < count($propertyTransferList); $i ++) {
