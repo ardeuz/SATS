@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50616
 File Encoding         : 65001
 
-Date: 2017-02-09 15:40:12
+Date: 2017-02-10 18:21:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,10 +33,10 @@ CREATE TABLE `account_table` (
 -- ----------------------------
 -- Records of account_table
 -- ----------------------------
-INSERT INTO `account_table` VALUES ('CLN0002A', 'GLENOS', 'PAMARANGLAS', 'ARANZANSO', 'BUILDING', 'CLN0002A', '1');
-INSERT INTO `account_table` VALUES ('CLN0003A', 'MARIVIC', 'MAWANAY', 'BAELLO', 'BUILDING', 'CLN0003A', '1');
-INSERT INTO `account_table` VALUES ('CLN0004F', 'MARILOU', 'FACISTOL', 'BARTOLOME', 'BUILDING', 'CLN0004F', '1');
-INSERT INTO `account_table` VALUES ('CLN0005F', 'SUZETTE', 'CARLIT', 'CRISOSTOMO', 'BUILDING', 'CLN0005F', '1');
+INSERT INTO `account_table` VALUES ('CLN0002A', 'PAMARANGLAS', 'GLENOS', 'ARANZANSO', 'ADMINISTRATION', 'CLN0002A', '1');
+INSERT INTO `account_table` VALUES ('CLN0003A', 'MAWANAY', 'MARIVIC', 'BAELLO', 'PROWARE', 'CLN0003A', '1');
+INSERT INTO `account_table` VALUES ('CLN0004F', 'MARILOU', 'FACISTOL', 'BARTOLOME', 'FACULTY', 'CLN0004F', '1');
+INSERT INTO `account_table` VALUES ('CLN0005F', 'CARLIT', 'SUZETTE', 'CRISOSTOMO', 'FACULTY', 'CLN0005F', '1');
 INSERT INTO `account_table` VALUES ('CLN0006F', 'JOSEPHINE ANNE', 'DIONSON', 'DAFFON', 'BUILDING', 'CLN0006F', '1');
 INSERT INTO `account_table` VALUES ('CLN0008F', 'ROWENA', 'SAN ANDRES', 'GARCIA', 'BUILDING', 'CLN0008F', '1');
 INSERT INTO `account_table` VALUES ('CLN0009A', 'DONNA JOY', 'HERRERA', 'GODIO', 'BUILDING', 'CLN0009A', '1');
@@ -650,6 +650,8 @@ INSERT INTO `location` VALUES ('291', 'ROOFTOP');
 INSERT INTO `location` VALUES ('292', 'S.A. OFFICE');
 INSERT INTO `location` VALUES ('293', 'STOLEN');
 INSERT INTO `location` VALUES ('294', 'VACANT AREA');
+INSERT INTO `location` VALUES ('295', '');
+INSERT INTO `location` VALUES ('296', '');
 
 -- ----------------------------
 -- Table structure for `major_category`
@@ -881,7 +883,7 @@ CREATE TABLE `property` (
   `date_acquired` datetime NOT NULL,
   `or_number` varchar(999) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=725 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=877 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of property
@@ -1583,6 +1585,157 @@ INSERT INTO `property` VALUES ('721', 'CLN-SFF11A-2014-021', '', 'Teacher\'s TAB
 INSERT INTO `property` VALUES ('722', 'CLN-SFF75A-2014-034', '', 'Whiteboard wall type 4 x 8', '', '', '165', 'pc/s', '2600.00', '2013-12-13 00:00:00', '4.01E+11');
 INSERT INTO `property` VALUES ('723', 'CLN-SFF75A-2014-144', '', 'Whiteboard wall type 4 x 4', '', '', '165', 'pc/s', '1900.00', '2013-12-13 00:00:00', '4.01E+11');
 INSERT INTO `property` VALUES ('724', 'CLN-SFF75A-2014-145', '', 'Whiteboard wall type 4 x 4', '', '', '165', 'pc/s', '1900.00', '2013-12-13 00:00:00', '4.01E+11');
+INSERT INTO `property` VALUES ('725', '', '20573207-01684', '\r\nFCU - Ceiling Casette MCK025AW -KXBE', '\r\nGREE', 'MCK025AW-KXBE', '110', 'pc/s', '0.00', '2015-03-06 00:00:00', '1');
+INSERT INTO `property` VALUES ('726', '008-OSE74-002', '', 'Fire Extinguisher  Drychemical 10lbs', '', '', '88', 'pc/s', '0.00', '0000-00-00 00:00:00', '');
+INSERT INTO `property` VALUES ('727', '008-OSE75-2015-009', '55S51DDMB-151H4096-00137R', '\"LED TV 55\"\" QUBE (Smart TV - Android) Model: 55QTV\"', '', '', '87', 'pc/s', '26000.00', '2015-06-03 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('728', '008-SFF23-2015-001', '', 'Monobloc CHAIRS - Coft Jasmine Yellow', '', '', '138', 'pc/s', '585.00', '2015-06-22 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('729', 'CLN-SFF11A-2015-001', '', 'Teacher\'s TABLES - Right side with CPU Cabinet', '', '', '139', 'pc/s', '4100.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('730', ' ', ' ', 'Whiteboard wall type 4 x 8', '', '', '165', 'pc/s', '105000.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('731', '', '20573201-01700', 'FCU - Ceiling Casette MCK025AW -KXBE', 'GREE', 'MCK025AW-KXBE', '110', 'pc/s', '0.00', '2015-03-06 00:00:00', '1');
+INSERT INTO `property` VALUES ('732', '008-OSE74-025', '', 'Fire Extinguisher  Drychemical 10lbs', '', '', '88', 'pc/s', '0.00', '0000-00-00 00:00:00', '');
+INSERT INTO `property` VALUES ('733', '008-OSE75-2015-008', '55S51DCN-14AH4114-001816', '\"LED TV 55\"\" QUBE (Smart TV - Android) Model: 55QTV\"', '', '', '87', 'pc/s', '26000.00', '2015-06-03 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('734', '008-SFF23-2015-002', '', 'Monobloc CHAIRS - Coft Jasmine Yellow', '', '', '138', 'pc/s', '585.00', '2015-06-22 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('735', 'CLN-SFF11A-2015-002', '', 'Teacher\'s TABLES - Right side with CPU Cabinet', '', '', '139', 'pc/s', '4100.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('736', 'CLN-SFF75A-2014-150', '', 'Whiteboard wall type 4 x 4', '', '', '165', 'pc/s', '1900.00', '2013-12-13 00:00:00', '4.01E+11');
+INSERT INTO `property` VALUES ('737', 'CLN-SFF75A-2014-151', '', 'Whiteboard wall type 4 x 4', '', '', '165', 'pc/s', '1900.00', '2013-12-13 00:00:00', '4.01E+11');
+INSERT INTO `property` VALUES ('738', ' ', ' ', 'Whiteboard wall type 4 x 8', '', '', '165', 'pc/s', '0.00', '0000-00-00 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('739', '', '20573201-01700', 'FCU - Ceiling Casette MCK025AW -KXBE', 'GREE', 'MCK025AW-KXBE', '110', 'pc/s', '2015.00', '2014-11-18 00:00:00', '1');
+INSERT INTO `property` VALUES ('740', '008-OSE74-025', '', 'Fire Extinguisher  Drychemical 10lbs', '', '', '88', 'pc/s', '0.00', '0000-00-00 00:00:00', '');
+INSERT INTO `property` VALUES ('741', '008-OSE75-2015-011', '55S51DDMB-151H4096-00139L', '\"LED TV 55\"\" QUBE (Smart TV - Android) Model: 55QTV\"', '', '', '87', 'pc/s', '26000.00', '2015-06-03 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('742', '008-SFF23-2015-002', '', 'Monobloc CHAIRS - Coft Jasmine Yellow', '', '', '138', 'pc/s', '585.00', '2015-06-22 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('743', 'CLN-SFF11A-2015-002', '', 'Teacher\'s TABLES - Right side with CPU Cabinet', '', '', '139', 'pc/s', '4100.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('745', 'CLN-SFF75A-2014-151', '', 'Whiteboard wall type 4 x 4', '', '', '165', 'pc/s', '1900.00', '2013-12-13 00:00:00', '4.01E+11');
+INSERT INTO `property` VALUES ('746', '', '8.28E+12', 'FCU - Ceiling Cassette (2.5tr)Gree Model#FP-160XD/', 'GREE', 'FP-160XD/B-T', '110', 'pc/s', '2014.00', '2014-11-18 00:00:00', '1');
+INSERT INTO `property` VALUES ('747', '008-OSE74-2014-024', '', 'Fire Extinguisher  Drychemical 10lbs', '', '', '88', 'pc/s', '2500.00', '2014-01-14 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('748', '008-OSE75-2015-010', '55S51DDMB-14CH4306-000092', '\"LED TV 55\"\" QUBE (Smart TV - Android) Model: 55QTV\"', '', '', '87', 'pc/s', '26000.00', '2015-06-03 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('749', '008-SFF23-2015-004', '', 'Monobloc CHAIRS - Coft Jasmine Yellow', '', '', '138', 'pc/s', '585.00', '2015-06-22 00:00:00', '4010000002116');
+INSERT INTO `property` VALUES ('750', 'CLN-SFF11B-2015-002', '', 'Teacher\'s TABLES - left side with CPU Cabinet', '', '', '139', 'pc/s', '4100.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('751', ' ', ' ', 'Whiteboard wall type 4 x 8', '', '', '165', 'pc/s', '0.00', '0000-00-00 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('752', '', '8.28E+11', 'FCU - Ceiling Cassette (2.5tr)Gree Model#FP-160XD/', 'GREE', 'FP-160XD/B-T', '110', 'pc/s', '2014.00', '2014-11-18 00:00:00', '1');
+INSERT INTO `property` VALUES ('753', '008-OSE74-043', '', 'Fire Extinguisher  Drychemical 10lbs', '', '', '88', 'pc/s', '0.00', '0000-00-00 00:00:00', '');
+INSERT INTO `property` VALUES ('754', '008-OSE75-2015-004', '55S51DCN-14AH4114-001799', '\"LED TV 55\"\" QUBE (Smart TV - Android) Model: 55QTV\"', '', '', '87', 'pc/s', '26000.00', '2015-06-03 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('755', '008-SFF23-2015-005', '', 'Monobloc CHAIRS - Coft Jasmine Yellow', '', '', '138', 'pc/s', '585.00', '2015-06-22 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('756', 'CLN-SFF11A-2015-003', '', 'Teacher\'s TABLES - Right side with CPU Cabinet', '', '', '139', 'pc/s', '4100.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('757', ' ', ' ', 'Whiteboard wall type 4 x 8', '', '', '165', 'pc/s', '0.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('758', '8.28E+11', 'FCU - Ceiling Cassette (2.5TR)Gree Model#FP-160XD/', 'GREE', 'FP-160XD/B-T', 'pc/s', '110', '', '2014.00', '2014-11-18 00:00:00', '1');
+INSERT INTO `property` VALUES ('759', '008-OSE74-2014-008', '', 'Fire Extinguisher  Drychemical 10lbs', '', '', '88', 'pc/s', '2500.00', '2014-01-14 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('760', '008-OSE75-2015-007', '55S51DCN-14AH4114-002499', '\"LED TV 55\"\" QUBE (Smart TV - Android) Model: 55QTV\"', '', '', '87', 'pc/s', '26000.00', '2015-06-03 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('761', '008-SFF23-2015-006', '', 'Monobloc CHAIRS - Coft Jasmine Yellow', '', '', '138', 'pc/s', '585.00', '2015-06-22 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('762', 'CLN-SFF11A-2015-004', '', 'Teacher\'s TABLES - Right side with CPU Cabinet', '', '', '139', 'pc/s', '4100.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('763', ' ', ' ', 'Whiteboard wall type 4 x 8', '', '', '165', 'pc/s', '0.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('764', '', '8.28E+12', 'FCU - Ceiling Cassette (3.0tr)Gree Model#FP-180XD/', 'GREE', 'FP-180D/B-T', '110', 'pc/s', '2014.00', '2014-11-18 00:00:00', '1');
+INSERT INTO `property` VALUES ('765', '008-OSE74-2014-012', '', 'Fire Extinguisher  Drychemical 10lbs', '', '', '88', 'pc/s', '2500.00', '2014-01-14 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('766', '008-OSE75-2015-012', '55S51DDMB-151H4096-001340', '\"LED TV 55\"\" QUBE (Smart TV - Android) Model: 55QTV\"', '', '', '87', 'pc/s', '26000.00', '2015-06-03 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('767', '008-SFF23-2015-007', '', 'Monobloc CHAIRS - Coft Jasmine Yellow', '', '', '138', 'pc/s', '585.00', '2015-06-22 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('768', 'CLN-SFF11B-2015-003', '', 'Teacher\'s TABLES - left side with CPU Cabinet', '', '', '139', 'pc/s', '4100.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('769', ' ', ' ', 'Whiteboard wall type 4 x 8', '', '', '165', 'pc/s', '0.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('770', ' ', '8.28E+12', 'FCU - Ceiling Cassette (3.0tr)Gree Model#FP-180XD/B-T', 'GREE', 'FP-180D/B-T', '110', 'pc/s', '0.00', '2014-11-18 00:00:00', 'FROM STI CALAMBA');
+INSERT INTO `property` VALUES ('771', '008-OSE74-2014-026', '', 'Fire Extinguisher  Drychemical 10lbs', '', '', '88', 'pc/s', '2500.00', '2014-01-14 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('772', '008-OSE75-2015-001', '55S51DDMB-151H4096-00140R', '\"LED TV 55\"\" QUBE (Smart TV - Android) Model: 55QTV\"', '', '', '87', 'pc/s', '26000.00', '2015-06-03 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('773', '008-SFF23-2015-008', '', 'Monobloc CHAIRS - Coft Jasmine Yellow', '', '', '138', 'pc/s', '585.00', '2015-06-22 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('774', 'CLN-SFF11B-2015-004', '', 'Teacher\'s TABLES - left side with CPU Cabinet', '', '', '139', 'pc/s', '4100.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('775', ' ', 'Whiteboard wall type 4 x 8', '', '', 'pc/s', '165', '', '2015.00', '2015-05-20 00:00:00', '1');
+INSERT INTO `property` VALUES ('776', '', '8.28E+12', 'FCU - Ceiling Cassette (3.0tr)Gree Model#FP-180XD/', 'GREE', 'FP-180D/B-T', '110', 'pc/s', '2014.00', '2014-11-18 00:00:00', '1');
+INSERT INTO `property` VALUES ('777', '008-OSE74-042', '', 'Fire Extinguisher  Drychemical 10lbs', '', '', '88', 'pc/s', '0.00', '0000-00-00 00:00:00', '');
+INSERT INTO `property` VALUES ('778', '008-OSE75-2015-006', '55S51DCN-14AH4114-00195B', '\"LED TV 55\"\" QUBE (Smart TV - Android) Model: 55QTV\"', '', '', '87', 'pc/s', '26000.00', '2015-06-03 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('779', '008-SFF23-2015-009', '', 'Monobloc CHAIRS - Coft Jasmine Yellow', '', '', '138', 'pc/s', '585.00', '2015-06-22 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('780', 'CLN-SFF11B-2015-005', '', 'Teacher\'s TABLES - left side with CPU Cabinet', '', '', '139', 'pc/s', '4100.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('781', ' ', 'Whiteboard wall type 4 x 8', '', '', 'pc/s', '165', '', '5.00', '2015-05-20 00:00:00', '1');
+INSERT INTO `property` VALUES ('782', ' ', '8.28E+12', 'FCU - Ceiling Cassette (3.0tr)Gree Model#FP-180XD/B-T', 'GREE', 'FP-180D/B-T', '110', 'pc/s', '0.00', '2014-11-18 00:00:00', '1');
+INSERT INTO `property` VALUES ('783', '008-OSE74-2014-016', '', 'Fire Extinguisher  Drychemical 10lbs', '', '', '88', 'pc/s', '2500.00', '2014-01-14 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('784', '008-OSE75-2015-005', '55S51DCN-14AH4114-000789', '\"LED TV 55\"\" QUBE (Smart TV - Android) Model: 55QTV\"', '', '', '87', 'pc/s', '26000.00', '2015-06-03 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('785', '008-SFF23-2015-010', '', 'Monobloc CHAIRS - Coft Jasmine Yellow', '', '', '138', 'pc/s', '585.00', '2015-06-22 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('786', 'CLN-SFF11A-2015-005', '', 'Teacher\'s TABLES - Right side with CPU Cabinet', '', '', '139', 'pc/s', '4100.00', '2015-05-20 00:00:00', '4.01E+12');
+INSERT INTO `property` VALUES ('787', ' ', 'Whiteboard wall type 4 x 8', '', '', 'pc/s', '165', '', '2015.00', '2015-05-20 00:00:00', '1');
+INSERT INTO `property` VALUES ('788', '008-CE41-2017-001', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('789', '008-CE41-2017-002', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('790', '008-CE41-2017-003', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('791', '008-CE41-2017-004', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('792', '008-CE41-2017-005', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('793', '008-CE41-2017-006', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('794', '008-CE41-2017-007', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('795', '008-CE41-2017-008', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('796', '008-CE41-2017-009', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('797', '008-CE41-2017-010', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('798', '008-CE41-2017-011', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('799', '008-CE41-2017-012', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('800', '008-CE41-2017-013', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('801', '008-CE41-2017-014', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('802', '008-CE41-2017-015', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('803', '008-CE41-2017-016', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('804', '008-CE41-2017-017', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('805', '008-CE41-2017-018', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('806', '008-CE41-2017-019', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('807', '008-CE41-2017-020', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('808', '008-CE41-2017-021', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('809', '008-CE41-2017-022', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('810', '008-CE41-2017-023', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('811', '008-CE41-2017-024', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('812', '008-CE41-2017-025', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('813', '008-CE41-2017-026', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('814', '008-CE41-2017-027', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('815', '008-CE41-2017-028', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('816', '008-CE41-2017-029', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('817', '008-CE41-2017-030', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('818', '008-CE41-2017-031', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('819', '008-CE41-2017-032', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('820', '008-CE41-2017-033', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('821', '008-CE41-2017-034', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('822', '008-CE41-2017-035', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('823', '008-CE41-2017-036', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('824', '008-CE41-2017-037', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('825', '008-CE41-2017-038', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('826', '008-CE41-2017-039', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('827', '008-CE41-2017-040', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('828', '008-CE41-2017-041', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('829', '008-CE41-2017-042', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('830', '008-CE41-2017-043', '', 'USB Mouse A4tech OP-720D', 'A4TECH', 'OP720D', '9', 'pc/s', '0.00', '2017-01-24 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('831', '008-CE42-2017-001', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('832', '008-CE42-2017-002', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('833', '008-CE42-2017-003', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('834', '008-CE42-2017-004', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('835', '008-CE42-2017-005', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('836', '008-CE42-2017-006', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('837', '008-CE42-2017-007', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('838', '008-CE42-2017-008', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('839', '008-CE42-2017-009', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('840', '008-CE42-2017-010', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('841', '008-CE42-2017-011', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('842', '008-CE42-2017-012', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('843', '008-CE42-2017-013', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('844', '008-CE42-2017-014', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('845', '008-CE42-2017-015', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('846', '008-CE42-2017-016', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('847', '008-CE42-2017-017', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('848', '008-CE42-2017-018', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('849', '008-CE42-2017-019', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('850', '008-CE42-2017-020', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('851', '008-CE42-2017-021', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('852', '008-CE42-2017-022', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('853', '008-CE42-2017-023', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('854', '008-CE42-2017-024', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('855', '008-CE42-2017-025', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('856', '008-CE42-2017-026', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('857', '008-CE42-2017-027', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('858', '008-CE42-2017-028', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('859', '008-CE42-2017-029', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('860', '008-CE42-2017-030', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('861', '008-CE42-2017-031', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('862', '008-CE42-2017-032', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('863', '008-CE42-2017-033', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('864', '008-CE42-2017-034', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('865', '008-CE42-2017-035', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('866', '008-CE42-2017-036', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('867', '008-CE42-2017-037', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('868', '008-CE42-2017-038', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('869', '008-CE42-2017-039', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('870', '008-CE42-2017-040', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('871', '008-CE42-2017-041', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('872', '008-CE42-2017-042', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('873', '008-CE42-2017-043', '', 'USB Keyboard A4tech KR-85', 'A4TECH', 'KR85', '2', 'pc/s', '0.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('874', '008-CE47-2017-001', '5VV0YS8X', 'SEAGATE HDD 7200RPM 500G SATA\n', 'SEAGATE', 'ST3500312CS', '70', 'PC/S', '2100.00', '2017-02-10 17:52:03', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('875', ' ', '', 'HDMI TO VGA CABLE MINI', '', '', '41', 'PC/S', '550.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
+INSERT INTO `property` VALUES ('876', ' ', '', 'Mini Display Port to VGA', '', '', '41', 'PC/S', '850.00', '0000-00-00 00:00:00', 'CLN-1617-137D');
 
 -- ----------------------------
 -- Table structure for `property_accountability`
@@ -1601,6 +1754,8 @@ CREATE TABLE `property_accountability` (
 -- ----------------------------
 -- Records of property_accountability
 -- ----------------------------
+INSERT INTO `property_accountability` VALUES ('CLN0003A', '736', '1', '90', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0003A', '737', '1', '90', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0012F', '198', '1', '13', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0025A', '22', '1', '2', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0025A', '41', '1', '3', '1', null);
@@ -1619,6 +1774,105 @@ INSERT INTO `property_accountability` VALUES ('CLN0025A', '531', '1', '65', '1',
 INSERT INTO `property_accountability` VALUES ('CLN0025A', '566', '1', '66', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0025A', '585', '1', '67', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0025A', '595', '1', '68', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '729', '1', '87', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '735', '1', '90', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '743', '1', '92', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '750', '1', '93', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '756', '1', '94', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '762', '1', '95', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '768', '1', '96', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '774', '1', '97', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '780', '1', '98', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '786', '1', '99', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '788', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '789', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '790', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '791', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '792', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '793', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '794', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '795', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '796', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '797', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '798', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '799', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '800', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '801', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '802', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '803', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '804', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '805', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '806', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '807', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '808', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '809', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '810', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '811', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '812', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '813', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '814', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '815', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '816', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '817', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '818', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '819', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '820', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '821', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '822', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '823', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '824', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '825', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '826', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '827', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '828', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '829', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '830', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '831', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '832', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '833', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '834', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '835', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '836', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '837', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '838', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '839', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '840', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '841', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '842', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '843', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '844', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '845', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '846', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '847', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '848', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '849', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '850', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '851', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '852', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '853', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '854', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '855', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '856', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '857', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '858', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '859', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '860', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '861', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '862', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '863', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '864', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '865', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '866', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '867', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '868', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '869', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '870', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '871', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '872', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '873', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '874', '1', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '875', '43', '135', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0025A', '876', '19', '135', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '13', '1', '2', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '14', '1', '2', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '15', '1', '2', '1', null);
@@ -2000,6 +2254,7 @@ INSERT INTO `property_accountability` VALUES ('CLN0291A', '417', '1', '61', '1',
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '418', '1', '61', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '419', '1', '61', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '420', '1', '61', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '421', '1', '61', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '422', '1', '61', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '423', '1', '61', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '424', '1', '61', '1', null);
@@ -2291,7 +2546,46 @@ INSERT INTO `property_accountability` VALUES ('CLN0291A', '721', '1', '73', '1',
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '722', '1', '59', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '723', '1', '59', '1', null);
 INSERT INTO `property_accountability` VALUES ('CLN0291A', '724', '1', '59', '1', null);
-INSERT INTO `property_accountability` VALUES ('CLN0291A', '421', '1', '61', '2', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '726', '1', '87', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '727', '1', '87', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '728', '1', '87', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '730', '1', '87', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '732', '1', '90', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '733', '1', '90', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '734', '1', '90', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '738', '1', '90', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '740', '1', '92', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '741', '1', '92', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '742', '1', '92', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '744', '1', '92', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '745', '1', '92', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '747', '1', '93', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '748', '1', '93', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '749', '1', '93', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '751', '1', '93', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '753', '1', '94', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '754', '1', '94', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '755', '1', '94', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '757', '1', '94', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '759', '1', '95', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '760', '1', '95', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '761', '1', '95', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '763', '1', '95', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '765', '1', '96', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '766', '1', '96', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '767', '1', '96', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '769', '1', '96', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '770', '1', '97', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '771', '1', '97', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '772', '1', '97', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '773', '1', '97', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '777', '1', '98', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '778', '1', '98', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '779', '1', '98', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '782', '0', '99', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '783', '1', '99', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '784', '1', '99', '1', null);
+INSERT INTO `property_accountability` VALUES ('CLN0291A', '785', '1', '99', '1', null);
 
 -- ----------------------------
 -- Table structure for `sub_property`
@@ -2306,12 +2600,6 @@ CREATE TABLE `sub_property` (
 -- ----------------------------
 -- Records of sub_property
 -- ----------------------------
-INSERT INTO `sub_property` VALUES ('15', '557');
-INSERT INTO `sub_property` VALUES ('16', '690');
-INSERT INTO `sub_property` VALUES ('18', '624');
-INSERT INTO `sub_property` VALUES ('119', '13');
-INSERT INTO `sub_property` VALUES ('422', '18');
-INSERT INTO `sub_property` VALUES ('624', '15');
 
 -- ----------------------------
 -- Table structure for `sub_property_history`
@@ -2423,3 +2711,9 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- ----------------------------
 DROP VIEW IF EXISTS `showpropertytransfer`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `showpropertytransfer` AS select `a`.`ctrl_no` AS `ctrl_no`,count(`a`.`id`) AS `items_transferred`,concat(`b`.`last_name`,', ',`b`.`first_name`) AS `transfer_to`,concat(`c`.`last_name`,', ',`c`.`first_name`) AS `released_from`,`a`.`date_approved` AS `date_approved` from ((`transfer_request_history` `a` left join `account_table` `b` on((`a`.`transfer_to` = `b`.`emp_id`))) left join `account_table` `c` on((`a`.`released_from` = `c`.`emp_id`))) group by `a`.`ctrl_no`;
+
+-- ----------------------------
+-- View structure for `transferview`
+-- ----------------------------
+DROP VIEW IF EXISTS `transferview`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `transferview` AS select `a`.`property_id` AS `id`,`a`.`condition_id` AS `condition_id`,`a`.`remarks` AS `remarks`,`b`.`pcode` AS `pcode`,`b`.`sno` AS `sno`,`b`.`description` AS `property_description`,`b`.`brand` AS `brand`,`b`.`model` AS `model`,`c`.`description` AS `major_description`,`d`.`description` AS `minor_description`,`a`.`qty` AS `qty`,`b`.`uom` AS `uom`,`a`.`location_id` AS `location_id`,`e`.`location` AS `location`,`b`.`cost` AS `cost`,`f`.`condition_info` AS `condition_info`,`g`.`emp_id` AS `emp_id`,`g`.`first_name` AS `first_name`,`g`.`last_name` AS `last_name`,`g`.`department` AS `department` from ((((((`property_accountability` `a` left join `property` `b` on((`a`.`property_id` = `b`.`id`))) left join `minor_category` `d` on((`b`.`minor_category` = `d`.`id`))) left join `major_category` `c` on((`d`.`major_id` = `c`.`id`))) left join `location` `e` on((`a`.`location_id` = `e`.`id`))) left join `condition_info` `f` on((`a`.`condition_id` = `f`.`id`))) left join `account_table` `g` on((`a`.`emp_id` = `g`.`emp_id`)));
