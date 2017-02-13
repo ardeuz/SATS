@@ -4,6 +4,7 @@
   $pkey = "emp_id";
   $column = array(
     array('db' => '`u`.`emp_id`', 'dt' => 0,'field' => "emp_id"),
+    array('db' => '`u`.`status`', 'dt' => "status" , "field" => "status"),
     array('db' => '`u`.`middle_name`', 'dt' => 1,'field' => "middle_name"),
     array('db' => '`u`.`last_name`', 'dt' => 1,'field' => "last_name"),
     array('db' => '`u`.`first_name`', 'dt' => 1,'field' => "first_name","formatter" => function($first_name,$rows)

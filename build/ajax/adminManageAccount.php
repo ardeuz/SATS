@@ -18,6 +18,20 @@
 </table>
 <script type="text/javascript">
   var accounts = $('#accountsTable').DataTable({
+    "createdRow":function(row,data,dataIndex)
+    {
+      if(data.status == 0)
+      {
+        $(row).addClass("bg-lightRed");
+        $(row).addClass("fg-white");
+      }
+      else if(data.status == 1)
+      {
+        $(row).addClass("bg-white");
+        $(row).addClass("fg-black");
+
+      }
+    },
     "processing": true,
     "serverSide": true,
     "ajax": "build/server_side/adminServerUsers.php",
