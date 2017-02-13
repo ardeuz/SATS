@@ -185,12 +185,10 @@ foreach ($prowareInfoDatas as $prowareInfoData)
         "property.description"
       ], ["sub_property.property_id" => $prowareInfoData['property_id']]);
 
-      if (count($subPropertyDatas) <= 0) {
-        echo "None";
-      } else {
-        echo "
-        <div id='sub_property_div' class='listview-outlook' data-role='listview'>";
+      echo "
+      <div id='sub_property_div' class='listview-outlook' data-role='listview'>";
 
+      if (count($subPropertyDatas) > 0) {
         foreach ($subPropertyDatas as $subPropertyData) {
           echo "
             <div id='sub_property_div" . $subPropertyData['id'] . "' class='list' onclick='deleteSubProperty(" . $subPropertyData['id'] . ", " . $prowareInfoData['property_id'] . ")'>
@@ -200,9 +198,9 @@ foreach ($prowareInfoDatas as $prowareInfoData)
                 </div>
             </div>";
         }
-
-        echo "</div>";
       }
+      
+      echo "</div>";
 
       echo "
       <hr class='bg-green'/>

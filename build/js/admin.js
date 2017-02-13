@@ -65,7 +65,7 @@ function deleteSubProperty(sub_id, parent_id) {
   }
 }
 
-function addChildProperty (parent_id) {
+function addChildProperty(parent_id) {
   if ($("#sub_property_select option").length == 0) { //validate if there's something to add
     return;
   }
@@ -89,7 +89,9 @@ function addChildProperty (parent_id) {
         .click(function() {deleteSubProperty(sub_id, parent_id);})
         .append(sub_property_list_content);
 
-      $("#sub_property_div").append(sub_property_div);
+        console.log(sub_property_div);
+
+      $("#adminAccountabilityDialog").find("#sub_property_div").append(sub_property_div);
 
       $("#sub_property_select option:selected").remove(); //remove from select options
     } else if (result == -1) {
