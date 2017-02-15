@@ -3,11 +3,12 @@
   $table = "account_table";
   $pkey = "emp_id";
   $column = array(
+    array('db' => '`u`.`status`', 'dt' => "status",'field' => "status"),
+
     array('db' => '`u`.`emp_id`', 'dt' => 0,'field' => "emp_id"),
-    array('db' => '`u`.`status`', 'dt' => "status" , "field" => "status"),
+    array('db' => '`u`.`first_name`', 'dt' => 1,'field' => "first_name"),
     array('db' => '`u`.`middle_name`', 'dt' => 1,'field' => "middle_name"),
-    array('db' => '`u`.`last_name`', 'dt' => 1,'field' => "last_name"),
-    array('db' => '`u`.`first_name`', 'dt' => 1,'field' => "first_name","formatter" => function($first_name,$rows)
+    array('db' => '`u`.`last_name`', 'dt' => 1,'field' => "last_name","formatter" => function($first_name,$rows)
     {
       $fn = $rows['first_name'];
       $mn = $rows['middle_name'];
@@ -18,11 +19,11 @@
     array('db' => '`u`.`department`', 'dt' => 2,'field' => "department"),
     array('db' => '`u`.`emp_id`', 'dt' => 3,'field'=> 'emp_id' ,'formatter' => function($emp_id,$row)
       {
-        $empId = $row[0];
-        $empFname = $row[1];
-        $empMname = $row[2];
-        $empLname = $row[3];
-        $empDept = $row[4];
+        $empId = $row[1];
+        $empFname = $row[2];
+        $empMname = $row[3];
+        $empLname = $row[4];
+        $empDept = $row[5];
         $maintenance = '<div class="toolbar">
           <button class="toolbar-button button primary" onClick="showMetroDialog(\'#editUser\'); editUser(\''.$empId.'\',\''.$empFname.'\',\''.$empMname.'\',\''.$empLname.'\',\''.$empDept.'\');"><span class="mif-pencil icon"></span></button>
           <button class="toolbar-button button primary" onClick="showMetroDialog(\'#deleteUser\'); deleteUserView(\''.$empId.'\')"><span class="mif-bin icon"></span></button>
@@ -42,6 +43,7 @@
                           </label>";
       return $accountActivation;
     })
+
   );
   $sql_details = array(
   	'user' => "root",
