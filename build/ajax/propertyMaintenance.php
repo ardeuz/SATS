@@ -37,10 +37,10 @@ if(isset($_POST['showAccounts']))
     }
 
   });
-  //  setInterval(function() {
-  //     accounts.ajax.reload(null,false);
-  //     console.log(1);
-  //   }, 10000);
+   setInterval(function() {
+      accounts.ajax.reload(null,false);
+      console.log(1);
+    }, 30000);
 </script>
 <?php
 exit();
