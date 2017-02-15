@@ -3,6 +3,7 @@ requestAccountability();
 $(document).ready(function(){
 	$("#sub_property_select").select2();
 	$("#parentData").select2();
+	$("#locationsIDs").select2();
 });
 
 function requestAccountability()

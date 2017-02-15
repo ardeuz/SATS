@@ -81,7 +81,7 @@ function ViewProperty(propertyId)
 						}
 		});
 }
-function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost)
+function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost,minorCat)
 {
 	var propertyID = parseInt(propertyCode);
 	$("#propertyId").val(propertyID);
