@@ -34,11 +34,27 @@
         <div class="row" style="height:100%;">
         <?php include_once('admin_navigation.php'); ?>
           <div class="cell auto-size padding20 no-margin-top grid container place-right" id="style-4" style="overflow-y:scroll;height:100%;">
+
             <h1 class="text-light fg-brown">Property Accountability<span class="mif-notification place-right text-light"></span></h1>
             <small class='text-normal fg-brown'>with Accountabilities</small>
             <p class='text-normal fg-brown'>Colored Rows are depreciated or scrap.</p>
             <hr class="thin bg-grayLighter">
             <a href='build/ajax/exportProperty.php' class="button warning">Export Property List</a>
+            <h5 class="text-light"> Filter By</h5>
+            <label>Location: </label>&nbsp;
+            <div class="input-control" data-role="select" style=" width:40%">
+              <select id="locationsIDs" style="display:none;">
+                <?php
+
+                  $locationFilters = $db->select("location",["location","id"]);
+                  foreach($locationFilters as $locationFilter)
+                  {
+                    echo "<option value=".$locationFilter['id'].">".$locationFilter['location']."</option>";
+                  }
+
+                ?>
+              </select>
+            </div>
             <button class="button success place-right" onclick="showMetroDialog('#uploadCSV');">Import CSV</button>
             <div id="history_request_div"  style="display:none;"></div>
 
