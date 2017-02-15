@@ -21,6 +21,7 @@ if(isset($_POST['showAccounts']))
 <td class="sortable-column">Property Code</td>
 <td class="sortable-column">Serial Number</td>
 <td class="sortable-column">Location</td>
+<td class="sortable-column">Description</td>
 <td class="sortable-column">Quantity</td>
 <td class="sortable-column">Condition</td>
 <td class="sortable-column">Employee Name</td>
@@ -199,7 +200,7 @@ foreach ($prowareInfoDatas as $prowareInfoData)
             </div>";
         }
       }
-      
+
       echo "</div>";
 
       echo "
