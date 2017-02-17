@@ -57,13 +57,14 @@
 		            echo "
 
 		            </div>
+
 		            </div>";
 
 		            if ($requestType == $REQUEST_PENDING) {
 
 		            	echo "
 		            		<hr class='thin' />
-		            		<button class='button danger place-right'>
+		            		<button class='button danger place-right' onclick='disapproveRequest(". $transferRequestGroupData['request_code'] .")'>
 		            			<span class='mif-cross'></span>
 		        			</button>
 		        			<button class='button success place-right showConfirmation' idUp=". $transferRequestGroupData['request_code'] .">
@@ -71,10 +72,16 @@
 		        				Accept
         					</button>";
 		            }
+								elseif($requestType == $REQUEST_APPROVED)
+								{
+									echo "<button class='button button-default ' onclick=approveInHistory(".$transferRequestGroupData['request_code'].")><span class='mif-chevron-right mif-ani-fast mif-ani-ripple '></span>&nbsp; Item Returned &nbsp;<span class='mif-chevron-left mif-ani-fast mif-ani-ripple'></span></button>";
+
+								}
 
 
 		    echo "
-				</div>";
+				</div>
+				";
 
 		    if ($cardCount == 3) {
 		    	echo "</div>";
