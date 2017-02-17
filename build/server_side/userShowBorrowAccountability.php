@@ -34,10 +34,40 @@
   	'db'   => "sats",
   	'host' => "localhost"
   );
-  $joinQuery = "FROM `propertyaccountability` AS `u`";
-  $extraWhere = "emp_id !='$emp_id' ";
+  $joinQuery;
+  if(isset($_GET['location']) || isset($_GET['accountability']) || isset($_GET['condtion']))
+  {
+    $locationIDs = $_GET['location'];
+    $conditionId = $_GET['condition'];
+    $accountability = $_GET['accountability'];
+    if($locationIDs != 0 && $accountability != 0 && $conditionId == 0){
+      $joinQuery = "FROM `propertyAccountability` AS `u` where emp_id !='$emp_id' AND location_id = $locationIDs AND emp_id = \"$accountability\"";
+    }
+    elseif($accountability != 0 && $conditionId != 0 && $locationIDs == 0){
+      $joinQuery = "FROM `propertyAccountability` AS `u` where emp_id !='$emp_id' AND  condition_id = $conditionId AND emp_id = \"$accountability\"";
+    }
+    elseif($locationIDs != 0 && $conditionId != 0 && $accountability == 0){
+      $joinQuery = "FROM `propertyAccountability` AS `u` where emp_id !='$emp_id' AND location_id = $locationIDs AND condition_id = $conditionId";
+    }
+    elseif($locationIDs != 0 && $conditionId == 0 && $accountability == 0){
+      $joinQuery = "FROM `propertyAccountability` AS `u` where emp_id !='$emp_id' AND location_id = $locationIDs";
+    }
+    elseif($accountability != 0 && $conditionId == 0 && $locationIDs == 0){
+      $joinQuery = "FROM `propertyAccountability` AS `u` where emp_id !='$emp_id' AND emp_id = \"$accountability\"";
+    }
+    elseif($conditionId != 0 && $locationIDs == 0 && $accountability == 0 ){
+      $joinQuery = "FROM `propertyAccountability` AS `u` where emp_id !='$emp_id' AND condition_id = $conditionId";
+    }
+    elseif($conditionId != 0 && $locationIDs != 0 && $accountability != 0 ){
+      $joinQuery = "FROM `propertyAccountability` AS `u` where emp_id !='$emp_id' AND location_id = $locationIDs AND condition_id = $conditionId AND emp_id = \"$accountability\"";
+    }
+    elseif($conditionId == 0 && $locationIDs == 0 && $accountability == 0 ){
+      $joinQuery = "FROM `propertyAccountability` AS `u`";
+    }
+  }
+
   echo json_encode(
-    SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery ,$extraWhere  )
+    SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery)
   );
   return;
 ?>

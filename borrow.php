@@ -32,6 +32,7 @@
   <link href="build/css/inventory.css" rel="stylesheet">
   <script src="build/js/jquery-2-1-3.min.js"></script>
   <script src="build/js/jquery.dataTables.min.js"></script>
+  <script src="build/js/select2.min.js"></script>
   <script src="build/js/metro.js"></script>
   <script src="build/js/borrow.js"></script>
 </head>
@@ -52,6 +53,53 @@
                         <u><span class="mif-paper-plane place-right  mif-ani-fast mif-ani-float"></span></u>
                     </h1>
                     <hr class="thin bg-grayLighter">
+                    <h5 class="text-light"> Filter By</h5>
+                    <label>Location: </label>&nbsp;
+                    <div class="input-control" data-role="select" style=" width:40%">
+                      <select id="locationsIDs" onchange="locationSelect()" style="display:none;">
+                        <option selected value="0">All</option>
+                        <?php
+
+                          $locationFilters = $db->select("location",["location","id"]);
+                          foreach($locationFilters as $locationFilter)
+                          {
+                            echo "<option value=".$locationFilter['id'].">".$locationFilter['location']."</option>";
+                          }
+
+                        ?>
+                      </select>
+                    </div>
+                    &nbsp;
+                    <label>Condition: </label>&nbsp;
+                    <div class="input-control" data-role="select" style=" width:40%">
+                      <select id="conditionsId" onchange="conditionSelect()" style="display:none;">
+                        <option selected value="0">All</option>
+                        <?php
+
+                          $locationFilters = $db->select("condition_info",["condition_info","id"]);
+                          foreach($locationFilters as $locationFilter)
+                          {
+                            echo "<option value=".$locationFilter['id'].">".$locationFilter['condition_info']."</option>";
+                          }
+
+                        ?>
+                      </select>
+                    </div>
+                    <label>Accountabilities of: </label>&nbsp;
+                    <div class="input-control" data-role="select" style=" width:40%">
+                      <select id="accountsId" onchange="accountSelect()" style="display:none;">
+                        <option selected value="0">All</option>
+                        <?php
+
+                          $locationFilters = $db->select("account_table",["first_name","middle_name","last_name","department","emp_id"]);
+                          foreach($locationFilters as $locationFilter)
+                          {
+                            echo "<option value=".$locationFilter['emp_id'].">".$locationFilter['last_name'].", ".$locationFilter['first_name']." ".$locationFilter['middle_name']." - ".$locationFilter['department']."</option>";
+                          }
+
+                        ?>
+                      </select>
+                    </div>
                     <div id="tableTransfer"></div>
                 </div>
              <div   data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="auto" data-width="27%" data-overlay-click-close="true" id="transferdialog" data-close-button="true">

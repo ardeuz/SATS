@@ -3,6 +3,9 @@ var transfer_table;
 
 $(document).ready(function() {
 	prowareTable();
+	$("#locationsIDs").select2();
+	$("#conditionsId").select2();
+	$("#accountsId").select2();
 });
 
 function prowareTable()

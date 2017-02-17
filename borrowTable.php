@@ -6,10 +6,6 @@
 
   if(isset($_POST['showTable']))
   {
-
-    $transferDatas = $db->query("SELECT a.property_id AS id, b.pcode, b.sno , b.description, c.location, d.condition_info, a.emp_id, e.department, a.qty, a.condition_id, b.uom, a.location_id from property_accountability AS a left join property AS b
-    on a.property_id = b.id left join location AS c on a.location_id = c.id left join
-    condition_info AS d on a.condition_id = d.id inner join account_table as e on a.emp_id = e.emp_id WHERE a.emp_id !='$emp_id'")-> fetchAll();
 ?>
     <table class="dataTable border bordered hovered" id="userShowBorrowTable">
       <thead>
@@ -28,19 +24,98 @@
       </tbody>
     </table>
     <script>
-    var userShowBorrowTable = $('#userShowBorrowTable').DataTable({
-      "processing": true,
-      "serverSide": true,
-      "ajax": "build/server_side/userShowBorrowAccountability.php",
-      oLanguage : {
-        sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
-      }
+    var userShowBorrowTable;
+    $(document).ready(function()
+    {
+      userShowBorrowTable = $('#userShowBorrowTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":"build/server_side/userShowBorrowAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
+        oLanguage : {
+          sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+        }
+      });
+      setInterval(function() {
+        userShowBorrowTable.ajax.reload(null,false);
+        console.log(1);
+      }, 10000);
     });
-    setInterval(function() {
-      userShowBorrowTable.ajax.reload(null,false);
-      console.log(1);
-    }, 10000);
-    </script>
+    if(userShowBorrowTable != null){
+      $('#userShowBorrowTable').dataTable().fnDestroy();
+    }
+    function conditionSelect()
+    {
+      if(userShowBorrowTable != null){
+        $('#userShowBorrowTable').dataTable().fnDestroy();
+      }
+
+      userShowBorrowTable = $('#userShowBorrowTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":"build/server_side/userShowBorrowAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
+        oLanguage : {
+          sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+        }
+      });
+
+      setInterval(function() {
+        userShowBorrowTable.ajax.reload(null,false);
+        console.log(1);
+      }, 10000);
+
+    }
+
+    function locationSelect(){
+      if(userShowBorrowTable != null){
+        $('#userShowBorrowTable').dataTable().fnDestroy();
+      }
+      if($("#locationsIDs").val() != 0){
+        userShowBorrowTable = $('#userShowBorrowTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":"build/server_side/userShowBorrowAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
+        oLanguage : {
+          sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+          }
+        });
+      }
+      else if($("#locationsIDs").val() == 0)
+      userShowBorrowTable = $('#userShowBorrowTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":"build/server_side/userShowBorrowAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
+        oLanguage : {
+          sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+        }
+      });
+
+      setInterval(function() {
+        userShowBorrowTable.ajax.reload(null,false);
+        console.log(1);
+      }, 10000);
+    }
+    function accountSelect(){
+      if(userShowBorrowTable != null){
+        $('#userShowBorrowTable').dataTable().fnDestroy();
+      }
+
+      userShowBorrowTable = $('#userShowBorrowTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":"build/server_side/userShowBorrowAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
+        oLanguage : {
+          sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+        }
+      });
+
+      setInterval(function() {
+        userShowBorrowTable.ajax.reload(null,false);
+        console.log(1);
+      }, 10000);
+    }
+
+
+  </script>
 
 <?php
 exit();
