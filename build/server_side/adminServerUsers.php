@@ -32,7 +32,7 @@
       }),
     array('db' => '`u`.`status`', 'dt' => 4,'field' => "status" , "formatter" => function($status,$row)
     {
-      $empId = $row[0];
+      $empId = $row[1];
       $empStat = $row['status'];
       $activated = "";
       if($empStat == 1){$activated = 'checked=\'true\'';}
