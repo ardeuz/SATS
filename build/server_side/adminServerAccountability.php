@@ -99,9 +99,12 @@
   	'db'   => "sats",
   	'host' => "localhost"
   );
-  $joinQuery = "FROM `propertyAccountability` AS `u`";
-  echo json_encode(
-    SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery  )
-  );
+  $locationIDs = $_GET['location'];
+  $conditionId = $_GET['condition'];
+  $accountability = $_GET['accountability'];
+  $joinQuery = "FROM `propertyAccountability` AS `u` where location_id = $locationIDs AND condition_id = $conditionId AND emp_id = \"$accountability\"";
+    echo json_encode(
+      SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery )
+    );
   return;
 ?>

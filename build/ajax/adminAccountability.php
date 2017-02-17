@@ -9,9 +9,6 @@ $emp_id = $_SESSION['account']['emp_id'];
 
 if(isset($_POST['showAccounts']))
 {
-    $prowareDatas = $db->query("SELECT a.property_id AS id, b.pcode, b.sno , b.description, c.location AS location, d.condition_info, a.emp_id, e.department AS department, a.qty AS qty, a.condition_id AS condition_id,b.uom AS uom,a.location_id AS location_id, CONCAT(e.last_name, ', ', e.first_name) AS emp_name, depreciate_yr, date_acquired from property_accountability AS a left join
-    property AS b on a.property_id = b.id left join location AS c on a.location_id = c.id left join
-    condition_info AS d on a.condition_id = d.id left join account_table as e on a.emp_id = e.emp_id left join minor_category as f on f.id=b.minor_category left join major_category as g on f.major_id=g.id")-> fetchAll();
 ?>
 
 <table class="dataTable border bordered hovered full-size" id="adminAccountability">
@@ -32,18 +29,89 @@ if(isset($_POST['showAccounts']))
 </tbody>
 </table>
 <script type="text/javascript">
-  var accounts = $('#adminAccountability').DataTable({
-    "processing": true,
-    "serverSide": true,
-    "ajax": "build/server_side/adminServerAccountability.php",
-    oLanguage : {
-      sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
-    }
+  var accounts;
+  $(document).ready(function()
+  {
+    accounts = $('#adminAccountability').DataTable({
+      "processing": true,
+      "serverSide": true,
+      "ajax":"build/server_side/adminServerAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
+      oLanguage : {
+        sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+      }
+    });
+    setInterval(function() {
+      accounts.ajax.reload(null,false);
+      console.log(1);
+    }, 10000);
   });
-  setInterval(function() {
-    accounts.ajax.reload(null,false);
-    console.log(1);
-  }, 10000);
+  if(accounts != null){
+    $('#adminAccountability').dataTable().fnDestroy();
+  }
+  function conditionSelect()
+  {
+    if(accounts != null){
+      $('#adminAccountability').dataTable().fnDestroy();
+    }
+
+    accounts = $('#adminAccountability').DataTable({
+      "processing": true,
+      "serverSide": true,
+      "ajax":"build/server_side/adminServerAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
+      oLanguage : {
+        sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+      }
+    });
+
+    setInterval(function() {
+      accounts.ajax.reload(null,false);
+      console.log(1);
+    }, 10000);
+    console.log($("#conditionsId").val());
+  }
+
+  function locationSelect()
+  {
+    if(accounts != null){
+      $('#adminAccountability').dataTable().fnDestroy();
+    }
+
+    accounts = $('#adminAccountability').DataTable({
+      "processing": true,
+      "serverSide": true,
+      "ajax":"build/server_side/adminServerAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
+      oLanguage : {
+        sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+      }
+    });
+
+    setInterval(function() {
+      accounts.ajax.reload(null,false);
+      console.log(1);
+    }, 10000);
+    console.log($("#locationsIDs").val());
+  }
+  function accountSelect(){
+    if(accounts != null){
+      $('#adminAccountability').dataTable().fnDestroy();
+    }
+
+    accounts = $('#adminAccountability').DataTable({
+      "processing": true,
+      "serverSide": true,
+      "ajax":"build/server_side/adminServerAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
+      oLanguage : {
+        sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+      }
+    });
+
+    setInterval(function() {
+      accounts.ajax.reload(null,false);
+      console.log(1);
+    }, 10000);
+    console.log($("#accountsId").val());
+  }
+
 </script>
 <?php
 exit();

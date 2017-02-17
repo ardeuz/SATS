@@ -43,7 +43,7 @@
             <h5 class="text-light"> Filter By</h5>
             <label>Location: </label>&nbsp;
             <div class="input-control" data-role="select" style=" width:40%">
-              <select id="locationsIDs" style="display:none;">
+              <select id="locationsIDs" onchange="locationSelect()" style="display:none;">
                 <?php
 
                   $locationFilters = $db->select("location",["location","id"]);
@@ -58,7 +58,7 @@
             &nbsp;
             <label>Condition: </label>&nbsp;
             <div class="input-control" data-role="select" style=" width:40%">
-              <select id="conditionsId" style="display:none;">
+              <select id="conditionsId" onchange="conditionSelect()" style="display:none;">
                 <?php
 
                   $locationFilters = $db->select("condition_info",["condition_info","id"]);
@@ -72,7 +72,7 @@
             </div>
             <label>Accountabilities of: </label>&nbsp;
             <div class="input-control" data-role="select" style=" width:40%">
-              <select id="accountsId" style="display:none;">
+              <select id="accountsId" onchange="accountSelect()" style="display:none;">
                 <?php
 
                   $locationFilters = $db->select("account_table",["first_name","middle_name","last_name","department","emp_id"]);
