@@ -73,3 +73,18 @@ function showRequestForms()
         $("#approvedRequest").html(approved);
     });
 }
+function disapproveRequest(request_code){
+  $.post('build/ajax/dissapproveTransfer.php',{request_code:request_code}, function(data)
+  {
+    var result = parseInt(data);
+    if(result == 1){
+      $.Notify({
+        caption: "Item Dissapproved",
+        content: "Item successfully dissapproved",
+        icon: "<span class='mif-checkmark icon'></span>",
+        type: "alert"
+      });
+      showRequestForms();
+    }
+  });
+}
