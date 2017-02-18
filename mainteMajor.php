@@ -53,7 +53,7 @@
       <input type="text" id="majorValue"/>
     </div>
     <div class="input-control full-size">
-      <input type="text" id="dep_year"/>
+      <input type="text" id="dep_year" placeholder="depreciation year"/>
     </div>
     <button class="button success" onclick="updateMajor()"> Update</button>
     <!-- <div class="input-control"/>

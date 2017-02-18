@@ -81,7 +81,7 @@ function addNewUser(){
       }
     });
 }
-function editUser(employeeId,employee_fname,employee_lname,employee_mname,employee_department)
+function editUser(employeeId,employee_fname,employee_mname,employee_lname,employee_department)
 {
 	$("#employeeID").val(employeeId);
 	$("#updateFName").val(employee_fname);
