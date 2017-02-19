@@ -32,6 +32,7 @@
   <link href="build/css/inventory.css" rel="stylesheet">
   <script src="build/js/jquery-2-1-3.min.js"></script>
   <script src="build/js/jquery.dataTables.min.js"></script>
+  <script src="build/js/select2.min.js"></script>
   <script src="build/js/metro.js"></script>
   <script src="build/js/borrow.js"></script>
 </head>
@@ -51,6 +52,43 @@
                         Borrow
                         <u><span class="mif-paper-plane place-right  mif-ani-fast mif-ani-float"></span></u>
                     </h1>
+                    <label class="text-light">Filter by: </label><br/>
+                    <table>
+                      <td>
+                        <label class="text-light">Condition </label>
+                        <div class="input-control select" data-role="select">
+                          <select id="conditionFilter" onchange="conditionFilter()" style="display:none;">
+                            <option value="0">ALL</option>
+                            <?php
+
+                              $conditionDatas = $db->select("condition_info",["id","condition_info"]);
+                              foreach($conditionDatas as $conditionData)
+                              {
+                                echo "<option value=".$conditionData['id'].">".$conditionData['condition_info']."</option>";
+                              }
+
+                            ?>
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <label class="text-light">&nbsp;&nbsp; &nbsp; Location: </label>
+                        <div class="input-control select" data-role="select">
+                          <select id="locationFilter" onchange="locationFilter()" style="display:none;">
+                            <option value="0">ALL</option>
+                            <?php
+
+                              $locationDatas = $db->select("location",["id","location"]);
+                              foreach($locationDatas  as $locationData)
+                              {
+                                echo "<option value=".$locationData['id'].">".$locationData['location']."</option>";
+                              }
+
+                            ?>
+                          </select>
+                        </div>
+                      </td>
+                    </table>
                     <hr class="thin bg-grayLighter">
                     <div id="tableTransfer"></div>
                 </div>

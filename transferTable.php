@@ -24,18 +24,59 @@
       </tbody>
     </table>
     <script>
-    var showTransferTable = $('#showTransferTable').DataTable({
-      "processing": true,
-      "serverSide": true,
-      "ajax": "build/server_side/userShowTransfer.php",
-      oLanguage : {
-        sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
-      }
+    var showTransferTables;
+    showTransferTables  = $('#showTransferTable').DataTable({
+    	"processing": true,
+    	"serverSide": true,
+    	"ajax": "build/server_side/userShowTransfer.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
+    	oLanguage : {
+    		sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    	}
     });
     setInterval(function() {
-      showTransferTable.ajax.reload(null,false);
-      console.log(1);
+    	showTransferTables.ajax.reload(null,false);
+    	console.log(1);
     }, 10000);
+    if(showTransferTables != null){
+    	$("#showTransferTable").DataTable().fnDestroy();
+    }
+    function conditionFilter(){
+    	if(showTransferTables != null){
+    		$("#showTransferTable").dataTable().fnDestroy();
+    	}
+    	showTransferTables = $('#showTransferTable').DataTable({
+    		"processing": true,
+    		"serverSide": true,
+    		"ajax": "build/server_side/userShowTransfer.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val(),
+    		oLanguage : {
+    			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    		}
+    	});
+    	setInterval(function() {
+    		showTransferTables.ajax.reload(null,false);
+    		console.log(1);
+    	}, 10000);
+    	console.log($("#conditionFilter").val());
+    }
+    function locationFilter(){
+    	if(showTransferTables != null){
+    		$("#showTransferTable").dataTable().fnDestroy();
+    	}
+    	showTransferTables = $('#showTransferTable').DataTable({
+    		"processing": true,
+    		"serverSide": true,
+    		"ajax": "build/server_side/userShowTransfer.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
+    		oLanguage : {
+    			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    		}
+    	});
+    	setInterval(function() {
+    		showTransferTables.ajax.reload(null,false);
+    		console.log(1);
+    	}, 10000);
+    	console.log($("#locationFilter").val());
+    }
+  
     </script>
 
 <?php
