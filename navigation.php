@@ -33,8 +33,8 @@
       <span class="dropdown-toggle"> <?php echo $_SESSION['account']['last_name'].', '. $_SESSION['account']['first_name']; ?></span>
       <div class="app-bar-drop-container bg-white padding10 place-right no-margin-top block-shadow fg-dark" data-role="dropdown" data-no-close="true" style="width: 320px">
         <ul class="unstyled-list fg-dark ">
-          <li onClick="" class="fg-white2 fg-hover-grayLight" data-hotkey="alt+1">Help</li>
-          <li onClick="" class="fg-white2 fg-hover-grayLight">Change Password</li>
+          <li onClick="showMetroDialog('#helperDialog')" class="fg-white2 fg-hover-grayLight" data-hotkey="alt+1" >Help</li>
+          <li onClick="showMetroDialog('#changePassword')" class="fg-white2 fg-hover-grayLight" data-hotkey="alt+2">Change Password</li>
           <li class="fg-white2 fg-hover-grayLight place-right"><a href="?logout=1" class="fg-white2 fg-hover-grayLight text-light padding0" style="border:0 transparent;background:transparent">Log Out</a></li>
         </ul>
       </div>
@@ -127,3 +127,71 @@
     </li>
   </ul>
 </div>
+<div data-role="dialog" data-overlay="true" data-width="30%" data-height="50%" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="helperDialog" data-close-button="true">
+  <h4 class="text-light">&nbsp; How to Transfer?</h4>
+  <p></p>
+  <br/>
+  <h4 class="text-light">&nbsp; How to Borrow?</h4>
+  <p></p>
+
+</div>
+<div data-role="dialog" data-overlay="true" data-width="30%" data-height="40%" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="changePassword" data-close-button="true">
+  <h4 class="text-light">Change Password</h4>
+  <div class="input-control password full-size">
+      <input type="password" id="OldPass">
+  </div>
+  <div class="input-control password full-size">
+      <input type="password" id="NewPass">
+  </div>
+  <div class="input-control full-size password">
+      <input type="password" onChange = "checkPass()" id="ConfirmPass">
+  </div>
+  <button class="button primary place-right" onClick="changePassword()" id="changePasswordButton" disabled>Change Password</button>
+
+</div>
+<script>
+function checkPass(){
+      if($('#NewPass').val() != $('#ConfirmPass').val()){
+        $('#ConfirmPass').addClass('bd-lightRed');
+        $('#ConfirmPass').removeClass('bd-green');
+        $("#changePasswordButton").prop("disabled",true);
+      }
+      else if($('#NewPass').val() == $('#ConfirmPass').val()) {
+        $('#ConfirmPass').addClass('bd-green');
+        $('#ConfirmPass').removeClass('bd-lightRed');
+        $("#changePasswordButton").prop("disabled",false);
+      }
+      if($('#ConfirmPass').val() == ""){
+        $('#ConfirmPass').removeClass('bd-green');
+        $('#ConfirmPass').removeClass('bd-lightRed');
+        $("#changePasswordButton").prop("disabled",true);
+      }
+  }
+function changePassword(){
+  var OldPass = $("#OldPass").val();
+  var NewPass = $("#NewPass").val();
+  $.post("build/ajax/changePasswordUsers.php", { OldPass:OldPass, NewPass:NewPass}, function(data){
+    var result = parseInt(data);
+    if(result == 1){
+      $.Notify({
+          caption: "Change Password",
+          content: "Changing of Password Completed",
+          icon: "<span class='mif-checkmark icon'></span>",
+          type: "success"
+      });
+      $('#OldPass').val('');
+      $('#NewPass').val('');
+      $("#ConfirmPass").val("");
+      hideMetroDialog("#changePassword");
+    }
+    else if(result == 2){
+      $.Notify({
+          caption: "Changing of Password failed",
+          content: "An error Occured(Please check your old password)",
+          icon: "<span class='mif-cross icon'></span>",
+          type: "alert"
+      });
+    }
+  });
+}
+</script>
