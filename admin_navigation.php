@@ -149,7 +149,7 @@
     </li>
     <li  class="<?php if($thisPage=='Repair'){echo 'active';} ?>"><a href="accountability_repair.php"><span class="mif-wrench icon"></span> Repair</a></li>
     <li class="menu-title">Settings</li>
-    <li  class="<?php if($thisPage == 'accountSetting'){echo 'active'; } ?>"><a href="adminAccountSetting.php"><span class="mif-cog icon"></span> Account Settings</a></li>
+    <li><a href="#" onclick="showMetroDialog('#changePassword')"><span class="mif-cog icon"></span> Change Password</a></li>
     <li><a href="?logout=1"><span class="mif-exit icon"></span> Logout</a></li>
     <li class="divider"></li>
     <li class="menu-title"></<li>
@@ -205,3 +205,63 @@
   </div>
   <button class="button warning" onclick="addNewMinor()">Add Minor Category</button>
 </div>
+<div data-role="dialog" data-overlay="true" data-width="30%" data-height="40%" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="changePassword" data-close-button="true">
+  <h4 class="text-light">Change Password</h4>
+  <div class="input-control password full-size">
+      <input type="password" id="OldPass">
+  </div>
+  <div class="input-control password full-size">
+      <input type="password" id="NewPass">
+  </div>
+  <div class="input-control full-size password">
+      <input type="password" onChange = "checkPass()" id="ConfirmPass">
+  </div>
+  <button class="button primary place-right" onClick="changePassword()" id="changePasswordButton" disabled>Change Password</button>
+
+</div>
+<script>
+function checkPass(){
+      if($('#NewPass').val() != $('#ConfirmPass').val()){
+        $('#ConfirmPass').addClass('bd-lightRed');
+        $('#ConfirmPass').removeClass('bd-green');
+        $("#changePasswordButton").prop("disabled",true);
+      }
+      else if($('#NewPass').val() == $('#ConfirmPass').val()) {
+        $('#ConfirmPass').addClass('bd-green');
+        $('#ConfirmPass').removeClass('bd-lightRed');
+        $("#changePasswordButton").prop("disabled",false);
+      }
+      if($('#ConfirmPass').val() == ""){
+        $('#ConfirmPass').removeClass('bd-green');
+        $('#ConfirmPass').removeClass('bd-lightRed');
+        $("#changePasswordButton").prop("disabled",true);
+      }
+  }
+function changePassword(){
+  var OldPass = $("#OldPass").val();
+  var NewPass = $("#NewPass").val();
+  $.post("build/ajax/changePasswordAdmin.php", { OldPass:OldPass, NewPass:NewPass}, function(data){
+    var result = parseInt(data);
+    if(result == 1){
+      $.Notify({
+          caption: "Change Password",
+          content: "Changing of Password Completed",
+          icon: "<span class='mif-checkmark icon'></span>",
+          type: "success"
+      });
+      $('#OldPass').val('');
+      $('#NewPass').val('');
+      $("#ConfirmPass").val("");
+      hideMetroDialog("#changePassword");
+    }
+    else if(result == 2){
+      $.Notify({
+          caption: "Changing of Password failed",
+          content: "An error Occured(Please check your old password)",
+          icon: "<span class='mif-cross icon'></span>",
+          type: "alert"
+      });
+    }
+  });
+}
+</script>
