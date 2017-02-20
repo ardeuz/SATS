@@ -2,7 +2,7 @@
 	require_once "../../connection.php";
 	session_start();
 
-	$propertyTransferList = $_SESSION['propertyTransferList'];
+	$propertyTransferList = $_SESSION['propertyBorrowList'];
 
 	if (isset($_POST['emp_id'])) {
 		$emp_id = $_POST['emp_id'];
@@ -27,7 +27,6 @@
 		}
 	}
 
-	$_SESSION['propertyTransferList'] = $propertyTransferList;
-
+	$_SESSION['propertyBorrowList'] = $propertyTransferList;
 	include "showPropertyBorrow.php";
 ?>

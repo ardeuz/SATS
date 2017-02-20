@@ -54,7 +54,6 @@
 					'location_id' => $old_location_id
 				]
 			]);
-
 			echo 1;
 		}
 

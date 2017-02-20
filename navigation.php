@@ -127,24 +127,24 @@
     </li>
   </ul>
 </div>
-<div data-role="dialog" data-overlay="true" data-width="30%" data-height="50%" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="helperDialog" data-close-button="true">
-  <h4 class="text-light">&nbsp; How to Transfer?</h4>
-  <p></p>
+<div data-role="dialog" data-overlay="true" data-width="30%" data-height="50%" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="helperDialog" data-close-button="true" style="overflow-y:scroll;">
+  <h4 class="text-light">&nbsp; <b>How to Transfer?</b></h4>
+  <p class="text-light">First, select what property do you want to transfer then click the add button. <br> <br> Next, fill out the needed information about the property do you want to transfer. <br> <br> Lastly, click the "add to transfer list" button. </p>
   <br/>
-  <h4 class="text-light">&nbsp; How to Borrow?</h4>
-  <p></p>
+  <h4 class="text-light">&nbsp; <b>How to Borrow?</b></h4>
+  <p class="text-light">First, select what property do you want to borrow then click the add button. <br> <br> Next, fill out the needed information about the property do you want to borrow. <br> <br> Lastly, click the "add to borrow list" button. <br> <br> <small>* You can also see the full information about the property do you want to transfer or borrow through clicking the button with the eye icon or simply the view button.</small>  </p>
 
 </div>
 <div data-role="dialog" data-overlay="true" data-width="30%" data-height="40%" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="changePassword" data-close-button="true">
   <h4 class="text-light">Change Password</h4>
   <div class="input-control password full-size">
-      <input type="password" id="OldPass">
+      <input type="password" id="OldPass" placeholder="Old Password">
   </div>
   <div class="input-control password full-size">
-      <input type="password" id="NewPass">
+      <input type="password" id="NewPass" placeholder="New Password">
   </div>
   <div class="input-control full-size password">
-      <input type="password" onChange = "checkPass()" id="ConfirmPass">
+      <input type="password" onChange = "checkPass()" id="ConfirmPass" placeholder="Confirm Password">
   </div>
   <button class="button primary place-right" onClick="changePassword()" id="changePasswordButton" disabled>Change Password</button>
 

@@ -84,8 +84,12 @@ function updateLocation(propertyId, conditionId, oldLocationId) {
   	});
   }
 }
-function updateCondition(propertyId, locationId, oldConditionId) {
-	var newConditionId = $("#condition" + propertyId + locationId + oldConditionId).val();
+function updateCondition(propertyId, oldConditionId, locationId) {
+	var newConditionId = $("#condition" + propertyId + locationId + oldConditionId ).val();
+  console.log(newConditionId);
+  console.log(propertyId)
+  console.log(locationId);
+  console.log(oldConditionId);
   if(confirm("Changing its condition will may vary to its history"))
   {
   	$.post("build/ajax/updateCondition.php", {id: propertyId, new_condition_id: newConditionId, location_id : locationId, old_condition_id : oldConditionId}, function(data) {
@@ -99,8 +103,7 @@ function updateCondition(propertyId, locationId, oldConditionId) {
             icon: "<span class='mif-pencil icon'></span>",
             type: "success"
         });
-        prowareTable();
-        
+
   		}
       else if(result == 2)
       {

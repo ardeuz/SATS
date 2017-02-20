@@ -31,8 +31,6 @@
           <div class="cell auto-size padding20 no-margin-top grid container place-right" id="style-4" style="overflow-y:scroll;height:100%;">
             <h1 class="text-light fg-darkBrown">Repair Item<span class="mif-ani-fast mif-ani-shuttle
               mif-wrench place-right text-light"></span></h1>
-            <button class="button warning" onclick="showMetroDialog('#addNewUser')"><span class="mi-usert icon"></span> Add User</button>
-            <button class="button success place-right" onclick="showMetroDialog('#importUsers')"><span class="mi-usert icon"></span> Import User</button>
 
             <hr class="thin bg-grayLighter">
             <div id="history_request_div"  style="display:none;"></div>
@@ -42,58 +40,6 @@
               <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="history_loader"></div>
             </center>
           </div>
-        <div data-role="dialog" class="padding20" data-position="top" data-overlay="true" data-width="25%" data-overlay-color="op-dark"  data-overlay-click-close="true" id="editUser" data-close-button="true">
-            <h4 class='text-light'>Update User</h4>
-            <input type='hidden' id='employeeID'/>
-            <div class="input-control full-size">
-              <input type="text" id="updateFName" placeholder="First Name"/>
-            </div>
-            <div class="input-control full-size">
-              <input type="text" id="updateMName" placeholder="Middle Name"/>
-            </div>
-            <div class="input-control full-size">
-              <input type="text" id="updateLName" placeholder="Last Name"/>
-            </div>
-            <div class="input-control full-size">
-              <input type="text" id="updateDepartment" placeholder="Department"/>
-            </div>
-            <div class="input-control password full-size" data-role="input">
-              <input type="password" id="oldPassword" placeholder="Old Password">
-              <button class="button helper-button reveal"><span class="mif-looks"></span></button>
-            </div>
-            <div class="input-control password full-size" data-role="input">
-              <input type="password" id="updatePassword" placeholder="New Password">
-              <button class="button helper-button reveal"><span class="mif-looks"></span></button>
-            </div>
-            <div class="input-control password full-size" data-role="input">
-              <input type="password" id="passwordCheck" placeholder="Confirm Password">
-              <button class="button helper-button reveal"><span class="mif-looks"></span></button>
-            </div>
-            <button class="button primary" onclick="updateUser()">Update Account</button>
-        </div>
-        <div data-role="dialog" data-overlay="true" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="deleteUser" data-close-button="true">
-          <input type="hidden" id="deleteUserId" />
-          <h5 class="text-light">Are you sure you want to Delete? <br/><b><span id="userID"></span></b></h5>
-          <button class="button danger" onclick="deleteUser()"> Delete</button>
-          <button class="button primary" onclick="hideMetroDialog('#deleteUser')"> Cancel</button>
-          <!-- <div class="input-control"/>
-            edittable values here
-          </div> -->
-        </div>
-        <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="importUsers" data-close-button="true" >
-          <h3 class=" text-light header">Upload CSV</h3>
-          <small><b></b></small>
-          <span class="text-light"><small ><b>Column Order:</b> Employee Id, First Name, Middle Name, Last Name, Department</small></span>
-
-          <form action="build/ajax/adminImportUser.php" method="POST" enctype="multipart/form-data">
-            <div class="input-control file full-size" data-role="input">
-                <input type="file" name="import_user">
-                <button class="button" type="button"><span class="mif-folder"></span></button>
-            </div>
-            <br/>
-            <button class="button warning" type="submit">Upload File</button>
-          </form>
-        </div>
     </div>
   </div>
   </body>

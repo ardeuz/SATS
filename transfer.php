@@ -99,8 +99,8 @@
                 <input type="hidden" id="conditionId"/>
                 <input type="hidden" id="locationId"/>
                 <div class="padding20" style="padding-top:0">
-                <span>Transfer to your new Location:</span>
-                <div class="input-control select full-size" data-role="select">
+                <span>Transfer to your new Location:</span><br/>
+                <div class="input-control" style="width:24.5%" data-role="select">
                         <select id="location" style="display:none;">
                         </select>
                 </div>

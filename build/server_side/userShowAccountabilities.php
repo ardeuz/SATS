@@ -6,7 +6,7 @@
   $table = "propertyAccountability";
   $pkey = "id";
   $columns = array(
-    array('db' => '`u`.`condition_id`', 'dt' => 0,'field'=> 'condition_id'),
+    array('db' => '`u`.`condition_id`', 'dt' => 'condition_id','field'=> 'condition_id'),
     array('db' => '`u`.`location_id`', 'dt' => 0,'field'=> 'location_id'),
     array('db' => '`u`.`id`', 'dt' => 0,'field'=> 'id',"formatter" => function($id,$row)
     {
@@ -80,9 +80,10 @@
         $ids = $rows['id'];
         $locationId = $rows['location_id'];
         $conditionId = $rows['condition_id'];
+        $combined = "condition".$ids.$locationId.$conditionId;
         $maintenance = '
         <div class="input-control select full-size">
-        <select onchange="updateCondition('.$ids.', '.$conditionId.', '.$locationId.');" id="condition'.$ids. $locationId.$conditionId.'">';
+        <select onchange="updateCondition('.$ids.', '.$conditionId.', '.$locationId.');" id='.$combined.' >';
 
           $conditionDatas = $db2->select("condition_info", ["id","condition_info"]);
           foreach ($conditionDatas as $conditionData){

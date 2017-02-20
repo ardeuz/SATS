@@ -15,7 +15,6 @@
     //loop through the csv file and insert into database
 		while ($data = fgetcsv($handle,1000,",","'")) {
 			if ($data[0]) {
-
 					$propertyId = $db->insert("account_table", [
 						"emp_id" => $data[0],
 						"first_name" => $data[1],
@@ -26,6 +25,11 @@
             "status" => 1
 					]);
 			}
+      elseif($db->has('account_table',['emp_id'=>$data[0]])){
+        $propertyId = $db->update("account_table", [
+          "department" => $data[4],
+        ],["emp_id" => $data[0]]);
+      }
 		}
 
     header ("Location: ../../admin_account_manage.php");

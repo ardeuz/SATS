@@ -38,12 +38,6 @@
     oLanguage : {
       sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     },
-    "createdRow": function( row, data, dataIndex ) {
-      if(data['status'] == 0 ) {
-        $(row).addClass('bg-lightRed');
-        $(row).addClass('fg-white');
-      }
-    }
   });
   setInterval(function() {
     accounts.ajax.reload(null,false);

@@ -1,6 +1,6 @@
 <?php
-	if (isset($_SESSION['propertyTransferList'])) {
-		$propertyTransferList = $_SESSION['propertyTransferList'];
+	if (isset($_SESSION['propertyBorrowList'])) {
+		$propertyTransferList = $_SESSION['propertyBorrowList'];
 
 		// echo json_encode($_SESSION['propertyTransferList']);
 		// return;
@@ -34,7 +34,7 @@
 					$employee->{'first_name'} = $propertyTransferList[$i]->{'property'}['first_name'];
 					$employee->{'last_name'} = $propertyTransferList[$i]->{'property'}['last_name'];
 					$employee->{'department'} = $propertyTransferList[$i]->{'property'}['department'];
-					$employee->{'dateBorrow'} = $propertyTransferList[$i]->{'property'}['dateBorrow'];
+					$employee->{'dateBorrow'} = $propertyTransferList[$i]->{'dateBorrow'};
 
 					array_push($employeeList, $employee);
 				}
@@ -82,11 +82,18 @@
 
 		            echo "
 		            </div>
+								<div class='input-control full-size text-area'>
+									<textarea id='remarks' style='overflow-y:scroll;resize:none;' placeholder='Remarks'></textarea>
+								</div>
 		            <hr class='thin' />
+								<br/>
+								<br/>
+								<br/>
+								<br/>
 		            <button onclick='requestTransfer(\"" . $employeeList[$i]->{'emp_id'} . "\")' class='button place-right'>
 		            	<span class='mif-truck mif-ani-pass mif-ani-slow'></span>
 		            	Request Borrow
-		        	</button>
+		        		</button>
 		    </div>";
 
 		    if ($cardCount == 3) {

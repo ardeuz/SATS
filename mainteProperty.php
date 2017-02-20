@@ -78,7 +78,7 @@
         <input type="number" class="" id="cost" placeholder="Cost">
       </div>
       <div class="input-control text full-size">
-        <input type="text" class="" id="orno" placeholder="OR Number">
+        <input type="text" class="" id="orno" placeholder="P.O Number">
       </div>
       <div class="input-control full-size" data-role='select'>
         <select id="locations" style="display:none;">

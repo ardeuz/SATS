@@ -24,152 +24,59 @@
       </tbody>
     </table>
     <script>
-<<<<<<< HEAD
-    var userShowBorrowTable;
-    $(document).ready(function()
-    {
-      userShowBorrowTable = $('#userShowBorrowTable').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax":"build/server_side/userShowBorrowAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
-        oLanguage : {
-          sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
-        }
-      });
-      setInterval(function() {
-        userShowBorrowTable.ajax.reload(null,false);
-        console.log(1);
-      }, 10000);
-    });
-    if(userShowBorrowTable != null){
-      $('#userShowBorrowTable').dataTable().fnDestroy();
-    }
-    function conditionSelect()
-    {
-      if(userShowBorrowTable != null){
-        $('#userShowBorrowTable').dataTable().fnDestroy();
-      }
-
-      userShowBorrowTable = $('#userShowBorrowTable').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax":"build/server_side/userShowBorrowAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
-=======
     var userShowBorrowTables;
     userShowBorrowTables  = $('#userShowBorrowTable').DataTable({
-      "processing": true,
-      "serverSide": true,
-      "ajax": "build/server_side/userShowBorrowAccountability.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
-      oLanguage : {
-        sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
-      }
+    	"processing": true,
+    	"serverSide": true,
+    	"ajax": "build/server_side/userShowBorrowAccountability.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
+    	oLanguage : {
+    		sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    	}
     });
     setInterval(function() {
-      userShowBorrowTables.ajax.reload(null,false);
-      console.log(1);
+    	userShowBorrowTables.ajax.reload(null,false);
+    	console.log(1);
     }, 10000);
-    if(userShowBorrowTables != null){
-      $("#userShowBorrowTable").DataTable().fnDestroy();
-    }
+
     function conditionFilter(){
-      if(userShowBorrowTables != null){
-        $("#userShowBorrowTable").dataTable().fnDestroy();
-      }
-      userShowBorrowTables = $('#userShowBorrowTable').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax": "build/server_side/userShowBorrowAccountability.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val(),
->>>>>>> 2d99f9beb9de372f497be6eaf07dc3a6257d070e
-        oLanguage : {
-          sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
-        }
-      });
-<<<<<<< HEAD
-
-      setInterval(function() {
-        userShowBorrowTable.ajax.reload(null,false);
-        console.log(1);
-      }, 10000);
-
-    }
-
-    function locationSelect(){
-      if(userShowBorrowTable != null){
-        $('#userShowBorrowTable').dataTable().fnDestroy();
-      }
-      if($("#locationsIDs").val() != 0){
-        userShowBorrowTable = $('#userShowBorrowTable').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax":"build/server_side/userShowBorrowAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
-        oLanguage : {
-          sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
-          }
-        });
-      }
-      else if($("#locationsIDs").val() == 0)
-      userShowBorrowTable = $('#userShowBorrowTable').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax":"build/server_side/userShowBorrowAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
-        oLanguage : {
-          sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
-        }
-      });
-
-      setInterval(function() {
-        userShowBorrowTable.ajax.reload(null,false);
-        console.log(1);
-      }, 10000);
-    }
-    function accountSelect(){
-      if(userShowBorrowTable != null){
-        $('#userShowBorrowTable').dataTable().fnDestroy();
-      }
-
-      userShowBorrowTable = $('#userShowBorrowTable').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax":"build/server_side/userShowBorrowAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
-=======
-      setInterval(function() {
-        userShowBorrowTables.ajax.reload(null,false);
-        console.log(1);
-      }, 10000);
-      console.log($("#conditionFilter").val());
+    	if(userShowBorrowTables != null){
+    		$("#userShowBorrowTable").dataTable().fnDestroy();
+    	}
+    	userShowBorrowTables = $('#userShowBorrowTable').DataTable({
+    		"processing": true,
+    		"serverSide": true,
+    		"ajax": "build/server_side/userShowBorrowAccountability.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val(),
+    		oLanguage : {
+    			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    		}
+    	});
+    	setInterval(function() {
+    		userShowBorrowTables.ajax.reload(null,false);
+    		console.log(1);
+    	}, 10000);
+    	console.log($("#conditionFilter").val());
     }
     function locationFilter(){
-      if(userShowBorrowTables != null){
-        $("#userShowBorrowTable").dataTable().fnDestroy();
-      }
-      userShowBorrowTables = $('#userShowBorrowTable').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax": "build/server_side/userShowBorrowAccountability.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
->>>>>>> 2d99f9beb9de372f497be6eaf07dc3a6257d070e
-        oLanguage : {
-          sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
-        }
-      });
-<<<<<<< HEAD
-
-      setInterval(function() {
-        userShowBorrowTable.ajax.reload(null,false);
-        console.log(1);
-      }, 10000);
+    	if(userShowBorrowTables != null){
+    		$("#userShowBorrowTable").dataTable().fnDestroy();
+    	}
+    	userShowBorrowTables = $('#userShowBorrowTable').DataTable({
+    		"processing": true,
+    		"serverSide": true,
+    		"ajax": "build/server_side/userShowBorrowAccountability.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
+    		oLanguage : {
+    			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    		}
+    	});
+    	setInterval(function() {
+    		userShowBorrowTables.ajax.reload(null,false);
+    		console.log(1);
+    	}, 10000);
+    	console.log($("#locationFilter").val());
     }
 
 
-  </script>
-=======
-      setInterval(function() {
-        userShowBorrowTables.ajax.reload(null,false);
-        console.log(1);
-      }, 10000);
-      console.log($("#locationFilter").val());
-    }
     </script>
->>>>>>> 2d99f9beb9de372f497be6eaf07dc3a6257d070e
 
 <?php
 exit();

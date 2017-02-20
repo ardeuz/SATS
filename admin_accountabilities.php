@@ -40,50 +40,6 @@
             <p class='text-normal fg-brown'>Colored Rows are depreciated or scrap.</p>
             <hr class="thin bg-grayLighter">
             <a href='build/ajax/exportProperty.php' class="button warning">Export Property List</a>
-            <h5 class="text-light"> Filter By</h5>
-            <label>Location: </label>&nbsp;
-            <div class="input-control" data-role="select" style=" width:40%">
-              <select id="locationsIDs" onchange="locationSelect()" style="display:none;">
-                <?php
-
-                  $locationFilters = $db->select("location",["location","id"]);
-                  foreach($locationFilters as $locationFilter)
-                  {
-                    echo "<option value=".$locationFilter['id'].">".$locationFilter['location']."</option>";
-                  }
-
-                ?>
-              </select>
-            </div>
-            &nbsp;
-            <label>Condition: </label>&nbsp;
-            <div class="input-control" data-role="select" style=" width:40%">
-              <select id="conditionsId" onchange="conditionSelect()" style="display:none;">
-                <?php
-
-                  $locationFilters = $db->select("condition_info",["condition_info","id"]);
-                  foreach($locationFilters as $locationFilter)
-                  {
-                    echo "<option value=".$locationFilter['id'].">".$locationFilter['condition_info']."</option>";
-                  }
-
-                ?>
-              </select>
-            </div>
-            <label>Accountabilities of: </label>&nbsp;
-            <div class="input-control" data-role="select" style=" width:40%">
-              <select id="accountsId" onchange="accountSelect()" style="display:none;">
-                <?php
-
-                  $locationFilters = $db->select("account_table",["first_name","middle_name","last_name","department","emp_id"]);
-                  foreach($locationFilters as $locationFilter)
-                  {
-                    echo "<option value=".$locationFilter['emp_id'].">".$locationFilter['last_name'].", ".$locationFilter['first_name']." ".$locationFilter['middle_name']." - ".$locationFilter['department']."</option>";
-                  }
-
-                ?>
-              </select>
-            </div>
             <button class="button success place-right" onclick="showMetroDialog('#uploadCSV');">Import CSV</button>
             <div id="history_request_div"  style="display:none;"></div>
 

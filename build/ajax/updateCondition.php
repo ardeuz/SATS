@@ -1,8 +1,7 @@
 <?php
+
 	require_once "../../connection.php";
-
-  session_start();
-
+	session_start();
 	$id = $_POST['id'];
   $emp_id = $_SESSION['account']['emp_id'];
   $location_id = $_POST['location_id'];
@@ -47,7 +46,7 @@
 
 		echo 2;
 	} else { //else if not exists, just a simple update
-		$db->update("property_accountability", ["condition_id" => $new_condition_id], [
+			$db->update("property_accountability", ["condition_id" => $new_condition_id], [
 			"AND" => [
 				'emp_id' => $emp_id,
 				'property_id' => $id,
@@ -56,7 +55,7 @@
 			]
 		]);
 
-		echo 1;
+			echo 1;
 	}
 
 	$db->update("transfer_request", ["condition_id" => $new_condition_id], [

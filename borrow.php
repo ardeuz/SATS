@@ -90,53 +90,6 @@
                       </td>
                     </table>
                     <hr class="thin bg-grayLighter">
-                    <h5 class="text-light"> Filter By</h5>
-                    <label>Location: </label>&nbsp;
-                    <div class="input-control" data-role="select" style=" width:40%">
-                      <select id="locationsIDs" onchange="locationSelect()" style="display:none;">
-                        <option selected value="0">All</option>
-                        <?php
-
-                          $locationFilters = $db->select("location",["location","id"]);
-                          foreach($locationFilters as $locationFilter)
-                          {
-                            echo "<option value=".$locationFilter['id'].">".$locationFilter['location']."</option>";
-                          }
-
-                        ?>
-                      </select>
-                    </div>
-                    &nbsp;
-                    <label>Condition: </label>&nbsp;
-                    <div class="input-control" data-role="select" style=" width:40%">
-                      <select id="conditionsId" onchange="conditionSelect()" style="display:none;">
-                        <option selected value="0">All</option>
-                        <?php
-
-                          $locationFilters = $db->select("condition_info",["condition_info","id"]);
-                          foreach($locationFilters as $locationFilter)
-                          {
-                            echo "<option value=".$locationFilter['id'].">".$locationFilter['condition_info']."</option>";
-                          }
-
-                        ?>
-                      </select>
-                    </div>
-                    <label>Accountabilities of: </label>&nbsp;
-                    <div class="input-control" data-role="select" style=" width:40%">
-                      <select id="accountsId" onchange="accountSelect()" style="display:none;">
-                        <option selected value="0">All</option>
-                        <?php
-
-                          $locationFilters = $db->select("account_table",["first_name","middle_name","last_name","department","emp_id"]);
-                          foreach($locationFilters as $locationFilter)
-                          {
-                            echo "<option value=".$locationFilter['emp_id'].">".$locationFilter['last_name'].", ".$locationFilter['first_name']." ".$locationFilter['middle_name']." - ".$locationFilter['department']."</option>";
-                          }
-
-                        ?>
-                      </select>
-                    </div>
                     <div id="tableTransfer"></div>
                 </div>
              <div   data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="auto" data-width="27%" data-overlay-click-close="true" id="transferdialog" data-close-button="true">
@@ -159,9 +112,8 @@
                 </div>
                 <span>Return Date:</span>
 
-                <div class='input-control text full-size' data-role ="datepicker">
-                  <input type="text" id="dateBorrow"/>
-                  <button class="button"><span class="mif-calendar"></span></button>
+                <div class='input-control text full-size'>
+                  <input type="date" id="dateBorrow"/>
                 </div>
 
                 <button class="button button-primary" onclick="insertQuantity();"><span class="mif-plus"></span>
@@ -175,7 +127,7 @@
                 </div>
 
              </div>
-             <div   data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="70%" data-width="auto" data-overlay-click-close="true" id="transferlist" data-close-button="true" style="overflow-x:hidden;">
+             <div   data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="80%" data-width="90%" data-overlay-click-close="true" id="transferlist" data-close-button="true" style="overflow-x:hidden;">
                 <div id='transferForm' class="container grid padding20">
                     <?php include "build/ajax/showPropertyBorrow.php"; ?>
                 </div>

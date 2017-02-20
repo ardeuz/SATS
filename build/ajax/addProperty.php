@@ -42,8 +42,6 @@
       ]);
 
       echo 1;
-    } else { //has duplicates
-      echo -1;
-    }
+    } 
   }
 ?>
