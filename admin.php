@@ -21,10 +21,10 @@
 </head>
 
   <body>
-    <div class="contaner flex-grid no-responsive-feature" style="height:100%:">
+    <div class="contaner flex-grid no-responsive-feature" style="height:100%;overflow:hidden;">
       <div class="row" style="height:100%:">
         <?php require_once 'admin_navigation.php'; ?>
-        <div class="cell auto-size padding10 no-margin-left no-margin-top grid container place-right" style="overflow-x:hidden;margin-right:1%;">
+        <div class="cell auto-size padding10 no-margin-left grid container place-right" style="margin-top:45px;overflow-x:hidden;margin-right:1%;">
           <h1 class="text-light" style="font-weight:10px;">Admin's Dashboard</h1>
           <br/>
           <br/>
@@ -167,7 +167,7 @@
                           <div class="slide">
 
                           </div>
-                          <div class="slide-over bg-darkMagenta fg-white">
+                          <div class="slide-over bg-lightBlue fg-white">
                             <div class="padding10">
                               <span class="text-light">Maitenance for Minor Category<span>
                             </div>
@@ -182,7 +182,7 @@
                           <div class="slide">
 
                           </div>
-                          <div class="slide-over bg-darkMagenta fg-white">
+                          <div class="slide-over bg-lightRed fg-white">
                             <div class="padding10">
                               <span class="text-light">Maintenance for <br/>Major Category<span>
                             </div>
