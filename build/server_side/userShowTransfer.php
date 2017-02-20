@@ -34,10 +34,30 @@
   	'db'   => "sats",
   	'host' => "localhost"
   );
+  $joinQuery;
+  $whereClause;
+  $conditionFilter = $_GET['condition'];
+  $locationFilter = $_GET['location'];
+  if($conditionFilter == 0 && $locationFilter == 0)
+  {
+    $whereClause = "emp_id != '$emp_id'";
+  }
+  if($conditionFilter != 0 && $locationFilter == 0)
+  {
+    $whereClause = "emp_id != '$emp_id' AND condition_id = $conditionFilter ";
+  }
+  if($locationFilter != 0 && $conditionFilter == 0)
+  {
+    $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter ";
+  }
+  if($locationFilter != 0 && $conditionFilter != 0)
+  {
+    $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter AND condition_id = $conditionFilter";
+  }
   $joinQuery = "FROM `propertyaccountability` AS `u`";
-  $extraWhere = "emp_id != '$emp_id' ";
   echo json_encode(
-    SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery ,$extraWhere  )
+    SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery, $whereClause)
   );
   return;
+      // $joinQuery = "FROM `propertyaccountability` AS `u` where emp_id != '$emp_id' AND condition_id = $conditionFilter AND location_id = $locationFilter AND emp_id = \"$accountFilter\" ";
 ?>

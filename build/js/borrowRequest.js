@@ -129,6 +129,7 @@ function  approveInHistory(request_code){
       }
   });
 }
+<<<<<<< HEAD
 function disapproveRequest(request_code){
   $.post('build/ajax/dissapproveBorrow.php',{request_code:request_code}, function(data)
   {
@@ -144,3 +145,5 @@ function disapproveRequest(request_code){
     }
   });
 }
+=======
+>>>>>>> 2d99f9beb9de372f497be6eaf07dc3a6257d070e

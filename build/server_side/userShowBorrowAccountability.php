@@ -35,6 +35,7 @@
   	'host' => "localhost"
   );
   $joinQuery;
+<<<<<<< HEAD
   if(isset($_GET['location']) || isset($_GET['accountability']) || isset($_GET['condtion']))
   {
     $locationIDs = $_GET['location'];
@@ -68,6 +69,30 @@
 
   echo json_encode(
     SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery)
+=======
+  $whereClause;
+  $conditionFilter = $_GET['condition'];
+  $locationFilter = $_GET['location'];
+  if($conditionFilter == 0 && $locationFilter == 0)
+  {
+    $whereClause = "emp_id != '$emp_id'";
+  }
+  if($conditionFilter != 0 && $locationFilter == 0)
+  {
+    $whereClause = "emp_id != '$emp_id' AND condition_id = $conditionFilter ";
+  }
+  if($locationFilter != 0 && $conditionFilter == 0)
+  {
+    $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter ";
+  }
+  if($locationFilter != 0 && $conditionFilter != 0)
+  {
+    $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter AND condition_id = $conditionFilter";
+  }
+  $joinQuery = "FROM `propertyaccountability` AS `u`";
+  echo json_encode(
+    SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery, $whereClause)
+>>>>>>> 2d99f9beb9de372f497be6eaf07dc3a6257d070e
   );
   return;
 ?>

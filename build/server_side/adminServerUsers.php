@@ -3,8 +3,12 @@
   $table = "account_table";
   $pkey = "emp_id";
   $column = array(
+<<<<<<< HEAD
     array('db' => '`u`.`status`', 'dt' => "status",'field' => "status"),
 
+=======
+    array('db' => '`u`.`status`', 'dt' => 'status','field'=>"status"),
+>>>>>>> 2d99f9beb9de372f497be6eaf07dc3a6257d070e
     array('db' => '`u`.`emp_id`', 'dt' => 0,'field' => "emp_id"),
     array('db' => '`u`.`first_name`', 'dt' => 1,'field' => "first_name"),
     array('db' => '`u`.`middle_name`', 'dt' => 1,'field' => "middle_name"),
