@@ -14,6 +14,7 @@ if(isset($_POST['showAccounts']))
 <thead>
 <tr>
 <td class="sortable-column">Action Taken</td>
+<td class="sortable-column">Remark</td>
 <td class="sortable-column">Repair Date</td>
 </tr>
 </thead>
