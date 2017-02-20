@@ -24,7 +24,7 @@
     <li class="menu-title">Viewing</li>
     <!-- <li class=""> <a href="admin_history.php"><span class="mif-stack3 icon"></span> History</a></li> -->
     <li class="<?php if($thisPage =='TransferRequest' || $thisPage=='BorrowRequest'){echo 'active';} ?>">
-        <a href="#" class="dropdown-toggle"><span class="mif-sd-card <?php if($db->has('transfer_request',
+        <a href="#" class="dropdown-toggle"><span class="mif-layers <?php if($db->has('transfer_request',
           [
             'emp_approval' => 1
           ]
@@ -56,7 +56,7 @@
                   echo "<small class='super mif-ani-flash fg-white'>&nbsp;".$transferRequestCounted."</small>";
                 }
                 ?></a></li>
-              <li class="<?php if($thisPage=='BorrowRequest'){echo 'active';} ?>"><a href="admin_borrow_request.php"><span class="mif-image icon"></span> Borrow Request
+              <li class="<?php if($thisPage=='BorrowRequest'){echo 'active';} ?>"><a href="admin_borrow_request.php"><span class="mif-file-text icon"></span> Borrow Request
                 <?php
 
                 if($db->has("borrow_request",
@@ -89,7 +89,7 @@
         </ul>
       </li>
       <li class="<?php if($thisPage == $_GET['emp_id']){echo 'active';}?>">
-        <a href="#"  class="dropdown-toggle"><span class="mif-file-text icon"></span>Accountabilities Of</a>
+        <a href="#"  class="dropdown-toggle"><span class="mif-user icon"></span>Accountabilities Of</a>
         <ul class="d-menu shadow"  data-role="dropdown">
             <li class="menu-title ">List of Accounts</li>
             <div style="height:250px;overflow-y:scroll;overflow-x: hidden;" id="style-4">
@@ -120,7 +120,7 @@
               ?>
             </div>
         </ul>
-        <li  class="<?php if($thisPage=='ViewAccounts'){echo 'active';} ?>"><a href="admin_account_manage.php"><span class="mif-user icon"></span> Accounts</a></li>
+        <li  class="<?php if($thisPage=='ViewAccounts'){echo 'active';} ?>"><a href="admin_account_manage.php"><span class="mif-users icon"></span> Accounts</a></li>
       </li>
     <li class="divider"></li>
     <li class="menu-title">Maintenance</li>

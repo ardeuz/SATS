@@ -7,7 +7,7 @@
 	$emp_id = $_SESSION['account']['emp_id'];
 
 	//============make the card=================//
-	$sql = "SELECT date_borrow , request_code, transfer_to, released_from, date_request, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS emp_name, b.department FROM borrow_request AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id WHERE released_from='$emp_id' AND emp_approval=$requestType GROUP BY request_code";
+	$sql = "SELECT date_borrow , request_code, remarks, transfer_to, released_from, date_request, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS emp_name, b.department FROM borrow_request AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id WHERE released_from='$emp_id' AND emp_approval=$requestType GROUP BY request_code";
 
 	$transferRequestGroupDatas = $db->query($sql)->fetchAll();
 	//color coding
@@ -64,6 +64,7 @@
 
 		            	echo "
 		            		<hr class='thin' />
+										<p class='padding10 text-light'>Remarks : ".$transferRequestGroupData['remarks']."</p>
 		            		<button class='button danger place-right' onclick='disapproveRequest(". $transferRequestGroupData['request_code'] .")'>
 		            			<span class='mif-cross'></span>
 		        			</button>
@@ -74,8 +75,8 @@
 		            }
 								elseif($requestType == $REQUEST_APPROVED)
 								{
-									echo "<button class='button button-default ' onclick=approveInHistory(".$transferRequestGroupData['request_code'].")><span class='mif-chevron-right mif-ani-fast mif-ani-ripple '></span>&nbsp; Item Returned &nbsp;<span class='mif-chevron-left mif-ani-fast mif-ani-ripple'></span></button>";
-
+									echo "<p class='padding10 text-light'>Remarks : ".$transferRequestGroupData['remarks']."</p>
+									<button class='button button-default ' onclick=approveInHistory(".$transferRequestGroupData['request_code'].")><span class='mif-chevron-right mif-ani-fast mif-ani-ripple '></span>&nbsp; Item Returned &nbsp;<span class='mif-chevron-left mif-ani-fast mif-ani-ripple'></span></button>";
 								}
 
 

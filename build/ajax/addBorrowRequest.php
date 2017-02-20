@@ -8,7 +8,7 @@
 
 	$emp_id = $_POST['emp_id']; //block of transfer request to be add on database
 
-	$propertyTransferList = $_SESSION['propertyTransferList'];
+	$propertyTransferList = $_SESSION['propertyBorrowList'];
 
 	//============generate request code==============//
 	$request_code = $db->max("borrow_request", "request_code") + 1;

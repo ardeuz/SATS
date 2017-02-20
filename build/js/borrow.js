@@ -163,7 +163,7 @@ function requestTransfer(empId) {
 					prowareTable();
 
 		        $.Notify({
-                caption: "Transfer is added to the Queue",
+                caption: "Borrow is added to the Queue",
                 content:" ",
                 icon: "<span class='mif-checkmark icon'></span>",
                 type: "success"

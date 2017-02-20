@@ -129,10 +129,10 @@
 </div>
 <div data-role="dialog" data-overlay="true" data-width="30%" data-height="50%" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="helperDialog" data-close-button="true" style="overflow-y:scroll;">
   <h4 class="text-light">&nbsp; <b>How to Transfer?</b></h4>
-  <p class="text-light">First, select what property do you want to transfer then click the add button. <br> <br> Next, fill out the needed information about the property do you want to transfer. <br> <br> Lastly, click the "add to transfer list" button. </p>
+  <p class="text-light">First, select what property do you want to transfer then click the add button. <br> <br> Next, fill out the needed information about the property do you want to transfer. <br> <br> Lastly, click the "add to transfer list" button. And after that you will see the property/s you borrowed. <br> <br> <small> You can also remove your request for borrow through clicking the "Cancel" button. </small></p>
   <br/>
   <h4 class="text-light">&nbsp; <b>How to Borrow?</b></h4>
-  <p class="text-light">First, select what property do you want to borrow then click the add button. <br> <br> Next, fill out the needed information about the property do you want to borrow. <br> <br> Lastly, click the "add to borrow list" button. <br> <br> <small>* You can also see the full information about the property do you want to transfer or borrow through clicking the button with the eye icon or simply the view button.</small>  </p>
+  <p class="text-light">First, select what property do you want to borrow then click the add button. <br> <br> Next, fill out the needed information about the property do you want to borrow. <br> <br> Lastly, click the "add to borrow list" button. And after that you will see the property/s you transferred. <br> <br> <small> You can also remove your request for transfer through clicking the "Cancel" button. </small> <br> <br> <small>* You can also see the full information about the property do you want to transfer or borrow through clicking the button with an eye icon or simply the view button.</small>  </p>
 
 </div>
 <div data-role="dialog" data-overlay="true" data-width="30%" data-height="40%" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="changePassword" data-close-button="true">
