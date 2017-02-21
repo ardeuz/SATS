@@ -13,7 +13,7 @@
 
 	$no_format = str_pad($no, 5, '0', STR_PAD_LEFT); //format to 5 digit
 
-	$ctrl_no = $CTRL_NO_PREFIX . "-" . $sy . "-" . $no_format . $CTRL_NO_SUFFIX;
+	$ctrl_no = $CTRL_NO_PREFIX . "-" . $sy . "-" . $no_format ."-". $CTRL_NO_SUFFIX;
 	$transferRequestDatas = $db->select("borrow_request", [
 		"request_code", "id", "qty", "condition_id", "old_loc_id", "new_loc_id", "transfer_to", "date_borrow", "date_request","released_from", "remarks"
 	], [

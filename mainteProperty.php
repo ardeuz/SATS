@@ -160,6 +160,9 @@
     <div class="input-control full-size">
       <input type="text" id="editModel" placeholder="Property Model"/>
     </div>
+    <div class="input-control number full-size">
+      <input type="number" id="editQty" placeholder="Quantity"/>
+    </div>
     <div class="input-control full-size select" data-role="select" data-placeholder="Minor Category">
       <select id="editMinorId"style="display:none;" >
         <option selected disabled value=0>Select a Minor Category</option>
@@ -179,7 +182,7 @@
       <input type="text" id="editCost" placeholder="Cost"/>
     </div>
     <div class="input-control full-size"/>
-      <input type="text" id="ornumber" placeholder="OR Number"/>
+      <input type="text" id="ornumber" placeholder="P.O Number"/>
     </div>
     <button class="button primary" onclick="updateProperty();"><span class="mif-pencil icon"></span> Update Property</button>
   </div>

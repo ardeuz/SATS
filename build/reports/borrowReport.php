@@ -5,6 +5,7 @@
 	$dateToday = date('M d, Y H:i:A');
 
   $ctrl_no = $_GET['ctrl_no'];
+  $remarks = $db->get("borrow_request_history",["remarks"],["ctrl_no"=>$ctrl_no]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,10 +32,10 @@
           <td class="align-right">
             <br/>
             <br/>
-            <span><b>Purpose:</b> ______________________________________________</span>
+            <span><b>Purpose:</b>&nbsp; <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $remarks['remarks'];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> </span>
             <br/>
             <br/>
-            <span>______________________________________________</span>
+            <span></span>
             <br/>
           </td>
         </tr>

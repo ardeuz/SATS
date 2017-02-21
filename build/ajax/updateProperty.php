@@ -9,6 +9,7 @@
   $editModel = $_POST['editModel'];
   $ornumber = $_POST['ornumber'];
   $editUom = $_POST['editUom'];
+  $editQty = $_POST['editQty'];
   $editCost = $_POST['editCost'];
   $editMinorId = $_POST['editMinorId'];
   if(!empty($editPropertyCode) || !empty($editPropertySerialNumber))
@@ -16,11 +17,17 @@
     if($editMinorId == 0)
     {
       $updateQuery = $db->update('property',['pcode' => $editPropertyCode ,'sno'=>$editSerialNumber ,'description'=> $editPropertyDescription,'brand'=> $editBrand,'model'=> $editModel,'or_number'=> $ornumber,'uom'=> $editUom, 'cost'=> $editCost],['id' => $propertyId]);
+      $updateQty = $db->update('property_accountability',['qty'=>$editQty],['property_id' => $propertyId]);
+
       echo 1;
     }
     else{
       $updateQuery = $db->update('property',['pcode' => $editPropertyCode ,'sno'=>$editSerialNumber ,'description'=> $editPropertyDescription,'brand'=> $editBrand,'model'=> $editModel,'or_number'=> $ornumber,'uom'=> $editUom, 'cost'=> $editCost,'minor_category'=> $editMinorId],['id' => $propertyId]);
+      $updateQty = $db->update('property_accountability',['qty'=>$editQty],['property_id' => $propertyId]);
+
       echo 1;
+
+
     }
   }
   elseif(empty($editPropertyCode) && empty($editPropertySerialNumber))

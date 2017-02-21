@@ -1,6 +1,7 @@
 <?php
   session_start();
   require( '../dataTables/ssp.php' );
+  require( '../../medoo.php' );
   $emp_id = $_SESSION['account']['emp_id'];
   $table = "propertyaccountability";
   $pkey = "id";
@@ -27,6 +28,32 @@
     array('db' => '`u`.`condition_info`', 'dt' => 5,'field' => "condition_info"),
     array('db' => '`u`.`qty`', 'dt' => 6,'field' => "qty"),
     array('db' => '`u`.`department`', 'dt' => 7,'field' => "department"),
+    array('db' => '`u`.`emp_id`', 'dt' => 8,'field' => "emp_id","formatter" => function($employeeId,$row){
+      $db2 = new medoo([
+        // required
+        'database_type' => 'mysql',
+        'database_name' => 'sats',
+        'server' => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8',
+
+        'option' => [
+            PDO::ATTR_ERRMODE,
+            PDO::ERRMODE_EXCEPTION
+        ]
+      ]);
+
+      $empId = $row[1];
+      if($db2->has("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$empId, ]])){
+        $accountName = $db2->get("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"]);
+        return "Borrowed By ". $accountName["last_name"].', '.$accountName['first_name'];
+      }
+      else{
+        return "Not Borrowed";
+      }
+      return "hello";
+    })
   );
   $sql_details = array(
   	'user' => "root",

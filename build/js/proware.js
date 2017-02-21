@@ -90,9 +90,12 @@ function updateCondition(propertyId, oldConditionId, locationId) {
   console.log(propertyId)
   console.log(locationId);
   console.log(oldConditionId);
-  if(confirm("Changing its condition will may vary to its history"))
+  while(!remarks){
+    var remarks = prompt("Changing its condition will may vary to its history, please state your remarks");
+  }
+  if(remarks != null)
   {
-  	$.post("build/ajax/updateCondition.php", {id: propertyId, new_condition_id: newConditionId, location_id : locationId, old_condition_id : oldConditionId}, function(data) {
+  	$.post("build/ajax/updateCondition.php", {id: propertyId, remarks:remarks , new_condition_id: newConditionId, location_id : locationId, old_condition_id : oldConditionId}, function(data) {
   		var result = parseInt(data);
 
   		if (result == 1)
@@ -120,6 +123,7 @@ function updateCondition(propertyId, oldConditionId, locationId) {
           });
   		}
     });
+    window.open("build/reports/statusReport.php?propertyId="+propertyId+"&remarks="+remarks);
   }
 }
 

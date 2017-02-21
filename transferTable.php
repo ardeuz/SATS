@@ -18,6 +18,8 @@
           <td class="sortable-column">Condition</td>
           <td class="sortable-column">Quantity</td>
           <td>Department</td>
+          <td>is Borrowed</td>
+
         </tr>
       </thead>
       <tbody>
@@ -76,7 +78,7 @@
     	}, 10000);
     	console.log($("#locationFilter").val());
     }
-  
+
     </script>
 
 <?php

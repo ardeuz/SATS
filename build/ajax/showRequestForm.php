@@ -60,7 +60,7 @@
 
 		            	echo "
 		            		<hr class='thin' />
-		            		<button class='button danger place-right'>
+		            		<button class='button danger place-right' onclick='disapproveRequest(".$transferRequestGroupData['request_code'].")'>
 		            			<span class='mif-cross'></span>
 		        			</button>
 		        			<button class='button success place-right showConfirmation' idUp=". $transferRequestGroupData['request_code'] .">

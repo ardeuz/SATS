@@ -27,7 +27,8 @@
         $minorCat = $row['minor_category'];
         $maintenance = '
         <div class="toolbar"><button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#adminAccountabilityDialog\'); ViewProperty('.$ids.');"><span class="mif-eye icon"></span></button>
-        <button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#editPropertyDialog\'); EditProperty(\''.$ids.'\', \''.$pcode.'\',\''.$sno.'\',\''.trim($description).'\',\''.trim($brand).'\',\''.$model.'\',\''.$orNo.'\',\''.$uom.'\' ,'.$cost.','.$minorCat.');"><span class="mif-pencil icon"></span></button>
+        <button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#editPropertyDialog\'); EditProperty(\''.$ids.'\', \''.$pcode.'\',\''.$sno.'\',\''.trim($description).'\',\''.trim($brand).'\',\''.$model.'\',\''.$orNo.'\',\''.$uom.'\' ,'.$cost.','.$minorCat.',';
+        $maintenance .= $qty.');"><span class="mif-pencil icon"></span></button>
           <button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#deletePropertyDialog\'); DeletePropertyValidation(\''.$ids.'\',\''.$pcode.'\');"><span class="mif-bin icon"></span></button></div>';
         return $maintenance;
       }),

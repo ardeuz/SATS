@@ -81,7 +81,7 @@ function ViewProperty(propertyId)
 						}
 		});
 }
-function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost,minorCat)
+function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost,minorCat,quantity)
 {
 	var propertyID = parseInt(propertyCode);
 	$("#propertyId").val(propertyID);
@@ -91,6 +91,7 @@ function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, br
 	$("#editPropertyDescription").val(propertyDescription);
 	$("#editBrand").val(brand);
 	$("#editModel").val(model);
+	$("#editQty").val(quantity);
 	$("#ornumber").val(orNumber);
 	$("#editUom").val(uom);
 	$("#editCost").val(cost);
@@ -105,11 +106,12 @@ function updateProperty()
 	var editPropertyDescription = $("#editPropertyDescription").val();
 	var editBrand = $("#editBrand").val();
 	var editModel = $("#editModel").val();
+	var editQty = $("#editQty").val();
 	var ornumber = $("#ornumber").val();
 	var editUom = $("#editUom").val();
 	var editCost = $("#editCost").val();
 	var editMinorId = $("#editMinorId").val();
-	$.post("build/ajax/updateProperty.php" , {propertyId:propertyId , editPropertyCode:editPropertyCode, editSerialNumber:editSerialNumber , editPropertyDescription:editPropertyDescription, editBrand:editBrand, editModel:editModel, ornumber:ornumber , editUom:editUom , editCost:editCost , editMinorId:editMinorId  },function(data){
+	$.post("build/ajax/updateProperty.php" , {propertyId:propertyId , editQty:editQty , editPropertyCode:editPropertyCode, editSerialNumber:editSerialNumber , editPropertyDescription:editPropertyDescription, editBrand:editBrand, editModel:editModel, ornumber:ornumber , editUom:editUom , editCost:editCost , editMinorId:editMinorId  },function(data){
 		var result = parseInt(data);
 		if(result == 1)
 		{

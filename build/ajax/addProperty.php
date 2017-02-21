@@ -4,7 +4,7 @@
   date_default_timezone_set('Asia/Manila');
 	$dateToday = date('Y-m-d H:i:s');
 
-  if (isset($_POST['pcode'])) {
+  if (isset($_POST['pcode']) ) {
     $pcode = trim($_POST['pcode']);
     $sno = trim($_POST['sno']);
     $orno = trim($_POST['orno']);
@@ -19,7 +19,7 @@
     $minorCategory = $_POST['minorCategory'];
     $accountCategory = $_POST['accountCategory']; //property accountability
 
-    if (!$db->has("property", ["sno" => $sno])) { //if there's no same serial number
+    if ($sno == "" || !$db->has("property", ["sno" => $sno])) { //if there's no same serial number
       $propertyId = $db->insert("property", [
         "pcode" => $pcode,
         "sno" => $sno,
@@ -42,6 +42,6 @@
       ]);
 
       echo 1;
-    } 
+    }
   }
 ?>

@@ -4,9 +4,7 @@
   $pkey = "date";
   $column = array(
     array('db' => '`u`.`action`', 'dt' => 0,'field'=>"action"),
-    array('db' => '`u`.`date`', 'dt' => 1,'field' => "date","formatter" => function($date,$row){
-        return "remarks";
-    }),
+    array('db' => '`u`.`remarks`', 'dt' => 1,'field' => "remarks"),
     array('db' => '`u`.`date`', 'dt' => 2,'field' => "date")
 
   );
