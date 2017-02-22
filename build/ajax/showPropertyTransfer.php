@@ -1,7 +1,7 @@
 <?php
 	if (isset($_SESSION['propertyTransferList'])) {
 		$propertyTransferList = $_SESSION['propertyTransferList'];
-		
+
 		//===========count employees to be get=============//
 		$employeeList = array();
 		for ($i = 0; $i < count($propertyTransferList); $i ++) {
@@ -77,7 +77,14 @@
 
 		            echo "
 		            </div>
+								<div class='input-control full-size text-area'>
+									<textarea id='remarks' style='overflow-y:scroll;resize:none;' placeholder='Remarks'></textarea>
+								</div>
 		            <hr class='thin' />
+								<br/>
+								<br/>
+								<br/>
+								<br/>
 		            <button onclick='requestTransfer(\"" . $employeeList[$i]->{'emp_id'} . "\")' class='button place-right'>
 		            	<span class='mif-truck mif-ani-pass mif-ani-slow'></span>
 		            	Request Transfer

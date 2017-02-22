@@ -149,7 +149,8 @@ function removeProperty(propertyId, locationId) {
 }
 
 function requestTransfer(empId) {
-    $.post("build/ajax/addTransferRequest.php", {emp_id: empId}, function(data) {
+		var remarks = $("#remarks").val();
+    $.post("build/ajax/addTransferRequest.php", {remarks:remarks, emp_id: empId}, function(data) {
         var response = JSON.parse(data);
 				// console.log(data);
 
