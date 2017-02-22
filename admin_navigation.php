@@ -23,7 +23,7 @@
     <li class="divider"></li>
     <li class="menu-title">Viewing</li>
     <!-- <li class=""> <a href="admin_history.php"><span class="mif-stack3 icon"></span> History</a></li> -->
-    <li class="<?php if($thisPage =='TransferRequest' || $thisPage=='BorrowRequest'){echo 'active';} ?>">
+    <li class="<?php if($thisPage =='TransferRequest' || $thisPage=='BorrowRequest' || $thisPage == 'issueanceProperty'){echo 'active';} ?>">
         <a href="#" class="dropdown-toggle"><span class="mif-layers <?php if($db->has('transfer_request',
           [
             'emp_approval' => 1
@@ -75,12 +75,13 @@
                   }
                 }
                 ?></a></li>
+              <li class="<?php if($thisPage=='issueanceProperty'){echo 'active';} ?>"><a href="admin_property_issuance.php"><span class="mif-file-text icon"></span> Property Issuance</a></li>
             </div>
         </ul>
     </li>
 
       <li  class="<?php if($thisPage=='PropertyAccountability' || $thisPage == 'NotPropertyAccountability'){echo 'active';} ?>">
-        <a href="#"  class="dropdown-toggle"><span class="mif-file-text icon"></span>Property List </a>
+        <a href="#"  class="dropdown-toggle"><span class="mif-stack icon"></span>Property List </a>
         <ul class="d-menu shadow"  data-role="dropdown">
             <li class="menu-title">List of Accounts</li>
             <li class="<?php if($thisPage=='PropertyAccountability'){echo 'active';} ?>"><a href="admin_accountabilities.php"><span class="mif-file-text icon"></span> With Accountability</a></li>
@@ -208,13 +209,13 @@
 <div data-role="dialog" data-overlay="true" data-width="30%" data-height="40%" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="changePassword" data-close-button="true">
   <h4 class="text-light">Change Password</h4>
   <div class="input-control password full-size">
-      <input type="password" id="OldPass">
+      <input type="password" id="OldPass" placeholder="Old Password">
   </div>
   <div class="input-control password full-size">
-      <input type="password" id="NewPass">
+      <input type="password" id="NewPass" placeholder="New Password">
   </div>
   <div class="input-control full-size password">
-      <input type="password" onChange = "checkPass()" id="ConfirmPass">
+      <input type="password" onChange = "checkPass()" id="ConfirmPass" placeholder="Confirm Password">
   </div>
   <button class="button primary place-right" onClick="changePassword()" id="changePasswordButton" disabled>Change Password</button>
 

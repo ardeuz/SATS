@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="cell size3 padding10">
-                    <div class="tile full-size bg-dark" onCLick="window.location.href = 'admin_accountabilities.php">
+                    <div class="tile full-size bg-dark" onCLick="window.location.href = 'admin_accountabilities.php';">
                         <div class="tile-content slide-up-2">
                             <span class="tile-label fg-white">Property With Accountability</span>
                             <div class="slide">
@@ -102,7 +102,7 @@
               <div class="row">
                 <div class="cell size6 padding10">
                   <div class="tile full-size">
-                      <div class="tile-content slide-up-2 bg-dark"   onCLick="window.location.href = 'admin_borrow_request.php';">
+                      <div class="tile-content slide-up-2 bg-dark"   onCLick="window.location.href = 'admin_accountabilities_not.php';">
                           <span class="tile-label fg-white">Property Without Accountability</span>
                           <div class="slide">
                           </div>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="cell size6 padding10">
                   <div class="tile full-size">
-                      <div class="tile-content slide-down-2 bg-dark" onCLick="window.location.href = 'admin_borrow_request.php';">
+                      <div class="tile-content slide-down-2 bg-dark" onCLick="window.location.href = 'accountability_repair.php';">
                           <span class="tile-label fg-white">Repair</span>
                           <div class="slide">
                           </div>

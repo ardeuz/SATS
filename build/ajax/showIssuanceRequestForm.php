@@ -2,11 +2,10 @@
 	require_once("../../connection.php");
 	include "../../config.php";
 	session_start();
-
 	$requestType = $_POST['requestType'];
 	$emp_id = $_SESSION['account']['emp_id'];
 	//============make the card=================//
-	$sql = "SELECT request_code, transfer_to, released_from, date_request, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS emp_name, b.department FROM transfer_request AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id WHERE released_from='$emp_id' AND emp_approval=$requestType GROUP BY request_code";
+	$sql = "SELECT request_code, transfer_to, released_from, date_request, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS emp_name, b.department FROM issuance_request AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id WHERE transfer_to='$emp_id' AND emp_approval=$requestType GROUP BY request_code";
 
 	$transferRequestGroupDatas = $db->query($sql)->fetchAll();
 	//color coding
@@ -33,7 +32,7 @@
 
 		            echo "<div style='overflow-y: scroll; height: 300px'>";
 
-								$sql = "SELECT b.description, qty, c.condition_info, d.location AS old_loc, e.location AS new_loc FROM transfer_request AS a LEFT JOIN property AS b ON a.id=b.id LEFT JOIN condition_info AS c ON a.condition_id=c.id LEFT JOIN location AS d ON a.old_loc_id=d.id LEFT JOIN location AS e ON a.new_loc_id=e.id WHERE request_code=" . $transferRequestGroupData['request_code'];
+								$sql = "SELECT b.description, qty, c.condition_info, d.location AS old_loc, e.location AS new_loc FROM issuance_request AS a LEFT JOIN property AS b ON a.id=b.id LEFT JOIN condition_info AS c ON a.condition_id=c.id LEFT JOIN location AS d ON a.old_loc_id=d.id LEFT JOIN location AS e ON a.new_loc_id=e.id WHERE request_code=" . $transferRequestGroupData['request_code'];
 
 								$transferRequestItemDatas = $db->query($sql)->fetchAll();
 
@@ -87,7 +86,7 @@
 		}
 
 		if (count($transferRequestGroupDatas) <= 0) {
-			echo "<h2>You have no any Issuance request.</h2>";
+			echo "<h2>You have no any Issuance Request</h2>";
 		}
 
 ?>

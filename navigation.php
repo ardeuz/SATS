@@ -41,7 +41,7 @@
     </div>
   </div>
   <ul class="app-bar-menu place-right">
-    <li class="<?php if ($thisPage == "TransferRequest" ||  $thisPage == "Borrow Request") {echo "active";} ?> place-right" >
+    <li class="<?php if ($thisPage == "TransferRequest" ||  $thisPage == "Borrow Request" || $thisPage == "Issuance Request") {echo "active";} ?> place-right" >
       <a  href="" class="dropdown-toggle"> Notification <?php
 
       if($db->has("transfer_request",
@@ -66,7 +66,26 @@
         echo "<span class='super mif-notification mif-ani-flash mif-ani-fast'></span>";
 
       }
-
+      elseif($db->has("issuance_request",
+      ["AND" =>
+        [
+          "released_from" => $_SESSION['account']['emp_id'],
+          "emp_approval" => 0
+        ]
+      ]))
+      {
+        echo "<span class='super mif-notification mif-ani-flash mif-ani-fast'></span>";
+      }
+      elseif($db->has("issuance_request",
+      ["AND" =>
+        [
+          "transfer_to" => $_SESSION['account']['emp_id'],
+          "emp_approval" => 1
+        ]
+      ]))
+      {
+        echo "<span class='super mif-notification mif-ani-flash mif-ani-fast'></span>";
+      }
       ?>  </a>
       <ul class="d-menu" data-role="dropdown">
         <li <?php if ($thisPage == "TransferRequest") {echo "class='active'";} ?>>
@@ -114,6 +133,49 @@
                 ]
               ]);
               echo '<span class="mif-ani-flash mif-ani-fast fg-red">'.$borrowRequestCount.'</span>';
+            }
+
+            ?></a>
+          <li class="divider"></li>
+
+        </li>
+        <li class="divider"></li>
+        <li <?php if ($thisPage == "Issuance Request") {echo "class='active'";} ?>>
+          <a href="issuanceRequest.php"> Issuance Request  <?php
+
+            if($db->has("issuance_request",
+            ["AND" =>
+              [
+                "request_to" => $_SESSION['account']['emp_id'],
+                "emp_approval" => 0
+              ]
+            ]))
+            {
+              $borrowRequestCount = $db->count("issuance_request",
+              ["AND" =>
+                [
+                  "request_to" => $_SESSION['account']['emp_id'],
+                  "emp_approval" => 0
+                ]
+              ]);
+              echo '<span class="mif-ani-flash mif-ani-fast fg-red">'.$borrowRequestCount.'</span>';
+            }
+            elseif($db->has("issuance_request",
+            ["AND" =>
+              [
+                "transfer_to" => $_SESSION['account']['emp_id'],
+                "emp_approval" => 1
+              ]
+            ]))
+            {
+              $borrowRequestCount = $db->count("issuance_request",
+              ["AND" =>
+                [
+                  "transfer_to" => $_SESSION['account']['emp_id'],
+                  "emp_approval" => 1
+                ]
+              ]);
+              echo '<span class="mif-ani-flash mif-ani-fast fg-darkTeal">'.$borrowRequestCount.'</span>';
             }
 
             ?></a>

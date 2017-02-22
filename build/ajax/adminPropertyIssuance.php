@@ -1,5 +1,5 @@
 <?php
-  require_once('connection.php');
+  require_once('../../connection.php');
   session_start();
 
   $emp_id = $_SESSION['account']['emp_id'];
@@ -7,7 +7,7 @@
   if(isset($_POST['showTable']))
   {
 ?>
-    <table class="dataTable border bordered hovered" id="showTransferTable">
+    <table class="dataTable border bordered hovered" id="adminShowInssuanceTable">
       <thead>
         <tr>
           <td class="auto size">Maintenance</td>
@@ -27,10 +27,10 @@
     </table>
     <script>
     var showTransferTables;
-    showTransferTables  = $('#showTransferTable').dataTable({
+    showTransferTables  = $('#adminShowInssuanceTable').dataTable({
     	"processing": true,
     	"serverSide": true,
-    	"ajax": "build/server_side/userShowTransfer.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
+    	"ajax": "build/server_side/adminServerPropertyIssuance.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
     	oLanguage : {
     		sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     	}
@@ -39,14 +39,15 @@
     	showTransferTables.ajax.reload(null,false);
     	console.log(1);
     }, 10000);
+
     function conditionFilter(){
     	if(showTransferTables != null){
-    		$("#showTransferTable").dataTable().fnDestroy();
+    		$("#adminShowInssuanceTable").dataTable().fnDestroy();
     	}
-    	showTransferTables = $('#showTransferTable').dataTable({
+    	showTransferTables = $('#adminShowInssuanceTable').dataTable({
     		"processing": true,
     		"serverSide": true,
-    		"ajax": "build/server_side/userShowTransfer.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val(),
+    		"ajax": "build/server_side/adminServerPropertyIssuance.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val(),
     		oLanguage : {
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
@@ -59,12 +60,12 @@
     }
     function locationFilter(){
     	if(showTransferTables != null){
-    		$("#showTransferTable").dataTable().fnDestroy();
+    		$("#adminShowInssuanceTable").dataTable().fnDestroy();
     	}
-    	showTransferTables = $('#showTransferTable').dataTable({
+    	showTransferTables = $('#adminShowInssuanceTable').dataTable({
     		"processing": true,
     		"serverSide": true,
-    		"ajax": "build/server_side/userShowTransfer.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
+    		"ajax": "build/server_side/adminServerPropertyIssuance.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
     		oLanguage : {
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
