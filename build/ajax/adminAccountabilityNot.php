@@ -14,22 +14,6 @@ $emp_id = $_SESSION['account']['emp_id'];
 
 if(isset($_POST['showAccounts']))
 {
-    $prowareDatas = $db->select("property", [
-      "[>]minor_category" => ["minor_category" => "id"],
-      "[>]major_category" => ["minor_category.major_id" => "id"],
-      "[>]property_accountability" => ["id" => "property_id"]
-    ], [
-      "property.id",
-      "property.pcode",
-      "property.sno",
-      "property.description",
-      "property.date_acquired",
-      "property_accountability.qty",
-      "major_category.depreciate_yr"
-    ], [
-      "property_accountability.property_id" => null
-    ]);
-
 ?>
 <table class="dataTable border bordered hovered full-size" id="adminAccountabilityNot">
 <thead>
@@ -45,7 +29,8 @@ if(isset($_POST['showAccounts']))
 </tbody>
 </table>
 <script type="text/javascript">
-var accountsNot = $('#adminAccountabilityNot').DataTable({
+var accountsNot;
+ accountsNot = $('#adminAccountabilityNot').DataTable({
   "processing": true,
   "serverSide": true,
   "ajax": "build/server_side/adminServerAccountabilityNot.php",
@@ -56,7 +41,7 @@ var accountsNot = $('#adminAccountabilityNot').DataTable({
 setInterval(function() {
   accountsNot.ajax.reload(null,false);
   console.log(1);
-}, 10000);
+}, 5000);
 </script>
 <?php
 exit();

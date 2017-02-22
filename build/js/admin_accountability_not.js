@@ -70,25 +70,21 @@ function updateAdminCondition(propertyId, locationId, oldConditionId, emp_id) {
 		}
 	});
 }
-function changeAccountability(id , sno )
+function changeAccountability(id , pcode , sno , qty , location , condition)
 {
 	var accountID = $("#selectAccount").val();
-
 	//Parameters for location and others
-	$.post("build/ajax/updateAccountability.php",{pcode:sno,id:id,account:accountID}, function(data)
+	$.post("build/ajax/updateAccountability.php",{pcode:pcode , sno:sno, id:id, account:accountID, qty:qty , location:location , condition:condition}, function(data)
 	{
 		var result = parseInt(data);
 		if(result == 1){
 			//Proceed
-			$('#history_loader').show();
-			$('#history_request_div').hide();
 			$.Notify({
 				caption: 'Update Success',
 				content: 'Property Accountability Update success',
 				icon: "<span class='mif-pencil icon'></span>",
 				type: "success"
 			});
-			requestAccountability();
 
 
 		}
@@ -104,5 +100,6 @@ function changeAccountability(id , sno )
 		else{
 			//Natural Error
 		}
+		console.log(data);
 	});
 }

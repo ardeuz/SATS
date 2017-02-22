@@ -21,9 +21,7 @@
     <link href="build/css/metro-schemes.min.css" rel="stylesheet">
     <link href="build/css/metro-colors.min.css" rel="stylesheet">
     <link href="build/css/select2.min.css" rel="stylesheet">
-    <script src="build/js/jquery-2-1-3.min.js"></script>
-    <script src="build/js/select2.min.js"></script>
-    <script src="build/js/metro.js"></script>
+
 
   </head>
   <body style="overflow:hidden;">
@@ -66,7 +64,10 @@
     </div>
   </div>
   </body>
-  <script async src="build/js/jquery.dataTables.min.js"></script>
+  <script src="build/js/jquery-2-1-3.min.js"></script>
+  <script src="build/js/jquery.dataTables.min.js"></script>
+  <script src="build/js/select2.min.js"></script>
+  <script src="build/js/metro.js"></script>
   <script async src="build/js/admin.js"></script>
   <script async src='build/js/admin_accountability_not.js'></script>
 
