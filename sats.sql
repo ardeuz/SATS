@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50616
 File Encoding         : 65001
 
-Date: 2017-02-22 16:22:26
+Date: 2017-02-23 17:12:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -242,137 +242,141 @@ INSERT INTO `admin` VALUES ('admin', 'Marivic', 'Mawanay', 'Baello', 'admin');
 -- ----------------------------
 DROP TABLE IF EXISTS `audit_trail_condition`;
 CREATE TABLE `audit_trail_condition` (
+  `actor` varchar(255) NOT NULL,
   `action` varchar(255) NOT NULL,
   `date` varchar(255) DEFAULT NULL,
-  `remarks` varchar(500) DEFAULT NULL
+  `remarks` varchar(500) DEFAULT NULL,
+  `recommendation` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of audit_trail_condition
 -- ----------------------------
-INSERT INTO `audit_trail_condition` VALUES ('CLN0025A updated the condition of CLN-SFF22A-2014-047 from  to ', '2017-02-20 04:37:38', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0025A updated the condition of CLN-SFF22A-2014-047 from  to ', '2017-02-20 04:37:50', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0025A updated the condition of CLN-SFF22A-2014-047 from  to ', '2017-02-20 04:38:39', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0025A updated the condition of CLN-SFF22A-2014-047 from  to ', '2017-02-20 04:41:09', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0025A updated the condition of 008-CE41-2017-042 from  to ', '2017-02-20 04:42:05', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:01:48', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:06:04', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:08:34', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:08:49', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of  from  to ', '2017-02-20 05:09:09', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:09:15', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:57:00', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:57:23', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to SCRAP', '2017-02-20 06:31:23', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to GOOD', '2017-02-20 06:31:26', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to SCRAP', '2017-02-20 06:31:28', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF22A-2014-377 from  to SCRAP', '2017-02-20 06:33:01', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF22A-2014-377 from  to FAIR', '2017-02-20 06:33:33', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:34:01', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:34:36', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:35:45', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:36:28', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:37:20', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:37:29', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:41:11', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:43:40', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:44:32', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:45:45', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:45:58', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:49:25', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:50:24', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:51:34', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:52:43', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:53:42', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:53:58', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:54:03', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:54:35', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:54:53', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:55:17', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:55:29', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:55:42', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:55:49', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:55:56', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:56:02', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:56:13', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:56:20', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:56:41', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 06:57:39', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:57:42', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:58:50', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 06:59:11', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:59:40', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:59:49', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:00:18', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:00:27', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:00:37', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to SCRAP', '2017-02-20 07:01:01', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to GOOD', '2017-02-20 07:01:08', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to FAIR', '2017-02-20 07:02:38', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:02:43', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:04:14', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:04:33', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:05:29', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:06:21', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:06:44', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:07:53', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:07:58', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:08:17', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:09:00', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:09:36', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:09:50', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:10:01', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:10:14', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:10:20', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:10:34', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:10:42', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:10:48', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:11:01', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:11:10', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:11:22', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:11:31', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:11:45', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:12:14', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:12:31', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:12:52', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:13:10', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:13:19', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:13:27', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:13:41', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:14:04', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:14:33', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:14:41', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:15:09', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:15:47', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF22A-2014-384 from  to POOR', '2017-02-20 07:15:51', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF22A-2014-379 from  to SCRAP', '2017-02-20 07:15:54', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF22A-2014-383 from  to SCRAP', '2017-02-20 07:16:04', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to POOR', '2017-02-20 07:19:00', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from POOR to GOOD', '2017-02-20 07:19:14', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF22A-2014-379 from SCRAP to GOOD', '2017-02-20 07:19:27', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF22A-2014-383 from SCRAP to GOOD', '2017-02-20 07:19:33', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF22A-2014-384 from POOR to GOOD', '2017-02-20 07:19:38', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to SCRAP', '2017-02-20 07:45:49', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to GOOD', '2017-02-20 07:45:53', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0025A updated the condition of CLN-SFF22A-2014-047 from  to ', '2017-02-20 10:14:45', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0025A updated the condition of CLN-SFF22A-2014-047 from GOOD to POOR', '2017-02-20 10:15:03', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0025A updated the condition of CLN-SFF22A-2014-047 from POOR to POOR', '2017-02-20 10:17:45', '');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from SCRAP to GOOD', '2017-02-21 03:37:05', null);
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to FAIR', '2017-02-21 03:37:21', null);
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to GOOD', '2017-02-21 03:37:23', null);
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from FAIR to GOOD', '2017-02-21 03:39:08', 'wala lang');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of  from GOOD to FAIR', '2017-02-21 05:01:05', 'buhay ako');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to POOR', '2017-02-21 05:02:16', 'qwe');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from POOR to GOOD', '2017-02-21 05:02:54', 'qwe');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to FAIR', '2017-02-21 05:03:33', 'qwe');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from FAIR to GOOD', '2017-02-21 05:03:47', 'qwee');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of  from FAIR to GOOD', '2017-02-21 05:04:10', 'qwe');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to POOR', '2017-02-21 05:10:45', 'wqe');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from POOR to GOOD', '2017-02-21 05:45:58', 'ayun');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0025A updated the condition of CLN-SFF22A-2014-047 from GOOD to POOR', '2017-02-21 05:54:17', 'metal stand broken');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to FAIR', '2017-02-21 06:14:55', 'Broken centrail joint of the metal frame of the chair.');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF22A-2014-047 from POOR to GOOD', '2017-02-21 06:37:12', ' ');
-INSERT INTO `audit_trail_condition` VALUES ('CLN0003A updated the condition of CLN-SFF75A-2014-150 from FAIR to GOOD', '2017-02-21 06:40:05', 'Reason101');
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0025A updated the condition of CLN-SFF22A-2014-047 from  to ', '2017-02-20 04:37:38', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0025A updated the condition of CLN-SFF22A-2014-047 from  to ', '2017-02-20 04:37:50', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0025A updated the condition of CLN-SFF22A-2014-047 from  to ', '2017-02-20 04:38:39', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0025A updated the condition of CLN-SFF22A-2014-047 from  to ', '2017-02-20 04:41:09', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0025A updated the condition of 008-CE41-2017-042 from  to ', '2017-02-20 04:42:05', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:01:48', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:06:04', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:08:34', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:08:49', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of  from  to ', '2017-02-20 05:09:09', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:09:15', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:57:00', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to ', '2017-02-20 05:57:23', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to SCRAP', '2017-02-20 06:31:23', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to GOOD', '2017-02-20 06:31:26', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to SCRAP', '2017-02-20 06:31:28', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF22A-2014-377 from  to SCRAP', '2017-02-20 06:33:01', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF22A-2014-377 from  to FAIR', '2017-02-20 06:33:33', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:34:01', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:34:36', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:35:45', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:36:28', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:37:20', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:37:29', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:41:11', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:43:40', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:44:32', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:45:45', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:45:58', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:49:25', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:50:24', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:51:34', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:52:43', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:53:42', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:53:58', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:54:03', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:54:35', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:54:53', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:55:17', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:55:29', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:55:42', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:55:49', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:55:56', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:56:02', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:56:13', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:56:20', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:56:41', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 06:57:39', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:57:42', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 06:58:50', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 06:59:11', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 06:59:40', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 06:59:49', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:00:18', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:00:27', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:00:37', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to SCRAP', '2017-02-20 07:01:01', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to GOOD', '2017-02-20 07:01:08', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-151 from  to FAIR', '2017-02-20 07:02:38', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:02:43', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:04:14', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:04:33', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:05:29', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:06:21', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:06:44', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:07:53', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:07:58', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:08:17', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:09:00', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:09:36', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:09:50', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:10:01', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:10:14', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:10:20', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:10:34', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:10:42', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:10:48', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:11:01', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:11:10', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:11:22', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:11:31', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:11:45', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:12:14', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:12:31', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:12:52', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:13:10', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:13:19', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:13:27', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:13:41', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:14:04', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to POOR', '2017-02-20 07:14:33', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to SCRAP', '2017-02-20 07:14:41', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to FAIR', '2017-02-20 07:15:09', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from  to GOOD', '2017-02-20 07:15:47', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF22A-2014-384 from  to POOR', '2017-02-20 07:15:51', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF22A-2014-379 from  to SCRAP', '2017-02-20 07:15:54', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF22A-2014-383 from  to SCRAP', '2017-02-20 07:16:04', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to POOR', '2017-02-20 07:19:00', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from POOR to GOOD', '2017-02-20 07:19:14', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF22A-2014-379 from SCRAP to GOOD', '2017-02-20 07:19:27', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF22A-2014-383 from SCRAP to GOOD', '2017-02-20 07:19:33', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF22A-2014-384 from POOR to GOOD', '2017-02-20 07:19:38', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to SCRAP', '2017-02-20 07:45:49', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to GOOD', '2017-02-20 07:45:53', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0025A updated the condition of CLN-SFF22A-2014-047 from  to ', '2017-02-20 10:14:45', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0025A updated the condition of CLN-SFF22A-2014-047 from GOOD to POOR', '2017-02-20 10:15:03', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0025A updated the condition of CLN-SFF22A-2014-047 from POOR to POOR', '2017-02-20 10:17:45', '', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from SCRAP to GOOD', '2017-02-21 03:37:05', null, null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to FAIR', '2017-02-21 03:37:21', null, null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to GOOD', '2017-02-21 03:37:23', null, null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from FAIR to GOOD', '2017-02-21 03:39:08', 'wala lang', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of  from GOOD to FAIR', '2017-02-21 05:01:05', 'buhay ako', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to POOR', '2017-02-21 05:02:16', 'qwe', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from POOR to GOOD', '2017-02-21 05:02:54', 'qwe', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to FAIR', '2017-02-21 05:03:33', 'qwe', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from FAIR to GOOD', '2017-02-21 05:03:47', 'qwee', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of  from FAIR to GOOD', '2017-02-21 05:04:10', 'qwe', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to POOR', '2017-02-21 05:10:45', 'wqe', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from POOR to GOOD', '2017-02-21 05:45:58', 'ayun', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0025A updated the condition of CLN-SFF22A-2014-047 from GOOD to POOR', '2017-02-21 05:54:17', 'metal stand broken', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to FAIR', '2017-02-21 06:14:55', 'Broken centrail joint of the metal frame of the chair.', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF22A-2014-047 from POOR to GOOD', '2017-02-21 06:37:12', ' ', null);
+INSERT INTO `audit_trail_condition` VALUES ('', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from FAIR to GOOD', '2017-02-21 06:40:05', 'Reason101', null);
+INSERT INTO `audit_trail_condition` VALUES ('CLN0003A', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from GOOD to FAIR', '2017-02-23 09:36:13', 'qwewqe', null);
+INSERT INTO `audit_trail_condition` VALUES ('CLN0003A', 'CLN0003A updated the condition of CLN-SFF75A-2014-150 from FAIR to GOOD', '2017-02-23 09:36:22', 'walawala', null);
 
 -- ----------------------------
 -- Table structure for `audit_trail_location`
@@ -498,9 +502,32 @@ CREATE TABLE `issuance_request` (
 -- ----------------------------
 -- Records of issuance_request
 -- ----------------------------
-INSERT INTO `issuance_request` VALUES ('2', '1034', '1', '1', '37', '2', 'CLN0002A', 'CLN0291A', null, '2017-02-22 15:11:20', '0');
-INSERT INTO `issuance_request` VALUES ('1', '1090', '1', '1', '38', '2', 'CLN0002A', 'CLN0291A', null, '2017-02-22 14:59:49', '1');
-INSERT INTO `issuance_request` VALUES ('2', '1090', '1', '1', '38', '3', 'CLN0002A', 'CLN0291A', null, '2017-02-22 15:11:20', '0');
+INSERT INTO `issuance_request` VALUES ('1', '484', '1', '1', '64', '2', 'CLN0002A', 'CLN0291A', 'to be issued lately', '2017-02-23 09:46:52', '0');
+
+-- ----------------------------
+-- Table structure for `issuance_request_history`
+-- ----------------------------
+DROP TABLE IF EXISTS `issuance_request_history`;
+CREATE TABLE `issuance_request_history` (
+  `ctrl_no` varchar(30) NOT NULL,
+  `sy` varchar(4) NOT NULL,
+  `no` int(11) NOT NULL,
+  `request_code` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `condition_id` int(2) NOT NULL,
+  `old_loc_id` int(11) NOT NULL,
+  `new_loc_id` int(11) NOT NULL,
+  `transfer_to` varchar(30) NOT NULL,
+  `released_from` varchar(30) NOT NULL,
+  `remarks` varchar(300) DEFAULT NULL,
+  `date_approved` datetime NOT NULL,
+  PRIMARY KEY (`id`,`condition_id`,`old_loc_id`,`released_from`,`ctrl_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of issuance_request_history
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `location`
@@ -5448,7 +5475,7 @@ INSERT INTO `transfer_request_history` VALUES ('CLN-1617-00005O', '1617', '5', '
 -- View structure for `propertyaccountability`
 -- ----------------------------
 DROP VIEW IF EXISTS `propertyaccountability`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `propertyaccountability` AS select `a`.`property_id` AS `id`,`b`.`pcode` AS `pcode`,`b`.`sno` AS `sno`,`b`.`description` AS `description`,`c`.`location` AS `location`,`d`.`condition_info` AS `condition_info`,`a`.`emp_id` AS `emp_id`,`e`.`department` AS `department`,`a`.`qty` AS `qty`,`a`.`condition_id` AS `condition_id`,`b`.`uom` AS `uom`,`a`.`location_id` AS `location_id`,concat(`e`.`last_name`,', ',`e`.`first_name`) AS `emp_name` from ((((`property_accountability` `a` left join `property` `b` on((`a`.`property_id` = `b`.`id`))) left join `location` `c` on((`a`.`location_id` = `c`.`id`))) left join `condition_info` `d` on((`a`.`condition_id` = `d`.`id`))) join `account_table` `e` on((`a`.`emp_id` = `e`.`emp_id`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `propertyaccountability` AS select `b`.`minor_category` AS `minor_category`,`a`.`property_id` AS `id`,`b`.`pcode` AS `pcode`,`b`.`sno` AS `sno`,`b`.`description` AS `description`,`c`.`location` AS `location`,`d`.`condition_info` AS `condition_info`,`a`.`emp_id` AS `emp_id`,`e`.`department` AS `department`,`a`.`qty` AS `qty`,`a`.`condition_id` AS `condition_id`,`b`.`uom` AS `uom`,`a`.`location_id` AS `location_id`,concat(`e`.`last_name`,', ',`e`.`first_name`) AS `emp_name` from ((((`property_accountability` `a` left join `property` `b` on((`a`.`property_id` = `b`.`id`))) left join `location` `c` on((`a`.`location_id` = `c`.`id`))) left join `condition_info` `d` on((`a`.`condition_id` = `d`.`id`))) join `account_table` `e` on((`a`.`emp_id` = `e`.`emp_id`)));
 
 -- ----------------------------
 -- View structure for `propertyaccountabilitynot`
