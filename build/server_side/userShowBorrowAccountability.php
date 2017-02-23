@@ -38,21 +38,34 @@
   $whereClause;
   $conditionFilter = $_GET['condition'];
   $locationFilter = $_GET['location'];
-  if($conditionFilter == 0 && $locationFilter == 0)
+  $descriptionFilter = $_GET['description'];
+  if($conditionFilter == 0 && $locationFilter == 0 && $descriptionFilter == 0)
   {
     $whereClause = "emp_id != '$emp_id'";
   }
-  if($conditionFilter != 0 && $locationFilter == 0)
+  if($conditionFilter != 0 && $locationFilter == 0 && $descriptionFilter == 0)
   {
     $whereClause = "emp_id != '$emp_id' AND condition_id = $conditionFilter ";
   }
-  if($locationFilter != 0 && $conditionFilter == 0)
+  if($locationFilter != 0 && $conditionFilter == 0 && $descriptionFilter == 0)
   {
     $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter ";
   }
-  if($locationFilter != 0 && $conditionFilter != 0)
+  if($locationFilter == 0 && $conditionFilter == 0 && $descriptionFilter != 0)
+  {
+    $whereClause = "emp_id != '$emp_id' AND minor_category = $descriptionFilter ";
+  }
+  if($locationFilter != 0 && $conditionFilter != 0 && $descriptionFilter == 0)
   {
     $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter AND condition_id = $conditionFilter";
+  }
+  if($locationFilter == 0 && $conditionFilter != 0 && $descriptionFilter != 0)
+  {
+    $whereClause = "emp_id != '$emp_id' AND minor_category = $descriptionFilter AND condition_id = $conditionFilter";
+  }
+  if($locationFilter != 0 && $conditionFilter == 0 && $descriptionFilter != 0)
+  {
+    $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter AND minor_category = $descriptionFilter";
   }
   $joinQuery = "FROM `propertyaccountability` AS `u`";
   echo json_encode(

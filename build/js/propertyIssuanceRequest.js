@@ -23,20 +23,21 @@ function confirmNo()
 $('body').delegate('.showConfirmation','click',function()
 {
     var showCon = $(this).attr("idUp");
-    console.log(1);
+    var emp_approval = $("#emp_approval").val();
     if (confirm("Are you sure you want to approved this transfer request?")) {
-        $.post("build/ajax/updateRequestForm.php",{confirmation_id:showCon},function(data)
+        $.post("build/ajax/updateRequestIssuanceForm.php",{confirmation_id:showCon, emp_approval:emp_approval},function(data)
         {
-            if(data==1)
+            var result = parseInt(data);
+            console.log(data);
+            if(result == 1)
             {
               $.Notify({
-                  caption: "Transfer Confirmation Success",
+                  caption: "Issuance Confirmation Success",
                   content: "the request have been approved",
                   icon: "<span class='mif-checkmark icon'></span>",
                   type: "success"
               });
-              location.reload();
-
+              showRequestForms();
             }
         });
 
@@ -64,19 +65,20 @@ $(function(){
 
 function showRequestForms()
 {
-    $.post("build/ajax/showIssuanceRequestForm.php",{requestType:0},function(request)
+    $.post("build/ajax/showIssuanceRequestForm.php",{requestType:1},function(request)
     {
         $("#requestForm").html(request);
         console.log(request);
 
     });
-    $.post("build/ajax/showIssuanceRequestForm.php",{requestType:1},function(approved)
+    $.post("build/ajax/showIssuanceRequestForm.php",{requestedType:1},function(approved)
     {
         $("#approvedRequest").html(approved);
     });
 }
 function disapproveRequest(request_code){
-  $.post('build/ajax/dissapproveTransfer.php',{request_code:request_code}, function(data)
+  var emp_approval = $("#emp_approval").val();
+  $.post('build/ajax/dissapproveIssuance.php',{emp_approval:emp_approval, request_code:request_code}, function(data)
   {
     var result = parseInt(data);
     if(result == 1){

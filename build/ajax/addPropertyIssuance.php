@@ -47,7 +47,7 @@
 					"condition_id" => $propertyTransferList[$i]->{'property'}['condition_id'],
 					"old_loc_id" => $propertyTransferList[$i]->{'property'}['location_id'],
 					"new_loc_id" => $propertyTransferList[$i]->{'location'},
-					"remarks" => $propertyTransferList[$i]->{'property'}['remarks'],
+					"remarks" => $_POST['remarks'],
 					"transfer_to" => $propertyTransferList[$i]->{'employee'},
 					"released_from" => $propertyTransferList[$i]->{'property'}['emp_id'],
 					"date_request" => $dateToday

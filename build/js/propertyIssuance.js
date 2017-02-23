@@ -12,6 +12,13 @@ function requestAccountability()
 		$('#history_request_div').html(data);
 		$('#history_request_div').show();
 	});
+	$.post("build/ajax/showHistoryIssuanceRequest.php",{showRequest:1},function(data)
+	{
+		console.log(data);
+		$('#history_loader_issue').hide();
+		$('#history_request_div_issue').html(data);
+		$('#history_request_div_issue').show();
+	});
 }
 function transferView(viewP,conditionPv,locationPv,employee)
 {
@@ -128,7 +135,8 @@ function removeProperty(propertyId, locationId) {
 }
 
 function requestTransfer(empId) {
-    $.post("build/ajax/addPropertyIssuance.php", {emp_id: empId}, function(data) {
+		var remarks = $("#remarks").val();
+    $.post("build/ajax/addPropertyIssuance.php", {emp_id:empId , remarks:remarks}, function(data) {
         var response = JSON.parse(data);
         if(response.code==1)
         {

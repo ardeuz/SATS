@@ -258,7 +258,7 @@ function changePassword(){
     else if(result == 2){
       $.Notify({
           caption: "Changing of Password failed",
-          content: "An error Occured(Please check your old password)",
+          content: "An error occured(Please check your old password)",
           icon: "<span class='mif-cross icon'></span>",
           type: "alert"
       });

@@ -55,16 +55,16 @@
                     <label class="text-light">Filter by: </label><br/>
                     <table>
                       <td>
-                        <label class="text-light">Condition </label>
+                        <label class="text-light">&nbsp;&nbsp; &nbsp; Description: </label>
                         <div class="input-control select" data-role="select">
-                          <select id="conditionFilter" onchange="conditionFilter()" style="display:none;">
+                          <select id="descriptionFilter" onchange="descriptionFilter()" style="display:none;">
                             <option value="0">ALL</option>
                             <?php
 
-                              $conditionDatas = $db->select("condition_info",["id","condition_info"]);
-                              foreach($conditionDatas as $conditionData)
+                              $locationDatas = $db->select("minor_category",["id","description"]);
+                              foreach($locationDatas  as $locationData)
                               {
-                                echo "<option value=".$conditionData['id'].">".$conditionData['condition_info']."</option>";
+                                echo "<option value=".$locationData['id'].">".$locationData['description']."</option>";
                               }
 
                             ?>
@@ -82,6 +82,24 @@
                               foreach($locationDatas  as $locationData)
                               {
                                 echo "<option value=".$locationData['id'].">".$locationData['location']."</option>";
+                              }
+
+                            ?>
+                          </select>
+                        </div>
+                      </td>
+
+                      <td>
+                        <label class="text-light">Condition </label>
+                        <div class="input-control select" data-role="select">
+                          <select id="conditionFilter" onchange="conditionFilter()" style="display:none;">
+                            <option value="0">ALL</option>
+                            <?php
+
+                              $conditionDatas = $db->select("condition_info",["id","condition_info"]);
+                              foreach($conditionDatas as $conditionData)
+                              {
+                                echo "<option value=".$conditionData['id'].">".$conditionData['condition_info']."</option>";
                               }
 
                             ?>

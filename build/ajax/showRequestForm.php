@@ -88,7 +88,8 @@
 		}
 
 		if (count($transferRequestGroupDatas) <= 0) {
-			echo "<h2>You have no any Issuance request.</h2>";
+			echo "<h2>You have no any Transfer request.</h2>
+					<small>Choose property on the list to request for Transfer to your accountability.</small>";
 		}
 
 ?>

@@ -33,7 +33,7 @@
                 <div class="cell size3 padding10">
                     <div class="tile full-size" onCLick="window.location.href = 'admin_transfer_request.php';">
                         <div class="tile-content slide-left-2 bg-dark">
-                            <span class="tile-label fg-white">Transfer Request</span>
+                            <span class="tile-label fg-white">Transfer Requests</span>
                             <span class="tile-badge fg-white bg-dark">
                               <?php
                                 $transferCounts = $db->count("transfer_request",["emp_approval"=>1]);
@@ -100,9 +100,9 @@
                 </div>
               </div>
               <div class="row">
-                <div class="cell size6 padding10">
+                <div class="cell size4 padding10">
                   <div class="tile full-size">
-                      <div class="tile-content slide-up-2 bg-dark"   onCLick="window.location.href = 'admin_accountabilities_not.php';">
+                      <div class="tile-content slide-left-2 bg-dark"   onCLick="window.location.href = 'admin_accountabilities_not.php';">
                           <span class="tile-label fg-white">Property Without Accountability</span>
                           <div class="slide">
                           </div>
@@ -114,9 +114,23 @@
                       </div>
                   </div>
                 </div>
-                <div class="cell size6 padding10">
+                <div class="cell size4 padding10">
                   <div class="tile full-size">
-                      <div class="tile-content slide-down-2 bg-dark" onCLick="window.location.href = 'accountability_repair.php';">
+                      <div class="tile-content slide-up-2 bg-dark"   onCLick="window.location.href = 'admin_property_issuance.php';">
+                          <span class="tile-label fg-white">Property Issueance</span>
+                          <div class="slide">
+                          </div>
+                          <div class="slide-over bg-darkRed fg-white">
+                            <div class="padding10">
+                              <span class="text-light">In this module you will issue an accountability </span>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="cell size4 padding10">
+                  <div class="tile full-size">
+                      <div class="tile-content slide-right-2 bg-dark" onCLick="window.location.href = 'accountability_repair.php';">
                           <span class="tile-label fg-white">Repair</span>
                           <div class="slide">
                           </div>

@@ -37,7 +37,7 @@ var adminShowHistoryBorrow = $("#adminShowHistoryBorrow").DataTable({
   }
 });
 setInterval(function() {
-  accounts.ajax.reload(null,false);
+  adminShowHistoryBorrow.ajax.reload(null,false);
   console.log(1);
   }, 10000);
 

@@ -146,7 +146,7 @@
             if($db->has("issuance_request",
             ["AND" =>
               [
-                "request_to" => $_SESSION['account']['emp_id'],
+                "released_from" => $_SESSION['account']['emp_id'],
                 "emp_approval" => 0
               ]
             ]))
@@ -154,7 +154,7 @@
               $borrowRequestCount = $db->count("issuance_request",
               ["AND" =>
                 [
-                  "request_to" => $_SESSION['account']['emp_id'],
+                  "released_from" => $_SESSION['account']['emp_id'],
                   "emp_approval" => 0
                 ]
               ]);
@@ -249,7 +249,7 @@ function changePassword(){
     else if(result == 2){
       $.Notify({
           caption: "Changing of Password failed",
-          content: "An error Occured(Please check your old password)",
+          content: "An error occured(Please check your old password)",
           icon: "<span class='mif-cross icon'></span>",
           type: "alert"
       });

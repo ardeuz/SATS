@@ -28,7 +28,7 @@
     userShowBorrowTables  = $('#userShowBorrowTable').DataTable({
     	"processing": true,
     	"serverSide": true,
-    	"ajax": "build/server_side/userShowBorrowAccountability.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
+    	"ajax": "build/server_side/userShowBorrowAccountability.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
     	oLanguage : {
     		sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     	}
@@ -45,7 +45,7 @@
     	userShowBorrowTables = $('#userShowBorrowTable').DataTable({
     		"processing": true,
     		"serverSide": true,
-    		"ajax": "build/server_side/userShowBorrowAccountability.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val(),
+    		"ajax": "build/server_side/userShowBorrowAccountability.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
     		oLanguage : {
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
@@ -63,7 +63,7 @@
     	userShowBorrowTables = $('#userShowBorrowTable').DataTable({
     		"processing": true,
     		"serverSide": true,
-    		"ajax": "build/server_side/userShowBorrowAccountability.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
+    		"ajax": "build/server_side/userShowBorrowAccountability.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
     		oLanguage : {
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
@@ -73,6 +73,24 @@
     		console.log(1);
     	}, 10000);
     	console.log($("#locationFilter").val());
+    }
+    function descriptionFilter(){
+      if(userShowBorrowTables != null){
+        $("#userShowBorrowTable").dataTable().fnDestroy();
+      }
+      userShowBorrowTables = $('#userShowBorrowTable').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": "build/server_side/userShowBorrowAccountability.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
+        oLanguage : {
+          sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+        }
+      });
+      setInterval(function() {
+        userShowBorrowTables.ajax.reload(null,false);
+        console.log(1);
+      }, 10000);
+      console.log($("#locationFilter").val());
     }
 
 
@@ -100,7 +118,7 @@ foreach ($transferInfoDatas as $transferInfoData)
 
 ?>
 <h3 class="padding20 text-light header">Accountability of <?php echo $transferInfoData['first_name'] . ' ' . $transferInfoData['last_name']?>
-<br/><small>Department of <?php echo $transferInfoData['department']?></small>
+<br/><small><?php echo $transferInfoData['department']?> DEPARTMENT</small>
 </h3>
 <br/>
 

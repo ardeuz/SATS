@@ -36,16 +36,16 @@
         <label class="text-light">Filter by: </label><br/>
         <table>
           <td>
-            <label class="text-light">Condition </label>
+            <label class="text-light">&nbsp;&nbsp; &nbsp; Description: </label>
             <div class="input-control select" data-role="select">
-              <select id="conditionFilter" onchange="conditionFilter()" style="display:none;">
+              <select id="descriptionFilter" onchange="descriptionFilter()" style="display:none;">
                 <option value="0">ALL</option>
                 <?php
 
-                  $conditionDatas = $db->select("condition_info",["id","condition_info"]);
-                  foreach($conditionDatas as $conditionData)
+                  $locationDatas = $db->select("minor_category",["id","description"]);
+                  foreach($locationDatas  as $locationData)
                   {
-                    echo "<option value=".$conditionData['id'].">".$conditionData['condition_info']."</option>";
+                    echo "<option value=".$locationData['id'].">".$locationData['description']."</option>";
                   }
 
                 ?>
@@ -69,13 +69,36 @@
               </select>
             </div>
           </td>
+          <td>
+            <label class="text-light">Condition </label>
+            <div class="input-control select" data-role="select">
+              <select id="conditionFilter" onchange="conditionFilter()" style="display:none;">
+                <option value="0">ALL</option>
+                <?php
+
+                  $conditionDatas = $db->select("condition_info",["id","condition_info"]);
+                  foreach($conditionDatas as $conditionData)
+                  {
+                    echo "<option value=".$conditionData['id'].">".$conditionData['condition_info']."</option>";
+                  }
+
+                ?>
+              </select>
+            </div>
+          </td>
         </table>
         <hr class="thin bg-grayLighter">
-        <div id="history_request_div"  style="display:none;"></div>
-
+        <div id="history_request_div"  style="display:none;"></div><br/><br/><br/><br/>
         <!--pre loader-->
         <center>
           <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="history_loader"></div>
+        </center>
+
+        <h1 class="text-light fg-brown">Issuance Request History<span class="mif-notification place-right text-light"></span></h1>
+        <hr class="thin bg-grayLighter">
+        <div id="history_request_div_issue"  style="display:none;"></div>
+        <center>
+          <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="history_loader_issue"></div>
         </center>
       </div>
     </div>

@@ -38,6 +38,12 @@
     <h1 class="text-light">Borrowed Property<span class="mif-paper-plane place-right"></span></h1>
     <hr class="thin bg-grayLighter">
     <div id="tableBorrowedProware"></div>
+    <br/>
+    <br/>
+    <br/>
+    <h1 class="text-light">Repair History<span class="mif-wrench place-right"></span></h1>
+    <hr class="thin bg-grayLighter">
+    <div id="tableRepairHistory"></div>
   </div>
   <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="85%" data-width="50%" data-overlay-click-close="true" id="prowaredialog" data-close-button="true" style="overflow-y:scroll;">
     <h3 class="padding20 text-light header">Property Information</h3>

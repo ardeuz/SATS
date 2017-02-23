@@ -3,7 +3,7 @@
 $(document).ready(function() {
     borrowTable();
     prowareTable();
-
+    historyTable();
   $('body').delegate('.prowareView','click',function()
   {
       var viewP = $(this).attr("idPv");
@@ -106,6 +106,7 @@ function updateCondition(propertyId, oldConditionId, locationId) {
             icon: "<span class='mif-pencil icon'></span>",
             type: "success"
         });
+        historyTable();
 
   		}
       else if(result == 2)
@@ -158,6 +159,23 @@ function borrowTable()
       success : function(borrowTable)
       {
           $("#tableBorrowedProware").html(borrowTable);
+      }
+    });
+}
+function historyTable()
+{
+    $.ajax
+    ({
+      url : 'build/ajax/historyTable.php',
+      async : false,
+      type : 'POST',
+      data :
+      {
+          showTable : 1
+      },
+      success : function(historyTable)
+      {
+          $("#tableRepairHistory").html(historyTable);
       }
     });
 }

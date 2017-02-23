@@ -27,10 +27,10 @@
     </table>
     <script>
     var showTransferTables;
-    showTransferTables  = $('#adminShowInssuanceTable').dataTable({
+    showTransferTables  = $('#adminShowInssuanceTable').DataTable({
     	"processing": true,
     	"serverSide": true,
-    	"ajax": "build/server_side/adminServerPropertyIssuance.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
+    	"ajax": "build/server_side/adminServerPropertyIssuance.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
     	oLanguage : {
     		sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     	}
@@ -44,10 +44,10 @@
     	if(showTransferTables != null){
     		$("#adminShowInssuanceTable").dataTable().fnDestroy();
     	}
-    	showTransferTables = $('#adminShowInssuanceTable').dataTable({
+    	showTransferTables = $('#adminShowInssuanceTable').DataTable({
     		"processing": true,
     		"serverSide": true,
-    		"ajax": "build/server_side/adminServerPropertyIssuance.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val(),
+    		"ajax": "build/server_side/adminServerPropertyIssuance.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
     		oLanguage : {
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
@@ -62,10 +62,28 @@
     	if(showTransferTables != null){
     		$("#adminShowInssuanceTable").dataTable().fnDestroy();
     	}
-    	showTransferTables = $('#adminShowInssuanceTable').dataTable({
+    	showTransferTables = $('#adminShowInssuanceTable').DataTable({
     		"processing": true,
     		"serverSide": true,
-    		"ajax": "build/server_side/adminServerPropertyIssuance.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val(),
+    		"ajax": "build/server_side/adminServerPropertyIssuance.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
+    		oLanguage : {
+    			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+    		}
+    	});
+    	setInterval(function() {
+    		showTransferTables.ajax.reload(null,false);
+    		console.log(1);
+    	}, 10000);
+    	console.log($("#locationFilter").val());
+    }
+    function descriptionFilter(){
+    	if(showTransferTables != null){
+    		$("#adminShowInssuanceTable").dataTable().fnDestroy();
+    	}
+    	showTransferTables = $('#adminShowInssuanceTable').DataTable({
+    		"processing": true,
+    		"serverSide": true,
+    		"ajax": "build/server_side/adminServerPropertyIssuance.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
     		oLanguage : {
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
