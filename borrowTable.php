@@ -18,6 +18,7 @@
           <td class="sortable-column">Condition</td>
           <td class="sortable-column">Quantity</td>
           <td>Department</td>
+          <td>isBorrowed</td>
         </tr>
       </thead>
       <tbody>
@@ -33,11 +34,6 @@
     		sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     	}
     });
-    setInterval(function() {
-    	userShowBorrowTables.ajax.reload(null,false);
-    	console.log(1);
-    }, 10000);
-
     function conditionFilter(){
     	if(userShowBorrowTables != null){
     		$("#userShowBorrowTable").dataTable().fnDestroy();
@@ -50,10 +46,7 @@
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
     	});
-    	setInterval(function() {
-    		userShowBorrowTables.ajax.reload(null,false);
-    		console.log(1);
-    	}, 10000);
+
     	console.log($("#conditionFilter").val());
     }
     function locationFilter(){
@@ -68,10 +61,7 @@
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
     	});
-    	setInterval(function() {
-    		userShowBorrowTables.ajax.reload(null,false);
-    		console.log(1);
-    	}, 10000);
+
     	console.log($("#locationFilter").val());
     }
     function descriptionFilter(){
@@ -86,13 +76,12 @@
           sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
         }
       });
-      setInterval(function() {
-        userShowBorrowTables.ajax.reload(null,false);
-        console.log(1);
-      }, 10000);
-      console.log($("#locationFilter").val());
+      console.log($("#descriptionFilter").val());
     }
-
+    setInterval(function() {
+      userShowBorrowTables.ajax.reload(null,false);
+      console.log(1);
+    }, 10000);
 
     </script>
 

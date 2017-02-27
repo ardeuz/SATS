@@ -21,7 +21,7 @@
     array('db' => '`u`.`condition_id`', 'dt' => 4,'field' => "condition_id"),
     array('db' => '`u`.`qty`', 'dt' => 5,'field' => "qty"),
     array('db' => '`u`.`borrowedTo`', 'dt' => 6,'field' => "borrowedTo"),
-    array('db' => '`u`.`date_approved`', 'dt' => 7,'field' => "date_approved"),
+    array('db' => '`u`.`date_approved`', 'dt' => 7,'field' => "date_approved")
   );
   $sql_details = array(
   	'user' => "root",

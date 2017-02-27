@@ -42,11 +42,18 @@
             <center>
               <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="current_approved_loader"></div>
             </center>
-            <h1 class="text-light fg-brown">Borrow Request History<span class="mif-notification place-right text-light"></span></h1>
+            <h1 class="text-light fg-brown">Borrowed History<span class="mif-notification place-right text-light"></span></h1>
             <hr class="thin bg-grayLighter">
             <div id="history_request_div"  style="display:none;"></div>
             <center>
               <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="history_loader"></div>
+            </center>
+            <br/>
+            <h1 class="text-light fg-brown">Borrow Returned History<span class="mif-notification place-right text-light"></span></h1>
+            <hr class="thin bg-grayLighter">
+            <div id="history_returned_div"  style="display:none;"></div>
+            <center>
+              <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="returned_loader"></div>
             </center>
           </div>
         <!-- <h1 class="text-light fg-lightBlue">My Request<span class="mif-notification place-right text-light"></span></h1>

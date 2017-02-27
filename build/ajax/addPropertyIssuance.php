@@ -11,7 +11,7 @@
 	$propertyTransferList = $_SESSION['propertyIssuanceList'];
 
 	//============generate request code==============//
-	$request_code = $db->max("issuance_request", "request_code") + 1;
+	$request_code = $db->max("transfer_request", "request_code") + 1;
 
 	//===============insertion=============//
 	$msgResponse = new stdClass();
@@ -40,7 +40,7 @@
 				$notReserveCount++;
 			} else {
 				$hasRequest = true;
-				$db->insert("issuance_request", [
+				$db->insert("transfer_request", [
 					"request_code" => $request_code,
 					"id" => $propertyTransferList[$i]->{'property'}['id'],
 					"qty" => $propertyTransferList[$i]->{'qty'},
@@ -50,7 +50,8 @@
 					"remarks" => $_POST['remarks'],
 					"transfer_to" => $propertyTransferList[$i]->{'employee'},
 					"released_from" => $propertyTransferList[$i]->{'property'}['emp_id'],
-					"date_request" => $dateToday
+					"date_request" => $dateToday,
+					"transfer_type" => "issuance"
 				]);
 			}
 		}

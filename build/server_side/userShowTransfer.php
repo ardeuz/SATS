@@ -43,16 +43,15 @@
             PDO::ERRMODE_EXCEPTION
         ]
       ]);
-
-      $empId = $row[1];
-      if($db2->has("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$empId, ]])){
+      $property_id = $rows['id'];
+      $empId = $employeeId;
+      if($db2->has("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$empId,"id"=>$property_id]])){
         $accountName = $db2->get("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"]);
         return "Borrowed By ". $accountName["last_name"].', '.$accountName['first_name'];
       }
       else{
         return "Not Borrowed";
       }
-      return "hello";
     })
   );
   $sql_details = array(
@@ -93,6 +92,10 @@
   if($locationFilter != 0 && $conditionFilter == 0 && $descriptionFilter != 0)
   {
     $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter AND minor_category = $descriptionFilter";
+  }
+  if($locationFilter != 0 && $conditionFilter != 0 && $descriptionFilter != 0)
+  {
+    $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter AND condition_id = $conditionFilter AND minor_category = $descriptionFilter";
   }
   $joinQuery = "FROM `propertyaccountability` AS `u`";
   echo json_encode(

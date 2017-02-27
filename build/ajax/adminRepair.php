@@ -25,6 +25,7 @@ if(isset($_POST['showAccounts']))
 var adminRepairsView = $("#adminRepairView").dataTable({
     "processing": true,
     "serverSide": true,
+
     "ajax": "build/server_side/adminServerRepair.php",
     oLanguage : {
       sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"

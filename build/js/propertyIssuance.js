@@ -5,13 +5,6 @@ $(document).ready(function()
 
 function requestAccountability()
 {
-	$.post("build/ajax/adminPropertyIssuance.php",{showTable:1},function(data)
-	{
-		console.log(data);
-		$('#history_loader').hide();
-		$('#history_request_div').html(data);
-		$('#history_request_div').show();
-	});
 	$.post("build/ajax/showHistoryIssuanceRequest.php",{showRequest:1},function(data)
 	{
 		console.log(data);

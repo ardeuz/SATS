@@ -27,7 +27,7 @@
     </table>
     <script>
     var showTransferTables;
-    showTransferTables  = $('#showTransferTable').dataTable({
+    showTransferTables  = $('#showTransferTable').DataTable({
     	"processing": true,
     	"serverSide": true,
     	"ajax": "build/server_side/userShowTransfer.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
@@ -35,15 +35,11 @@
     		sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     	}
     });
-    setInterval(function() {
-    	showTransferTables.ajax.reload(null,false);
-    	console.log(1);
-    }, 10000);
     function conditionFilter(){
     	if(showTransferTables != null){
     		$("#showTransferTable").dataTable().fnDestroy();
     	}
-    	showTransferTables = $('#showTransferTable').dataTable({
+    	showTransferTables = $('#showTransferTable').DataTable({
     		"processing": true,
     		"serverSide": true,
     		"ajax": "build/server_side/userShowTransfer.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
@@ -51,17 +47,13 @@
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
     	});
-    	setInterval(function() {
-    		showTransferTables.ajax.reload(null,false);
-    		console.log(1);
-    	}, 10000);
     	console.log($("#conditionFilter").val());
     }
     function locationFilter(){
     	if(showTransferTables != null){
     		$("#showTransferTable").dataTable().fnDestroy();
     	}
-    	showTransferTables = $('#showTransferTable').dataTable({
+    	showTransferTables = $('#showTransferTable').DataTable({
     		"processing": true,
     		"serverSide": true,
     		"ajax": "build/server_side/userShowTransfer.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
@@ -69,17 +61,13 @@
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
     	});
-    	setInterval(function() {
-    		showTransferTables.ajax.reload(null,false);
-    		console.log(1);
-    	}, 10000);
     	console.log($("#locationFilter").val());
     }
     function descriptionFilter(){
     	if(showTransferTables != null){
     		$("#showTransferTable").dataTable().fnDestroy();
     	}
-    	showTransferTables = $('#showTransferTable').dataTable({
+    	showTransferTables = $('#showTransferTable').DataTable({
     		"processing": true,
     		"serverSide": true,
     		"ajax": "build/server_side/userShowTransfer.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFIlter").val(),
@@ -87,13 +75,13 @@
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
     	});
-    	setInterval(function() {
-    		showTransferTables.ajax.reload(null,false);
-    		console.log(1);
-    	}, 10000);
+
     	console.log($("#descriptionFilter").val());
     }
-
+    setInterval(function() {
+      showTransferTables.ajax.reload(null,false);
+      console.log(1);
+    }, 10000);
     </script>
 
 <?php

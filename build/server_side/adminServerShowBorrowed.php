@@ -25,7 +25,7 @@
   	'db'   => "sats",
   	'host' => "localhost"
   );
-  $joinQuery = "FROM `showPropertyBorrow` AS `u`";
+  $joinQuery = "FROM `showPropertyBorrow` AS `u` where borrow_status = 'borrowed'";
   echo json_encode(
     SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery )
   );

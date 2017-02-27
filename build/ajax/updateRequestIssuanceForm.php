@@ -5,7 +5,7 @@
 	$emp_approval = $_POST['emp_approval'];
 
 	if($emp_approval == 0){
-		$db->update("issuance_request", ["emp_approval" => 1], ["request_code" => $request_code]);
+		$db->update("transfer_history", ["emp_approval" => 1], ["request_code" => $request_code]);
 		echo 1;
 	}
 	if($emp_approval == 1){
@@ -16,21 +16,21 @@
 
 		//======generate ctrl no===========//
 		$sy = $db->get("ctrl_sy", "sy"); //get sy
-		$no = $db->max("issuance_request_history", "no") + 1; //get the next number for ctrl form
+		$no = $db->max("transfer_request_history", "no") + 1; //get the next number for ctrl form
 
 		$no_format = str_pad($no, 5, '0', STR_PAD_LEFT); //format to 5 digit
 
 		$ctrl_no = $CTRL_NO_PREFIX . "-" . $sy . "-" . $no_format ."-". $CTRL_NO_SUFFIX;
 
 		//===============magic happens================//
-		$transferRequestDatas = $db->select("issuance_request", [
+		$transferRequestDatas = $db->select("transfer_request", [
 			"request_code", "id", "qty", "condition_id", "old_loc_id", "new_loc_id", "transfer_to", "released_from", "remarks"
 		], [
 			"request_code" => $request_code
 		]);
 
 		foreach ($transferRequestDatas as $transferRequestData) {
-			$db->insert("issuance_request_history", [
+			$db->insert("transfer_request_history", [
 				"ctrl_no" => $ctrl_no,
 				"sy" => $sy,
 				"no" => $no,
@@ -143,7 +143,7 @@
 			}
 		}
 
-		$db->delete("issuance_request", ["request_code" => $request_code]); //lastly, delete it from transfer request
+		$db->delete("transfer_history", ["request_code" => $request_code]); //lastly, delete it from transfer request
 		echo 1;
 	}
 ?>

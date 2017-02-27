@@ -21,6 +21,12 @@ function requestCall()
 		$('#history_request_div').html(data);
 		$('#history_request_div').show();
 	});
+	$.post("build/ajax/showHistoryBorrowReturn.php",{showRequest:1},function(data)
+	{
+		$('#returned_loader').hide();
+		$('#history_returned_div').html(data);
+		$('#history_returned_div').show();
+	});
 }
 
 $('body').delegate('.adminConfirmation','click',function(){

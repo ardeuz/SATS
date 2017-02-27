@@ -13,7 +13,7 @@
   if($historyCount != 0)
   {
 ?>
-<table class="dataTable border bordered hovered full-size" id="adminShowHistoryBorrow">
+<table class="dataTable border bordered hovered full-size" id="adminShowHistoryBorrowReturned">
     <thead>
       <tr>
         <td class="sortable-column"></td>
@@ -28,16 +28,16 @@
     </tbody>
   </table>
 <script>
-var adminShowHistoryBorrow = $("#adminShowHistoryBorrow").DataTable({
+var adminShowHistoryBorrowReturn = $("#adminShowHistoryBorrowReturned").DataTable({
   "processing": true,
   "serverSide": true,
-  "ajax": "build/server_side/adminServerShowBorrowed.php",
+  "ajax": "build/server_side/adminServerShowBorrowReturned.php",
   oLanguage : {
     sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
   }
 });
 setInterval(function() {
-  adminShowHistoryBorrow.ajax.reload(null,false);
+  adminShowHistoryBorrowReturn.ajax.reload(null,false);
   console.log(1);
   }, 10000);
 

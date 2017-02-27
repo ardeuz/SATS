@@ -23,15 +23,6 @@
 
   <body>
     <?php include('navigation.php'); ?>
-
-    <div class="cell full-size padding50 bg-white" id="cell-content" style="width:100%;">
-      <h1 class="text-light fg-amber">Issuance Pending Request<span class="mif-notification place-right text-light"></span></h1>
-      <hr class="thin bg-grayLighter">
-      <center>
-        <div class="container grid padding10" id="requestForm"></div>
-      </center>
-    </div>
-
     <div class="cell full-size padding50 bg-white" id="cell-content" style="width:100%;">
       <h1 class="text-light fg-green">Issuance Approved Request<span class="mif-checkmark place-right"></span></h1>
       <hr class="thin bg-grayLighter">

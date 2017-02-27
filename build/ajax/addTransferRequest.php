@@ -51,7 +51,8 @@
 					"remarks" => $_POST['remarks'],
 					"transfer_to" => $_SESSION['account']['emp_id'],
 					"released_from" => $propertyTransferList[$i]->{'property'}['emp_id'],
-					"date_request" => $dateToday
+					"date_request" => $dateToday,
+					"transfer_type" => "transfer"
 				]);
 			}
 		}

@@ -16,7 +16,7 @@
   	'db'   => "sats",
   	'host' => "localhost"
   );
-  $joinQuery = "FROM `audit_trail_condition` AS `u` where actor = '$emp_id' group by date desc";
+  $joinQuery = "FROM `audit_trail_condition` AS `u` where actor = '$emp_id'";
   echo json_encode(
     SSP::simple( $_GET, $sql_details, $table, $pkey, $column, $joinQuery )
   );

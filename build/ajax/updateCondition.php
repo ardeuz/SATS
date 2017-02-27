@@ -68,8 +68,10 @@
 	]);
 	// insert to audit trail
 	$remarks = $_POST['remarks'];
-	$propertyName = $db->get("property","pcode",["id"=>$id]);
+	$propertyName = $db->get("property",["pcode","sno","description"],["id"=>$id]);
 	$oldCond = $db->get("condition_info","condition_info",["id" => $old_condition_id]);
 	$newCond = $db->get("condition_info","condition_info",["id" => $new_condition_id]);
-	$db->insert("audit_trail_condition",["actor"=>$emp_id, "action" => $emp_id." updated the condition of ".$propertyName." from ".$oldCond." to ".$newCond ,"date" => $dateToday , "remarks"=>$remarks	]);
+
+	$db->insert("audit_trail_condition",["actor"=>$emp_id, "action" => $emp_id." updated the condition of ".$propertyName['pcode']." - ".$propertyName['sno']." - ".$propertyName['description']." from ".$oldCond." to ".$newCond ,"date" => $dateToday , "remarks"=>$remarks	]);
+
 ?>

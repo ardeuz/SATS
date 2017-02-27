@@ -41,7 +41,7 @@ var accountsNot;
 setInterval(function() {
   accountsNot.ajax.reload(null,false);
   console.log(1);
-}, 5000);
+}, 10000);
 </script>
 <?php
 exit();
