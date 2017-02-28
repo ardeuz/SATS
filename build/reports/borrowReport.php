@@ -5,7 +5,7 @@
 	$dateToday = date('M d, Y H:i:A');
 
   $ctrl_no = $_GET['ctrl_no'];
-  $remarks = $db->get("borrow_request_history",["remarks"],["ctrl_no"=>$ctrl_no]);
+  $remarks = $db->get("borrow_request_history",["remarks","borrow_status"],["ctrl_no"=>$ctrl_no]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,18 +55,25 @@
               <th class="fg-black small">Condition</th>
               <th class="fg-black small">Borrowed By</th>
               <th class="fg-black small">Released From</th>
-              <th class="fg-black small">Date Borrowed</th>
+              <?php
+              if($remarks['borrow_status']=='borrowed'){
+                echo '<th class="fg-black small">Date Borrowed</th>';
+              }
+              elseif($remarks['borrow_status']=='returned'){
+                echo '<th class="fg-black small">Date Returned</th>';
+              }
+              ?>
               <th class="fg-black small">Remarks</th>
             </tr>
           </thead>
           <tbody class='small'>
           <?php
 
-            $sql = "SELECT b.pcode, b.description, c.location as old_loc, d.location as new_loc, (SELECT major_category.description from major_category where major_category.id = (SELECT major_id FROM minor_category where minor_category.id = b.minor_category)) as property_type, e.condition_info, CONCAT(f.last_name,', ',f.first_name) as borrowed_to, CONCAT(g.last_name,', ',g.first_name) as Released_From, a.remarks , a.date_returned FROM borrow_request_history AS a LEFT JOIN property AS b ON a.id = b.id LEFT JOIN location AS c ON a.old_loc_id = c.id LEFT JOIN location AS d ON a.new_loc_id = d.id LEFT JOIN condition_info AS e ON a.condition_id = e.id LEFT JOIN account_table AS f on a.borrowed_to = f.emp_id LEFT JOIN account_table AS g on a.released_from = g.emp_id WHERE a.ctrl_no= '$ctrl_no'";
+            $sql = "SELECT a.borrow_status, b.pcode, b.description, c.location as old_loc, d.location as new_loc, (SELECT major_category.description from major_category where major_category.id = (SELECT major_id FROM minor_category where minor_category.id = b.minor_category)) as property_type, e.condition_info, CONCAT(f.last_name,', ',f.first_name) as borrowed_to, CONCAT(g.last_name,', ',g.first_name) as Released_From, a.remarks , a.date_approved , a.date_returned FROM borrow_request_history AS a LEFT JOIN property AS b ON a.id = b.id LEFT JOIN location AS c ON a.old_loc_id = c.id LEFT JOIN location AS d ON a.new_loc_id = d.id LEFT JOIN condition_info AS e ON a.condition_id = e.id LEFT JOIN account_table AS f on a.borrowed_to = f.emp_id LEFT JOIN account_table AS g on a.released_from = g.emp_id WHERE a.ctrl_no= '$ctrl_no'";
             $transferReportDatas = $db->query($sql)->fetchAll();
             foreach ($transferReportDatas as $transferReportData) {
 
-              echo "
+              $borrowdatas =  "
                 <tr style='font-size: 12px'>
                   <td>".$transferReportData['pcode']."</td>
                   <td>".$transferReportData['old_loc']."</td>
@@ -75,13 +82,26 @@
                   <td>".$transferReportData['condition_info']."</td>
                   <td>".$transferReportData['borrowed_to']."</td>
                   <td>".$transferReportData['Released_From']."</td>
-                  <td>".$transferReportData['date_returned']."</td>
-                  <td>".$transferReportData['remarks']."</td>
-                </tr>
-                <tr>
-                  <td colspan='8' style='font-size: 11px;'><span class='mif-arrow-down-right'></span>&nbsp;<b>Full Description:</b> ".$transferReportData['description']."</td>
-                </tr>
                   ";
+                  if($transferReportData['borrow_status']=="borrowed"){
+                    $borrowdatas .= "  <td>".$transferReportData['date_approved']."</td>
+                      <td>".$transferReportData['borrow_status']."</td>
+                    </tr>
+                    <tr>
+                      <td colspan='8' style='font-size: 11px;'><span class='mif-arrow-down-right'></span>&nbsp;<b>Full Description:</b> ".$transferReportData['description']."</td>
+                    </tr>
+                      ";
+                  }
+                  elseif($transferReportData['borrow_status']=="returned"){
+                    $borrowdatas .= "  <td>".$transferReportData['date_returned']."</td>
+                      <td>".$transferReportData['borrow_status']."</td>
+                    </tr>
+                    <tr>
+                      <td colspan='8' style='font-size: 11px;'><span class='mif-arrow-down-right'></span>&nbsp;<b>Full Description:</b> ".$transferReportData['description']."</td>
+                    </tr>
+                      ";
+                  }
+                  echo $borrowdatas;
             }
           ?>
 
