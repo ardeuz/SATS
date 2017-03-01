@@ -12,6 +12,13 @@ function requestAccountability()
 		$('#history_request_div_issue').html(data);
 		$('#history_request_div_issue').show();
 	});
+	$.post("build/ajax/adminPropertyIssuance.php",{showRequest:1},function(data)
+	{
+		console.log(data);
+		$('#history_loader').hide();
+		$('#history_request_div').html(data);
+		$('#history_request_div').show();
+	});
 }
 function transferView(viewP,conditionPv,locationPv,employee)
 {

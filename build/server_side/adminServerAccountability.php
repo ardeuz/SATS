@@ -41,8 +41,8 @@
         $empId = $rows['emp_id'];
         $selectAccounts = $db->select("account_table",['emp_id' , 'last_name' , 'first_name' ,'department'],["status"=>1]);
         $maintenance = '
-        <div class="input-control select">
-        <select onchange="updateAdminCondition('.$ids.', '.$locationId.', '.$conditionId.', \'' . $empId . '\');" id="condition'.$ids. $locationId.$conditionId.$empId.'">';
+        <div class="input-control select" style="width:100%;" data-role="select">
+        <select style="display:none;" onchange="updateAdminCondition('.$ids.', '.$locationId.', '.$conditionId.', \'' . $empId . '\');" id="condition'.$ids. $locationId.$conditionId.$empId.'">';
 
           $conditionDatas = $db->select("condition_info", ["id","condition_info"]);
           foreach ($conditionDatas as $conditionData){

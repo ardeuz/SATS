@@ -14,7 +14,41 @@ $(document).ready(function() {
 	$("#accountCategory").select2();
 	$("#minorCategory").select2();
 	$("#editMinorId").select2();
+	$("#subPr1").select2();
+
 });
+
+var subProperty = 1;
+var i = 0;
+function addAnotherSubProperty(){
+
+	if(i < subProperty ){
+		$.post("build/ajax/showSelectors.php",{showSelect : 1},function(data){
+			$("#selectProps"+subProperty).html(data);
+		$("#subProperties").append("<div class='input-control select full-size' data-role='select'><select id=subPr"+subProperty+" style='display:none;'><option value=0>Select a Property</option>"+data+"></select></div>");
+		});
+	}
+	console.log(subProperty);
+	i = i + 1;
+	subProperty = subProperty + 1;
+	//
+	// if(i <= subProperty){
+	// 	i += 1;
+	// }
+
+}
+function addSubProperty(){
+	if($("#minorCategory").val() == 1 ){
+		$.post("build/ajax/showSelectors.php",{showSelect : 1},function(data){
+			$("#selectProps1").html(data);
+		$("#subProperties").append("<div class='input-control select full-size' data-role='select'><select id=subPr1 style='display:none;'><option value=0>Select a Property</option>"+data+"></select></div>");
+		});
+		$("#subProperty").show();
+	}
+	else{
+		$("#subProperty").hide();
+	}
+}
 function addProperty(){
   var pcode = $("#pcode").val();
   var sno = $("#sno").val();
@@ -61,6 +95,15 @@ function addProperty(){
       //problem with the server
     }
   });
+	if(subProperty != 0){
+		for (var a = 1; a <= subProperty; a++) {
+			var appended = $("#subPr"+a).val();
+			console.log(appended);
+			$.post("build/ajax/addProperty.php",{appended : appended},function(data){
+
+			});
+		}
+	}
 }
 function ViewProperty(propertyId)
 {

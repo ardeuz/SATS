@@ -4,7 +4,7 @@
 
   $emp_id = $_SESSION['account']['emp_id'];
 
-  if(isset($_POST['showTable']))
+  if(isset($_POST['showRequest']))
   {
 ?>
     <table class="dataTable border bordered hovered" id="adminShowInssuanceTable">
@@ -129,51 +129,51 @@ foreach ($transferInfoDatas as $transferInfoData)
 </tr>
 <tr>
 <td>Property Code</td>
-<td><?php echo $transferInfoData['pcode'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['pcode']);?></td>
 </tr>
 <tr>
 <td>Serial Number</td>
-<td><?php echo $transferInfoData['sno'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['sno']);?></td>
 </tr>
 <tr>
 <td>Property Description</td>
-<td><?php echo $transferInfoData['property_description'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['property_description']);?></td>
 </tr>
 <tr>
 <td>Brand</td>
-<td><?php echo $transferInfoData['brand'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['brand']);?></td>
 </tr>
 <tr>
 <td>Model</td>
-<td><?php echo $transferInfoData['model'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['model']);?></td>
 </tr>
 <tr>
 <td>Minor Description</td>
-<td><?php echo $transferInfoData['minor_description'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['minor_description']);?></td>
 </tr>
 <tr>
 <td>Major Description</td>
-<td><?php echo $transferInfoData['major_description'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['major_description']);?></td>
 </tr>
 <tr>
 <td>Quantity</td>
-<td><?php echo $transferInfoData['qty'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['qty']);?></td>
 </tr>
 <tr>
 <td>Unit of Measurement</td>
-<td><?php echo $transferInfoData['uom'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['uom']);?></td>
 </tr>
 <tr>
 <td>Condition</td>
-<td><?php echo $transferInfoData['condition_info'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['condition_info']);?></td>
 </tr>
 <tr>
 <td>Location</td>
-<td><?php echo $transferInfoData['location'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['location']);?></td>
 </tr>
 <tr>
 <td>Cost</td>
-<td><?php echo $transferInfoData['cost'];?></td>
+<td><?php echo htmlspecialchars($transferInfoData['cost']);?></td>
 </tr>
 <?php
 }

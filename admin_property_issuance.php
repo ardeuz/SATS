@@ -87,9 +87,9 @@
             </div>
           </td>
         </table>
+
         <hr class="thin bg-grayLighter">
         <div id="history_request_div"  style="display:none;"></div><br/><br/><br/><br/>
-        <!--pre loader-->
         <center>
           <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="history_loader"></div>
         </center>

@@ -109,8 +109,7 @@
         </select>
       </div>
       <div class="input-control select full-size">
-
-        <select id="minorCategory" style="display:none;">
+        <select id="minorCategory" onchange="addSubProperty()" style="display:none;">
           <option disabled selected>Choose a Category</option>
 
           <?php
@@ -123,6 +122,13 @@
             }
         ?>
         </select>
+      </div>
+      <div class="padding10" id="subProperty" style="border:0.5px solid rgba(0,0,0,0.5); display:none;">
+        <div class="padding10" id="subProperties">
+        <small>Add Sub Property</small>
+          <button onClick='addAnotherSubProperty()' class="mini-button button primary place-right"><span class="mif-plus icon"></span></button>
+
+        </div>
       </div>
       <div class="input-control select full-size">
         <select id="accountCategory" style="display:none;">

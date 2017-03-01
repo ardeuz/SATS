@@ -117,7 +117,7 @@
                 <div class="cell size4 padding10">
                   <div class="tile full-size">
                       <div class="tile-content slide-up-2 bg-dark"   onCLick="window.location.href = 'admin_property_issuance.php';">
-                          <span class="tile-label fg-white">Property Issueance</span>
+                          <span class="tile-label fg-white">Property Issuance</span>
                           <div class="slide">
                           </div>
                           <div class="slide-over bg-darkRed fg-white">

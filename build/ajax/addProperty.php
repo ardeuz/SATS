@@ -41,7 +41,14 @@
         "condition_id" => $conditions
       ]);
 
+
       echo 1;
     }
   }
+  $parent_id = $db->id();
+  $sub_id = $_POST['appended'];
+  $db->insert("sub_property", [
+    "property_id" => $parent_id,
+    "sub_property_id" => $sub_id
+  ]);
 ?>
