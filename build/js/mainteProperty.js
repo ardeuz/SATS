@@ -50,6 +50,7 @@ function addSubProperty(){
 	}
 }
 function addProperty(){
+	addPropertyWithSub();
   var pcode = $("#pcode").val();
   var sno = $("#sno").val();
   var propertyDescription = $("#propertyDescription").val();
@@ -65,6 +66,7 @@ function addProperty(){
   var accountCategory = $("#accountCategory").val();
   $.post("build/ajax/addProperty.php", {pcode:pcode, sno:sno, propertyDescription:propertyDescription, qty:qty, locations:locations, minorCategory:minorCategory, accountCategory:accountCategory, conditions:conditions, brand:brand, model:model, cost:cost, uom:uom, orno:orno} ,function(data)
   {
+		console.log(data);
     var result = parseInt(data);
 
     if (result == 1) {
@@ -95,12 +97,14 @@ function addProperty(){
       //problem with the server
     }
   });
+}
+function addPropertyWithSub(){
 	if(subProperty != 0){
 		for (var a = 1; a <= subProperty; a++) {
 			var appended = $("#subPr"+a).val();
 			console.log(appended);
-			$.post("build/ajax/addProperty.php",{appended : appended},function(data){
-
+			$.post("build/ajax/addNewPropertySub.php",{appended : appended},function(data){
+				console.log(data);
 			});
 		}
 	}
