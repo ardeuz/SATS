@@ -35,10 +35,7 @@
     		sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     	}
     });
-    setInterval(function() {
-    	showTransferTables.ajax.reload(null,false);
-    	console.log(1);
-    }, 10000);
+
 
     function conditionFilter(){
     	if(showTransferTables != null){
@@ -52,10 +49,6 @@
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
     	});
-    	setInterval(function() {
-    		showTransferTables.ajax.reload(null,false);
-    		console.log(1);
-    	}, 10000);
     	console.log($("#conditionFilter").val());
     }
     function locationFilter(){
@@ -70,10 +63,6 @@
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
     	});
-    	setInterval(function() {
-    		showTransferTables.ajax.reload(null,false);
-    		console.log(1);
-    	}, 10000);
     	console.log($("#locationFilter").val());
     }
     function descriptionFilter(){
@@ -88,12 +77,12 @@
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
     	});
-    	setInterval(function() {
-    		showTransferTables.ajax.reload(null,false);
-    		console.log(1);
-    	}, 10000);
     	console.log($("#locationFilter").val());
     }
+    setInterval(function() {
+      showTransferTables.ajax.reload(null,false);
+      console.log(1);
+    }, 10000);
 
     </script>
 

@@ -66,21 +66,12 @@
         echo "<span class='super mif-notification mif-ani-flash mif-ani-fast'></span>";
 
       }
-      elseif($db->has("issuance_request",
-      ["AND" =>
-        [
-          "released_from" => $_SESSION['account']['emp_id'],
-          "emp_approval" => 0
-        ]
-      ]))
-      {
-        echo "<span class='super mif-notification mif-ani-flash mif-ani-fast'></span>";
-      }
-      elseif($db->has("issuance_request",
+      elseif($db->has("transfer_request",
       ["AND" =>
         [
           "transfer_to" => $_SESSION['account']['emp_id'],
-          "emp_approval" => 1
+          "emp_approval" => 1,
+          "transfer_type" => "issuance"
         ]
       ]))
       {
@@ -143,39 +134,24 @@
         <li <?php if ($thisPage == "Issuance Request") {echo "class='active'";} ?>>
           <a href="issuanceRequest.php"> Issuance Request  <?php
 
-            if($db->has("issuance_request",
-            ["AND" =>
-              [
-                "released_from" => $_SESSION['account']['emp_id'],
-                "emp_approval" => 0
-              ]
-            ]))
-            {
-              $borrowRequestCount = $db->count("issuance_request",
-              ["AND" =>
-                [
-                  "released_from" => $_SESSION['account']['emp_id'],
-                  "emp_approval" => 0
-                ]
-              ]);
-              echo '<span class="mif-ani-flash mif-ani-fast fg-red">'.$borrowRequestCount.'</span>';
-            }
-            elseif($db->has("issuance_request",
+            if($db->has("transfer_request",
             ["AND" =>
               [
                 "transfer_to" => $_SESSION['account']['emp_id'],
-                "emp_approval" => 1
+                "emp_approval" => 1,
+                "transfer_type" => "issuance"
               ]
             ]))
             {
-              $borrowRequestCount = $db->count("issuance_request",
+              $borrowRequestCount = $db->count("transfer_request",
               ["AND" =>
                 [
                   "transfer_to" => $_SESSION['account']['emp_id'],
-                  "emp_approval" => 1
+                  "emp_approval" => 1,
+                  "transfer_type" => "issuance"
                 ]
               ]);
-              echo '<span class="mif-ani-flash mif-ani-fast fg-darkTeal">'.$borrowRequestCount.'</span>';
+              echo '<span class="mif-ani-flash mif-ani-fast fg-red">'.$borrowRequestCount.'</span>';
             }
 
             ?></a>

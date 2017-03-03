@@ -26,8 +26,9 @@
   	'host' => "localhost"
   );
   $joinQuery = "FROM `showPropertyTransfer` AS `u`";
+  $extraWhere = 'transfer_type = "transfer"';
   echo json_encode(
-    SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery )
+    SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery, $extraWhere )
   );
   return;
 ?>

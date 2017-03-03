@@ -27,7 +27,9 @@
             "date_acquired" => $data[7],
             "or_number" => $data[8]
 					]);
+          if($data[0] = $data[10]){
 
+          }
           $db->insert("property_accountability", [
             "emp_id" => $_POST['accountability'],
             "property_id" => $propertyId,
@@ -38,6 +40,6 @@
 			}
 		}
 
-    header("location:../../admin_accountabilities.php");
+    // header("location:../../admin_accountabilities.php");
   }
 ?>

@@ -46,7 +46,7 @@
         <div class="cell auto-size padding20 grid container" style="display:none;padding-top:0;" id="cell-content"></div> -->
 
 
-        <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="80%" data-width="90%" data-overlay-click-close="true" id="adminAccountabilityDialog" data-close-button="true" style="overflow-y:scroll;">
+        <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="80%" data-width="50%" data-overlay-click-close="true" id="adminAccountabilityDialog" data-close-button="true" style="overflow-y:scroll;">
           <h3 class="padding20 text-light header">Property Information</h3>
           <div class="padding20" id="adminInformation" style="padding-top:0;" ></div>
         </div>

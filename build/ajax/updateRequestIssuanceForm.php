@@ -24,7 +24,7 @@
 
 		//===============magic happens================//
 		$transferRequestDatas = $db->select("transfer_request", [
-			"request_code", "id", "qty", "condition_id", "old_loc_id", "new_loc_id", "transfer_to", "released_from", "remarks"
+			"request_code", "id", "qty", "condition_id", "transfer_type","old_loc_id", "new_loc_id", "transfer_to", "released_from", "remarks"
 		], [
 			"request_code" => $request_code
 		]);
@@ -43,7 +43,8 @@
 				"transfer_to" => $transferRequestData['transfer_to'],
 				"released_from" => $transferRequestData['released_from'],
 				"remarks" => $transferRequestData['remarks'],
-				"date_approved" => $dateToday
+				"date_approved" => $dateToday,
+				"transfer_type" => $transferRequestData['transfer_type']
 			]); //insert things to history
 
 			$item_qty = $db->get("property_accountability", "qty", [
@@ -143,7 +144,7 @@
 			}
 		}
 
-		$db->delete("transfer_history", ["request_code" => $request_code]); //lastly, delete it from transfer request
+		$db->delete("transfer_request", ["request_code" => $request_code]); //lastly, delete it from transfer request
 		echo 1;
 	}
 ?>

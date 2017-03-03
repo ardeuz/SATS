@@ -85,7 +85,7 @@
           <input type="hidden" id="deleteMinorID" />
           <h5 class="text-light">Are you sure you want to Delete? <br/><b><span id="minorVal"></span></b></h5>
           <button class="button danger" onclick="deleteMinor()"> Delete</button>
-          <button class="button default" onclick="hideMetroDialog('deleteMinorID')"> Cancel</button>
+          <button class="button default" onclick="hideMetroDialog('#deleteMinorID')"> Cancel</button>
           <!-- <div class="input-control"/>
             edittable values here
           </div> -->

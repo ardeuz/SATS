@@ -15,6 +15,7 @@ $(document).ready(function() {
 	$("#minorCategory").select2();
 	$("#editMinorId").select2();
 	$("#subPr1").select2();
+	$("#parPr1").select2();
 
 });
 
@@ -43,14 +44,19 @@ function addSubProperty(){
 			$("#selectProps1").html(data);
 		$("#subProperties").append("<div class='input-control select full-size' data-role='select'><select id=subPr1 style='display:none;'><option value=0>Select a Property</option>"+data+"></select></div>");
 		});
+		$("#parentProperty").hide();
 		$("#subProperty").show();
 	}
-	else{
+	else if($("#minorCategory").val() == 2 ){
+		$.post("build/ajax/showSelectorsParent.php",{showSelect : 1},function(data){
+		$("#selectProps1").html(data);
+		$("#parentProperties").append("<div class='input-control select full-size' data-role='select'><select id=parPr style='display:none;'><option value=0>Select a Property</option>"+data+"></select></div>");
+		});
 		$("#subProperty").hide();
+		$("#parentProperty").show();
 	}
 }
 function addProperty(){
-	addPropertyWithSub();
   var pcode = $("#pcode").val();
   var sno = $("#sno").val();
   var propertyDescription = $("#propertyDescription").val();
@@ -76,8 +82,18 @@ function addProperty(){
           icon: "<span class='mif-floppy-disk icon'></span>",
           type: "success"
       });
-      hideMetroDialog('#adminAdd');
-			location.reload();
+			$("#pcode").val("");
+			$("#sno").val("");
+			$("#propertyDescription").val("");
+			$("#qty").val("");
+			$("#brand").val("");
+			$("#model").val("");
+			$("#cost").val("");
+			$("#uom").val("");
+			$("#orno").val("");
+			$('#location').prop('selectedIndex', -1);
+			hideMetroDialog("#addProperty");
+
 		} else if (result == -1) {
       $.Notify({
         caption: 'Insert Failed',
@@ -97,6 +113,23 @@ function addProperty(){
       //problem with the server
     }
   });
+	if($('#minorCategory').val() == 1){
+		addPropertyWithSub();
+	}
+	else if ($('#minorCategory').val() == 2) {
+		var parent = $("#parPr").val();
+		$.post("build/ajax/addNewPropertyParent.php",{parent : parent},function(data){
+			console.log(data);
+			setTimeout(function () {
+			 location.reload();
+		 }, 1500);
+		});
+	}
+	else if ($('#minorCategory').val() != 1 || $('#minorCategory').val() == 2) {
+		location.reload();
+	}
+
+
 }
 function addPropertyWithSub(){
 	if(subProperty != 0){
@@ -105,6 +138,9 @@ function addPropertyWithSub(){
 			console.log(appended);
 			$.post("build/ajax/addNewPropertySub.php",{appended : appended},function(data){
 				console.log(data);
+				setTimeout(function () {
+				 location.reload();
+			 }, 2500);
 			});
 		}
 	}

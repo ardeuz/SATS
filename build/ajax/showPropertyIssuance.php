@@ -114,8 +114,8 @@
 		}
 
 		if (count($propertyTransferList) <= 0) {
-			echo "<h2>No property to be Issued.</h2>
-			";
+			echo "<h2>You have no any transfer request.</h2>
+			<small>Choose property on the list to request for transfer to your accountability.</small>";
 		}
 
 	} else {

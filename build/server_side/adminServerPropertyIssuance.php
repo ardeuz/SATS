@@ -94,6 +94,10 @@
   {
     $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter AND minor_category = $descriptionFilter";
   }
+  if($locationFilter != 0 && $conditionFilter != 0 && $descriptionFilter != 0)
+  {
+    $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter AND condition_id = $conditionFilter AND minor_category = $descriptionFilter";
+  }
   $joinQuery = "FROM `propertyaccountability` AS `u`";
   echo json_encode(
     SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery, $whereClause)

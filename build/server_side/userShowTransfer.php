@@ -43,7 +43,7 @@
             PDO::ERRMODE_EXCEPTION
         ]
       ]);
-      $property_id = $rows['id'];
+      $property_id = $row['id'];
       $empId = $employeeId;
       if($db2->has("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$empId,"id"=>$property_id]])){
         $accountName = $db2->get("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"]);

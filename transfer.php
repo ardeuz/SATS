@@ -90,7 +90,7 @@
                       </td>
 
                       <td>
-                        <label class="text-light">Condition </label>
+                        <label class="text-light">&nbsp;&nbsp; &nbsp;Condition </label>
                         <div class="input-control select" data-role="select">
                           <select id="conditionFilter" onchange="conditionFilter()" style="display:none;">
                             <option value="0">ALL</option>

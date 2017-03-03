@@ -110,7 +110,7 @@
      <input type="hidden" id="conditionId"/>
      <input type="hidden" id="locationId"/>
      <div class="padding20" style="padding-top:0">
-     <span>Please speicify the account to be issued </span>
+     <span>Please speicify the account to be issued </span><br/>
      <div class="input-control" style="width:24.5%" data-role="select">
              <select id="accountabilitySelect" style="display:none;">
                <option selected disabled>Select Account</option>

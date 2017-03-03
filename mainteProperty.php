@@ -80,6 +80,34 @@
       <div class="input-control text full-size">
         <input type="text" class="" id="orno" placeholder="P.O Number">
       </div>
+      <div class="input-control select full-size">
+        <select id="minorCategory" onchange="addSubProperty()" style="display:none;">
+          <option disabled selected>Choose a Category</option>
+
+          <?php
+            $minorDatas = $db->select("minor_category",["id","major_id","description"]) ;
+            foreach($minorDatas AS $minorData)
+            {
+          ?>
+            <option value=<?php echo $minorData['id'] ?>> <?php echo $minorData['description'] ?></option>
+          <?php
+            }
+        ?>
+        </select>
+      </div>
+      <div class="padding10" id="subProperty" style="border:0.5px solid rgba(0,0,0,0.5); display:none;">
+        <div class="padding10" id="subProperties">
+        <small>Add Sub Property</small>
+          <button onClick='addAnotherSubProperty()' class="mini-button button primary place-right"><span class="mif-plus icon"></span></button>
+
+        </div>
+      </div>
+      <div class="padding10" id="parentProperty" style="border:0.5px solid rgba(0,0,0,0.5); display:none;">
+        <div class="padding10" id="parentProperties">
+        <small>Add Parent</small>
+
+        </div>
+      </div>
       <div class="input-control full-size" data-role='select'>
         <select id="locations" style="display:none;">
           <option disabled selected>Choose a Location</option>
@@ -108,28 +136,7 @@
         ?>
         </select>
       </div>
-      <div class="input-control select full-size">
-        <select id="minorCategory" onchange="addSubProperty()" style="display:none;">
-          <option disabled selected>Choose a Category</option>
 
-          <?php
-            $minorDatas = $db->select("minor_category",["id","major_id","description"]) ;
-            foreach($minorDatas AS $minorData)
-            {
-          ?>
-            <option value=<?php echo $minorData['id'] ?>> <?php echo $minorData['description'] ?></option>
-          <?php
-            }
-        ?>
-        </select>
-      </div>
-      <div class="padding10" id="subProperty" style="border:0.5px solid rgba(0,0,0,0.5); display:none;">
-        <div class="padding10" id="subProperties">
-        <small>Add Sub Property</small>
-          <button onClick='addAnotherSubProperty()' class="mini-button button primary place-right"><span class="mif-plus icon"></span></button>
-
-        </div>
-      </div>
       <div class="input-control select full-size">
         <select id="accountCategory" style="display:none;">
           <option disabled selected>Accountability of</option>
@@ -196,7 +203,7 @@
     <input type="hidden" id="deletePropertyID" />
     <h5 class="text-light">Are you sure you want to Delete? <br/><b><span id="propertyCode"></span></b></h5>
     <button class="button danger" onclick="DeleteProperty()"> Delete</button>
-    <button class="button default" onclick="hideMetroDialog('deletePropertyDialog')"> Cancel</button>
+    <button class="button default" onclick="hideMetroDialog('#deletePropertyDialog')"> Cancel</button>
     <!-- <div class="input-control"/>
       edittable values here
     </div> -->

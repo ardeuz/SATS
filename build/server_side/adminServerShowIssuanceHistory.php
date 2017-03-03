@@ -2,12 +2,12 @@
   require( '../dataTables/ssp.php' );
   session_start();
   $emp_id = $_SESSION['account']['emp_id'];
-  $table = "showPropertyIssuance";
+  $table = "showpropertytransfer";
   $pkey = "ctrl_no";
   $columns = array(
     array('db' => '`u`.`ctrl_no`', 'dt' => 0,'field'=> 'ctrl_no',"formatter" => function($ctrl_no)
     {
-      $viewing = '<div class="toolbar"><button class="toolbar-button button primary"onclick="window.open(\'build/reports/issuanceReport.php?ctrl_no='.$ctrl_no.'\');"><span class="mif-print icon"></span></button></div>';
+      $viewing = '<div class="toolbar"><button class="toolbar-button button primary"onclick="window.open(\'build/reports/transferReport.php?ctrl_no='.$ctrl_no.'\');"><span class="mif-print icon"></span></button></div>';
       return $viewing;
     }),
     array('db' => '`u`.`ctrl_no`', 'dt' => 1,'field' => "ctrl_no"),
@@ -25,9 +25,10 @@
   	'db'   => "sats",
   	'host' => "localhost"
   );
-  $joinQuery = "FROM `showPropertyIssuance` AS `u`";
+  $joinQuery = "FROM `showpropertytransfer` AS `u`";
+  $extraWhere = 'transfer_type = "issuance"';
   echo json_encode(
-    SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery )
+    SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery ,$extraWhere )
   );
   return;
 ?>
