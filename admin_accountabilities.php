@@ -40,7 +40,8 @@
             <p class='text-normal fg-brown'>Colored Rows are depreciated or scrap.</p>
             <hr class="thin bg-grayLighter">
             <a href='build/ajax/exportProperty.php' class="button warning">Export Property List</a>
-            <button class="button success place-right" onclick="showMetroDialog('#uploadCSV');">Import CSV</button>
+            <button class="button success" onclick="showMetroDialog('#uploadCSVSub');">Import CSV w/Sub Property</button>
+            <button class="button success" onclick="showMetroDialog('#uploadCSV');">Import CSV</button>
             <div id="history_request_div"  style="display:none;"></div>
 
             <!--pre loader-->
@@ -56,6 +57,18 @@
         <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="80%" data-width="50%" data-overlay-click-close="true" id="adminAccountabilityDialog" data-close-button="true" style="overflow-y:scroll;">
           <h3 class="padding20 text-light header">Property Information</h3>
           <div class="padding20" id="adminInformation" style="padding-top:0;" ></div>
+        </div>
+        <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="uploadCSVSub" data-close-button="true">
+          <h3 class="padding20 text-light header">Upload CSV with Subproperty</h3>
+          <p class='text-light'><small><b>Column Order:</b> Parent Code, Sub Property</small></p>
+          <form action="build/ajax/uploadPropertySub.php" method="POST" enctype="multipart/form-data">
+              <div class="input-control file full-size" data-role="input">
+                  <input type="file" name="physical">
+                  <button class="button" type="button"><span class="mif-folder"></span></button>
+              </div>
+              <br />
+              <button class="button warning" type="submit">Upload File</button>
+          </form>
         </div>
         <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="uploadCSV" data-close-button="true">
           <h3 class="padding20 text-light header">Upload CSV</h3>
