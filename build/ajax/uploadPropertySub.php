@@ -19,8 +19,13 @@
 
         //===========get the propety id from the property code uploaded=============//
         $parent_id = $db->get("property", "id", ["pcode" => $parent_property_code]);
-        $sub_id = $db->get("property", "id", ["pcode" => $parent_property_code]);
-
+        $sub_id = $db->get("property", "id", ["pcode" => $sub_property_code]);
+        if($db->has("sub_property",["AND"=>["property_id"=>$parent_id,"sub_property_id"=>$sub_id]])){
+          //insert
+        } else {
+          //update
+          //insert to sub property history
+        }
         //if sub property and parent property exists (or same), do nothing. Otherwise, if the parent of the sub property is different, put it in the history, and upload the new relationship
 			}
 		}

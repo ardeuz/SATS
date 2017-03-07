@@ -10,6 +10,22 @@ function requestAccountability()
 		$('#history_request_div').show();
 	});
 }
+function addRecommendation(recommendation_id){
+	showMetroDialog("#adminAddRecommendation");
+	$("#audit_id").val(recommendation_id);
+}
+function addedRecommendation(){
+	var recommendation = $("#recommendation").val();
+	var id = $("#audit_id").val();
+	$.post("build/ajax/updateRecommendation.php",{recommendation : recommendation, id : id},function(data){
+		$.Notify({
+			caption: 'Recommendation Added',
+				content: ' ' ,
+				icon: "<span class='mif-plus icon'></span>",
+				type: "success"
+		});
+	});
+}
 $('body').delegate('.adminView','click',function()
 {
 		var viewP = $(this).attr("idPv");
@@ -66,25 +82,3 @@ function updateAdminCondition(propertyId, locationId, oldConditionId, emp_id) {
 		}
 	});
 }
-// $('body').delegate('.adminConfirmation','click',function(){
-// 	if (confirm("Approve transfer for this request?")) {
-// 		var adConfirm= $(this).attr('idAdminUp');
-//
-// 		$.post("build/ajax/insertHistory.php",{request_code:adConfirm},function(data)
-// 	  {
-// 				console.log(data);
-//
-// 				var result = parseInt(data);
-// 				if (result == 1) {
-// 					$.Notify({
-// 							caption: "Transfer request approved.",
-// 							content: "Item successfully aproved." ,
-// 							icon: "<span class='mif-pencil icon'></span>",
-// 							type: "success"
-// 					});
-//
-// 					requestCall();
-// 				}
-// 	  });
-// 	}
-// });

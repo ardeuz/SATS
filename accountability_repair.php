@@ -41,6 +41,16 @@
             </center>
           </div>
     </div>
+    <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-height="auto" data-width="30%" data-overlay-click-close="true" id="adminAddRecommendation" data-close-button="true">
+      <h3 class="padding20 text-light header">Recommendation</h3>
+      <input type="hidden" id="audit_id"/>
+      <div class="input-control textarea full-size"  data-text-auto-resize="true" data-text-max-height="200">
+        <textarea id="recommendation" style="resize:none;"></textarea>
+      </div>
+      <br/>
+      <button class="button danger place-right" onClick="hideMetroDialog('#adminAddRecommendation')"><span class="mif-cross icon"></span></button>
+      <button class="button success place-right" onClick="addedRecommendation()"><span class="mif-checkmark icon"></span></button>
+    </div>
   </div>
   </body>
   <script src="build/js/jquery.dataTables.min.js"></script>

@@ -13,9 +13,11 @@ if(isset($_POST['showAccounts']))
 <table class="dataTable border bordered hovered full-size" id="adminRepairView">
 <thead>
 <tr>
+<td class="sortable-column"></td>
 <td class="sortable-column">Action Taken</td>
 <td class="sortable-column">Remark</td>
 <td class="sortable-column">Repair Date</td>
+<td class="sortable-column">Recommendation</td>
 </tr>
 </thead>
 <tbody>
@@ -23,6 +25,7 @@ if(isset($_POST['showAccounts']))
 </table>
 <script type="text/javascript">
 var adminRepairsView = $("#adminRepairView").dataTable({
+    "order": [[ 3, 'desc' ]],
     "processing": true,
     "serverSide": true,
 
