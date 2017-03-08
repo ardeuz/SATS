@@ -14,7 +14,6 @@
 				$employee->{'first_name'} = $propertyTransferList[$i]->{'property'}['first_name'];
 				$employee->{'last_name'} = $propertyTransferList[$i]->{'property'}['last_name'];
 				$employee->{'department'} = $propertyTransferList[$i]->{'property'}['department'];
-				$employee->{'dateBorrow'} = $propertyTransferList[$i]->{'dateBorrow'};
 
 				array_push($employeeList, $employee);
 			} else {
@@ -34,7 +33,6 @@
 					$employee->{'first_name'} = $propertyTransferList[$i]->{'property'}['first_name'];
 					$employee->{'last_name'} = $propertyTransferList[$i]->{'property'}['last_name'];
 					$employee->{'department'} = $propertyTransferList[$i]->{'property'}['department'];
-					$employee->{'dateBorrow'} = $propertyTransferList[$i]->{'dateBorrow'};
 
 					array_push($employeeList, $employee);
 				}
@@ -53,8 +51,7 @@
 		            <span class='sub-header'>" . $employeeList[$i]->{'first_name'} . " " . $employeeList[$i]->{'last_name'}
 		            . "</span>
 		            <p><small>" . $employeeList[$i]->{'department'}  . " Department</small></p>
-							  <p><small>Date To be Returned: " . date("M d, Y H:i A", strtotime($employeeList[$i]->{'dateBorrow'}))  . "</small></p>
-		            <hr class='thin' />";
+ 							  <hr class='thin' />";
 
 		            echo "<div style='overflow-y: scroll; height: 200px'>";
 		            for ($j = 0; $j < count($propertyTransferList); $j ++) {
@@ -82,14 +79,16 @@
 
 		            echo "
 		            </div>
-								<div class='input-control full-size text-area'>
+
+								<div class='input-control full-size textarea'>
 									<textarea id='remarks' style='overflow-y:scroll;resize:none;' placeholder='Remarks'></textarea>
 								</div>
+								<span>Date to Return</span>
+								<div class='input-control text full-size'>
+									<input type='date' id='dateBorrow'/>
+								</div>
 		            <hr class='thin' />
-								<br/>
-								<br/>
-								<br/>
-								<br/>
+
 		            <button onclick='requestTransfer(\"" . $employeeList[$i]->{'emp_id'} . "\")' class='button place-right'>
 		            	<span class='mif-truck mif-ani-pass mif-ani-slow'></span>
 		            	Request Borrow

@@ -127,12 +127,6 @@
                 <div class="input-control text full-size">
                      <input type="number" min="1" id="quantity" value='1' />
                 </div>
-                <span>Return Date:</span>
-
-                <div class='input-control text full-size'>
-                  <input type="date" id="dateBorrow"/>
-                </div>
-
                 <button class="button button-primary" onclick="insertQuantity();"><span class="mif-plus"></span>
                     Add to Borrow List</button>
                 <button class="button danger" onclick="hideMetroDialog('#transferdialog');"><span class="mif-cross fg-white"> Cancel</span>

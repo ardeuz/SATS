@@ -72,7 +72,7 @@
         </div>
         <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="uploadCSV" data-close-button="true">
           <h3 class="padding20 text-light header">Upload CSV</h3>
-          <p class='text-light'><small><b>Column Order:</b> Property Code, Serial Number, Description, Brand, Model, UOM, Cost, Date Aquired, OR Number, Quantity</small></p>
+          <p class='text-light'><small><b>Column Order:</b> Property Code, Serial Number, Description, Brand, Model, UOM, Cost, Date Aquired, P.O. Number, Quantity</small></p>
           <form action="build/ajax/uploadProperty.php" method="POST" enctype="multipart/form-data">
               <div class="input-control file full-size" data-role="input">
                   <input type="file" name="physical">

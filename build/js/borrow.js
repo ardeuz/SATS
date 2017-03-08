@@ -64,9 +64,6 @@ function insertQuantity()
     var locationId = $("#locationId").val();
     var qtty= parseInt($("#quantity").val());
     var locationTransfer = $("#location").val();
-		var dates = new Date();
-		dates.getDate();
-		var dateBorrow = $("#dateBorrow").val();
     if (locationTransfer == "-1" || locationTransfer == null) {
         $.Notify({
             caption: "Put a Location",
@@ -81,13 +78,6 @@ function insertQuantity()
             icon: "<span class='mif-cross icon'></span>",
             type: "alert"
         });
-    } else if (dateBorrow <= dates) {
-        $.Notify({
-            caption: "Invalid Date",
-            content: "Please specifi the Date ",
-            icon: "<span class='mif-cross icon'></span>",
-            type: "alert"
-        });
     }
 
 		else {
@@ -96,7 +86,7 @@ function insertQuantity()
             $("#transfer_icon_span").removeClass("mif-ani-fast mif-ani-bounce");
         }, 1000);
 
-        $.post("build/ajax/insertPropertyBorrow.php", {id: propertyid, emp_id: empId, qty:qtty, condition_id: conditionId, location_id: locationId, location: locationTransfer, dateBorrow:dateBorrow}, function(data) {
+        $.post("build/ajax/insertPropertyBorrow.php", {id: propertyid, emp_id: empId, qty:qtty, condition_id: conditionId, location_id: locationId, location: locationTransfer}, function(data) {
 					//more validations
             $.Notify({
                 caption: "Borrow List Updated.",
@@ -153,7 +143,18 @@ function removeProperty(propertyId, locationId) {
 
 function requestTransfer(empId) {
 	var remarks = $("#remarks").val();
-    $.post("build/ajax/addBorrowRequest.php", {emp_id: empId, remarks:remarks}, function(data) {
+	var dateBorrow = $("#dateBorrow").val();
+	var dates = new Date();
+	dates.getDate();
+	if (dateBorrow <= dates) {
+			$.Notify({
+					caption: "Invalid Date",
+					content: "Please specifi the Date ",
+					icon: "<span class='mif-cross icon'></span>",
+					type: "alert"
+			});
+	} else {
+    $.post("build/ajax/addBorrowRequest.php", {emp_id: empId, remarks:remarks , dateBorrow:dateBorrow }, function(data) {
 				console.log(data);
         var response = JSON.parse(data);
 				// console.log(data);
@@ -201,4 +202,5 @@ function requestTransfer(empId) {
             });
         }
     });
+	}
 }

@@ -4,7 +4,7 @@
   set_time_limit(30);
 
   ob_start("ob_gzhandler");
-
+	$dateToday = date('Y-m-d H:i:s');
   require_once("../../connection.php");
   if (is_uploaded_file($_FILES['physical']['tmp_name'])) {
     //get the csv file
@@ -16,13 +16,20 @@
 			if ($data[0]) {
         $parent_property_code = $data[0]; //parent property code, first column
         $sub_property_code = $data[1]; //sub propert code, second column
-
         //===========get the propety id from the property code uploaded=============//
         $parent_id = $db->get("property", "id", ["pcode" => $parent_property_code]);
         $sub_id = $db->get("property", "id", ["pcode" => $sub_property_code]);
-        if($db->has("sub_property",["AND"=>["property_id"=>$parent_id,"sub_property_id"=>$sub_id]])){
+
+        if ($db->has("sub_property",["AND"=>["property_id"=>$parent_id,"sub_property_id"=>$sub_id]])) {
           //insert
+          $db->insert("sub_property_history",["property_id"=>$parent_id, "sub_property_id"=>$sub_id ,"date"=>$dateToday]);
+          $db->update("sub_property", ["property_id"=>$parent_id],["property_id[!]"=>$parent_id]);
+          $db->update("sub_property", ["sub_property_id"=>$sub_id],["sub_property_id[!]"=>$sub_id]);
+          echo 1;
         } else {
+          echo 2;
+          $db->insert("sub_property",["property_id"=>$parent_id ,"sub_property_id"=>$sub_id]);
+
           //update
           //insert to sub property history
         }
