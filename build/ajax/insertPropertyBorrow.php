@@ -20,7 +20,6 @@
 		$transferProperty->{'property'} = $propertyObj;
 		$transferProperty->{'qty'} = $qty;
 		$transferProperty->{'location'} = $location;
-    $transferProperty->{'dateBorrow'} = $dateBorrow;
 		array_push($propertyTransferList, $transferProperty); //add to array
 
 	} else {

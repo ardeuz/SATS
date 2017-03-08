@@ -29,7 +29,7 @@
         <br />
         <span class='sub-header'>" . $borrowRequestGroupData['emp_name'] . "</span>
         <p><small>" . $borrowRequestGroupData['department']  . " Department</small></p>
-        <p><small><b>Date to be returned:</b> " . date("M d, Y H:i A", strtotime($borrowRequestGroupData['date_borrow'])) . "</small></p>
+        <p><small><b>Date to be returned:</b> " . date("M d, Y", strtotime($borrowRequestGroupData['date_borrow'])) . "</small></p>
         <hr class='thin' />";
 
         echo "<div style='overflow-y: scroll; height: 300px'>";

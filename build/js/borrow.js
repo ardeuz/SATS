@@ -149,7 +149,7 @@ function requestTransfer(empId) {
 	if (dateBorrow <= dates) {
 			$.Notify({
 					caption: "Invalid Date",
-					content: "Please specifi the Date ",
+					content: "Please set the date ",
 					icon: "<span class='mif-cross icon'></span>",
 					type: "alert"
 			});
