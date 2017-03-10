@@ -7,14 +7,12 @@ function requestAccountability()
 {
 	$.post("build/ajax/showHistoryIssuanceRequest.php",{showRequest:1},function(data)
 	{
-		console.log(data);
 		$('#history_loader_issue').hide();
 		$('#history_request_div_issue').html(data);
 		$('#history_request_div_issue').show();
 	});
 	$.post("build/ajax/adminPropertyIssuance.php",{showRequest:1},function(data)
 	{
-		console.log(data);
 		$('#history_loader').hide();
 		$('#history_request_div').html(data);
 		$('#history_request_div').show();
@@ -87,6 +85,7 @@ function insertQuantity()
                 icon: "<span class='mif-pencil icon'></span>",
                 type: "success"
             });
+						$('#accountabilitySelect').val('0');
 						hideMetroDialog("#transferdialog");
             $("#transferForm").html(data);
         });
@@ -135,9 +134,10 @@ function removeProperty(propertyId, locationId) {
 }
 
 function requestTransfer(empId) {
-		var remarks = $("#remarks").val();
-    $.post("build/ajax/addPropertyIssuance.php", {emp_id:empId , remarks:remarks}, function(data) {
-        var response = JSON.parse(data);
+		var remarks = $("#remarks"+empId).val();
+    $.post("build/ajax/addPropertyIssuance.php", {emp_id : empId , remarks : remarks}, function(data) {
+				// console.log(data);
+				var response = JSON.parse(data);
         if(response.code==1)
         {
 					requestAccountability();
@@ -156,6 +156,7 @@ function requestTransfer(empId) {
         }
         else if(response.code==2)
         {
+					console.log(data);
 					prowareTable();
 
             $.Notify({
@@ -173,6 +174,7 @@ function requestTransfer(empId) {
         }
         else if(response.code== -1)
         {
+					console.log(data);
             $.Notify({
                 caption: "The Request is already existed",
                 content: " ",

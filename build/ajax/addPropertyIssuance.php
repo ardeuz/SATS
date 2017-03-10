@@ -18,7 +18,7 @@
 	$hasRequest = false; //checker if atleast 1 property has requested
 	$notReserveCount = 0; //validation, count the items that will be request
 	for ($i = 0; $i < count($propertyTransferList); $i++) {
-		if ($propertyTransferList[$i]->{'property'}['emp_id'] == $emp_id) { //insert only the whole data of one employee
+		if ($propertyTransferList[$i]->{'employee'} == $emp_id) { //insert only the whole data of one employee
 
 			if ($db->has("transfer_request", [
 				"AND" => [

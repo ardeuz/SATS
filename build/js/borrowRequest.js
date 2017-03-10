@@ -35,7 +35,7 @@ $('body').delegate('.showConfirmation','click',function()
                     icon: "<span class='mif-checkmark icon'></span>",
                     type: "success"
                 });
-
+                window.open('build/reports/borrowReport.php?ctrl_no='+showCon);
                 showRequestForms();
             }
         });

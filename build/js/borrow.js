@@ -171,6 +171,7 @@ function requestTransfer(empId) {
             });
 
             //remove the whole request because it is submitted
+						// window.open('build/reports/borrowReport.php?ctrl_no='+empId);
             $.post("build/ajax/deletePropertyBorrow.php", {emp_id: empId}, function(data) {
                 $("#transferForm").html(data);
             });

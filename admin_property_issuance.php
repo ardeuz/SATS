@@ -22,7 +22,6 @@
   <script src="build/js/jquery.dataTables.min.js"></script>
   <script src="build/js/select2.min.js"></script>
   <script src="build/js/metro.js"></script>
-
 </head>
 <body>
   <div class="contaner flex-grid no-responsive-feature" style="height:100%;overflow:hidden;">
@@ -58,13 +57,11 @@
               <select id="locationFilter" onchange="locationFilter()" style="display:none;">
                 <option value="0">ALL</option>
                 <?php
-
                   $locationDatas = $db->select("location",["id","location"]);
                   foreach($locationDatas  as $locationData)
                   {
                     echo "<option value=".$locationData['id'].">".$locationData['location']."</option>";
                   }
-
                 ?>
               </select>
             </div>
@@ -113,7 +110,7 @@
      <span>Please speicify the account to be issued </span><br/>
      <div class="input-control" style="width:24.5%" data-role="select">
              <select id="accountabilitySelect" style="display:none;">
-               <option selected disabled>Select Account</option>
+               <option selected disabled value="0">Select Account</option>
                <?php
 
                 $accountSelects = $db->select("account_table",["last_name","first_name","middle_name","department","emp_id"]);
@@ -146,9 +143,11 @@
      </div>
 
   </div>
-  <div   data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="70%" data-width="auto" data-overlay-click-close="true" id="transferlist" data-close-button="true" style="overflow-x:hidden;">
-     <div id='transferForm' class="container grid padding20">
-         <?php include "build/ajax/showPropertyIssuance.php"; ?>
+  <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="90%" data-width="auto" data-overlay-click-close="true" id="transferlist" data-close-button="true" >
+    <div  style="overflow-y:scroll;height:99%">
+       <div id='transferForm' class="container grid padding20">
+           <?php include "build/ajax/showPropertyIssuance.php"; ?>
+       </div>
      </div>
  </div>
   <script src="build/js/propertyIssuance.js"></script>

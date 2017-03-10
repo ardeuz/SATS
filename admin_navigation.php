@@ -34,7 +34,7 @@
           ]
         )){
           echo 'mif-ani-heartbeat mif-ani-fast';
-        }?> icon"></span> Request </a>
+        }?> icon"></span> Transaction </a>
         <ul class="d-menu shadow"  data-role="dropdown">
             <li class="menu-title">List of Adding</li>
             <div>
@@ -85,7 +85,8 @@
         <ul class="d-menu shadow"  data-role="dropdown">
             <li class="menu-title">List of Accounts</li>
             <li class="<?php if($thisPage=='PropertyAccountability'){echo 'active';} ?>"><a href="admin_accountabilities.php"><span class="mif-file-text icon"></span> With Accountability</a></li>
-            <li class="<?php if($thisPage=='NotPropertyAccountability'){echo 'active';} ?>"><a href="admin_accountabilities_not.php"><span class="mif-file-text icon"></span> Without Accountability</a></li>
+            <!-- <li class="<?php if($thisPage=='NotPropertyAccountability'){echo 'active';} ?>"><a href="admin_accountabilities_not.php"><span class="mif-file-text icon"></span> Without Accountability</a></li> -->
+            <li class="<?php if($thisPage=='EquipmentRental'){echo 'active';} ?>"><a href="admin_equipment_rental.php"><span class="mif-file-text icon"></span> Equipment Rental</a></li>
 
         </ul>
       </li>
@@ -151,6 +152,7 @@
     <li  class="<?php if($thisPage=='Repair'){echo 'active';} ?>"><a href="accountability_repair.php"><span class="mif-wrench icon"></span> Repair</a></li>
     <li class="menu-title">Settings</li>
     <li><a href="#" onclick="showMetroDialog('#changePassword')"><span class="mif-cog icon"></span> Change Password</a></li>
+    <li><a href="exportDatabase.php"><span class="mif-database icon"></span> Export Database</a></li>
     <li><a href="?logout=1"><span class="mif-exit icon"></span> Logout</a></li>
     <li class="divider"></li>
     <li class="menu-title"></<li>

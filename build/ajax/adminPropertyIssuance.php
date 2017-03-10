@@ -81,7 +81,6 @@
     }
     setInterval(function() {
       showTransferTables.ajax.reload(null,false);
-      console.log(1);
     }, 10000);
 
     </script>

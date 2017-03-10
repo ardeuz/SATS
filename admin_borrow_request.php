@@ -28,13 +28,13 @@
         <div class="row" style="height: 100%;">
         <?php include_once('admin_navigation.php'); ?>
           <div class="cell auto-size padding20 no-margin-top grid container place-right" style="overflow-y:scroll;height:100%;">
-            <h1 class="text-light fg-green">For Approval Request<span class="mif-checkmark place-right text-light"></span></h1>
+            <!-- <h1 class="text-light fg-green">For Approval Request<span class="mif-checkmark place-right text-light"></span></h1>
             <hr class="thin bg-grayLighter">
             <div id="approved_request_div"  style="display:none;"></div>
             <br/>
             <center>
               <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="approved_loader"></div>
-            </center>
+            </center> -->
             <h1 class="text-light fg-brown">Borrowed History<span class="mif-notification place-right text-light"></span></h1>
             <hr class="thin bg-grayLighter">
             <div id="history_request_div"  style="display:none;"></div>

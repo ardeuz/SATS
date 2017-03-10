@@ -13,6 +13,7 @@
 
 	$propertyTransferList = array(); //intialize array of properties to be transfered
 
+
 	if (!isset($_SESSION['propertyIssuanceList'])) {
 
 		$transferProperty = new stdClass(); //property and qty object
@@ -30,7 +31,7 @@
 		$hasProperty = false;
 		for ($i = 0; $i < count($propertyTransferList); $i ++) {
 			if ($propertyTransferList[$i]->{'property'}['id'] == $propertyObj['id'] &&
-			$propertyTransferList[$i]->{'property'}['emp_id'] == $propertyObj['emp_id'] &&
+			$propertyTransferList[$i]->{'property'}['emp_id'] == $employee &&
 			$propertyTransferList[$i]->{'property'}['condition_id'] == $propertyObj['condition_id'] &&
 			$propertyTransferList[$i]->{'property'}['location_id'] == $propertyObj['location_id']) { //if the item and employee ordered exists, update the qty and location only
 				$propertyTransferList[$i]->{'qty'} = $qty;
@@ -53,6 +54,5 @@
 	}
 
 	$_SESSION['propertyIssuanceList'] = $propertyTransferList;
-
 	include "showPropertyIssuance.php";
 ?>

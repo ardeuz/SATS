@@ -44,9 +44,10 @@
         ]
       ]);
 
-      $empId = $row[1];
-      if($db2->has("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$empId, ]])){
-        $accountName = $db2->get("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"]);
+      $empId = $employeeId;
+      $ids1 = $row['id'];
+      if($db2->has("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$empId,"id"=>$ids1 ]])){
+        $accountName = $db2->get("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"]);
         return "Borrowed By ". $accountName["last_name"].', '.$accountName['first_name'];
       }
       else{

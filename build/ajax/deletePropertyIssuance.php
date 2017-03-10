@@ -8,7 +8,7 @@
 		$emp_id = $_POST['emp_id'];
 
 		for ($i = 0; $i < count($propertyTransferList); $i ++) {
-			if ($propertyTransferList[$i]->{'property'}['emp_id'] == $emp_id) {
+			if ($propertyTransferList[$i]->{'employee'} == $emp_id) {
 				array_splice($propertyTransferList, $i, 1); //remove array
 
 				$i--; //re indexed

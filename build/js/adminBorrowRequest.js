@@ -2,12 +2,12 @@ requestCall();
 
 function requestCall()
 {
-	$.post("build/ajax/adminBorrowRequest.php",{showRequest:1},function(data)
-	{
-		$('#approved_loader').hide();
-		$('#approved_request_div').html(data);
-		$('#approved_request_div').show();
-	});
+	// $.post("build/ajax/adminBorrowRequest.php",{showRequest:1},function(data)
+	// {
+	// 	$('#approved_loader').hide();
+	// 	$('#approved_request_div').html(data);
+	// 	$('#approved_request_div').show();
+	// });
 
 
 	$.post("build/ajax/showHistoryBorrowRequest.php",{showRequest:1},function(data)

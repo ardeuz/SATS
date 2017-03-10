@@ -8,7 +8,7 @@
 			if (count($employeeList) <= 0) { //if there's still no employee, add it default
 				$employee = new stdClass();
 
-				$employee->{'emp_id'} = $propertyTransferList[$i]->{'property'}['emp_id'];
+				$employee->{'emp_id'} = $propertyTransferList[$i]->{'employee'};
 				$employee->{'first_name'} = $propertyTransferList[$i]->{'property'}['first_name'];
 				$employee->{'last_name'} = $propertyTransferList[$i]->{'property'}['last_name'];
 				$employee->{'department'} = $propertyTransferList[$i]->{'property'}['department'];
@@ -19,7 +19,7 @@
 				$hasEmployee = false;
 
 				for ($j = 0; $j < count($employeeList); $j ++) { //loop to check employee is already on the array
-					if ($employeeList[$j]->{'emp_id'} == $propertyTransferList[$i]->{'property'}['emp_id']) { //condition of it is already there
+					if ($employeeList[$j]->{'emp_id'} == $propertyTransferList[$i]->{'employee'}) { //condition of it is already there
 						$hasEmployee = true;
 					}
 				}
@@ -27,7 +27,7 @@
 				if (!$hasEmployee) { //if not there, add the employee
 					$employee = new stdClass();
 
-					$employee->{'emp_id'} = $propertyTransferList[$i]->{'property'}['emp_id'];
+					$employee->{'emp_id'} = $propertyTransferList[$i]->{'employee'};
 					$employee->{'first_name'} = $propertyTransferList[$i]->{'property'}['first_name'];
 					$employee->{'last_name'} = $propertyTransferList[$i]->{'property'}['last_name'];
 					$employee->{'department'} = $propertyTransferList[$i]->{'property'}['department'];
@@ -62,7 +62,7 @@
 		            echo "<div style='overflow-y: scroll; height: 200px'>";
 		            for ($j = 0; $j < count($propertyTransferList); $j ++) {
 
-		            	if ($propertyTransferList[$j]->{'property'}['emp_id'] == $employeeList[$i]->{'emp_id'}) {
+		            	if ($propertyTransferList[$j]->{'employee'} == $employeeList[$i]->{'emp_id'}) {
 		            		echo "
 		            		<div class='hv-active' onclick='removeProperty(" . $propertyTransferList[$j]->{'property'}['id'] . ", " . $propertyTransferList[$j]->{'property'}['location_id'] . ")'>
 		                	<b>" . $propertyTransferList[$j]->{'property'}['property_description'] . "</b>
@@ -85,8 +85,8 @@
 
 		            echo "
 		            </div>
-								<div class='input-control full-size text-area'>
-									<textarea id='remarks' style='overflow-y:scroll;resize:none;' placeholder='Remarks'></textarea>
+								<div class='input-control full-size'>
+									<textarea id='remarks".$employeeList[$i]->{'emp_id'}."' style='overflow-y:scroll;resize:none;' placeholder='Remarks'></textarea>
 								</div>
 		            <hr class='thin' />
 								<br/>
