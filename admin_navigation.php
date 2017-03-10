@@ -28,10 +28,6 @@
           [
             'emp_approval' => 1
           ]
-        ) || $db->has('borrow_request',
-          [
-            'emp_approval' => 1
-          ]
         )){
           echo 'mif-ani-heartbeat mif-ani-fast';
         }?> icon"></span> Transaction </a>
@@ -56,25 +52,7 @@
                   echo "<small class='super mif-ani-flash fg-white'>&nbsp;".$transferRequestCounted."</small>";
                 }
                 ?></a></li>
-              <li class="<?php if($thisPage=='BorrowRequest'){echo 'active';} ?>"><a href="admin_borrow_request.php"><span class="mif-file-text icon"></span> Borrow Request
-                <?php
-
-                if($db->has("borrow_request",
-                  [
-                    "emp_approval" => 1
-                  ]
-                ))
-                {
-                  $borrowRequestCounted = $db->count("borrow_request",
-                    [
-                      "emp_approval" => 1
-                    ]
-                  );
-                  {
-                    echo "<small class='super mif-ani-flash fg-white'>&nbsp;".$borrowRequestCounted."</small>";
-                  }
-                }
-                ?></a></li>
+              <li class="<?php if($thisPage=='BorrowRequest'){echo 'active';} ?>"><a href="admin_borrow_request.php"><span class="mif-file-text icon"></span> Borrow Request</a></li>
               <li class="<?php if($thisPage=='issueanceProperty'){echo 'active';} ?>"><a href="admin_property_issuance.php"><span class="mif-file-text icon"></span> Property Issuance</a></li>
             </div>
         </ul>
@@ -86,7 +64,7 @@
             <li class="menu-title">List of Accounts</li>
             <li class="<?php if($thisPage=='PropertyAccountability'){echo 'active';} ?>"><a href="admin_accountabilities.php"><span class="mif-file-text icon"></span> With Accountability</a></li>
             <!-- <li class="<?php if($thisPage=='NotPropertyAccountability'){echo 'active';} ?>"><a href="admin_accountabilities_not.php"><span class="mif-file-text icon"></span> Without Accountability</a></li> -->
-            <li class="<?php if($thisPage=='EquipmentRental'){echo 'active';} ?>"><a href="admin_equipment_rental.php"><span class="mif-file-text icon"></span> Equipment Rental</a></li>
+            <li class="<?php if($thisPage=='NotPropertyAccountability'){echo 'active';} ?>"><a href="admin_accountabilities_not.php"><span class="mif-file-text icon"></span> Equipment Rental</a></li>
 
         </ul>
       </li>

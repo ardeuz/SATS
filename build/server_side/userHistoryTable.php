@@ -8,7 +8,8 @@
     array('db' => '`u`.`action`', 'dt' => 0,'field'=>"action"),
     array('db' => '`u`.`remarks`', 'dt' => 1,'field' => "remarks"),
     array('db' => '`u`.`date`', 'dt' => 2,'field' => "date"),
-    array('db' => '`u`.`recommendation`', 'dt' => 3,'field' => "recommendation")
+    array('db' => '`u`.`recommendation`', 'dt' => 3,'field' => "recommendation"),
+    array('db' => '`u`.`cost`', 'dt' => 4,'field' => "cost")
   );
   $sql_details = array(
   	'user' => "root",

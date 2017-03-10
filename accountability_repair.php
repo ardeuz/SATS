@@ -40,18 +40,14 @@
               <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="history_loader"></div>
             </center>
           </div>
+        </div>
+        <div data-role="dialog" data-overlay="true" class="padding30" data-place="top-center"data-overlay-color="op-dark" data-height="90%" data-width="85%" data-overlay-click-close="true" id="adminAddRecommendation" data-close-button="true" style="overflow-y:scroll;">
+          <h3 class="text-light">Maintenance</h3>
+          <input type="hidden" id="audit_id"/>
+          <div  id="adminEditRepairHistory"></div>
+        </div>
     </div>
-    <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-height="auto" data-width="30%" data-overlay-click-close="true" id="adminAddRecommendation" data-close-button="true">
-      <h3 class="padding20 text-light header">Recommendation</h3>
-      <input type="hidden" id="audit_id"/>
-      <div class="input-control textarea full-size"  data-text-auto-resize="true" data-text-max-height="200">
-        <textarea id="recommendation" style="resize:none;"></textarea>
-      </div>
-      <br/>
-      <button class="button danger place-right" onClick="hideMetroDialog('#adminAddRecommendation')"><span class="mif-cross icon"></span></button>
-      <button class="button success place-right" onClick="addedRecommendation()"><span class="mif-checkmark icon"></span></button>
-    </div>
-  </div>
+
   </body>
   <script src="build/js/jquery.dataTables.min.js"></script>
   <script src="build/js/accountability_repair.js"></script>

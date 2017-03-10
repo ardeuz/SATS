@@ -9,25 +9,44 @@ function requestAccountability()
 		$('#history_request_div').html(data);
 		$('#history_request_div').show();
 	});
+
 }
-function addRecommendation(recommendation_id){
-	showMetroDialog("#adminAddRecommendation");
-	$("#audit_id").val(recommendation_id);
-}
-function addedRecommendation(){
-	var recommendation = $("#recommendation").val();
-	var id = $("#audit_id").val();
-	$.post("build/ajax/updateRecommendation.php",{recommendation : recommendation, id : id},function(data){
+function updateRepair(repairId){
+	var repairId = repairId;
+	var recommendation = $("#recommend"+repairId).val();
+	var cost = $("#cost"+repairId).val();
+	$.post("build/ajax/updateRecommendation.php",{recommendation : recommendation, id : repairId , cost : cost },function(data){
 		$.Notify({
 			caption: 'Recommendation Added',
 				content: ' ' ,
 				icon: "<span class='mif-plus icon'></span>",
 				type: "success"
 		});
-		hideMetroDialog("#adminAddRecommendation");
-		$("#recommendation").val("");
 	});
 }
+function addRecommendation(id){
+	$.post('build/ajax/adminUpdateRepairHistory.php',{showRequest : 1 , viewP : id},function(data){
+		$("#adminEditRepairHistory").html(data);
+		// $("#adminRepairHistory").html(1);
+		// console.log(data);
+	});
+	showMetroDialog("#adminAddRecommendation");
+	$("#audit_id").val(id);
+}
+// function addedRecommendation(){
+// 	var recommendation = $("#recommendation").val();
+// 	var id = $("#audit_id").val();
+// 	$.post("build/ajax/updateRecommendation.php",{recommendation : recommendation, id : id},function(data){
+// 		$.Notify({
+// 			caption: 'Recommendation Added',
+// 				content: ' ' ,
+// 				icon: "<span class='mif-plus icon'></span>",
+// 				type: "success"
+// 		});
+// 		hideMetroDialog("#adminAddRecommendation");
+// 		$("#recommendation").val("");
+// 	});
+// }
 $('body').delegate('.adminView','click',function()
 {
 		var viewP = $(this).attr("idPv");

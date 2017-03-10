@@ -14,10 +14,12 @@ if(isset($_POST['showAccounts']))
 <thead>
 <tr>
 <td class="sortable-column"></td>
-<td class="sortable-column">Action Taken</td>
-<td class="sortable-column">Remark</td>
-<td class="sortable-column">Repair Date</td>
-<td class="sortable-column">Recommendation</td>
+<td class="sortable-column">Property Code</td>
+<td class="sortable-column">Serial Number</td>
+<td class="sortable-column">Property Description</td>
+<td class="sortable-column">Brand</td>
+<td class="sortable-column">Unit of Measurement</td>
+<td class="sortable-column">P.O. Number</td>
 </tr>
 </thead>
 <tbody>

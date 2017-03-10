@@ -13,6 +13,7 @@ require_once('../../connection.php');
     <td class="sortable-column">Remark</td>
     <td class="sortable-column">Date Repaired</td>
     <td class="sortable-column">Recommendation</td>
+    <td class="sortable-column">Cost</td>
   </tr>
   </thead>
 <tbody>

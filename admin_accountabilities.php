@@ -55,8 +55,20 @@
 
 
         <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="80%" data-width="50%" data-overlay-click-close="true" id="adminAccountabilityDialog" data-close-button="true" style="overflow-y:scroll;">
-          <h3 class="padding20 text-light header">Property Information</h3>
-          <div class="padding20" id="adminInformation" style="padding-top:0;" ></div>
+          <div class="tabcontrol padding20" data-role="tabcontrol">
+            <ul class="tabs">
+                <li><a href="#propertyInformation">Property Information</a></li>
+                <li><a href="#repairHistory">Repair History</a></li>
+            </ul>
+              <div class="frames">
+                  <div class="frame bg-white" id="propertyInformation">
+                    <div class="padding20" id="adminInformation" style="padding-top:0;" ></div>
+                  </div>
+                  <div class="frame bg-white" id="repairHistory">
+                    <div class="" id="adminRepairHistory" style="padding-top:0;" ></div>
+                  </div>
+              </div>
+          </div>
         </div>
         <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="uploadCSVSub" data-close-button="true">
           <h3 class="padding20 text-light header">Upload CSV with Subproperty</h3>

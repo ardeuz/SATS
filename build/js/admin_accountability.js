@@ -36,8 +36,11 @@ $('body').delegate('.adminView','click',function()
 						},
 						success : function(adminDatas)
 						{
-								$("#adminInformation").html(adminDatas);
+							$("#adminInformation").html(adminDatas);
 						}
+		});
+		$.post('build/ajax/adminShowRepairHistory.php',{showRequest : 1 , viewP : viewP},function(data){
+			$("#adminRepairHistory").html(data);
 		});
 });
 function updateAdminCondition(propertyId, locationId, oldConditionId, emp_id) {
