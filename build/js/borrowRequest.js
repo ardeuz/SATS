@@ -1,5 +1,6 @@
 showRequestForms();
 showRequest();
+historyBorrow();
 function confirmYes()
 {
         $.Notify({
@@ -19,7 +20,23 @@ function confirmNo()
             type: "alert"
         });
 }
-
+function historyBorrow()
+{
+	$.ajax
+	({
+			url : 'build/ajax/showUserHistoryBorrowRequest.php',
+			async : false,
+			type : 'POST',
+			data :
+			{
+				showRequest : 1
+			},
+			success : function(transfer)
+			{
+				$("#tableBorrowHistory").html(transfer);
+			}
+	});
+}
 $('body').delegate('.showConfirmation','click',function()
 {
     var showCon = $(this).attr("idUp");
@@ -35,7 +52,6 @@ $('body').delegate('.showConfirmation','click',function()
                     icon: "<span class='mif-checkmark icon'></span>",
                     type: "success"
                 });
-                window.open('build/reports/borrowReport.php?ctrl_no='+showCon);
                 showRequestForms();
             }
         });

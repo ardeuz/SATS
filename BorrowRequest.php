@@ -39,6 +39,11 @@
         <div class="container grid padding10" id="approvedRequest"></div>
       </center>
     </div>
+    <div class="padding50">
+      <h1 class="text-light">Borrow History<span class="mif-paper-plane mif-ani-float mif-ani-fast place-right"></span></h1>
+      <hr class="thin bg-grayLighter">
+      <div id="tableBorrowHistory"></div>
+    </div>
   </body>
   <script src="build/js/borrowRequest.js"></script>
 

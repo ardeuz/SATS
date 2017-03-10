@@ -7,10 +7,8 @@ $(document).ready(function() {
 	$("#conditionsId").select2();
 	$("#accountsId").select2();
 });
-
 function prowareTable()
 {
-
 	$.ajax
 	({
 			url : 'borrowTable.php',
@@ -171,7 +169,6 @@ function requestTransfer(empId) {
             });
 
             //remove the whole request because it is submitted
-						// window.open('build/reports/borrowReport.php?ctrl_no='+empId);
             $.post("build/ajax/deletePropertyBorrow.php", {emp_id: empId}, function(data) {
                 $("#transferForm").html(data);
             });
