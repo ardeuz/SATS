@@ -15,8 +15,7 @@ function requestAccountability()
 function addNewMinor()
 {
   var newMinor = $("#newMinor").val();
-  var majorCat = $("#majorCat").val();
-  $.post("build/ajax/addNewMinorCategory.php",{ newMinor : newMinor , majorCat : majorCat },function(data)
+  $.post("build/ajax/addNewMinorCategory.php",{ newMinor : newMinor},function(data)
   {
       var res = parseInt(data);
       if(res == -1){
@@ -35,9 +34,7 @@ function addNewMinor()
             type: "success"
         });
         document.getElementById('newMinor').value='';
-        $("#majorCat select").val(0);
         hideMetroDialog('#addNewMinorCategory');
-
     } else {
       console.log(data);
     }

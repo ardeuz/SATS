@@ -1,7 +1,7 @@
 <?php
   ini_set('max_execution_time', 300); //300 seconds = 5 minutes
   ini_set('memory_limit', '256M');
-  set_time_limit(30);
+  set_time_limit(300);
 
   ob_start("ob_gzhandler");
 
@@ -12,27 +12,34 @@
     $handle = fopen($file,"r");
 
     //loop through the csv file and insert into database
-		while ($data = fgetcsv($handle,1000,",","'")) {
+		while ($data = fgetcsv($handle,1000)) {
 			if ($data[0]) {
-
+        //select first the id's of account location condition minor and major category
+          $emp_id = $db->get("account_table","emp_id",["emp_id"=>$data[0]]);
+          $location = $db->get("location","id",["location"=>$data[13]]);
+          $condition = $db->get("condition_info","id",["condition_info"=>$data[14]]);
+          $minor_category = $db->get("minor_category","id",["description"=>$data[12]]);
+          $major_category = $db->get("major_category","id",["description"=>$data[11]]);
+        //insert when its finally searched
 					$propertyId = $db->insert("property", [
-						"pcode" => $data[0],
-						"sno" => $data[1],
-						"description" => $data[2],
-						"brand" => $data[3],
-						"model" => $data[4],
-						"minor_category" => $_POST['minorcategory'],
-            "uom" => $data[5],
-            "cost" => $data[6],
-            "date_acquired" => $data[7],
-            "or_number" => $data[8]
+						"pcode" => $data[1],
+						"sno" => $data[2],
+						"description" => $data[3],
+						"brand" => $data[4],
+						"model" => $data[5],
+						"minor_category" => $minor_category,
+            "uom" => $data[6],
+            "cost" => $data[7],
+            "major_category" => $major_category,
+            "date_acquired" => $data[8],
+            "or_number" => $data[9]
 					]);
           $db->insert("property_accountability", [
-            "emp_id" => $_POST['accountability'],
+            "emp_id" => $emp_id,
             "property_id" => $propertyId,
-            "qty" => $data[9],
-            "location_id" => $_POST['location'],
-            "condition_id" => $_POST['condition']
+            "qty" => $data[10],
+            "location_id" => $location,
+            "condition_id" => $condition
           ]);
 			}
 		}

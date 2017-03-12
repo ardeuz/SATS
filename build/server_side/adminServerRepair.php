@@ -1,6 +1,6 @@
 <?php
   require( '../dataTables/ssp.php' );
-  $table = "audit_trail_condition";
+  $table = "audit_trail_condition_view";
   $pkey = "date";
   $column = array(
     array('db' => '`u`.`property_id`', 'dt' => 0,'field'=> 'property_id',"formatter" => function($property_id)
@@ -22,7 +22,7 @@
   	'db'   => "sats",
   	'host' => "localhost"
   );
-  $joinQuery = "FROM `audit_trail_condition` AS `u` group by u.property_id";
+  $joinQuery = "FROM `audit_trail_condition_view` AS `u`";
   echo json_encode(
     SSP::simple( $_GET, $sql_details, $table, $pkey, $column, $joinQuery )
   );

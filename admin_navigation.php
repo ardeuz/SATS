@@ -138,28 +138,7 @@
   </ul>
 </div>
 
-<div data-role="dialog" data-overlay="true" data-overlay-color="op-dark"data-width="30%" data-overlay-click-close="true" id="addNewUser" data-close-button="true" class="padding10">
-  <h1 class="text-light">Add new User</h1>
-  <div class="input-control full-size">
-    <input type="text" id="emp_id" placeholder="Employee ID"/>
-  </div>
-  <div class="input-control full-size">
-    <input type="text" id="first_name" placeholder="First Name"/>
-  </div>
-  <div class="input-control full-size">
-    <input type="text" id="middle_name" placeholder="Middle Name"/>
-  </div>
-  <div class="input-control full-size">
-    <input type="text" id="last_name" placeholder="Last Name"/>
-  </div>
-  <div class="input-control full-size">
-    <input type="text" id="department" placeholder="Department"/>
-  </div>
-  <div class="input-control password full-size" data-role="input">
-    <input type="text" id="password" placeholder="Password"/>
-  </div>
-  <button class="button warning" onClick="addNewUser()">Add New User</button>
-</div>
+
 <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark"data-width="30%" data-overlay-click-close="true" id="addNewLocation" data-close-button="true" class="padding10">
   <h1>Add new Location</h1>
   <div class="input-control full-size" data-role="input">
@@ -179,8 +158,6 @@
 </div>
 <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark"data-width="30%" data-overlay-click-close="true" id="addNewMinorCategory" data-close-button="true" class="padding10">
   <h1>Add new Minor Category</h1>
-  <div class="input-control full-size" data-role="select" id="showSelectMinor">
-  </div>
   <div class="input-control full-size" data-role="input">
     <input type="text" id="newMinor" placeholder="Minor Category"/>
   </div>

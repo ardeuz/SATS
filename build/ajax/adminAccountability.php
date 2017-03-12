@@ -18,11 +18,12 @@ if(isset($_POST['showAccounts']))
 <td class="sortable-column">Property Code</td>
 <td class="sortable-column">Serial Number</td>
 <td class="sortable-column">Description</td>
+<td class="sortable-column">Minor Category</td>
 <td class="sortable-column">Location</td>
 <td class="sortable-column">Quantity</td>
 <td class="sortable-column">Condition</td>
 <td class="sortable-column">Employee Name</td>
-<td class="sortable-column">is Borrowed</td>
+<td class="sortable-column">Property Availability</td>
 </tr>
 </thead>
 <tbody>
@@ -57,7 +58,7 @@ $id = $_POST['prowareID'];
 $condition_id = $_POST['condition_id'];
 $location_id =$_POST['location_id'];
 
-$prowareInfoDatas=$db->query("SELECT b.id AS property_id, b.pcode , b.sno , b.description as property_description, b.brand , b.model , c.description as major_description, d.description as minor_description,a.qty , b.uom, e.location, b.cost from property_accountability as a left join property as b on a.property_id = b.id left join minor_category as d on  b.minor_category = d.id left join major_category as c on d.major_id = c.id left join location as e on a.location_id = e.id  WHERE a.property_id=$id AND a.location_id=$location_id AND a.condition_id = $condition_id")->fetchAll();
+$prowareInfoDatas=$db->query("SELECT b.id AS property_id, b.pcode , b.sno , b.description as property_description, b.brand , b.model , c.description as major_description, d.description as minor_description,a.qty , b.uom, e.location, b.cost from property_accountability as a left join property as b on a.property_id = b.id left join minor_category as d on  b.minor_category = d.id left join major_category as c on b.major_category = c.id left join location as e on a.location_id = e.id  WHERE a.property_id=$id AND a.location_id=$location_id AND a.condition_id = $condition_id")->fetchAll();
 
 ?>
 <table class="table border bordered striped" style="overflow-y:hidden; " style="height:50%;">
@@ -114,129 +115,116 @@ foreach ($prowareInfoDatas as $prowareInfoData)
 <td>Cost</td>
 <td><?php echo $prowareInfoData['cost'];?></td>
 </tr>
-<?php
-  if($db->has("sub_property",["sub_property_id"=>$id])){
-    $parentProperty = "<tr><td>Parent Property</td><td>";
-    $property_id = -1;
-    $parent_id = -1;
-    $pcode = "None";
-    $description = "";
-      if ($db->has("sub_property", ["sub_property_id" => $prowareInfoData['property_id']])) {
-        $propertyData = $db->get("sub_property", [
-          "[>]property" => ["property_id" => "id"]
+  <tr>
+    <td>Parent Property</td>
+    <td>
+      <?php
+      $property_id = -1;
+      $parent_id = -1;
+      $pcode = "None";
+      $description = "";
+        if ($db->has("sub_property", ["sub_property_id" => $prowareInfoData['property_id']])) {
+          $propertyData = $db->get("sub_property", [
+            "[>]property" => ["property_id" => "id"]
+          ], [
+            "property.id",
+            "property.pcode",
+            "property.description"
+          ], ["sub_property.sub_property_id" => $prowareInfoData['property_id']]);
+          $property_id = $prowareInfoData['property_id'];
+          $parent_id = $propertyData['id'];
+          $pcode = $propertyData['pcode'];
+          $description = $propertyData['description'];
+        }
+        //parent property div
+        echo "
+        <div class='listview-outlook' data-role='listview'>
+          <div class='list marked' onclick='deleteParentProperty($property_id, $parent_id)'>
+              <div class='list-content'>
+                  <span class='list-title' id='parent_title_span'>$pcode</span>
+                  <small class='list-subtitle' id='parent_desc_span' style='white-space: normal !important;'>$description</small>
+              </div>
+          </div>
+        </div>";
+        //change/add for parent property
+        echo "
+        <hr class='bg-green'/>
+        <p class='text-normal'>Pick a Parent Property:</p>
+        <div class='input-control select full-size' data-role='select'>
+              <select id='parentData' style='display:none;'>";
+                $selectParentDatas=$db->select('property',[
+                  'pcode','description','id'
+                ],[
+                  'id[!]' => $prowareInfoData['property_id']
+                ]);
+                foreach($selectParentDatas as $selectParentData)
+                {
+                  echo '<option data-desc="' . $selectParentData['description'] . '" value='.$selectParentData['id'].'>'.$selectParentData['pcode'].'</option>';
+                }
+        echo"
+              </select>
+        </div>
+        <button class='button primary'  onclick='updateParent(" . $prowareInfoData['property_id'] . ")'>Update Change</button>
+          ";
+      ?>
+    </td>
+    </tr>
+    <tr>
+    <td>Sub Items</td>
+    <td>
+      <?php
+        $subPropertyDatas = $db->select("sub_property", [
+          "[>]property" => ["sub_property_id" => "id"]
         ], [
           "property.id",
           "property.pcode",
           "property.description"
-        ], ["sub_property.sub_property_id" => $prowareInfoData['property_id']]);
-
-        $property_id = $prowareInfoData['property_id'];
-        $parent_id = $propertyData['id'];
-        $pcode = $propertyData['pcode'];
-        $description = $propertyData['description'];
-
-      }
-
-      //parent property div
-      $parentProperty .= "
-      <div class='listview-outlook' data-role='listview'>
-        <div class='list marked' onclick='deleteParentProperty($property_id, $parent_id)'>
-            <div class='list-content'>
-                <span class='list-title' id='parent_title_span'>$pcode</span>
-                <small class='list-subtitle' id='parent_desc_span' style='white-space: normal !important;'>$description</small>
-            </div>
-        </div>
-      </div>";
-
-      //change/add for parent property
-      $parentProperty .= "
-      <hr class='bg-green'/>
-      <p class='text-normal'>Pick a Parent Property:</p>
-      <div class='input-control select full-size' data-role='select'>
-            <select id='parentData' style='display:none;'>";
-
-              $selectParentDatas=$db->select('property',[
-                'pcode','description','id'
-              ],[
-                'id[!]' => $prowareInfoData['property_id']
-              ]);
-
-              foreach($selectParentDatas as $selectParentData)
-              {
-                $parentProperty .= '<option data-desc="' . $selectParentData['description'] . '" value='.$selectParentData['id'].'>'.$selectParentData['pcode']. ' - '.$selectParentData['description'].'</option>';
-              }
-
-      $parentProperty .="
-            </select>
-      </div>
-
-      <button class='button primary'  onclick='updateParent(" . $prowareInfoData['property_id'] . ")'>Update Change</button>
-      </td>
-      </tr>";
-      echo $parentProperty;
-  }
-  elseif($db->has("sub_property",["property_id"=>$id]) || $db->has("minor_category",["id"=>1])){
-    $subParent = "<tr>
-                    <td>Sub Items</td>
-                    <td>";
-
-      $subPropertyDatas = $db->select("sub_property", [
-        "[>]property" => ["sub_property_id" => "id"]
-      ], [
-        "property.id",
-        "property.pcode",
-        "property.description"
-      ], ["sub_property.property_id" => $prowareInfoData['property_id']]);
-
-      $subParent .= "
-      <div id='sub_property_div' class='listview-outlook' data-role='listview'>";
-
-      if (count($subPropertyDatas) > 0) {
-        foreach ($subPropertyDatas as $subPropertyData) {
-          $subParent .= "
-            <div id='sub_property_div" . $subPropertyData['id'] . "' class='list' onclick='deleteSubProperty(" . $subPropertyData['id'] . ", " . $prowareInfoData['property_id'] . ")'>
-                <div class='list-content'>
-                    <span class='list-title' id='sub_title_span'>" . $subPropertyData['pcode'] . "</span>
-                    <small class='list-subtitle' id='sub_desc_span' style='white-space: normal !important;'>" . $subPropertyData['description'] . "</small>
-                </div>
-            </div>";
-        }
-      }
-
-      $subParent .= "</div>";
-
-      $subParent .= "
-      <hr class='bg-green'/>
-      <p class='text-normal'>Pick a Sub Property:</p>
-      <div class='input-control select full-size' data-role='select'>
-        <select id='sub_property_select' style='display:none;'>";
-          $selectParentDatas = $db->select('property', [
-            'pcode','description','id'
-          ], [
-            "AND" => [
-              'id[!]' => $prowareInfoData['property_id'],
-              'id[!]' => $db->get("sub_property", "sub_property_id", ["property_id" => $prowareInfoData['property_id']])
-            ]
-          ]);
-
-          foreach($selectParentDatas as $selectParentData) {
-            $subParent .= '<option data-desc="' . htmlspecialchars($selectParentData['description']) . '" value=' . $selectParentData['id'].'>' . $selectParentData['pcode'] . ' - '.$selectParentData['description'].'</option>';
+        ], ["sub_property.property_id" => $prowareInfoData['property_id']]);
+        echo "
+        <div id='sub_property_div' class='listview-outlook' data-role='listview'>";
+        if (count($subPropertyDatas) > 0) {
+          foreach ($subPropertyDatas as $subPropertyData) {
+            echo "
+              <div id='sub_property_div" . $subPropertyData['id'] . "' class='list' onclick='deleteSubProperty(" . $subPropertyData['id'] . ", " . $prowareInfoData['property_id'] . ")'>
+                  <div class='list-content'>
+                      <span class='list-title' id='sub_title_span'>" . $subPropertyData['pcode'] . "</span>
+                      <small class='list-subtitle' id='sub_desc_span' style='white-space: normal !important;'>" . $subPropertyData['description'] . "</small>
+                  </div>
+              </div>";
           }
+        }
 
-      $subParent .= "
-        </select>
-      </div>
-      <button class='button primary'  onclick='addChildProperty(" . $prowareInfoData['property_id'] . ")'>Add Sub Property</button>
-        </td>
-      </tr>";
-      echo $subParent;
+        echo "</div>";
+        echo "
+        <hr class='bg-green'/>
+        <p class='text-normal'>Pick a Sub Property:</p>
+        <div class='input-control select full-size' data-role='select'>
+          <select id='sub_property_select' style='display:none;'>";
+            $selectParentDatas = $db->select('property', [
+              'pcode','description','id'
+            ], [
+              "AND" => [
+                'id[!]' => $prowareInfoData['property_id'],
+                'id[!]' => $db->get("sub_property", "sub_property_id", ["property_id" => $prowareInfoData['property_id']])
+              ]
+            ]);
+            foreach($selectParentDatas as $selectParentData) {
+              echo '<option data-desc="' . htmlspecialchars($selectParentData['description']) . '" value=' . $selectParentData['id'].'>' . $selectParentData['pcode'] . '</option>';
+            }
+        echo "
+          </select>
+        </div>
+        <button class='button primary'  onclick='addChildProperty(" . $prowareInfoData['property_id'] . ")'>Add Sub Property</button>";
+      ?>
+
+    </td>
+    </tr>
+    <?php
     }
+    ?>
+    </tbody>
+  </table>
+  <?php
+  exit();
   }
   ?>
-  </tbody>
-</table>
-<?php
-exit();
-
-}
-?>

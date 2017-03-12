@@ -52,7 +52,7 @@ if(isset($_POST['showInformation']))
 
   $prowareInfoDatas = $db->select("property", [
     "[>]minor_category" => ["minor_category" => "id"],
-    "[>]major_category" => ["minor_category.major_id" => "id"],
+    "[>]major_category" => ["major_category" => "id"],
     "[>]property_accountability" => ["id" => "property_id"]
   ], [
     "property.id(property_id)",

@@ -11,8 +11,8 @@ $(function(){
 });
 function logIn()
   {
-     $('#buttonLogIn').addClass('warning');
-     document.getElementById("buttonLogIn").innerHTML="<span class='mif-ani-spin mif-spinner3 text-light'></span><span class='text-light padding10'> Logging In</span>";
+    $('#buttonLogIn').addClass('warning');
+    document.getElementById("buttonLogIn").innerHTML="<span class='mif-ani-spin mif-spinner3 text-light'></span><span class='text-light padding10'> Logging In</span>";
   }
 function pushMessage(t){
     var mes = 'Info|Implement independently';

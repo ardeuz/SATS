@@ -6,7 +6,18 @@ $(document).ready(function(){
 	$("#locationsIDs").select2();
 	$("#conditionsId").select2();
 });
-
+$('#uploadBulky').click(function(){
+	$.Notify({
+		caption: 'File Uploading',
+			content: 'Please wait the system to reload...' ,
+			icon: "<span class='mif-notification icon'></span>",
+			type: "info",
+			keepOpen:true
+	});
+	$("#uploadBulky").addClass('bg-lightOrange fg-white');
+	$("#uploadBulky").html("<span class='mif-ani-spin mif-spinner3 text-light'></span><span class='text-light padding10'> Uploading</span>");
+	this.form.submit(); this.disabled=true; this.value='Uploading…';
+});
 function requestAccountability()
 {
 

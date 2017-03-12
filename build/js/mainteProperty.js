@@ -13,20 +13,78 @@ $(document).ready(function() {
 	$("#locations").select2();
 	$("#accountCategory").select2();
 	$("#minorCategory").select2();
+	$("#majorCategory").select2();
 	$("#editMinorId").select2();
-	$("#subPr1").select2();
-	$("#parPr1").select2();
+	// if($("#parent").checked){
+	// 	$("#parentProperty").hide();
+	// 	$("#subProperty").show();
+	// }
+	$('#parent').change(function(){
+        if(this.checked){
+						if($("#parentProperty").show()){
+							$("#parentProperty").hide();
+							$("#parPrDiv").remove();
+							$('#subProperty').show();
+							$('#sub').attr('checked',false);
+						}	else {
+							$('#subProperty').show();
+						}
+        }	else {
+					//to reset to zero subPR and var I in adding dynamically element
+						for (var h = 0; h <= subProperty; h++) {
+							$("#divCount"+h).remove();
+						}
+						$('#subProperty').hide();
+						if(subProperty != 0 && i != -1){
+							subProperty = 0;
+							i = -1;
+						}
 
+				}
+    });
+	$('#sub').change(function(){
+			if(this.checked){
+				// to check if the subProperty div is onshow
+				// if show hide it and reset the sub Property counts
+
+				if($('#subProperty').show()){
+					$('#parent').attr('checked',false);
+					for (var h = 0; h <= subProperty; h++) {
+						$("#divCount"+h).remove();
+					}
+					$('#subProperty').hide();
+					if(subProperty != 0 && i != -1){
+						subProperty = 0;
+						i = -1;
+					}
+					$('#subProperty').hide();
+					$.post("build/ajax/showSelectorsParent.php",{showSelect : 1},function(data){
+						$("#selectProps1").html(data);
+						$("#parentProperties").append("<div class='input-control select full-size' data-role='select' id='parPrDiv'><select id=parPr style='display:none;'><option value=0>Select a Property</option>"+data+"></select></div>");
+					});
+					$("#parentProperty").show();
+				}	else {
+					$.post("build/ajax/showSelectorsParent.php",{showSelect : 1},function(data){
+						$("#selectProps1").html(data);
+						$("#parentProperties").append("<div class='input-control select full-size' data-role='select' id='parPrDiv'><select id=parPr style='display:none;'><option value=0>Select a Property</option>"+data+"></select></div>");
+					});
+					$("#parentProperty").show();
+				}
+			}	else {
+				$("#parPrDiv").remove();
+				$("#parentProperty").hide();
+			}
+	});
 });
 
-var subProperty = 1;
-var i = 0;
+var subProperty = 0;
+var i = -1;
 function addAnotherSubProperty(){
 
 	if(i < subProperty ){
 		$.post("build/ajax/showSelectors.php",{showSelect : 1},function(data){
 			$("#selectProps"+subProperty).html(data);
-		$("#subProperties").append("<div class='input-control select full-size' data-role='select'><select id=subPr"+subProperty+" style='display:none;'><option value=0>Select a Property</option>"+data+"></select></div>");
+		$("#subProperties").append("<div class='input-control select full-size' data-role='select' id='divCount"+subProperty+"'><select id='subPr"+subProperty+"' style='display:none;'><option value=0>Select a Property</option>"+data+"></select></div>");
 		});
 	}
 	console.log(subProperty);
@@ -38,23 +96,18 @@ function addAnotherSubProperty(){
 	// }
 
 }
+
 function addSubProperty(){
-	if($("#minorCategory").val() == 1 ){
-		$.post("build/ajax/showSelectors.php",{showSelect : 1},function(data){
-			$("#selectProps1").html(data);
-		$("#subProperties").append("<div class='input-control select full-size' data-role='select'><select id=subPr1 style='display:none;'><option value=0>Select a Property</option>"+data+"></select></div>");
-		});
-		$("#parentProperty").hide();
-		$("#subProperty").show();
-	}
-	else if($("#minorCategory").val() == 2 ){
-		$.post("build/ajax/showSelectorsParent.php",{showSelect : 1},function(data){
-		$("#selectProps1").html(data);
-		$("#parentProperties").append("<div class='input-control select full-size' data-role='select'><select id=parPr style='display:none;'><option value=0>Select a Property</option>"+data+"></select></div>");
-		});
-		$("#subProperty").hide();
-		$("#parentProperty").show();
-	}
+
+
+	// if($("#minorCategory").val() ==  ){
+	// 	$.post("build/ajax/showSelectorsParent.php",{showSelect : 1},function(data){
+	// 	$("#selectProps1").html(data);
+	// 	$("#parentProperties").append("<div class='input-control select full-size' data-role='select'><select id=parPr style='display:none;'><option value=0>Select a Property</option>"+data+"></select></div>");
+	// 	});
+	// 	$("#subProperty").hide();
+	// 	$("#parentProperty").show();
+	// }
 }
 function addProperty(){
   var pcode = $("#pcode").val();
@@ -68,9 +121,10 @@ function addProperty(){
   var orno = $("#orno").val();
   var locations = $("#locations").val();
   var conditions = $("#conditions").val();
-  var minorCategory = $("#minorCategory").val();
+	var majorCategory = $("#majorCategory").val();
+	var minorCategory = $("#minorCategory").val();
   var accountCategory = $("#accountCategory").val();
-  $.post("build/ajax/addProperty.php", {pcode:pcode, sno:sno, propertyDescription:propertyDescription, qty:qty, locations:locations, minorCategory:minorCategory, accountCategory:accountCategory, conditions:conditions, brand:brand, model:model, cost:cost, uom:uom, orno:orno} ,function(data)
+  $.post("build/ajax/addProperty.php", {pcode:pcode, majorCategory:majorCategory, sno:sno, propertyDescription:propertyDescription, qty:qty, locations:locations, minorCategory:minorCategory, accountCategory:accountCategory, conditions:conditions, brand:brand, model:model, cost:cost, uom:uom, orno:orno} ,function(data)
   {
 		console.log(data);
     var result = parseInt(data);
@@ -91,8 +145,23 @@ function addProperty(){
 			$("#cost").val("");
 			$("#uom").val("");
 			$("#orno").val("");
-			$('#location').prop('selectedIndex', -1);
-			hideMetroDialog("#addProperty");
+			$('#locations').select2("val","0");
+			$('#accountCategory').select2("val","0");
+			$('#majorCategory').select2("val","0");
+			$('#minorCategory').select2("val","0");
+			$('#conditions').select2("val","0");
+			// $('#location').prop('selectedIndex', -1);
+			hideMetroDialog("#adminAdd");
+			if($("#parent").show()){
+				addPropertyWithSub();
+			} else if ($("#sub").show()) {
+				var parent = $("#parPr").val();
+				$.post("build/ajax/addNewPropertyParent.php",{parent : parent},function(data){
+					console.log(data);
+					 location.reload();
+				});
+			}
+
 
 		} else if (result == -1) {
       $.Notify({
@@ -113,34 +182,28 @@ function addProperty(){
       //problem with the server
     }
   });
-	if($('#minorCategory').val() == 1){
-		addPropertyWithSub();
-	}
-	else if ($('#minorCategory').val() == 2) {
-		var parent = $("#parPr").val();
-		$.post("build/ajax/addNewPropertyParent.php",{parent : parent},function(data){
-			console.log(data);
-			setTimeout(function () {
-			 location.reload();
-		 }, 1500);
-		});
-	}
-	else if ($('#minorCategory').val() != 1 || $('#minorCategory').val() == 2) {
-		location.reload();
-	}
+	// if($('#minorCategory').val() == 1){
+	// 	addPropertyWithSub();
+	// }
+	// else if ($('#minorCategory').val() == 2) {
+
+	// }
+	// else if ($('#minorCategory').val() != 1 || $('#minorCategory').val() == 2) {
+	// 	location.reload();
+	// }
 
 
 }
-function addPropertyWithSub(){
+function addPropertyWithSub(pcode){
 	if(subProperty != 0){
-		for (var a = 1; a <= subProperty; a++) {
+		for (var a = 0; a <= subProperty; a++) {
 			var appended = $("#subPr"+a).val();
 			console.log(appended);
 			$.post("build/ajax/addNewPropertySub.php",{appended : appended},function(data){
 				console.log(data);
-				setTimeout(function () {
+			// 	setTimeout(function () {
 				 location.reload();
-			 }, 2500);
+			//  }, 2500);
 			});
 		}
 	}

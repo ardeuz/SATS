@@ -17,9 +17,10 @@
     array('db' => '`u`.`pcode`', 'dt' => 1,'field' => "pcode"),
     array('db' => '`u`.`sno`', 'dt' => 2,'field' => "sno"),
     array('db' => '`u`.`description`', 'dt' => 3,'field' => "description"),
-    array('db' => '`u`.`location`', 'dt' => 4,'field' => "location"),
-    array('db' => '`u`.`qty`', 'dt' => 5,'field' => "qty"),
-    array('db' => '`u`.`id`', 'dt' => 6,'field'=> 'id' ,'formatter' => function($id,$rows)
+    array('db' => '`u`.`description_minor`', 'dt' => 4,'field' => "description_minor"),
+    array('db' => '`u`.`location`', 'dt' => 5,'field' => "location"),
+    array('db' => '`u`.`qty`', 'dt' => 6,'field' => "qty"),
+    array('db' => '`u`.`id`', 'dt' => 7,'field'=> 'id' ,'formatter' => function($id,$rows)
       {
         $db = new medoo([
           // required
@@ -64,8 +65,8 @@
         return $maintenance;
         // return "hello";
       }),
-      array('db' => '`u`.`emp_name`', 'dt' => 7,'field' => "emp_name"),
-      array('db' => '`u`.`emp_id`', 'dt' => 8,'field' => "emp_id","formatter" => function($employeeId,$row){
+      array('db' => '`u`.`emp_name`', 'dt' => 8,'field' => "emp_name"),
+      array('db' => '`u`.`emp_id`', 'dt' => 9,'field' => "emp_id","formatter" => function($employeeId,$row){
         $db2 = new medoo([
           // required
           'database_type' => 'mysql',

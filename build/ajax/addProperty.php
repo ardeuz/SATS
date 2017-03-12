@@ -17,6 +17,7 @@
     $locations = $_POST['locations']; //property accountability
     $conditions = $_POST['conditions']; //property accountability
     $minorCategory = $_POST['minorCategory'];
+    $majorCategory = $_POST['majorCategory'];
     $accountCategory = $_POST['accountCategory']; //property accountability
 
     if ($sno == "" || !$db->has("property", ["sno" => $sno])) { //if there's no same serial number
@@ -28,6 +29,7 @@
         "model" => $model,
         "minor_category" => $minorCategory,
         "uom" => $uom,
+        "major_category" => $majorCategory,
         "cost" => $cost,
         "date_acquired" => $dateToday,
         "or_number" => $orno

@@ -12,7 +12,7 @@
     $handle = fopen($file,"r");
 
     //loop through the csv file and insert into database
-		while ($data = fgetcsv($handle,1000,",","'")) {
+		while ($data = fgetcsv($handle,1000)) {
 			if ($data[0]) {
         $parent_property_code = $data[0]; //parent property code, first column
         $sub_property_code = $data[1]; //sub propert code, second column
@@ -37,6 +37,6 @@
 			}
 		}
 
-    // header("location:../../admin_accountabilities.php");
+    header("location:../../admin_accountabilities.php");
   }
 ?>

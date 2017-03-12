@@ -1,13 +1,3 @@
-showSelect();
-
-function showSelect()
-{
-  $.post("build/ajax/showSelectMinor.php",function(data)
-  {
-    $("#showSelectMinor").html(data);
-  });
-}
-
 function updateParent(property_id) {
   var parent = $('#parentData').val();
   var parentPcode = $('#parentData option:selected').html();
