@@ -48,7 +48,7 @@
         <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="importMinor" data-close-button="true" >
           <h3 class=" text-light header">Upload CSV</h3>
           <small><b></b></small>
-          <span class="text-light"><small ><b>Column Order:</b> ID, Description</small></span>
+          <span class="text-light"><small ><b>Column Order:</b> Description</small></span>
 
           <form action="build/ajax/adminImportMinor.php" method="POST" enctype="multipart/form-data">
             <div class="input-control file full-size" data-role="input">
@@ -56,7 +56,7 @@
                 <button class="button" type="button"><span class="mif-folder"></span></button>
             </div>
             <br/>
-            <div class="input-control" style="width:100%;">
+            <!-- <div class="input-control" style="width:100%;">
               <select name="categoryValue" id="minorSelect" style="display:none;">
                 <?php
                   $majorCategories = $db->select("major_category",["id","description"]);
@@ -66,7 +66,7 @@
                   }
                 ?>
               </select>
-            </div>
+            </div> -->
             <button class="button warning" type="submit">Upload File</button>
           </form>
         </div>

@@ -1,10 +1,12 @@
 <?php
+  date_default_timezone_set('Asia/Manila');
   if(isset($_GET['logout']))
   {
     session_destroy();
     header("location:index.php");
     exit();
   }
+
 ?>
 
 
@@ -116,7 +118,7 @@
         </ul>
     </li> -->
     <li class="<?php if($thisPage == 'EditProperty' || $thisPage == 'EditUser' || $thisPage == 'EditLocation' || $thisPage == 'EditMajorCat' || $thisPage == 'EditMinorCat' ){echo 'active';  }?>">
-        <a href="#" class="dropdown-toggle"><span class="mif-pencil icon"></span> Maintenance</a>
+      <a href="#" class="dropdown-toggle"><span class="mif-pencil icon"></span> Maintenance</a>
         <ul class="d-menu shadow"  data-role="dropdown">
             <div style="height:150px;overflow-y:scroll;" id="style-4">
               <li class="<?php if($thisPage == 'EditProperty'){echo 'active'; } ?>"><a href="mainteProperty.php"><span class="mif-arrow-right icon"></span> Property</a></li>
@@ -127,10 +129,19 @@
         </ul>
 
     </li>
-    <li  class="<?php if($thisPage=='Repair'){echo 'active';} ?>"><a href="accountability_repair.php"><span class="mif-wrench icon"></span> Repair</a></li>
+    <li class="<?php if($thisPage=='Repair' || $thisPage == "Location"){echo 'active';} ?>">
+      <a href="#" class="dropdown-toggle"><span class="mif-lock icon"></span> Audit Trail</a>
+        <ul class="d-menu shadow" data-role="dropdown">
+          <div>
+            <li  class="<?php if($thisPage=='Repair'){echo 'active';} ?>"><a href="accountability_repair.php"><span class="mif-wrench icon"></span> Repair</a></li>
+            <li  class="<?php if($thisPage=='Location'){echo 'active';} ?>"><a href="accountability_location.php"><span class="mif-tag icon"></span> Location Tracking</a></li>
+          </div>
+        </ul>
     <li class="menu-title">Settings</li>
-    <li><a href="#" onclick="showMetroDialog('#changePassword')"><span class="mif-cog icon"></span> Change Password</a></li>
+    <li><a href="#" onClick="showMetroDialog('#changeSchoolYear')"><span class="mif-calendar icon"></span> Change Schoolyear</a></li>
+
     <li><a href="exportDatabase.php"><span class="mif-database icon"></span> Export Database</a></li>
+    <li><a href="#" onclick="showMetroDialog('#changePassword')"><span class="mif-cog icon"></span> Change Password</a></li>
     <li><a href="?logout=1"><span class="mif-exit icon"></span> Logout</a></li>
     <li class="divider"></li>
     <li class="menu-title"></<li>
@@ -163,6 +174,24 @@
   </div>
   <button class="button warning" onclick="addNewMinor()">Add Minor Category</button>
 </div>
+<div data-role="dialog" data-overlay="true" data-overlay-color="op-dark"data-width="30%" data-overlay-click-close="true" id="changeSchoolYear" data-close-button="true" class="padding10">
+  <h1>Change School Year</h1>
+    <div class="input-control full-size" data-role="input">
+
+      <!-- <input type="text" id="newMinor" placeholder="Minor Category"/> -->
+      <select id='changeSY'>
+      <?php
+        $year = intval(date("Y"));
+        $yearValue = intval(date('y'));
+        $firstVal = ($year -1)." - ".($year);
+        $secondVal = ($year)." - ".($year + 1);
+        echo '<option value='.($yearValue-1).$yearValue.'>'.$firstVal.'</option>';
+        echo '<option value='.$yearValue.($yearValue+1).'>'.$secondVal.'</option>';
+      ?>
+      </select>
+    </div>
+    <button class="button warning" type="submit" onClick="changeSY()">Change</button>
+</div>
 <div data-role="dialog" data-overlay="true" data-width="30%" data-height="40%" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="changePassword" data-close-button="true">
   <h4 class="text-light">Change Password</h4>
   <div class="input-control password full-size">
@@ -178,6 +207,17 @@
 
 </div>
 <script>
+function changeSY(){
+  var changeSY = $("#changeSY").val();
+  $.post('build/ajax/updateSY.php',{changeSY , changeSY}, function(data){
+    $.Notify({
+        caption: "School Year Changed",
+        content: "Changing of School Year Completed",
+        icon: "<span class='mif-checkmark icon'></span>",
+        type: "success"
+    });
+  });
+}
 function checkPass(){
       if($('#NewPass').val() != $('#ConfirmPass').val()){
         $('#ConfirmPass').addClass('bd-lightRed');

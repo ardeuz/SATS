@@ -25,7 +25,7 @@ $(document).ready(function() {
 							$("#parentProperty").hide();
 							$("#parPrDiv").remove();
 							$('#subProperty').show();
-							$('#sub').attr('checked',false);
+							$('#sub').prop('checked',false);
 						}	else {
 							$('#subProperty').show();
 						}
@@ -48,7 +48,7 @@ $(document).ready(function() {
 				// if show hide it and reset the sub Property counts
 
 				if($('#subProperty').show()){
-					$('#parent').attr('checked',false);
+					$('#parent').prop('checked',false);
 					for (var h = 0; h <= subProperty; h++) {
 						$("#divCount"+h).remove();
 					}

@@ -27,6 +27,9 @@
 			}
       elseif($db->has('account_table',['emp_id'=>$data[0]])){
         $propertyId = $db->update("account_table", [
+          "first_name" => $data[1],
+          "middle_name" => $data[2],
+          "last_name" => $data[3],
           "department" => $data[4],
         ],["emp_id" => $data[0]]);
       }

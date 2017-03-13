@@ -68,5 +68,18 @@
 		$propertyName = $db->get("property","pcode",["id"=>$id]);
 		$oldLoc = $db->get("location","location",["id" => $old_location_id]);
 		$newLoc = $db->get("location","location",["id" => $new_location_id]);
-		$db->insert("audit_trail_location",["action" => $emp_id." updated the location of ".$propertyName." from ".$oldLoc." to ".$newLoc ,"date" => $dateToday]);
+		$db->insert("audit_trail_location",["action" => ,"date" => $dateToday]);
+		$action =  $emp_id." updated the location of ".$propertyName." from ".$oldLoc." to ".$newLoc;
+		$db->insert("audit_trail_location",
+		["brand"=>$propertyName['brand'],
+		"uom"=>$propertyName['uom'],
+		"po_number"=>$propertyName['or_number'],
+		'property_id'=>$id,
+		"pcode"=>$propertyName['pcode'],
+		"sno"=>$propertryName['sno'],
+		"description"=>$propertyName['description'],
+		"actor"=>$emp_id,
+		"action" => $actions ,
+		"date" => $dateToday ,
+		 "remarks"=>$remarks	]);
 ?>

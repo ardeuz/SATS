@@ -10,7 +10,7 @@
     <table class="dataTable border bordered hovered" id="adminShowInssuanceTable">
       <thead>
         <tr>
-          <td class="auto size">Maintenance</td>
+          <td>Maintenance</td>
           <td class="sortable-column">Property Code</td>
           <td class="sortable-column">Serial Number</td>
           <td class="sortable-column">Description</td>
@@ -18,7 +18,7 @@
           <td class="sortable-column">Condition</td>
           <td class="sortable-column">Quantity</td>
           <td>Department</td>
-          <td>is Borrowed</td>
+          <td>Property Accountability</td>
 
         </tr>
       </thead>

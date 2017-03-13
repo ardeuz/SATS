@@ -13,11 +13,11 @@
     $handle = fopen($file,"r");
 
     //loop through the csv file and insert into database
-		while ($data = fgetcsv($handle,1000,",","'")) {
-			if ($data[1]) {
+		while ($data = fgetcsv($handle,1000)) {
+			if ($data[0]) {
 
 					$propertyId = $db->insert("location", [
-						"location" => $data[1],
+						"location" => $data[0],
 					]);
 			}
 		}

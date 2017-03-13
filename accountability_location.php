@@ -4,13 +4,13 @@
   include('config.php');
   include('validatePage.php');
 
-  $thisPage="Repair";
+  $thisPage="Location";
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Manage Repair</title>
+    <title>Location Tracking</title>
     <link rel="icon" href="logo/logo.png" type="image/png" sizes="16x22">
     <link href="build/css/metro.css" rel="stylesheet">
     <link href="build/css/backend.css" rel="stylesheet">
@@ -29,7 +29,7 @@
         <div class="row" style="height: 100%;">
         <?php include_once('admin_navigation.php'); ?>
           <div class="cell auto-size padding20 no-margin-top grid container place-right" id="style-4" style="overflow-y:scroll;height:100%;">
-            <h1 class="text-light fg-darkBrown">Repair Item<span class="mif-ani-fast mif-ani-shuttle
+            <h1 class="text-light fg-darkBrown">Location Tracking<span class="mif-ani-satellite mif-ani-shuttle
               mif-wrench place-right text-light"></span></h1>
 
             <hr class="thin bg-grayLighter">
