@@ -14,14 +14,13 @@
     //loop through the csv file and insert into database
 		while ($data = fgetcsv($handle,1000)) {
 			if ($data[0]) {
-        $emp_id = $data[0];
-        $pcode = $data[1];
-        $serial_no = $data[2];
-        $or_number = $data[3];
-        $date_acquired = $data[4];
-        $description = $data[5];
-        $brand = $data[5];
-        $model = $data[6];
+        $or_number = $data[0];
+        $date_acquired = $data[1];
+        $pcode = $data[2];
+        $description = $data[3];
+        $brand = $data[4];
+        $model = $data[5];
+        $serial_no = $data[6];
         $major_category = $data[7];
         $minor_category = $data[8];
         $qty = $data[9];
@@ -29,6 +28,7 @@
         $cost = $data[11];
         $location = $data[12];
         $condition = $data[13];
+        $emp_id = $data[14];
 
         //select first the id's of account location condition minor and major category
         $location = $db->get("location", "id", ["location" => $location]);
