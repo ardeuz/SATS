@@ -14,33 +14,49 @@
     //loop through the csv file and insert into database
 		while ($data = fgetcsv($handle,1000)) {
 			if ($data[0]) {
+        $emp_id = $data[0];
+        $pcode = $data[1];
+        $serial_no = $data[2];
+        $or_number = $data[3];
+        $date_acquired = $data[4];
+        $description = $data[5];
+        $brand = $data[5];
+        $model = $data[6];
+        $major_category = $data[7];
+        $minor_category = $data[8];
+        $qty = $data[9];
+        $uom = $data[10];
+        $cost = $data[11];
+        $location = $data[12];
+        $condition = $data[13];
+
         //select first the id's of account location condition minor and major category
-          $emp_id = $db->get("account_table","emp_id",["emp_id"=>$data[0]]);
-          $location = $db->get("location","id",["location"=>$data[13]]);
-          $condition = $db->get("condition_info","id",["condition_info"=>$data[14]]);
-          $minor_category = $db->get("minor_category","id",["description"=>$data[12]]);
-          $major_category = $db->get("major_category","id",["description"=>$data[11]]);
+        $location = $db->get("location", "id", ["location" => $location]);
+        $condition = $db->get("condition_info", "id", ["condition_info" => $condition]);
+        $minor_category = $db->get("minor_category", "id", ["description" => $minor_category]);
+        $major_category = $db->get("major_category", "id", ["description" => $major_category]);
         //insert when its finally searched
-					$propertyId = $db->insert("property", [
-						"pcode" => $data[1],
-						"sno" => $data[2],
-						"description" => $data[3],
-						"brand" => $data[4],
-						"model" => $data[5],
-						"minor_category" => $minor_category,
-            "uom" => $data[6],
-            "cost" => $data[7],
-            "major_category" => $major_category,
-            "date_acquired" => $data[8],
-            "or_number" => $data[9]
-					]);
-          $db->insert("property_accountability", [
-            "emp_id" => $emp_id,
-            "property_id" => $propertyId,
-            "qty" => $data[10],
-            "location_id" => $location,
-            "condition_id" => $condition
-          ]);
+				$propertyId = $db->insert("property", [
+					"pcode" => $pcode,
+					"sno" => $serial_no,
+					"description" => $description,
+	        "brand" => $brand,
+					"model" => $model,
+					"minor_category" => $minor_category,
+          "uom" => $uom,
+          "cost" => $cost,
+          "major_category" => $major_category,
+          "date_acquired" => $date_acquired,
+          "or_number" => $or_number
+				]);
+
+        $db->insert("property_accountability", [
+          "emp_id" => $emp_id,
+          "property_id" => $propertyId,
+          "qty" => $qty,
+          "location_id" => $location,
+          "condition_id" => $condition
+        ]);
 			}
 		}
 
