@@ -79,8 +79,8 @@
           </div>
           <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="uploadCSV" data-close-button="true">
             <h3 class="padding20 text-light header">Upload CSV</h3>
-            <p class='text-light'><small><b>Column Order:</b><br/> <br/>Accountability of, Property Code, Serial Number, Description, Brand, Model, UOM, Cost, Date Aquired, <br/>P.O. Number, Quantity, , Major Category, Minor Category, Location, Condition</small>
-            <br/><br/><small><b>NOTE : </b>property description must not containing an apostrophe instend use ( ` )<small></p>
+            <p class='text-light'><small><b>Column Order:</b><br/> <br/>P.O. Number, Date Acquired, Property Code, Property Description, <br/>Brand, Model, Serial Number, Major Category, Minor Category, <br/> Quantity, Unit Of Measurement, Cost, Location, Condition, Remaks, Accountability Of(ID Number)</small>
+          </p>
             <form action="build/ajax/uploadProperty.php" method="POST" enctype="multipart/form-data">
                 <div class="input-control file full-size" data-role="input">
                     <input type="file" name="physical">

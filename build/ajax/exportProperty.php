@@ -6,8 +6,8 @@
             property.pcode AS property_code,
             property.sno AS serial_number,
             property.description AS property_description,
-            major_category.description AS major_description,
-            minor_category.description AS minor_description,
+            b.description AS major_description,
+            a.description AS minor_description,
             property.brand,
             property.model,
             property.uom,
@@ -22,8 +22,8 @@
             property
             INNER JOIN property_accountability ON property.id = property_accountability.property_id
             INNER JOIN account_table ON property_accountability.emp_id = account_table.emp_id
-            INNER JOIN minor_category ON property.minor_category = minor_category.id
-            INNER JOIN major_category ON minor_category.major_id = major_category.id
+            INNER JOIN minor_category as a ON property.minor_category = a.id
+            INNER JOIN major_category as b ON property.major_category = b.id
             INNER JOIN location ON property_accountability.location_id = location.id
             INNER JOIN condition_info ON property_accountability.condition_id = condition_info.id";
   $rec = mysqli_query($conn, $sql);
