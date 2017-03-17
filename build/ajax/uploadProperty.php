@@ -32,11 +32,40 @@
         $remarks = $data[14];
         $emp_id = $data[15];
 
+        //check first the location
+        //Location
+        // if($db->has("location",["location"=>$location])){
+        //   $location = $db->get("location", "id", ["location" => $location]);
+        // } elseif($db->has("location",["location[!]"=>$location])){
+        //   $location = $db->insert('location',['location'=>$location]);
+        // }
+        //Condition
+        // if($db->has("condition_info",["condition_info"=>$condition])){
+        //   $location = $db->get("location", "id", ["location" => $location]);
+        // } elseif($db->has("condition_info",["condition_info[!]"=>$condition])){
+        //   $minor_category = $db->insert('minor_category',['description'=>$minor_category]);
+        // }
+        //Minor Category
+        // if($db->has("minor_category",["description"=>$minor_category])){
+        //   $location = $db->get("location", "id", ["location" => $location]);
+        // } elseif($db->has("minor_category",["description[!]"=>$minor_category])){
+        //  $minor_category = $db->insert('minor_category',['description'=>$minor_category]);
+        // }
+        //Major Category
+        // if($db->has("major_category",["description"=>$major_category])){
+        //   $location = $db->get("major_category", "id", ["description" => $major_category]);
+        // } elseif($db->has("major_category",["description[!]"=>$major_category])){
+        //  $major_category = $db->insert('major_category',['description'=>$major_category]);
+        // }
+
+
         //select first the id's of account location condition minor and major category
         $location = $db->get("location", "id", ["location" => $location]);
         $condition = $db->get("condition_info", "id", ["condition_info" => $condition]);
         $minor_category = $db->get("minor_category", "id", ["description" => $minor_category]);
         $major_category = $db->get("major_category", "id", ["description" => $major_category]);
+
+
         //insert when its finally searched
 				$propertyId = $db->insert("property", [
 					"pcode" => $pcode,
