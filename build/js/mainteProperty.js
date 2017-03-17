@@ -151,6 +151,15 @@ function addProperty(){
 			$('#minorCategory').select2("val","0");
 			$('#conditions').select2("val","0");
 			// $('#location').prop('selectedIndex', -1);
+			$("#addProperty").ajaxForm(function(data) {
+				console.log(data); 
+				$.Notify({
+					caption: 'Update Property Success',
+						content: 'Property Updated',
+						icon: "<span class='mif-checkmark mif-ani-heartbeat mif-ani-fast icon'></span>",
+						type: "success"
+				});
+			}).submit();
 			hideMetroDialog("#adminAdd");
 			if($("#parent").show()){
 				addPropertyWithSub();
@@ -227,10 +236,11 @@ function ViewProperty(propertyId)
 						}
 		});
 }
-function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost,minorCat,quantity)
+function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost,minorCat,quantity , file_image)
 {
 	var propertyID = parseInt(propertyCode);
 	$("#propertyId").val(propertyID);
+	$("#propertiesId").val(propertyID);
 	$("#propertyName").html(pcode);
 	$("#editPropertyCode").val(pcode);
 	$("#editSerialNumber").val(serialNumber);
@@ -241,6 +251,7 @@ function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, br
 	$("#ornumber").val(orNumber);
 	$("#editUom").val(uom);
 	$("#editCost").val(cost);
+	$("#files").attr('src',file_image);
 
 	// ano ano ieedit dine
 }
@@ -261,12 +272,15 @@ function updateProperty()
 		var result = parseInt(data);
 		if(result == 1)
 		{
-			$.Notify({
-				caption: 'Update Property Success',
-					content: 'Property Updated',
-					icon: "<span class='mif-checkmark mif-ani-heartbeat mif-ani-fast icon'></span>",
-					type: "success"
-			});
+			$("#formUpload").ajaxForm(function(data) {
+				console.log(data);
+				$.Notify({
+					caption: 'Update Property Success',
+						content: 'Property Updated',
+						icon: "<span class='mif-checkmark mif-ani-heartbeat mif-ani-fast icon'></span>",
+						type: "success"
+				});
+			}).submit();
 			hideMetroDialog("#editPropertyDialog");
 		}
 		else if(result == 2)

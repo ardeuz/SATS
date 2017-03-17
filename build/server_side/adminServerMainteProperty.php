@@ -5,6 +5,7 @@
   $column = array(
 
     //id sno pcode qty
+    array('db' => '`u`.`property_image`', 'dt' => 0,'field' => "property_image"),
     array('db' => '`u`.`brand`', 'dt' => 0,'field' => "brand"),
     array('db' => '`u`.`description`', 'dt' => 0,'field' => "description"),
     array('db' => '`u`.`model`', 'dt' => 0,'field' => "model"),
@@ -25,11 +26,15 @@
         $uom = $row['uom'];
         $cost = $row['cost'];
         $minorCat = $row['minor_category'];
+        $file_image = $row['property_image'];
         $maintenance = '
-        <div class="toolbar"><button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#adminAccountabilityDialog\'); ViewProperty('.$ids.');"><span class="mif-eye icon"></span></button>
-        <button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#editPropertyDialog\'); EditProperty(\''.$ids.'\', \''.$pcode.'\',\''.$sno.'\',\''.trim($description).'\',\''.trim($brand).'\',\''.$model.'\',\''.$orNo.'\',\''.$uom.'\' ,'.$cost.','.$minorCat.',';
-        $maintenance .= $qty.');"><span class="mif-pencil icon"></span></button>
-          <button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#deletePropertyDialog\'); DeletePropertyValidation(\''.$ids.'\',\''.$pcode.'\');"><span class="mif-bin icon"></span></button></div>';
+        <div class="toolbar"><button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#adminAccountabilityDialog\'); ViewProperty('.$ids.');"><span class="mif-eye icon"></span></button>';
+        $maintenance .="
+        <button class=\"toolbar-button button primary\" onclick='showMetroDialog(\"#editPropertyDialog\"); EditProperty(".$ids.", \"".$pcode."\",\"".$sno."\",".json_encode($description, JSON_HEX_APOS).",\"".$brand."\",\"".$model."\",\"".$orNo."\",\"".$uom."\",\"".$cost."\",".$minorCat.",";
+        $maintenance .= $qty.",\"".$file_image."\");'";
+        $maintenance .= '><span class="mif-pencil icon"></span></button>&nbsp;';
+        $maintenance .= '<button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#deletePropertyDialog\'); DeletePropertyValidation(\''.$ids.'\',\''.$pcode.'\');"><span class="mif-bin icon"></span></button></div>';
+
         return $maintenance;
       }),
     array('db' => '`u`.`pcode`', 'dt' => 1,'field' => "pcode"),

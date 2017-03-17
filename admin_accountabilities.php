@@ -53,6 +53,7 @@
               <ul class="tabs">
                   <li><a href="#propertyInformation">Property Information</a></li>
                   <li><a href="#repairHistory">Repair History</a></li>
+                  <li><a href="#locationHistory">Location History</a></li>
               </ul>
                 <div class="frames">
                     <div class="frame bg-white" id="propertyInformation">

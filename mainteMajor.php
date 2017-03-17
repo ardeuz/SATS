@@ -76,11 +76,11 @@
 
     <form action="build/ajax/adminImportMajor.php" method="POST" enctype="multipart/form-data">
       <div class="input-control file full-size" data-role="input">
-          <input type="file" name="import_major">
+          <input type="file" name="import_major" id="mainteUploader">
           <button class="button" type="button"><span class="mif-folder"></span></button>
       </div>
       <br/>
-      <button class="button warning" type="submit">Upload File</button>
+      <button class="button warning" type="submit" id="majorUpload">Upload File</button>
     </form>
   </div>
   </body>

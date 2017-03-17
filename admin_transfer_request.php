@@ -37,8 +37,19 @@
             </center>
             <h1 class="text-light fg-brown">Transfer Request History<span class="mif-notification place-right text-light"></span></h1>
             <hr class="thin bg-grayLighter">
+            From : &nbsp;
+            <div class="input-control text">
+              <input type="date" id="fromDate"/>
+            </div>
+            <!-- 00:00:00 -->
+            To : &nbsp;
+            <div class="input-control text">
+              <input type="date" id="toDate"/>
+            </div><br/>
+            <!-- 23:59:59 -->
+            <button class="button primary" onClick="exportTransfer();"> Export Transfer History</button>
+            <!-- <a href='build/ajax/exportTransferHistory.php' class="button primary">Export Property List</a> -->
             <div id="history_request_div"  style="display:none;"></div>
-
             <!--pre loader-->
             <center>
               <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="history_loader"></div>

@@ -16,6 +16,8 @@
   {
     if($editMinorId == 0)
     {
+      // $image='property_images/';
+      // move_uploaded_file('property_images/');
       $updateQuery = $db->update('property',['pcode' => $editPropertyCode ,'sno'=>$editSerialNumber ,'description'=> $editPropertyDescription,'brand'=> $editBrand,'model'=> $editModel,'or_number'=> $ornumber,'uom'=> $editUom, 'cost'=> $editCost],['id' => $propertyId]);
       $updateQty = $db->update('property_accountability',['qty'=>$editQty],['property_id' => $propertyId]);
 

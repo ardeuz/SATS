@@ -42,8 +42,6 @@
         "location_id" => $locations,
         "condition_id" => $conditions
       ]);
-
-
       echo 1;
     }
   }

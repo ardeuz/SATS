@@ -8,6 +8,19 @@ function requestAccountability()
 		$('#history_request_div').show();
 	});
 }
+// $("#majorUpload").click(function(){
+// 	if(!$('#mainteUploader').val()){
+// 		$.Notify({
+// 			caption: 'Please inser a File',
+// 				content: ' ' ,
+// 				icon: "<span class='mif-ile-excel icon'></span>",
+// 				type: "warning"
+// 		});
+// 	}
+// 	else{
+// 		// this.form.submit(); this.disabled=true; this.value='Uploading…';
+// 	}
+// });
 function addNewMajor()
 {
   var newMajor = $("#newMaj").val();

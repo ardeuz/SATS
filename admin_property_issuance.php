@@ -110,7 +110,7 @@
      <span>Please speicify the account to be issued </span><br/>
      <div class="input-control" style="width:24.5%" data-role="select">
              <select id="accountabilitySelect" style="display:none;">
-               <option selected disabled value="0">Select Account</option>
+               <option selected disabled value="0">Select Employee</option>
                <?php
 
                 $accountSelects = $db->select("account_table",["last_name","first_name","middle_name","department","emp_id"]);

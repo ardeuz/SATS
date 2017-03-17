@@ -70,3 +70,14 @@ function updateAdminCondition(propertyId, locationId, oldConditionId) {
 		}
 	});
 }
+function exportTransfer(){
+	var dateFrom = $("#fromDate").val();
+	var dateTo = $("#toDate").val();
+	window.open("build/ajax/exportTransferHistory.php?dateFrom="+dateFrom+"&dateTo="+dateTo);
+		$.Notify({
+				caption: 'Export Success',
+				content: 'Exporting of Property Transfer Success' ,
+				icon: "<span class='mif-checkmark icon'></span>",
+				type: "success"
+			});
+}

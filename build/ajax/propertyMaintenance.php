@@ -65,6 +65,7 @@ if(isset($_POST['showInformation']))
     "minor_category.description(minor_description)",
     "property.uom",
     "property.cost",
+    "property.property_image",
     "property.date_acquired",
     "major_category.depreciate_yr"
   ], [
@@ -117,6 +118,10 @@ foreach ($prowareInfoDatas as $prowareInfoData)
 <tr>
 <td>Cost</td>
 <td><?php echo $prowareInfoData['cost'];?></td>
+</tr>
+<tr>
+<td>Current Image</td>
+<td><?php echo '<img width="200" height="200" src='.$prowareInfoData['property_image'].'>';?></td>
 </tr>
 <?php
 }

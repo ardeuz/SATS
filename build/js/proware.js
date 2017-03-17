@@ -26,6 +26,9 @@ $(document).ready(function() {
                   $("#propertyInformations").html(prowareInformation);
               }
       });
+      $.post('build/ajax/adminShowRepairHistory.php',{showRequest : 1 , viewP : viewP},function(data){
+        $("#propertyRepairHistory").html(data);
+      });
   });
 
 });

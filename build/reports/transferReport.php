@@ -61,7 +61,7 @@
           <tbody class='small'>
           <?php
 
-            $sql = "SELECT b.pcode,b.sno, b.description, c.location as old_loc, d.location as new_loc, (SELECT major_category.description from major_category where major_category.id = (SELECT major_id FROM minor_category where minor_category.id = b.minor_category)) as property_type, e.condition_info, CONCAT(f.last_name,', ',f.first_name) as Transfer_To, CONCAT(g.last_name,', ',g.first_name) as Released_From, a.remarks FROM transfer_request_history AS a LEFT JOIN property AS b ON a.id = b.id LEFT JOIN location AS c ON a.old_loc_id = c.id LEFT JOIN location AS d ON a.new_loc_id = d.id LEFT JOIN condition_info AS e ON a.condition_id = e.id LEFT JOIN account_table AS f on a.transfer_to = f.emp_id LEFT JOIN account_table AS g on a.released_from = g.emp_id WHERE a.ctrl_no= '$ctrl_no'";
+            $sql = "SELECT b.pcode,b.sno, b.description, c.location as old_loc, d.location as new_loc, (SELECT major_category.description from major_category where major_category.id = b.minor_category) as property_type, e.condition_info, CONCAT(f.last_name,', ',f.first_name) as Transfer_To, CONCAT(g.last_name,', ',g.first_name) as Released_From, a.remarks FROM transfer_request_history AS a LEFT JOIN property AS b ON a.id = b.id LEFT JOIN location AS c ON a.old_loc_id = c.id LEFT JOIN location AS d ON a.new_loc_id = d.id LEFT JOIN condition_info AS e ON a.condition_id = e.id LEFT JOIN account_table AS f on a.transfer_to = f.emp_id LEFT JOIN account_table AS g on a.released_from = g.emp_id WHERE a.ctrl_no= '$ctrl_no'";
             $transferReportDatas = $db->query($sql)->fetchAll();
             foreach ($transferReportDatas as $transferReportData) {
 

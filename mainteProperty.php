@@ -48,7 +48,7 @@
         <h3 class="padding20 text-light header">Property Information</h3>
         <div class="padding20" id="adminInformation" style="padding-top:0;" ></div>
       </div>
-      <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="80%" data-width="30%" data-overlay-click-close="true" id="adminAdd" data-close-button="true" style="overflow-y:scroll;">
+      <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="100%" data-place="top-center" data-width="30%" data-overlay-click-close="true" id="adminAdd" data-close-button="true" style="overflow-y:scroll;">
         <h3 class="padding20 text-light header">Property Information</h3>
         <div class="padding20" style="padding-top:0;">
           <div class="input-control text full-size">
@@ -78,6 +78,12 @@
           <div class="input-control text full-size">
             <input type="text" class="" id="orno" placeholder="P.O Number">
           </div>
+          <form method="POST" action="build/ajax/uploadInsertImage.php" enctype="multipart/form-data" id="addProperty">
+            <div class="input-control file full-size" data-role="input">
+                <input type="file" name="propertyUploader">
+                <button class="button" type="button"><span class="mif-folder"></span></button>
+            </div>
+          </form>
           <div class="input-control select full-size">
             <select id="majorCategory" style="display:none;">
               <option disabled selected value="0">Choose a Major Category</option>
@@ -181,7 +187,7 @@
           <button class="button warning" onclick="addProperty()">Add Property</button>
         </div>
       </div>
-      <div data-role="dialog" data-place = "top-center" class="padding20" data-overlay="true"  data-width="30%"  data-overlay-color="op-dark" data-overlay-click-close="true" id="editPropertyDialog" data-close-button="true">
+      <div data-role="dialog" data-place = "top-center" style='overflow-y:scroll' data-height="100%" class="padding20" data-overlay="true"  data-width="30%"  data-overlay-color="op-dark" data-overlay-click-close="true" id="editPropertyDialog" data-close-button="true">
         <h3 class="text-light header">Edit Property <span id="propertyName"></span></h3>
         <input type="hidden" id="propertyId" />
         <div class="input-control full-size">
@@ -223,6 +229,19 @@
         <div class="input-control full-size"/>
           <input type="text" id="ornumber" placeholder="P.O Number"/>
         </div>
+        Current Image<br/>
+        <div class="image-container">
+          <div class="frame">
+            <img id="files">
+          </div>
+        </div>
+        <form method="POST" action="build/ajax/uploadUpdateImage.php" enctype="multipart/form-data" id="formUpload">
+          <input type="hidden" name="propertiesId" id="propertiesId" />
+          <div class="input-control file full-size" data-role="input">
+              <input type="file" name="mainteUploader">
+              <button class="button" type="button"><span class="mif-folder"></span></button>
+          </div>
+        </form>
         <button class="button primary" onclick="updateProperty();"><span class="mif-pencil icon"></span> Update Property</button>
       </div>
       <div data-role="dialog" data-overlay="true" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" id="deletePropertyDialog" data-close-button="true">
@@ -240,6 +259,7 @@
   </body>
   <script src="build/js/jquery.dataTables.min.js"></script>
   <script src="build/js/mainteProperty.js"></script>
+  <script src="build/js/jquery.form.min.js"></script>
   <script src="build/js/select2.min.js"></script>
   <script src="build/js/admin.js"></script>
 </html>

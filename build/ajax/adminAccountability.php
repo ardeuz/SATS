@@ -58,7 +58,7 @@ $id = $_POST['prowareID'];
 $condition_id = $_POST['condition_id'];
 $location_id =$_POST['location_id'];
 
-$prowareInfoDatas=$db->query("SELECT b.id AS property_id, b.pcode , b.sno , b.description as property_description, b.brand , b.model , c.description as major_description, d.description as minor_description,a.qty , b.uom, e.location, b.cost from property_accountability as a left join property as b on a.property_id = b.id left join minor_category as d on  b.minor_category = d.id left join major_category as c on b.major_category = c.id left join location as e on a.location_id = e.id  WHERE a.property_id=$id AND a.location_id=$location_id AND a.condition_id = $condition_id")->fetchAll();
+$prowareInfoDatas=$db->query("SELECT b.id AS property_id, b.pcode , b.sno , b.description as property_description, b.brand , b.model , c.description as major_description, d.description as minor_description,a.qty , b.uom, e.location, b.cost, b.property_image as imagery from property_accountability as a left join property as b on a.property_id = b.id left join minor_category as d on  b.minor_category = d.id left join major_category as c on b.major_category = c.id left join location as e on a.location_id = e.id  WHERE a.property_id=$id AND a.location_id=$location_id AND a.condition_id = $condition_id")->fetchAll();
 
 ?>
 <table class="table border bordered striped" style="overflow-y:hidden; " style="height:50%;">
@@ -218,6 +218,10 @@ foreach ($prowareInfoDatas as $prowareInfoData)
       ?>
 
     </td>
+    </tr>
+    <tr>
+      <td>Property Image</td>
+      <td><?php echo '<img src='.$prowareInfoData['imagery'].'>'?></td>
     </tr>
     <?php
     }

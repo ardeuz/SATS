@@ -14,6 +14,7 @@
     //loop through the csv file and insert into database
 		while ($data = fgetcsv($handle,1000)) {
 			if ($data[0]) {
+        // get all datas in the CSV
         $or_number = $data[0];
         $date_acquired = $data[1];
         $pcode = $data[2];
@@ -28,7 +29,8 @@
         $cost = $data[11];
         $location = $data[12];
         $condition = $data[13];
-        $emp_id = $data[14];
+        $remarks = $data[14];
+        $emp_id = $data[15];
 
         //select first the id's of account location condition minor and major category
         $location = $db->get("location", "id", ["location" => $location]);
@@ -55,7 +57,8 @@
           "property_id" => $propertyId,
           "qty" => $qty,
           "location_id" => $location,
-          "condition_id" => $condition
+          "condition_id" => $condition,
+          "remarks" => $remarks
         ]);
 			}
 		}
