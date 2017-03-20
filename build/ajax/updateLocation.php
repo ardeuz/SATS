@@ -65,23 +65,24 @@
 				'old_loc_id' => $old_location_id
 			]
 		]);
-		echo $id;
-		return;
+		// echo $id;
+		// return;
   	$propertyName = $db->get("property",["pcode","sno","description","brand","uom","or_number"],["id"=>$id]);
 		$oldLoc = $db->get("location","location",["id" => $old_location_id]);
 		$newLoc = $db->get("location","location",["id" => $new_location_id]);
-		$action =  $emp_id." updated the location of ".$propertyName." from ".$oldLoc." to ".$newLoc;
-		$db->insert("audit_trail_location",["action" => $action,"date" => $dateToday]);
-		$db->insert("audit_trail_location",
-		["brand"=>$propertyName['brand'],
-		"uom"=>$propertyName['uom'],
-		"po_number"=>$propertyName['or_number'],
-		'property_id'=>$id,
-		"pcode"=>$propertyName['pcode'],
-		"sno"=>$propertryName['sno'],
-		"description"=>$propertyName['description'],
-		"actor"=>$emp_id,
-		"action" => $actions ,
-		"date" => $dateToday ,
-		 "remarks"=>$remarks	]);
+		$action =  $emp_id." updated the location of ".$propertyName['pcode']." from ".$oldLoc." to ".$newLoc;
+		$db->insert("audit_trail_location",[
+			"action" => $action,
+			"date" => $dateToday,
+			"pcode"=>$propertyName['pcode'],
+			"sno"=>$propertryName['sno'],
+			"brand"=>$propertyName['brand'],
+			"uom"=>$propertyName['uom'],
+			"po_number"=>$propertyName['or_number'],
+			"property_id"=>$id,
+			"description"=>$propertyName['description'],
+			"actor"=>$emp_id,
+			"old_location" => $oldLoc,
+			"new_location" => $newLoc
+		]);
 ?>

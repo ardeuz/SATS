@@ -59,12 +59,31 @@
             <div class="frame bg-white" id="repairHistory">
               <div class="" id="propertyRepairHistory" style="padding-top:0;" ></div>
             </div>
+            <div class="frame bg-white" id="locationHistory">
+              <div class="" id="propertyLocationHistory" style="padding-top:0;" ></div>
+            </div>
         </div>
     </div>
   </div>
   <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="85%" data-width="50%" data-overlay-click-close="true" id="borrowedDialog" data-close-button="true" style="overflow-y:scroll;">
-    <h3 class="padding20 text-light header">Property Information</h3>
-    <div class="padding20" id="currentBorrowInformations" style="padding-top:0;" ></div>
+    <div class="tabcontrol padding20" data-role="tabcontrol">
+      <ul class="tabs">
+          <li><a href="#borrowPropertyInformation">Property Information</a></li>
+          <li><a href="#repairBorrowHistory">Repair History</a></li>
+          <li><a href="#locationBorrowHistory">Location History</a></li>
+      </ul>
+        <div class="frames">
+            <div class="frame bg-white" id="borrowPropertyInformation">
+              <div class="padding20" id="currentBorrowInformations" style="padding-top:0;" ></div>
+            </div>
+            <div class="frame bg-white" id="repairBorrowHistory">
+              <div class="" id="propertyBorrowRepairHistory" style="padding-top:0;" ></div>
+            </div>
+            <div class="frame bg-white" id="locationBorrowHistory">
+              <div class="" id="propertyBorrowLocationHistory" style="padding-top:0;" ></div>
+            </div>
+        </div>
+    </div>
   </div>
   <div data-role="dialog" data-overlay="true" class="padding20" data-overlay-color="op-dark" data-overlay-click-close="true" data-height="auto" data-width="30%" id="propertyDistribution" data-close-button="true">
     <h3 class=" text-light header">Distribute Property</h3>

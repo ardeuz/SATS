@@ -8,8 +8,6 @@ $(document).ready(function() {
 
 function prowareTable()
 {
-
-
 	$.ajax
 	({
 			url : 'transferTable.php',
@@ -49,6 +47,12 @@ function transferView(viewP,conditionPv,locationPv,employee)
     			$("#propertyInformations").html(prowareInformation);
     		}
     });
+		$.post('build/ajax/adminShowRepairHistory.php',{showRequest : 1 , viewP : viewP},function(data){
+			$("#propertyRepairHistory").html(data);
+		});
+		$.post('build/ajax/adminShowLocationHistory.php',{showRequests : 1 , viewPs : viewP},function(datas){
+			$("#propertyLocationHistory").html(datas);
+		});
 }
 
 

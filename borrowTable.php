@@ -18,7 +18,7 @@
           <td class="sortable-column">Condition</td>
           <td class="sortable-column">Quantity</td>
           <td>Department</td>
-          <td>isBorrowed</td>
+          <td>Property Availability</td>
         </tr>
       </thead>
       <tbody>

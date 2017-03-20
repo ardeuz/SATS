@@ -30,7 +30,7 @@
     </tbody>
   </table>
 <script>
-console.log($('#request_id').val());
+// console.log($('#request_id').val());
 var userShowUpdateHistoryRepairs = $("#userShowUpdateHistoryRepair").DataTable({
   "order": [[ 2, 'desc' ]],
   "processing": true,

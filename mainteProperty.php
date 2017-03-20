@@ -23,16 +23,15 @@
     <link href="build/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="build/css/metro-icons.css" rel="stylesheet">
     <link href="build/css/metro-responsive.css" rel="stylesheet">
-
     <script src="build/js/jquery-2-1-3.min.js"></script>
     <script src="build/js/metro.js"></script>
+
 
 
   </head>
   <body style="overflow:hidden;">
  <div class="flex-grid no-responsive-feature" style="height:100%;">
     <div class="row" style="height: 100%;">
-    <input type="hidden" value="<?php echo $_GET['emp_id'];?>" id="emp_id"/>
     <?php include_once('admin_navigation.php'); ?>
       <div class="cell auto-size padding20 no-margin-top grid container place-right" id="style-4" style="overflow-y:scroll;height:100%;">
         <h1 class="text-light"><span class="mif-file-empty icon"></span> Property Maintenance</h1>
@@ -255,11 +254,11 @@
       </div>
     </div>
   </div>
-
   </body>
-  <script src="build/js/jquery.dataTables.min.js"></script>
-  <script src="build/js/mainteProperty.js"></script>
-  <script src="build/js/jquery.form.min.js"></script>
-  <script src="build/js/select2.min.js"></script>
-  <script src="build/js/admin.js"></script>
+
+<script src="build/js/jquery.dataTables.min.js"></script>
+<script src="build/js/mainteProperty.js"></script>
+<script src="build/js/jquery.form.min.js"></script>
+<script src="build/js/select2.min.js"></script>
+<script src="build/js/admin.js"></script>
 </html>

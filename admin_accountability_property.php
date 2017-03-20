@@ -20,15 +20,15 @@
     <link href="build/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="build/css/metro-icons.css" rel="stylesheet">
     <link href="build/css/metro-responsive.css" rel="stylesheet">
-    <script src="build/js/jquery-2-1-3.min.js"></script>
     <link href="build/css/metro-schemes.min.css" rel="stylesheet">
     <link href="build/css/metro-colors.min.css" rel="stylesheet">
+    <script src="build/js/jquery-2-1-3.min.js"></script>
     <script src="build/js/metro.js"></script>
 
   </head>
   <body style="overflow:hidden;">
     <div class="flex-grid no-responsive-feature" style="height:100%;">
-        <div class="row" style="height: 100%;">
+      <div class="row" style="height: 100%;">
         <input type="hidden" value="<?php echo $_GET['emp_id'];?>" id="emp_id"/>
         <?php include_once('admin_navigation.php'); ?>
           <div class="cell auto-size padding20 no-margin-top grid container place-right" id="style-4" style="overflow-y:scroll;height:100%;">
@@ -56,24 +56,39 @@
             <center>
               <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="history_loader"></div>
             </center>
-          </div>
-
-        <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="80%" data-width="50%" data-overlay-click-close="true" id="adminAccountabilityDialog" data-close-button="true" style="overflow-y:scroll;">
-          <h3 class="padding20 text-light header">Property Information</h3>
-          <div class="padding20" id="adminInformation" style="padding-top:0;" ></div>
-        </div>
-        <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="uploadPhysicalCount" data-close-button="true" >
-          <h3 class=" text-light header">Upload CSV</h3>
-          <form action="admin_physical_report.php" method="POST" enctype="multipart/form-data">
-            <div class="input-control file " data-role="input">
-                <input value="<?php echo $_GET['emp_id']?>" name='emp_id' hidden>
-                <input type="file" name="physical_count_csv">
-                <button class="button" type="button"><span class="mif-folder"></span></button>
+            <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="80%" data-width="50%" data-overlay-click-close="true" id="adminAccountabilityDialog" data-close-button="true" style="overflow-y:scroll;">
+              <div class="tabcontrol padding20" data-role="tabcontrol">
+                <ul class="tabs">
+                    <li><a href="#propertyInformation">Property Information</a></li>
+                    <li><a href="#repairHistory">Repair History</a></li>
+                    <li><a href="#locationHistory">Location History</a></li>
+                </ul>
+                  <div class="frames">
+                      <div class="frame bg-white" id="propertyInformation">
+                        <div class="padding20" id="adminInformation" style="padding-top:0;" ></div>
+                      </div>
+                      <div class="frame bg-white" id="repairHistory">
+                        <div class="" id="adminRepairHistory" style="padding-top:0;" ></div>
+                      </div>
+                      <div class="frame bg-white" id="locationHistory">
+                        <div class="" id="adminLocationHistory" style="padding-top:0;" ></div>
+                      </div>
+                  </div>
+              </div>
             </div>
-            <br/>
-            <button class="button warning" type="submit">Upload File</button>
-          </form>
-        </div>
+            <div data-role="dialog" class="padding20" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="uploadPhysicalCount" data-close-button="true" >
+              <h3 class=" text-light header">Upload CSV</h3>
+              <form action="admin_physical_report.php" method="POST" enctype="multipart/form-data">
+                <div class="input-control file " data-role="input">
+                    <input value="<?php echo $_GET['emp_id']?>" name='emp_id' hidden>
+                    <input type="file" name="physical_count_csv">
+                    <button class="button" type="button"><span class="mif-folder"></span></button>
+                </div>
+                <br/>
+                <button class="button warning" type="submit">Upload File</button>
+              </form>
+            </div>
+          </div>
     </div>
   </div>
   </body>

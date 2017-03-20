@@ -62,6 +62,9 @@
                     <div class="frame bg-white" id="repairHistory">
                       <div class="" id="adminRepairHistory" style="padding-top:0;" ></div>
                     </div>
+                    <div class="frame bg-white" id="locationHistory">
+                      <div class="" id="adminLocationHistory" style="padding-top:0;" ></div>
+                    </div>
                 </div>
             </div>
           </div>

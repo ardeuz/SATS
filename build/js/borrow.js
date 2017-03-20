@@ -44,6 +44,12 @@ function borrowView(viewP,conditionPv,locationPv,employee)
 				$("#propertyBorrowInformations").html(prowareInformation);
 			}
 	});
+	$.post('build/ajax/adminShowRepairHistory.php',{showRequest : 1 , viewP : viewP},function(data){
+		$("#propertyRepairHistory").html(data);
+	});
+	$.post('build/ajax/adminShowLocationHistory.php',{showRequests : 1 , viewPs : viewP},function(datas){
+		$("#propertyLocationHistory").html(datas);
+	});
 }
 $(function(){
     $('.sidebar').on('click', 'li', function(){

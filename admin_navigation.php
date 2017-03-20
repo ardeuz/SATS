@@ -8,11 +8,6 @@
   }
 
 ?>
-
-
-
-
-
 <div class="cell size-x200 place-left bg-grayDarker"  id="cell-sidebar" >
   <div class="padding10 no-margin-top">
     <h4 class="align-center fg-white"><img src="logo/logo.png"/></h4>
@@ -138,9 +133,8 @@
           </div>
         </ul>
     <li class="menu-title">Settings</li>
+    <li class="<?php if($thisPage=='BackupAndRestor'){echo 'active';}?>"><a href="exportDatabase.php"><span class="mif-database icon"></span> Backup and Restore</a></li>
     <li><a href="#" onClick="showMetroDialog('#changeSchoolYear')"><span class="mif-calendar icon"></span> Change Schoolyear</a></li>
-
-    <li><a href="exportDatabase.php"><span class="mif-database icon"></span> Export Database</a></li>
     <li><a href="#" onclick="showMetroDialog('#changePassword')"><span class="mif-cog icon"></span> Change Password</a></li>
     <li><a href="?logout=1"><span class="mif-exit icon"></span> Logout</a></li>
     <li class="divider"></li>
