@@ -35,7 +35,7 @@ function restoreDb(restoreId){
 			caption: 'Restoring Database',
 			content: 'Please wait while the database is restoring' ,
 			icon: "<span class='mif-database icon'></span>",
-			timeOut : 10000,
+			keepOpen : true,
 			type: "info"
 		});
 		$.post("build/ajax/importDatabase.php",{ backup_id : backup_id },function(data){

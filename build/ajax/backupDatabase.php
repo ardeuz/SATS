@@ -6,7 +6,7 @@
   //initialize datas to be inserted in the DB
   $remarks = $_POST['remarks'];
   // $target_dir = "../../sats_backup";
-  $dateToday = date('Y-m-d');
+  $dateToday = date('Y-m-d-H-i-s');
   $backupName = "sats-backup-database-".$dateToday;
 
 

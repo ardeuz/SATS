@@ -20,8 +20,8 @@
       foreach($backupDatas as $backupData){
         echo "
           <tr>
-            <td>".$backupData['backup_name']."</td>
             <td>".$backupData['backup_date']."</td>
+            <td>".$backupData['backup_name']."</td>
             <td>".$backupData['remarks']."</td>
             <td><button class='button' onClick='restoreDb(".$backupData['backup_id'].");'>Restore</button></td>
           </tr>
@@ -32,6 +32,6 @@
 </table>
 <script>
   var backup = $("#backupDatabase").dataTable({
-    "order": [[ 1, 'desc' ]]
+    "order": [[ 0, 'desc' ]]
   });
 </script>

@@ -59,36 +59,43 @@ $('body').delegate('.adminView','click',function()
 });
 function updateAdminCondition(propertyId, locationId, oldConditionId, emp_id) {
 	var newConditionId = $("#condition" + propertyId + locationId + oldConditionId + emp_id).val();
+	// while(!remarks){
+  // }
+	var remarks = prompt("Changing its condition will may vary to its history, please state your remarks");
 
-	$.post("build/ajax/updateAdminCondition.php", {id: propertyId,  new_condition_id:newConditionId, location_id : locationId, old_condition_id : oldConditionId, empid:emp_id}, function(data) {
-		var result = parseInt(data);
+  if(remarks != null)
+  {
+  	$.post("build/ajax/updateAdminCondition.php", {id: propertyId, remarks:remarks , new_condition_id: newConditionId, location_id : locationId, old_condition_id : oldConditionId}, function(data) {
+  		var result = parseInt(data);
 
-		if (result == 1)
-    {
-      $.Notify({
-      	caption: 'Update Success',
-          content: 'Condition successfully Updated' ,
-          icon: "<span class='mif-pencil icon'></span>",
-          type: "success"
-      });
-			console.log(data);
-		}
-
-    else if(result == 2)
-    {
-      prowareTable();
-    }
-    else
-    {
-			console.log(data);
-      $.Notify({
-        caption: 'Update Failed',
-        content: 'Condition Update failed' ,
-        icon: "<span class='mif-pencil icon'></span>",
-        type: "alert"
+  		if (result == 1)
+      {
+        $.Notify({
+        	caption: 'Update Success',
+            content: 'Condition successfully Updated' ,
+            icon: "<span class='mif-pencil icon'></span>",
+            type: "success"
         });
-		}
-	});
+        historyTable();
+
+  		}
+      else if(result == 2)
+      {
+        prowareTable();
+      }
+      else
+      {
+  			console.log(data);
+        $.Notify({
+          caption: 'Update Failed',
+          content: 'Condition Update failed' ,
+          icon: "<span class='mif-pencil icon'></span>",
+          type: "alert"
+          });
+  		}
+    });
+    window.open("build/reports/statusReport.php?propertyId="+propertyId+"&remarks="+remarks);
+  }
 }
 // $('body').delegate('.adminConfirmation','click',function(){
 // 	if (confirm("Approve transfer for this request?")) {

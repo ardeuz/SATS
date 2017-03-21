@@ -67,4 +67,23 @@
 			'old_location_id' => $location_id
 		]
 	]);
+
+	$remarks = $_POST['remarks'];
+	$propertyName = $db->get("property",["pcode","sno","description","brand","uom","or_number"],["id"=>$id]);
+	$oldCond = $db->get("condition_info","condition_info",["id" => $old_condition_id]);
+	$newCond = $db->get("condition_info","condition_info",["id" => $new_condition_id]);
+	$actions = $emp_id." updated the condition of ".$propertyName['pcode']." - ".$propertyName['sno']." - ".$propertyName['description']." from ".$oldCond." to ".$newCond;
+	$db->insert("audit_trail_condition",
+	["brand"=>$propertyName['brand'],
+	"uom"=>$propertyName['uom'],
+	"po_number"=>$propertyName['or_number'],
+	'property_id'=>$id,
+	"pcode"=>$propertyName['pcode'],
+	"sno"=>$propertryName['sno'],
+	"description"=>$propertyName['description'],
+	"actor"=>$emp_id,
+	"action" => $actions ,
+	"date" => $dateToday ,
+	 "remarks"=>$remarks	]);
+
 ?>

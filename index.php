@@ -38,7 +38,7 @@ require_once('connection.php');
       {
         foreach ($credentials as $credential) {
 
-          $_SESSION['account'] = $credential;
+          $_SESSION['account'] = strtoupper($credential);
 
           if($credential['status'] == 0)
           {
@@ -63,7 +63,7 @@ require_once('connection.php');
         if(count($adminDatas) == 1)
         {
           foreach ($adminDatas as $adminData) {
-            $_SESSION['account'] = $adminData;
+            $_SESSION['account'] = strtoupper($adminData);
             header("location:admin.php");
           }
         }
