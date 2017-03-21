@@ -2,7 +2,7 @@
   require_once('../../connection.php');
 
   $sql = "SELECT
-            CONCAT(account_table.emp_id,' - ', last_name,', ', first_name) AS accountability_of,
+            CONCAT(last_name,', ', first_name) AS accountability_of,
             property.pcode AS property_code,
             property.sno AS serial_number,
             property.description AS property_description,

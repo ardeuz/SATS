@@ -29,8 +29,8 @@
         <div class="row" style="height: 100%;">
         <?php include_once('admin_navigation.php'); ?>
           <div class="cell auto-size padding20 no-margin-top grid container place-right" id="style-4" style="overflow-y:scroll;height:100%;">
-            <h1 class="text-light fg-brown">Property Accountability<span class="mif-notification place-right text-light"></span></h1>
-            <small class='text-normal fg-brown'>without Accountabilities</small>
+            <h1 class="text-light fg-brown">Equipment Rental<span class="mif-notification place-right text-light"></span></h1>
+            <small class='text-normal fg-brown'>property that are rented</small>
             <p class='text-normal fg-brown'>Colored Rows are depreciated.</p>
             <button class="button success " onclick="showMetroDialog('#uploadCSVnoAccount');">Import CSV</button>
 

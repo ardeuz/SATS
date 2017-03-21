@@ -119,6 +119,10 @@ foreach ($prowareInfoDatas as $prowareInfoData)
 <td>Cost</td>
 <td><?php echo $prowareInfoData['cost'];?></td>
 </tr>
+<tr>
+<td>Date Acquired</td>
+<td><?php echo date('M d, Y',strtotime($prowareInfoData['date_acquired']));?></td>
+</tr>
 <?php
   if($db->has("sub_property",["sub_property_id"=>$id])){
     $parentProperty = "<tr><td>Parent Property</td><td>";

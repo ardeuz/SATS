@@ -71,11 +71,16 @@
           <div class="input-control text full-size">
             <input type="text" class="" id="uom" placeholder="Unit of measurement">
           </div>
+
           <div class="input-control text full-size">
             <input type="number" class="" id="cost" placeholder="Cost">
           </div>
           <div class="input-control text full-size">
             <input type="text" class="" id="orno" placeholder="P.O Number">
+          </div>
+          <div class="input-control text full-size" data-role="datepicker" data-scheme="darcula" data-format="yyyy-mm-d">
+              <input type="text" id="dateAcquired" placeholder="Date Acquired">
+              <button class="button"><span class="mif-calendar"></span></button>
           </div>
           <form method="POST" action="build/ajax/uploadInsertImage.php" enctype="multipart/form-data" id="addProperty">
             <div class="input-control file full-size" data-role="input">
@@ -227,6 +232,10 @@
         </div>
         <div class="input-control full-size"/>
           <input type="text" id="ornumber" placeholder="P.O Number"/>
+        </div>
+        <div class="input-control text full-size" data-role="datepicker" data-scheme="darcula" data-format="yyyy-mm-d">
+            <input type="text" id="editDateAcquired" placeholder="Date Acquired">
+            <button class="button"><span class="mif-calendar"></span></button>
         </div>
         Current Image<br/>
         <div class="image-container">

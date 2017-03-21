@@ -8,6 +8,7 @@
   $editBrand = $_POST['editBrand'];
   $editModel = $_POST['editModel'];
   $ornumber = $_POST['ornumber'];
+  $dateAcquired = $_POST['editDateAcquired'];
   $editUom = $_POST['editUom'];
   $editQty = $_POST['editQty'];
   $editCost = $_POST['editCost'];
@@ -18,7 +19,7 @@
     {
       // $image='property_images/';
       // move_uploaded_file('property_images/');
-      $updateQuery = $db->update('property',['pcode' => $editPropertyCode ,'sno'=>$editSerialNumber ,'description'=> $editPropertyDescription,'brand'=> $editBrand,'model'=> $editModel,'or_number'=> $ornumber,'uom'=> $editUom, 'cost'=> $editCost],['id' => $propertyId]);
+      $updateQuery = $db->update('property',['pcode' => $editPropertyCode ,'sno'=>$editSerialNumber ,'description'=> $editPropertyDescription,'brand'=> $editBrand,'model'=> $editModel,'or_number'=> $ornumber,'uom'=> $editUom, 'cost'=> $editCost ,"date_acquired" => $dateAcquired],['id' => $propertyId]);
       $updateQty = $db->update('property_accountability',['qty'=>$editQty],['property_id' => $propertyId]);
 
       echo 1;

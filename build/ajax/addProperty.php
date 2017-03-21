@@ -12,6 +12,7 @@
     $model = trim($_POST['model']);
     $cost = $_POST['cost'];
     $uom = $_POST['uom'];
+    $date_acquired = $_POST['date_acquired'];
     $propertyDescription = $_POST['propertyDescription'];
     $qty = $_POST['qty']; //property accountability
     $locations = $_POST['locations']; //property accountability
@@ -31,7 +32,7 @@
         "uom" => $uom,
         "major_category" => $majorCategory,
         "cost" => $cost,
-        "date_acquired" => $dateToday,
+        "date_acquired" => $date_acquired,
         "or_number" => $orno
       ]);
 

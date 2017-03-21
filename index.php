@@ -14,7 +14,7 @@ require_once('connection.php');
         ["department","first_name","last_name","emp_id","status"],
         [
           "AND" => [
-            "emp_id" => $_POST['Uname'],
+            "emp_id" => strtoupper($_POST['Uname']),
             "password" => $_POST['UPass']
             ]
         ]);
@@ -38,7 +38,7 @@ require_once('connection.php');
       {
         foreach ($credentials as $credential) {
 
-          $_SESSION['account'] = strtoupper($credential);
+          $_SESSION['account'] = $credential;
 
           if($credential['status'] == 0)
           {
@@ -63,7 +63,7 @@ require_once('connection.php');
         if(count($adminDatas) == 1)
         {
           foreach ($adminDatas as $adminData) {
-            $_SESSION['account'] = strtoupper($adminData);
+            $_SESSION['account'] = $adminData;
             header("location:admin.php");
           }
         }
