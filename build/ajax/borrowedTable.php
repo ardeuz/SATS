@@ -46,7 +46,7 @@ $id = $_POST['prowareID'];
 $condition_id = $_POST['condition_id'];
 $location_id =$_POST['location_id'];
 
-$prowareInfoDatas=$db->query("SELECT b.pcode , b.sno , b.description as property_description, b.brand , b.model , c.description as major_description, d.description as minor_description, a.qty, b.uom, e.location, b.cost from borrow_request as a left join property as b on a.id = b.id left join minor_category as d on  b.minor_category = d.id left join major_category as c on b.major_category = c.id left join location as e on a.new_loc_id = e.id  WHERE a.id=$id AND a.new_loc_id = $location_id AND a.condition_id = $condition_id")->fetchAll();
+$prowareInfoDatas=$db->query("SELECT b.pcode ,b.property_image , b.sno , b.description as property_description, b.brand , b.model , c.description as major_description, d.description as minor_description, a.qty, b.uom, e.location, b.cost from borrow_request as a left join property as b on a.id = b.id left join minor_category as d on  b.minor_category = d.id left join major_category as c on b.major_category = c.id left join location as e on a.new_loc_id = e.id  WHERE a.id=$id AND a.new_loc_id = $location_id AND a.condition_id = $condition_id")->fetchAll();
 ?>
 <table class="table border bordered striped" style="overflow-y:hidden; " style="height:50%;">
 <tbody>
@@ -101,6 +101,75 @@ foreach ($prowareInfoDatas as $prowareInfoData)
 <tr>
 <td>Cost</td>
 <td><?php echo $prowareInfoData['cost'];?></td>
+</tr>
+<tr>
+  <!-- 008-CE42-2017-001 -->
+  <td>Property Image</td>
+  <td><?php echo '<img src='.$transferInfoData['imagery'].'>'?></td>
+</tr>
+<td>Parent Property</td>
+<td>
+  <?php
+  $property_id = -1;
+  $parent_id = -1;
+  $pcode = "None";
+  $description = "";
+    if ($db->has("sub_property", ["sub_property_id" => $id])) {
+      $transferInfoData = $db->get("sub_property", [
+        "[>]property" => ["property_id" => "id"]
+      ], [
+        "property.id",
+        "property.pcode",
+        "property.description"
+      ], ["sub_property.sub_property_id" => $id]);
+      $property_id = $id;
+      $parent_id = $transferInfoData['id'];
+      $pcode = $transferInfoData['pcode'];
+      $description = $transferInfoData['description'];
+    }
+    //parent property div
+    echo "
+    <div class='listview-outlook' data-role='listview'>
+      <div class='list marked'>
+          <div class='list-content'>
+              <span class='list-title' id='parent_title_span'>$pcode</span>
+              <small class='list-subtitle' id='parent_desc_span' style='white-space: normal !important;'>$description</small>
+          </div>
+      </div>
+    </div>";
+    //change/add for parent property
+  ?>
+</td>
+</tr>
+<tr>
+<td>Sub Items</td>
+<td>
+  <?php
+    $subPropertyDatas = $db->select("sub_property", [
+      "[>]property" => ["sub_property_id" => "id"]
+    ], [
+      "property.id",
+      "property.pcode",
+      "property.description"
+    ], ["sub_property.property_id" => $id]);
+    echo "
+    <div id='sub_property_div' class='listview-outlook' data-role='listview'>";
+    if (count($subPropertyDatas) > 0) {
+      foreach ($subPropertyDatas as $subPropertyData) {
+        echo "
+          <div id='sub_property_div" . $subPropertyData['id'] . "' class='list'>
+              <div class='list-content'>
+                  <span class='list-title' id='sub_title_span'>" . $subPropertyData['pcode'] . "</span>
+                  <small class='list-subtitle' id='sub_desc_span' style='white-space: normal !important;'>" . $subPropertyData['description'] . "</small>
+              </div>
+          </div>";
+      }
+    }
+
+    echo "</div>";
+  ?>
+
+</td>
 </tr>
 <?php
 }

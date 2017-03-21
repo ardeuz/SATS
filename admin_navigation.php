@@ -135,7 +135,22 @@
     <li class="menu-title">Settings</li>
     <li class="<?php if($thisPage=='BackupAndRestor'){echo 'active';}?>"><a href="exportDatabase.php"><span class="mif-database icon"></span> Backup and Restore</a></li>
     <li><a href="#" onClick="showMetroDialog('#changeSchoolYear')"><span class="mif-calendar icon"></span> Change Schoolyear</a></li>
-    <li><a href="#" onclick="showMetroDialog('#changePassword')"><span class="mif-cog icon"></span> Change Password</a></li>
+    <li><a href="#" class="dropdown-toggle"><span class="mif-cogs icon"></span> Account</a>
+        <ul class="d-menu shadow"  data-role="dropdown">
+            <li class="menu-title">Account Setting</li>
+            <div>
+              <li><a href="#" onclick="showMetroDialog('#changePassword')"><span class="mif-cog icon"></span> Change Password</a></li>
+              <?php
+              if($db->has("admin",["sub_id"=>$_SESSION['account']['emp_id']])) {
+                echo'<li><a href="accountabilities.php"><span class="mif-switch icon"></span> Switch  Account</a></li>';
+              } elseif($db->has("account_table",["emp_id"=>$_SESSION['account']['sub_id']])) {
+                $_SESSION['account']['emp_id']=$_SESSION['account']['sub_id'];
+                echo'<li><a href="accountabilities.php"><span class="mif-switch icon"></span> Switch  Account</a></li>';
+              }
+              ?>
+            </div>
+        </ul>
+    </li>
     <li><a href="?logout=1"><span class="mif-exit icon"></span> Logout</a></li>
     <li class="divider"></li>
     <li class="menu-title"></<li>

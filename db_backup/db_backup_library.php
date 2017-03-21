@@ -21,7 +21,7 @@
 				1st: Path URL
 				2nd: file Name Default Name is backup_yyy-mm-dd
 		--db_import(source)
-			Usage: If you want to Import Database from SQL File Use this method
+			Usage: If you want to Import  Database from SQL File Use this method
 			--Parameters
 			1st: Source/Path of SQL file
 */

@@ -82,6 +82,7 @@ function addChildProperty(parent_id) {
         console.log(sub_property_div);
 
       $("#adminAccountabilityDialog").find("#sub_property_div").append(sub_property_div);
+      $("#prowaredialog").find("#sub_property_div").append(sub_property_div);
 
       $("#sub_property_select option:selected").remove(); //remove from select options
     } else if (result == -1) {

@@ -45,8 +45,11 @@ function restoreDb(restoreId){
 				icon: "<span class='mif-database icon'></span>",
 				type: "success"
 			});
+			$.post("build/ajax/backupRemove.php",{},function(datas){
+				console.log(datas);
+			});
 			requestAccountability();
-			console.log(data);
+			// console.log(data);
 		});
 	} else {
 		$.Notify({

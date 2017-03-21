@@ -14,8 +14,11 @@
     <li <?php if ($thisPage == "accountabilities") {echo "class='active'";} ?>>
       <a href="accountabilities.php">Accountabilities</a>
     </li>
+    <li <?php if($thisPage == "issueProperty") {echo "class='active'";}?>>
+      <a href="issueProperty.php"> Issue a Property</a>
+    </li>
     <li <?php if($thisPage == "borrow" || $thisPage == "transfer") {echo "class='active'";}?>>
-      <a hreaf="" class="dropdown-toggle"> Request For</a>
+      <a href="" class="dropdown-toggle"> Request For</a>
       <ul class="d-menu" data-role="dropdown">
         <li <?php if ($thisPage == "transfer") {echo "class='active'";} ?> >
           <a href="transfer.php">Transfer</a>
@@ -25,6 +28,7 @@
         </li>
       </ul>
     </li>
+
   </ul>
 
 
@@ -35,6 +39,12 @@
         <ul class="unstyled-list fg-dark ">
           <li onClick="showMetroDialog('#helperDialog')" class="fg-white2 fg-hover-grayLight" data-hotkey="alt+1" >Help</li>
           <li onClick="showMetroDialog('#changePassword')" class="fg-white2 fg-hover-grayLight" data-hotkey="alt+2">Change Password</li>
+          <!-- Query for changing of account -->
+          <?php
+            if($db->has("admin",["sub_id"=>$_SESSION['account']['emp_id']])){
+              echo '<li class="fg-white2 fg-hover-grayLight" data-hotkey="alt+3" ><a href="admin.php" class="fg-white2 fg-hover-grayLight">Switch Account</a></li>';
+            }
+          ?>
           <li class="fg-white2 fg-hover-grayLight place-right"><a href="?logout=1" class="fg-white2 fg-hover-grayLight text-light padding0" style="border:0 transparent;background:transparent">Log Out</a></li>
         </ul>
       </div>
@@ -77,6 +87,17 @@
       {
         echo "<span class='super mif-notification mif-ani-flash mif-ani-fast'></span>";
       }
+      elseif($db->has("transfer_request",
+      ["AND" =>
+        [
+          "transfer_to" => $_SESSION['account']['emp_id'],
+          "emp_approval" => 0,
+          "transfer_type" => "issue"
+        ]
+      ]))
+      {
+        echo "<span class='super mif-notification mif-ani-flash mif-ani-fast'></span>";
+      }
       ?>  </a>
       <ul class="d-menu" data-role="dropdown">
         <li <?php if ($thisPage == "TransferRequest") {echo "class='active'";} ?>>
@@ -91,7 +112,7 @@
               ]
             ]))
             {
-              $transferRequestCount = $db->count("transfer_request",
+            $transferRequestCount = $db->count("transfer_request",
               ["AND" =>
                 [
                   "released_from" => $_SESSION['account']['emp_id'],
@@ -99,6 +120,25 @@
                 ]
               ]);
               echo '<span class="mif-ani-flash mif-ani-fast fg-red">'.$transferRequestCount.'</span>';
+            }
+            elseif($db->has("transfer_request",
+            ["AND" =>
+              [
+                "transfer_to" => $_SESSION['account']['emp_id'],
+                "emp_approval" => 0,
+                "transfer_type" => "issue "
+              ]
+            ]))
+            {
+              $transferRequestCount = $db->count("transfer_request",
+                ["AND" =>
+                  [
+                    "transfer_to" => $_SESSION['account']['emp_id'],
+                    "emp_approval" => 0,
+                    "transfer_type" => "issue"
+                  ]
+                ]);
+                echo '<span class="mif-ani-flash mif-ani-fast fg-red">'.$transferRequestCount.'</span>';
             }
 
             ?>

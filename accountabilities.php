@@ -24,6 +24,7 @@
     <script src="build/js/jquery.dataTables.min.js"></script>
     <script src="build/js/metro.js"></script>
     <script src="build/js/proware.js"></script>
+    <script src="build/js/admin.js"></script>
 
 </head>
 <body>

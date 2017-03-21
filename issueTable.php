@@ -30,7 +30,7 @@
     showTransferTables  = $('#showTransferTable').DataTable({
     	"processing": true,
     	"serverSide": true,
-    	"ajax": "build/server_side/userShowTransfer.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
+    	"ajax": "build/server_side/userShowIssue.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
     	oLanguage : {
     		sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     	}
@@ -42,7 +42,7 @@
     	showTransferTables = $('#showTransferTable').DataTable({
     		"processing": true,
     		"serverSide": true,
-    		"ajax": "build/server_side/userShowTransfer.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
+    		"ajax": "build/server_side/userShowIssue.php?location="+$("#locationFilter").val()+"&condition="+$("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
     		oLanguage : {
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
@@ -56,7 +56,7 @@
     	showTransferTables = $('#showTransferTable').DataTable({
     		"processing": true,
     		"serverSide": true,
-    		"ajax": "build/server_side/userShowTransfer.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
+    		"ajax": "build/server_side/userShowIssue.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFilter").val(),
     		oLanguage : {
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
@@ -70,7 +70,7 @@
     	showTransferTables = $('#showTransferTable').DataTable({
     		"processing": true,
     		"serverSide": true,
-    		"ajax": "build/server_side/userShowTransfer.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFIlter").val(),
+    		"ajax": "build/server_side/userShowIssue.php?location="+ $("#locationFilter").val() +"&condition="+ $("#conditionFilter").val()+"&description="+$("#descriptionFIlter").val(),
     		oLanguage : {
     			sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
     		}
@@ -183,22 +183,21 @@ foreach ($transferInfoDatas as $transferInfoData)
           "property.pcode",
           "property.description"
         ], ["sub_property.sub_property_id" => $id]);
-        $property_id = $id;
+        $property_id =$id;
         $parent_id = $transferInfoData['id'];
         $pcode = $transferInfoData['pcode'];
         $description = $transferInfoData['description'];
       }
       //parent property div
       echo "
-      <div class='listview-outlook'>
-        <div class='list marked'>
+      <div class='listview-outlook' data-role='listview'>
+        <div class='list marked' onclick='deleteParentProperty($property_id, $parent_id)'>
             <div class='list-content'>
                 <span class='list-title' id='parent_title_span'>$pcode</span>
                 <small class='list-subtitle' id='parent_desc_span' style='white-space: normal !important;'>$description</small>
             </div>
         </div>
       </div>";
-      //change/add for parent property
     ?>
   </td>
   </tr>
@@ -232,6 +231,7 @@ foreach ($transferInfoDatas as $transferInfoData)
 
   </td>
   </tr>
+
 <?php
 }
 ?>

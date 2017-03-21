@@ -52,6 +52,7 @@ $('body').delegate('.showConfirmation','click',function()
                     icon: "<span class='mif-checkmark icon'></span>",
                     type: "success"
                 });
+                showRequest();
                 showRequestForms();
             }
         });

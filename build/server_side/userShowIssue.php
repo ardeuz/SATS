@@ -43,17 +43,15 @@
             PDO::ERRMODE_EXCEPTION
         ]
       ]);
-
+      $property_id = $row['id'];
       $empId = $employeeId;
-      $ids1 = $row['id'];
-      if($db2->has("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$empId,"id"=>$ids1 ]])){
-        $accountName = $db2->get("borrow_request",["[><]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"],["AND"=>["released_from"=>$empId,"id"=>$property_id]]);
+      if($db2->has("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["AND"=>["released_from"=>$empId,"id"=>$property_id]])){
+        $accountName = $db2->get("borrow_request",["[>]account_table"=>["transfer_to"=>"emp_id"]],["last_name","first_name"],["AND"=>["released_from"=>$empId,"id"=>$property_id]]);
         return "Borrowed By ". $accountName["last_name"].', '.$accountName['first_name'];
       }
       else{
         return "Not Borrowed";
       }
-      return "hello";
     })
   );
   $sql_details = array(
@@ -69,35 +67,35 @@
   $descriptionFilter = $_GET['description'];
   if($conditionFilter == 0 && $locationFilter == 0 && $descriptionFilter == 0)
   {
-    $whereClause = "emp_id != '$emp_id'";
+    $whereClause = "emp_id = '$emp_id'";
   }
   if($conditionFilter != 0 && $locationFilter == 0 && $descriptionFilter == 0)
   {
-    $whereClause = "emp_id != '$emp_id' AND condition_id = $conditionFilter ";
+    $whereClause = "emp_id = '$emp_id' AND condition_id = $conditionFilter ";
   }
   if($locationFilter != 0 && $conditionFilter == 0 && $descriptionFilter == 0)
   {
-    $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter ";
+    $whereClause = "emp_id = '$emp_id' AND location_id = $locationFilter ";
   }
   if($locationFilter == 0 && $conditionFilter == 0 && $descriptionFilter != 0)
   {
-    $whereClause = "emp_id != '$emp_id' AND minor_category = $descriptionFilter ";
+    $whereClause = "emp_id = '$emp_id' AND minor_category = $descriptionFilter ";
   }
   if($locationFilter != 0 && $conditionFilter != 0 && $descriptionFilter == 0)
   {
-    $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter AND condition_id = $conditionFilter";
+    $whereClause = "emp_id = '$emp_id' AND location_id = $locationFilter AND condition_id = $conditionFilter";
   }
   if($locationFilter == 0 && $conditionFilter != 0 && $descriptionFilter != 0)
   {
-    $whereClause = "emp_id != '$emp_id' AND minor_category = $descriptionFilter AND condition_id = $conditionFilter";
+    $whereClause = "emp_id = '$emp_id' AND minor_category = $descriptionFilter AND condition_id = $conditionFilter";
   }
   if($locationFilter != 0 && $conditionFilter == 0 && $descriptionFilter != 0)
   {
-    $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter AND minor_category = $descriptionFilter";
+    $whereClause = "emp_id = '$emp_id' AND location_id = $locationFilter AND minor_category = $descriptionFilter";
   }
   if($locationFilter != 0 && $conditionFilter != 0 && $descriptionFilter != 0)
   {
-    $whereClause = "emp_id != '$emp_id' AND location_id = $locationFilter AND condition_id = $conditionFilter AND minor_category = $descriptionFilter";
+    $whereClause = "emp_id = '$emp_id' AND location_id = $locationFilter AND condition_id = $conditionFilter AND minor_category = $descriptionFilter";
   }
   $joinQuery = "FROM `propertyaccountability` AS `u`";
   echo json_encode(

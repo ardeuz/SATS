@@ -53,7 +53,7 @@ require_once('connection.php');
       else
       {
         $adminDatas = $db->select("admin",
-          ["first_name","last_name","emp_id"],
+          ["first_name","last_name","emp_id","sub_id","department"],
           [
             "AND" => [
               "emp_id" => $_POST['Uname'],

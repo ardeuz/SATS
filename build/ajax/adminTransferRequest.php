@@ -9,7 +9,7 @@
 
 	$emp_id = $_SESSION['account']['emp_id'];
 	//============make the card=================//
-	$sql = "SELECT request_code, remarks, transfer_to, released_from, date_request, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS transfer_to, CONCAT(c.last_name, ', ', c.first_name) AS released_from, b.department FROM transfer_request AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id LEFT JOIN account_table AS c ON a.released_from=c.emp_id WHERE emp_approval=1 AND transfer_type = 'transfer' GROUP BY request_code";
+	$sql = "SELECT request_code, remarks, transfer_to, released_from, date_request, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS transfer_to, CONCAT(c.last_name, ', ', c.first_name) AS released_from, b.department FROM transfer_request AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id LEFT JOIN account_table AS c ON a.released_from=c.emp_id WHERE emp_approval=1 AND transfer_type = 'transfer' OR emp_approval=1 AND transfer_type='issue' GROUP BY request_code";
 
 	$transferRequestGroupDatas = $db->query($sql)->fetchAll();
 

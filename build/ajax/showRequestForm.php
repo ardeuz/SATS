@@ -6,7 +6,15 @@
 	$requestType = $_POST['requestType'];
 	$emp_id = $_SESSION['account']['emp_id'];
 	//============make the card=================//
-	$sql = "SELECT request_code, remarks, transfer_to, released_from, date_request, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS emp_name, b.department FROM transfer_request AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id WHERE released_from='$emp_id' AND emp_approval=$requestType GROUP BY request_code";
+
+	$sql = "";
+	if($db->has("transfer_request",["transfer_type"=>"issue"])){
+			$sql = "SELECT request_code, remarks, transfer_to, released_from, date_request, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS emp_name, b.department FROM transfer_request AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id WHERE transfer_to='$emp_id' AND emp_approval=$requestType GROUP BY request_code";
+			$header = "Transfering to";
+	} else {
+			$sql = "SELECT request_code, remarks, transfer_to, released_from, date_request, emp_approval, CONCAT(b.last_name, ', ', b.first_name) AS emp_name, b.department FROM transfer_request AS a LEFT JOIN account_table AS b ON a.transfer_to=b.emp_id WHERE released_from='$emp_id' AND emp_approval=$requestType GROUP BY request_code";
+			$header = "Requested From";
+	}
 
 	$transferRequestGroupDatas = $db->query($sql)->fetchAll();
 	//color coding
@@ -24,7 +32,7 @@
 			<div class='cell padding0 shadow align-left'>
 					<div class='bg-" . $color . " padding0 fg-" . $color . "'>.</div>
 					<div class='cell padding10'>
-		        	<small>Request from</small>
+		        	<small>".$header."</small>
 
 		        	<br />
 		            <span class='sub-header'>" . $transferRequestGroupData['emp_name'] . "</span>
