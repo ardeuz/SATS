@@ -60,8 +60,8 @@
         <ul class="d-menu shadow"  data-role="dropdown">
             <li class="menu-title">List of Accounts</li>
             <li class="<?php if($thisPage=='PropertyAccountability'){echo 'active';} ?>"><a href="admin_accountabilities.php"><span class="mif-file-text icon"></span> With Accountability</a></li>
-            <!-- <li class="<?php if($thisPage=='NotPropertyAccountability'){echo 'active';} ?>"><a href="admin_accountabilities_not.php"><span class="mif-file-text icon"></span> Without Accountability</a></li> -->
-            <li class="<?php if($thisPage=='NotPropertyAccountability'){echo 'active';} ?>"><a href="admin_accountabilities_not.php"><span class="mif-file-text icon"></span> Equipment Rental</a></li>
+            <li class="<?php if($thisPage=='NotPropertyAccountability'){echo 'active';} ?>"><a href="admin_accountabilities_not.php"><span class="mif-file-text icon"></span> Without Accountability</a></li>
+            <li class="<?php if($thisPage=='EquipmentRental'){echo 'active';} ?>"><a href="admin_equipment_rental.php"><span class="mif-file-text icon"></span> Equipment Rental</a></li>
 
         </ul>
       </li>
@@ -124,14 +124,9 @@
         </ul>
 
     </li>
-    <li class="<?php if($thisPage=='Repair' || $thisPage == "Location"){echo 'active';} ?>">
-      <a href="#" class="dropdown-toggle"><span class="mif-lock icon"></span> Audit Trail</a>
-        <ul class="d-menu shadow" data-role="dropdown">
-          <div>
-            <li  class="<?php if($thisPage=='Repair'){echo 'active';} ?>"><a href="accountability_repair.php"><span class="mif-wrench icon"></span> Repair</a></li>
-            <li  class="<?php if($thisPage=='Location'){echo 'active';} ?>"><a href="accountability_location.php"><span class="mif-tag icon"></span> Location Tracking</a></li>
-          </div>
-        </ul>
+    <li  class="<?php if($thisPage=='Repair'){echo 'active';} ?>"><a href="accountability_repair.php"><span class="mif-wrench icon"></span> Repair</a></li>
+
+
     <li class="menu-title">Settings</li>
     <li class="<?php if($thisPage=='BackupAndRestor'){echo 'active';}?>"><a href="exportDatabase.php"><span class="mif-database icon"></span> Backup and Restore</a></li>
     <li><a href="#" onClick="showMetroDialog('#changeSchoolYear')"><span class="mif-calendar icon"></span> Change Schoolyear</a></li>
@@ -225,6 +220,7 @@ function changeSY(){
         icon: "<span class='mif-checkmark icon'></span>",
         type: "success"
     });
+    hideMetroDialog("#changeSchoolYear");
   });
 }
 function checkPass(){

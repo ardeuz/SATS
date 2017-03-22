@@ -41,14 +41,14 @@
             </center>
           </div>
         </div>
-        <div data-role="dialog" data-overlay="true" class="padding30" data-place="top-center"data-overlay-color="op-dark" data-height="90%" data-width="85%" data-overlay-click-close="true" id="adminAddRecommendation" data-close-button="true" style="overflow-y:scroll;">
+        <div data-role="dialog" data-overlay="true" class="padding30" data-place="top-center"data-overlay-color="op-dark" data-height="90%" data-width="85%" data-overlay-click-close="true" id="adminAddLocationRecommendation" data-close-button="true" style="overflow-y:scroll;">
           <h3 class="text-light">Maintenance</h3>
           <input type="hidden" id="audit_id"/>
-          <div  id="adminEditRepairHistory"></div>
+          <div  id="adminEditLocationHistory"></div>
         </div>
     </div>
 
   </body>
   <script src="build/js/jquery.dataTables.min.js"></script>
-  <script src="build/js/accountability_repair.js"></script>
+  <script src="build/js/accountability_location.js"></script>
 </html>

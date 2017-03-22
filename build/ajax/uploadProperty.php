@@ -15,8 +15,9 @@
 		while ($data = fgetcsv($handle,1000)) {
 			if ($data[0]) {
         // get all datas in the CSV
+
         $or_number = $data[0];
-        $date_acquired = $data[1];
+        $date_acquired = date("Y-m-d",strtotime($data[1]));
         $pcode = $data[2];
         $description = $data[3];
         $brand = $data[4];
@@ -67,28 +68,47 @@
 
 
         //insert when its finally searched
-				$propertyId = $db->insert("property", [
-					"pcode" => $pcode,
-					"sno" => $serial_no,
-					"description" => $description,
-	        "brand" => $brand,
-					"model" => $model,
-					"minor_category" => $minor_category,
-          "uom" => $uom,
-          "cost" => $cost,
-          "major_category" => $major_category,
-          "date_acquired" => $date_acquired,
-          "or_number" => $or_number
-				]);
 
-        $db->insert("property_accountability", [
-          "emp_id" => $emp_id,
-          "property_id" => $propertyId,
-          "qty" => $qty,
-          "location_id" => $location,
-          "condition_id" => $condition,
-          "remarks" => $remarks
-        ]);
+        if($db->has("property",["AND"=>["pcode"=>$pcode, "sno"=>$serial_no]])){
+          $db->update("property",["date_acquired"=>$date_acquired],["AND"=>["pcode"=>$pcode, "sno"=>$serial_no]]);
+        } else {
+  				$propertyId = $db->insert("property", [
+  					"pcode" => $pcode,
+  					"sno" => $serial_no,
+  					"description" => $description,
+  	        "brand" => $brand,
+  					"model" => $model,
+  					"minor_category" => $minor_category,
+            "uom" => $uom,
+            "cost" => $cost,
+            "major_category" => $major_category,
+            "date_acquired" => $date_acquired,
+            "or_number" => $or_number
+  				]);
+          $db->insert("property_accountability", [
+            "emp_id" => $emp_id,
+            "property_id" => $propertyId,
+            "qty" => $qty,
+            "location_id" => $location,
+            "condition_id" => $condition,
+            "remarks" => $remarks
+          ]);
+          if($condition == 2 || $condition == 3 || $condition == 4){
+              $db->insert("audit_trail_condition",[
+                "action" => "admin inserted this property",
+                "pcode" => $pcode,
+                "sno" => $serial_no,
+                "description" => $description,
+                "actor" => "admin",
+                "cost" => $cost,
+                "date" => $date_acquired,
+                "property_id" => $propertyId,
+                "brand" => $brand,
+                "uom" => $uom,
+                "po_number" => $or_number
+              ]);
+          }
+        }
 			}
 		}
 

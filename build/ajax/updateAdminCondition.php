@@ -4,7 +4,7 @@
   session_start();
 
 	$id = $_POST['id'];
-  $emp_id = $_POST['empid'];
+  $emp_id = $_POST['emp_id'];
   $location_id = $_POST['location_id'];
   $new_condition_id = $_POST['new_condition_id'];
   $old_condition_id = $_POST['old_condition_id'];
@@ -72,7 +72,7 @@
 	$propertyName = $db->get("property",["pcode","sno","description","brand","uom","or_number"],["id"=>$id]);
 	$oldCond = $db->get("condition_info","condition_info",["id" => $old_condition_id]);
 	$newCond = $db->get("condition_info","condition_info",["id" => $new_condition_id]);
-	$actions = $emp_id." updated the condition of ".$propertyName['pcode']." - ".$propertyName['sno']." - ".$propertyName['description']." from ".$oldCond." to ".$newCond;
+	$actions = "admin updated the condition of ".$propertyName['pcode']." - ".$propertyName['sno']." - ".$propertyName['description']." from ".$oldCond." to ".$newCond;
 	$db->insert("audit_trail_condition",
 	["brand"=>$propertyName['brand'],
 	"uom"=>$propertyName['uom'],

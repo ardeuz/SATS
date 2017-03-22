@@ -118,13 +118,14 @@ function addProperty(){
   var model = $("#model").val();
   var cost = $("#cost").val();
   var uom = $("#uom").val();
-  var orno = $("#orno").val();
+	var orno = $("#orno").val();
+	var dateAcquired = $("#dateAcquired").val();
   var locations = $("#locations").val();
   var conditions = $("#conditions").val();
 	var majorCategory = $("#majorCategory").val();
 	var minorCategory = $("#minorCategory").val();
   var accountCategory = $("#accountCategory").val();
-  $.post("build/ajax/addProperty.php", {pcode:pcode, majorCategory:majorCategory, sno:sno, propertyDescription:propertyDescription, qty:qty, locations:locations, minorCategory:minorCategory, accountCategory:accountCategory, conditions:conditions, brand:brand, model:model, cost:cost, uom:uom, orno:orno} ,function(data)
+  $.post("build/ajax/addProperty.php", { dateAcquired : dateAcquired , pcode:pcode, majorCategory:majorCategory, sno:sno, propertyDescription:propertyDescription, qty:qty, locations:locations, minorCategory:minorCategory, accountCategory:accountCategory, conditions:conditions, brand:brand, model:model, cost:cost, uom:uom, orno:orno} ,function(data)
   {
 		console.log(data);
     var result = parseInt(data);
@@ -145,6 +146,7 @@ function addProperty(){
 			$("#cost").val("");
 			$("#uom").val("");
 			$("#orno").val("");
+			$("#dateAcquired").val("");
 			$('#locations').select2("val","0");
 			$('#accountCategory').select2("val","0");
 			$('#majorCategory').select2("val","0");
@@ -152,7 +154,7 @@ function addProperty(){
 			$('#conditions').select2("val","0");
 			// $('#location').prop('selectedIndex', -1);
 			$("#addProperty").ajaxForm(function(data) {
-				console.log(data); 
+				console.log(data);
 				$.Notify({
 					caption: 'Update Property Success',
 						content: 'Property Updated',
@@ -236,7 +238,7 @@ function ViewProperty(propertyId)
 						}
 		});
 }
-function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost,minorCat,quantity , file_image)
+function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost,minorCat,quantity ,dateAcquired, file_image )
 {
 	var propertyID = parseInt(propertyCode);
 	$("#propertyId").val(propertyID);
@@ -251,6 +253,7 @@ function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, br
 	$("#ornumber").val(orNumber);
 	$("#editUom").val(uom);
 	$("#editCost").val(cost);
+	$("#editDateAcquired").val(dateAcquired)
 	$("#files").attr('src',file_image);
 
 	// ano ano ieedit dine
@@ -264,11 +267,12 @@ function updateProperty()
 	var editBrand = $("#editBrand").val();
 	var editModel = $("#editModel").val();
 	var editQty = $("#editQty").val();
+	var editDateAcquired = $("#editDateAcquired").val();
 	var ornumber = $("#ornumber").val();
 	var editUom = $("#editUom").val();
 	var editCost = $("#editCost").val();
 	var editMinorId = $("#editMinorId").val();
-	$.post("build/ajax/updateProperty.php" , {propertyId:propertyId , editQty:editQty , editPropertyCode:editPropertyCode, editSerialNumber:editSerialNumber , editPropertyDescription:editPropertyDescription, editBrand:editBrand, editModel:editModel, ornumber:ornumber , editUom:editUom , editCost:editCost , editMinorId:editMinorId  },function(data){
+	$.post("build/ajax/updateProperty.php" , { editDateAcquired:editDateAcquired , propertyId:propertyId , editQty:editQty , editPropertyCode:editPropertyCode, editSerialNumber:editSerialNumber , editPropertyDescription:editPropertyDescription, editBrand:editBrand, editModel:editModel, ornumber:ornumber , editUom:editUom , editCost:editCost , editMinorId:editMinorId  },function(data){
 		var result = parseInt(data);
 		if(result == 1)
 		{

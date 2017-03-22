@@ -25,12 +25,11 @@ function updateRepair(repairId){
 	});
 }
 function addRecommendation(id){
-	$.post('build/ajax/adminUpdateRepairHistory.php',{showRequest : 1 , viewP : id},function(data){
-		$("#adminEditRepairHistory").html(data);
-		// $("#adminRepairHistory").html(1);
-		// console.log(data);
+	$.post('build/ajax/adminShowLocationHistory.php',{showRequest : 1 , viewPs : id},function(data){
+		$("#adminEditLocationHistory").html(data);
+		console.log(data);
 	});
-	showMetroDialog("#adminAddRecommendation");
+	showMetroDialog("#adminAddLocationRecommendation");
 	$("#audit_id").val(id);
 }
 // function addedRecommendation(){

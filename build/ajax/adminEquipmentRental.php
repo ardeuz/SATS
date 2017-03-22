@@ -11,7 +11,7 @@ if(isset($_POST['showAccounts']))
 {
 ?>
 
-<table class="dataTable border bordered hovered full-size" id="adminAccountability">
+<table class="dataTable border bordered hovered full-size" id="adminEquipmentRental">
 <thead>
 <tr>
 <td class="sortable-column"></td>
@@ -23,6 +23,7 @@ if(isset($_POST['showAccounts']))
 <td class="sortable-column">Quantity</td>
 <td class="sortable-column">Condition</td>
 <td class="sortable-column">Employee Name</td>
+<td class="sortable-column">Supplier Name</td>
 <td class="sortable-column">Property Availability</td>
 </tr>
 </thead>
@@ -33,10 +34,10 @@ if(isset($_POST['showAccounts']))
   var accounts;
   $(document).ready(function()
   {
-    accounts = $('#adminAccountability').DataTable({
+    accounts = $('#adminEquipmentRental').DataTable({
       "processing": true,
       "serverSide": true,
-      "ajax":"build/server_side/adminServerAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
+      "ajax":"build/server_side/adminEquipmentRental.php",
       oLanguage : {
         sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
       }

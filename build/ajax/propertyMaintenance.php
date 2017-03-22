@@ -120,9 +120,14 @@ foreach ($prowareInfoDatas as $prowareInfoData)
 <td><?php echo $prowareInfoData['cost'];?></td>
 </tr>
 <tr>
+<td>Date Acquired</td>
+<td><?php echo $prowareInfoData['date_acquired'];?></td>
+</tr>
+<tr>
 <td>Current Image</td>
 <td><?php echo '<img width="200" height="200" src='.$prowareInfoData['property_image'].'>';?></td>
 </tr>
+
 <?php
 }
 ?>

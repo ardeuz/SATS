@@ -65,7 +65,7 @@ function updateAdminCondition(propertyId, locationId, oldConditionId, emp_id) {
 
   if(remarks != null)
   {
-  	$.post("build/ajax/updateAdminCondition.php", {id: propertyId, remarks:remarks , new_condition_id: newConditionId, location_id : locationId, old_condition_id : oldConditionId}, function(data) {
+  	$.post("build/ajax/updateAdminCondition.php", {id: propertyId, remarks:remarks , new_condition_id: newConditionId, location_id : locationId, old_condition_id : oldConditionId, emp_id : emp_id}, function(data) {
   		var result = parseInt(data);
 
   		if (result == 1)
