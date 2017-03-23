@@ -63,9 +63,10 @@ function currentBorrowView(viewP ,viewC ,viewL)
   }
 function updateLocation(propertyId, conditionId, oldLocationId) {
 	var newLocationId = $("#location" + propertyId + oldLocationId + conditionId).val();
-  if(confirm("Changing its condition will may vary to its history"))
+  var remarks = prompt("Changing its location will may vary to its history, please state your remarks");
+  if(remarks != null)
   {
-  	$.post("build/ajax/updateLocation.php", {id: propertyId, new_location_id: newLocationId, condition_id : conditionId, old_location_id : oldLocationId}, function(data) {
+  	$.post("build/ajax/updateLocation.php", {id: propertyId, new_location_id: newLocationId, condition_id : conditionId, old_location_id : oldLocationId , remarks:remarks}, function(data) {
   		var result = parseInt(data);
 
   		if (result == 1)

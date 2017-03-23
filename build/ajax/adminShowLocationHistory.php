@@ -12,6 +12,7 @@
     <thead>
       <tr>
         <td class="sortable-column">Action Taken</td>
+        <td class="sortable-column">Remarks</td>
         <td class="sortable-column">Old Location</td>
         <td class="sortable-column">New Location</td>
         <td class="sortable-column">Date Taken</td>

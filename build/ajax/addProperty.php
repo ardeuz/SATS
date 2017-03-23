@@ -12,7 +12,11 @@
     $model = trim($_POST['model']);
     $cost = $_POST['cost'];
     $uom = $_POST['uom'];
-    $date_acquired = $_POST['dateAcquired'];
+    if(empty($_POST['dateAcquired'])){
+      $date_acquired = "0000-00-00";
+    } elseif(!empty($_POST['dateAcquired'])){
+      $date_acquired = date("Y-m-d",strtotime($_POST['dateAcquired']));      
+    }
     $propertyDescription = $_POST['propertyDescription'];
     $qty = $_POST['qty']; //property accountability
     $locations = $_POST['locations']; //property accountability

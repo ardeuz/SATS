@@ -78,9 +78,8 @@
           <div class="input-control text full-size">
             <input type="text" class="" id="orno" placeholder="P.O Number">
           </div>
-          <div class="input-control text full-size" data-role="datepicker" data-scheme="darcula" data-format="yyyy-mm-d">
-              <input type="text" id="dateAcquired" placeholder="Date Acquired">
-              <button class="button"><span class="mif-calendar"></span></button>
+          <div class="input-control text full-size">
+              <input type="date" id="dateAcquired" placeholder="Date Acquired">
           </div>
           <form method="POST" action="build/ajax/uploadInsertImage.php" enctype="multipart/form-data" id="addProperty">
             <div class="input-control file full-size" data-role="input">
@@ -259,14 +258,13 @@
         <div class="input-control full-size"/>
           <input type="text" id="ornumber" placeholder="P.O Number"/>
         </div>
-        <div class="input-control text full-size" data-role="datepicker" data-scheme="darcula" data-format="yyyy-mm-d">
+        <div class="input-control text full-size">
+            <input type="date" id="editDateAcquired"  placeholder="Date Acquired">
+        </div>
+        <!-- <div class="input-control text full-size" data-role="datepicker" data-scheme="darcula" data-format="yyyy-mm-d">
             <input type="text" id="editDateAcquired" placeholder="Date Acquired">
             <button class="button"><span class="mif-calendar"></span></button>
-        </div>
-        <div class="input-control text full-size" data-role="datepicker" data-scheme="darcula" data-format="yyyy-mm-d">
-            <input type="text" id="editDateAcquired" placeholder="Date Acquired">
-            <button class="button"><span class="mif-calendar"></span></button>
-        </div>
+        </div> -->
 
           <div class="input-control full-size" id="editSupplier" style="display:none;" data-role="select">
             <small>Edit Supplier</small><br/>

@@ -8,6 +8,7 @@
     $new_location_id = $_POST['new_location_id'];
     $old_location_id = $_POST['old_location_id'];
 		$dateToday = date('Y-m-d H:i:s');
+		$remarks = $_POST['remarks'];
 		//check if going to merge
 		if ($db->has("property_accountability", [
 			"AND" => [
@@ -78,6 +79,7 @@
 			"sno"=>$propertryName['sno'],
 			"brand"=>$propertyName['brand'],
 			"uom"=>$propertyName['uom'],
+			"remarks"=>$remarks,
 			"po_number"=>$propertyName['or_number'],
 			"property_id"=>$id,
 			"description"=>$propertyName['description'],

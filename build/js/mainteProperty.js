@@ -292,15 +292,15 @@ function updateProperty()
 		var result = parseInt(data);
 		if(result == 1)
 		{
-			// $("#formUpload").ajaxForm(function(data) {
-				console.log(data);
+			$("#formUpload").ajaxForm(function(datas) {
+				console.log(datas);
 				$.Notify({
 					caption: 'Update Property Success',
 						content: 'Property Updated',
 						icon: "<span class='mif-checkmark mif-ani-heartbeat mif-ani-fast icon'></span>",
 						type: "success"
 				});
-			// }).submit();
+			}).submit();
 			hideMetroDialog("#editPropertyDialog");
 		}
 		else if(result == 2)

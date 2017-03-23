@@ -24,6 +24,28 @@ function updateRepair(repairId){
 		});
 	});
 }
+function addNewRepairHistories(){
+	$("#showAddHistory").slideToggle(100);
+}
+function addAnotherHistory(){
+	var audit_id = $("#audit_id").val();
+	var remarks = $("#remarks").val();
+	var recommendation = $("#recommendation").val();
+	var cost = $("#cost").val();
+	$.post("build/ajax/addAnotherHistory.php",{ audit_id:audit_id, remarks:remarks, recommendation:recommendation, cost:cost},function(data){
+		$.Notify({
+			caption: 'Repair History Added',
+				content: ' ' ,
+				icon: "<span class='mif-plus icon'></span>",
+				type: "success"
+		});
+		console.log(data);
+		$("#cost").val("");
+		$("#recommendation").val("");
+		$("#remarks").val("");
+		$("#showAddHistory").slideUp(100);
+	});
+}
 function addRecommendation(id){
 	$.post('build/ajax/adminUpdateRepairHistory.php',{showRequest : 1 , viewP : id},function(data){
 		$("#adminEditRepairHistory").html(data);

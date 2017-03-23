@@ -42,8 +42,23 @@
           </div>
         </div>
         <div data-role="dialog" data-overlay="true" class="padding30" data-place="top-center"data-overlay-color="op-dark" data-height="90%" data-width="85%" data-overlay-click-close="true" id="adminAddRecommendation" data-close-button="true" style="overflow-y:scroll;">
-          <h3 class="text-light">Maintenance</h3>
           <input type="hidden" id="audit_id"/>
+          <h3 class="text-light">Maintenance
+            <button class="button cycle-button place-right shadow" onCLick="addNewRepairHistories();">+</button>
+          </h3>
+          <div class="padding20 bd-black" id="showAddHistory" style="display:none;">
+            <h5 class="text-light">Add History</h5>
+            <div class="input-control full-size">
+              <input type="text" placeholder="Remarks" id="remarks"/>
+            </div>
+            <div class="input-control full-size">
+              <input type="text" placeholder="Recommendation" id="recommendation"/>
+            </div>
+            <div class="input-control full-size">
+              <input type="text" placeholder="Cost" id="cost"/>
+            </div>
+            <button class="button" onClick="addAnotherHistory();" >Add History</button>
+          </div>
           <div  id="adminEditRepairHistory"></div>
         </div>
     </div>
