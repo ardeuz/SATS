@@ -117,6 +117,7 @@
         <ul class="d-menu shadow"  data-role="dropdown">
             <div style="height:150px;overflow-y:scroll;" id="style-4">
               <li class="<?php if($thisPage == 'EditProperty'){echo 'active'; } ?>"><a href="mainteProperty.php"><span class="mif-arrow-right icon"></span> Property</a></li>
+              <li class="<?php if($thisPage == 'EditSupplier'){echo 'active'; } ?>"><a href="mainteSupplier.php"><span class="mif-arrow-right icon"></span> Supplier</a></li>
               <li class="<?php if($thisPage == 'EditLocation'){echo 'active'; } ?>"><a href="mainteLocation.php"><span class="mif-arrow-right icon"></span> Location</a></li>
               <li class="<?php if($thisPage == 'EditMajorCat'){echo 'active'; } ?>"><a href="mainteMajor.php"><span class="mif-arrow-right icon"></span> Major Category</a></li>
               <li class="<?php if($thisPage == 'EditMinorCat'){echo 'active'; } ?>"><a href="mainteMinor.php"><span class="mif-arrow-right icon"></span> Minor Category</a></li>

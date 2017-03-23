@@ -1,7 +1,7 @@
 <?php
   include_once("../../medoo.php");
   require( '../dataTables/ssp.php' );
-  $table = "propertyAccountability";
+  $table = "equipmentRental";
   $pkey = "id";
   $columns = array(
     array('db' => '`u`.`condition_id`', 'dt' => 0,'field'=> 'condition_id'),
@@ -46,7 +46,7 @@
         // return "hello";
       }),
       array('db' => '`u`.`emp_name`', 'dt' => 8,'field' => "emp_name"),
-      array('db' => '`u`.`emp_name`', 'dt' => 9,'field' => "emp_name"),
+      array('db' => '`u`.`sup_name`', 'dt' => 9,'field' => "sup_name"),
       array('db' => '`u`.`emp_id`', 'dt' => 10,'field' => "emp_id","formatter" => function($employeeId,$row){
         $db2 = new medoo([
           // required
@@ -82,7 +82,7 @@
   	'host' => "localhost"
   );
 
-  $joinQuery = "FROM `propertyAccountability` AS `u`";
+  $joinQuery = "FROM `equipmentRental` AS `u`";
     echo json_encode(
       SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery )
     );

@@ -161,8 +161,9 @@
                 }
             ?>
             </select>
-          </div><br/>
-          <span class="text-light">Peripherals</span><br/>
+          </div>
+          <span class="text-light">Periperals</span><br/>
+          <br/>
           <div class="padding20">
             <label class="input-control intermediate checkbox">
                 <input type="checkbox" id="parent" name="periperalsParent">
@@ -179,15 +180,40 @@
             <div class="padding10" id="subProperties">
             <small>Add Sub Property</small>
               <button onClick='addAnotherSubProperty()' class="mini-button button primary place-right"><span class="mif-plus icon"></span></button>
-
             </div>
           </div>
           <div class="padding10" id="parentProperty" style="border:0.5px solid rgba(0,0,0,0.5); display:none;">
             <div class="padding10" id="parentProperties">
             <small>Add Parent</small>
-
             </div>
           </div>
+          <span class="text-light">Rental Equipment</span><br/>
+          <div class="padding20">
+            <label class="input-control intermediate checkbox" >
+                <input type="checkbox" id="rental" name="rentalEquipment">
+                <span class="check"></span>
+                <span class="caption">Rental Equipment</span>
+            </label>
+          </div>
+          <div class="padding10 full-size" id="rentalEquipments" style="border:0.5px solid rgba(0,0,0,0.5); display:none;">
+            <div class="padding10" id="rentals">
+            <small>Add Supplier</small>
+              <div class="input-control full-size" data-role="select">
+                <select id="supplierSelecter" style="width:100%;display:none;">
+                  <option selected value="0">Select Supplier</option>
+                  <?php
+
+                  $supplierSelects = $db->select("supplier",["sup_id","sup_name"]);
+                  foreach($supplierSelects as $supplierSelect){
+                    echo '<option value='.$supplierSelect['sup_id'].'>'.$supplierSelect['sup_name'].'</option>';
+                  }
+
+                  ?>
+                </select>
+              </div>
+            </div>
+          </div>
+          <br/>
           <button class="button warning" onclick="addProperty()">Add Property</button>
         </div>
       </div>
@@ -214,7 +240,7 @@
         </div>
         <div class="input-control full-size select" data-role="select" data-placeholder="Minor Category">
           <select id="editMinorId"style="display:none;" >
-            <option selected disabled value=0>Select a Minor Category</option>
+            <option selected disabled value="0">Select a Minor Category</option>
             <?php
               $editMinorDatas=$db->select("minor_category",["id","description"]);
               foreach($editMinorDatas as $editMinorData)
@@ -237,6 +263,26 @@
             <input type="text" id="editDateAcquired" placeholder="Date Acquired">
             <button class="button"><span class="mif-calendar"></span></button>
         </div>
+        <div class="input-control text full-size" data-role="datepicker" data-scheme="darcula" data-format="yyyy-mm-d">
+            <input type="text" id="editDateAcquired" placeholder="Date Acquired">
+            <button class="button"><span class="mif-calendar"></span></button>
+        </div>
+
+          <div class="input-control full-size" id="editSupplier" style="display:none;" data-role="select">
+            <small>Edit Supplier</small><br/>
+            <select id="editSpplierSelecter" style="width:100%;display:none;">
+              <option selected disable value="0">Select Supplier</option>
+              <?php
+
+              $supplierSelects = $db->select("supplier",["sup_id","sup_name"]);
+              foreach($supplierSelects as $supplierSelect){
+                echo '<option value='.$supplierSelect['sup_id'].'>'.$supplierSelect['sup_name'].'</option>';
+              }
+
+              ?>
+            </select>
+          </div>
+
         Current Image<br/>
         <div class="image-container">
           <div class="frame">

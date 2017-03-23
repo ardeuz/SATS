@@ -17,19 +17,19 @@ function requestAccountability()
 $('body').delegate('.adminView','click',function()
 {
 		var viewP = $(this).attr("idPv");
-		// var viewC = $(this).attr("conditionPv");
-		// var viewL = $(this).attr("locationPv");
+		var viewC = $(this).attr("conditionPv");
+		var viewL = $(this).attr("locationPv");
 		$.ajax
 		({
-						url : 'build/ajax/adminAccountabilityNot.php',
+						url : 'build/ajax/adminEquipmentRental.php',
 						async : false,
 						type : 'POST',
 						data :
 						{
 								showInformation : 1,
 								prowareID : viewP,
-								// condition_id: viewC,
-								// location_id: viewL
+								condition_id: viewC,
+								location_id: viewL
 						},
 						success : function(adminDatas)
 						{

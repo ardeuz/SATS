@@ -15,6 +15,8 @@ $(document).ready(function() {
 	$("#minorCategory").select2();
 	$("#majorCategory").select2();
 	$("#editMinorId").select2();
+	$("#editSpplierSelecter").select2();
+	$("#supplierSelecter").select2();
 	// if($("#parent").checked){
 	// 	$("#parentProperty").hide();
 	// 	$("#subProperty").show();
@@ -75,6 +77,13 @@ $(document).ready(function() {
 				$("#parentProperty").hide();
 			}
 	});
+	$('#rental').change(function(){
+		if(this.checked){
+			$("#rentalEquipments").slideDown(100);
+		} else {
+			$("#rentalEquipments").slideUp(100);
+		}
+	});
 });
 
 var subProperty = 0;
@@ -119,13 +128,14 @@ function addProperty(){
   var cost = $("#cost").val();
   var uom = $("#uom").val();
 	var orno = $("#orno").val();
+	var rental = $("#supplierSelecter").val();
 	var dateAcquired = $("#dateAcquired").val();
   var locations = $("#locations").val();
   var conditions = $("#conditions").val();
 	var majorCategory = $("#majorCategory").val();
 	var minorCategory = $("#minorCategory").val();
   var accountCategory = $("#accountCategory").val();
-  $.post("build/ajax/addProperty.php", { dateAcquired : dateAcquired , pcode:pcode, majorCategory:majorCategory, sno:sno, propertyDescription:propertyDescription, qty:qty, locations:locations, minorCategory:minorCategory, accountCategory:accountCategory, conditions:conditions, brand:brand, model:model, cost:cost, uom:uom, orno:orno} ,function(data)
+  $.post("build/ajax/addProperty.php", { rental:rental , dateAcquired : dateAcquired , pcode:pcode, majorCategory:majorCategory, sno:sno, propertyDescription:propertyDescription, qty:qty, locations:locations, minorCategory:minorCategory, accountCategory:accountCategory, conditions:conditions, brand:brand, model:model, cost:cost, uom:uom, orno:orno} ,function(data)
   {
 		console.log(data);
     var result = parseInt(data);
@@ -238,7 +248,7 @@ function ViewProperty(propertyId)
 						}
 		});
 }
-function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost,minorCat,quantity ,dateAcquired, file_image )
+function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, brand, model, orNumber, uom, cost,minorCat,quantity ,dateAcquired, file_image, supplierId)
 {
 	var propertyID = parseInt(propertyCode);
 	$("#propertyId").val(propertyID);
@@ -255,7 +265,11 @@ function EditProperty(propertyCode, pcode, serialNumber, propertyDescription, br
 	$("#editCost").val(cost);
 	$("#editDateAcquired").val(dateAcquired)
 	$("#files").attr('src',file_image);
-
+	if(supplierId != 0){
+		$("#editSupplier").show();
+	} else if(supplierId == 0){
+		$("#editSupplier").hide();
+	}
 	// ano ano ieedit dine
 }
 function updateProperty()
@@ -272,11 +286,13 @@ function updateProperty()
 	var editUom = $("#editUom").val();
 	var editCost = $("#editCost").val();
 	var editMinorId = $("#editMinorId").val();
-	$.post("build/ajax/updateProperty.php" , { editDateAcquired:editDateAcquired , propertyId:propertyId , editQty:editQty , editPropertyCode:editPropertyCode, editSerialNumber:editSerialNumber , editPropertyDescription:editPropertyDescription, editBrand:editBrand, editModel:editModel, ornumber:ornumber , editUom:editUom , editCost:editCost , editMinorId:editMinorId  },function(data){
+	var editSupplier = $("#editSpplierSelecter").val();
+	$.post("build/ajax/updateProperty.php" , { editSupplier:editSupplier, editDateAcquired:editDateAcquired , propertyId:propertyId , editQty:editQty , editPropertyCode:editPropertyCode, editSerialNumber:editSerialNumber , editPropertyDescription:editPropertyDescription, editBrand:editBrand, editModel:editModel, ornumber:ornumber , editUom:editUom , editCost:editCost , editMinorId:editMinorId  },function(data){
+		console.log(data);
 		var result = parseInt(data);
 		if(result == 1)
 		{
-			$("#formUpload").ajaxForm(function(data) {
+			// $("#formUpload").ajaxForm(function(data) {
 				console.log(data);
 				$.Notify({
 					caption: 'Update Property Success',
@@ -284,7 +300,7 @@ function updateProperty()
 						icon: "<span class='mif-checkmark mif-ani-heartbeat mif-ani-fast icon'></span>",
 						type: "success"
 				});
-			}).submit();
+			// }).submit();
 			hideMetroDialog("#editPropertyDialog");
 		}
 		else if(result == 2)

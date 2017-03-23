@@ -1,5 +1,6 @@
 <?php
   require( '../dataTables/ssp.php' );
+  include_once ("../../medoo.php");
   $table = "propertyMainteView";
   $pkey = "id";
   $column = array(
@@ -16,6 +17,20 @@
     array('db' => '`u`.`minor_category`', 'dt' => 0,'field' => "minor_category"),
     array('db' => '`u`.`id`', 'dt' => 0,'field'=> 'id' ,'formatter' => function($id,$row)
       {
+        $db = new medoo([
+          // required
+          'database_type' => 'mysql',
+          'database_name' => 'sats',
+          'server' => 'localhost',
+          'username' => 'root',
+          'password' => '',
+          'charset' => 'utf8',
+
+          'option' => [
+              PDO::ATTR_ERRMODE,
+              PDO::ERRMODE_EXCEPTION
+          ]
+        ]);
         $ids = $row['id'];
         $sno = $row['sno'];
         $pcode = $row['pcode'];
@@ -29,11 +44,16 @@
         $minorCat = $row['minor_category'];
         $dateAcquired = $row['date_acquired'];
         $file_image = $row['property_image'];
+        if($db->has("equipment_rental",["property_id"=>$ids])){
+          $supplierId = $db->get("equipment_rental","property_id",["property_id"=>$ids]);
+        } else {
+          $supplierId = 0;
+        }
         $maintenance = '
         <div class="toolbar"><button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#adminAccountabilityDialog\'); ViewProperty('.$ids.');"><span class="mif-eye icon"></span></button>';
         $maintenance .="
         <button class=\"toolbar-button button primary\" onclick='showMetroDialog(\"#editPropertyDialog\"); EditProperty(".$ids.", \"".$pcode."\",\"".$sno."\",".json_encode($description, JSON_HEX_APOS).",\"".$brand."\",\"".$model."\",\"".$orNo."\",\"".$uom."\",\"".$cost."\",".$minorCat.",";
-        $maintenance .= $qty.",\"".$dateAcquired."\",\"".$file_image."\");'";
+        $maintenance .= $qty.",\"".$dateAcquired."\",\"".$file_image."\",".$supplierId.");'";
         $maintenance .= '><span class="mif-pencil icon"></span></button>&nbsp;';
         $maintenance .= '<button class="toolbar-button button primary adminView" onclick="showMetroDialog(\'#deletePropertyDialog\'); DeletePropertyValidation(\''.$ids.'\',\''.$pcode.'\');"><span class="mif-bin icon"></span></button></div>';
 
