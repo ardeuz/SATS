@@ -17,6 +17,14 @@
     <!-- <li <?php if($thisPage == "issueProperty") {echo "class='active'";}?>>
       <a href="issueProperty.php"> Property Issuance</a>
     </li> -->
+    <!-- <?php
+
+      if($db->has("account_table","department",["department"=>$_SESSION['department']]))
+
+    ?>
+    <li <?php if($thisPage == "issueProperty") {echo "class='active'";}?>>
+        <a href="issueProperty.php"> Property Issuance</a>
+    </li> -->
     <li <?php if($thisPage == "borrow" || $thisPage == "transfer") {echo "class='active'";}?>>
       <a href="" class="dropdown-toggle"> Request For</a>
       <ul class="d-menu" data-role="dropdown">

@@ -5,9 +5,9 @@
   $column = array(
     array('db' => '`u`.`date`', 'dt' => 0 ,'field' => "date"),
     array('db' => '`u`.`old_location`', 'dt' => 1,'field'=>"old_location"),
-    array('db' => '`u`.`remarks`', 'dt' => 2,'field'=>"remarks"),
+    array('db' => '`u`.`actress`', 'dt' => 2,'field'=>"actress"),
     array('db' => '`u`.`new_location`', 'dt' => 3,'field'=>"new_location"),
-    array('db' => '`u`.`remarks`', 'dt' => 4,'field'=>"remarks"),
+    array('db' => '`u`.`actor`', 'dt' => 4,'field'=>"actor"),
     array('db' => '`u`.`remarks`', 'dt' => 5,'field'=>"remarks"),
     // // array('db' => '`u`.`id`', 'dt' => 3,'field'=>'id'),
     // array('db' => '`u`.`recommendation`', 'dt' => 3,'field'=> 'recommendation'),

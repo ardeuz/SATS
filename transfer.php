@@ -133,7 +133,7 @@
                 <button class="button danger" onclick="hideMetroDialog('#transferdialog');"><span class="mif-cross fg-white"> Cancel</span>
                 </div>
              </div>
-              <div   data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="80%" data-width="50%" data-overlay-click-close="true" id="viewdialog" data-close-button="true" style="overflow-y:scroll;">
+              <div   data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-place="top-center" data-height="80%" data-width="65%" data-overlay-click-close="true" id="viewdialog" data-close-button="true" style="overflow-y:scroll;">
                 <div class="tabcontrol padding20" data-role="tabcontrol">
                   <ul class="tabs">
                       <li><a href="#propertyInformation">Property Information</a></li>

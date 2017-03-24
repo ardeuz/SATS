@@ -56,7 +56,7 @@
             <center>
               <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="history_loader"></div>
             </center>
-            <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="80%" data-width="50%" data-overlay-click-close="true" id="adminAccountabilityDialog" data-close-button="true" style="overflow-y:scroll;">
+            <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-place="top-center"data-height="80%" data-width="65%" data-overlay-click-close="true" id="adminAccountabilityDialog" data-close-button="true" style="overflow-y:scroll;">
               <div class="tabcontrol padding20" data-role="tabcontrol">
                 <ul class="tabs">
                     <li><a href="#propertyInformation">Property Information</a></li>

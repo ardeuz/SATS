@@ -34,7 +34,7 @@
 		$newLocation = $db->get('location',"location",["id"=>$transferRequestData['new_loc_id']]);
 		$action  = 'This property is borrowed by'.$transferToDetails['last_name'].', '.$transferToDetails['first_name'].' - '.$transferToDetails['department'].' from '.$releasedFromDetailes['last_name'].', '.$releasedFromDetailes['first_name'].' - '.$releasedFromDetailes['department'];
 		$actor = $transferToDetails['last_name'].', '.$transferToDetails['first_name'].' - '.$transferToDetails['department'];
-
+		$actress = $releasedFromDetailes['last_name'].', '.$releasedFromDetailes['first_name'].' - '.$releasedFromDetailes['department'];
 
 
 		$db->insert("borrow_request_history", [
@@ -60,7 +60,8 @@
 			"pcode"=> $propertyDetails['pcode'],
 			"sno"=> $propertyDetails['sno'],
 			"description"=> $propertyDetails['description'],
-			"actor"=>  $actor,
+			"actor" =>  $actor,
+			"actress" => $actress,
 			"cost"=> $propertyDetails['cost'],
 			"date"=> $dateToday,
 			"property_id"=> $transferRequestData['id'],

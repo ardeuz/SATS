@@ -46,7 +46,7 @@
     <hr class="thin bg-grayLighter">
     <div id="tableRepairHistory"></div>
   </div>
-  <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="85%" data-width="50%" data-overlay-click-close="true" id="prowaredialog" data-close-button="true" style="overflow-y:scroll;">
+  <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-place="top-center" data-height="85%" data-width="65%" data-overlay-click-close="true" id="prowaredialog" data-close-button="true" style="overflow-y:scroll;">
     <div class="tabcontrol padding20" data-role="tabcontrol">
       <ul class="tabs">
           <li><a href="#propertyInformation">Property Information</a></li>
@@ -66,7 +66,7 @@
         </div>
     </div>
   </div>
-  <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-height="85%" data-width="50%" data-overlay-click-close="true" id="borrowedDialog" data-close-button="true" style="overflow-y:scroll;">
+  <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-place="top-center" data-height="85%" data-width="65%" data-overlay-click-close="true" id="borrowedDialog" data-close-button="true" style="overflow-y:scroll;">
     <div class="tabcontrol padding20" data-role="tabcontrol">
       <ul class="tabs">
           <li><a href="#borrowPropertyInformation">Property Information</a></li>

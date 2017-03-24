@@ -40,6 +40,7 @@
 			$newLocation = $db->get('location',"location",["id"=>$transferRequestData['new_loc_id']]);
 			$action  = 'This property is issued to '.$transferToDetails['last_name'].', '.$transferToDetails['first_name'].' - '.$transferToDetails['department'].' by '.$releasedFromDetailes['last_name'].', '.$releasedFromDetailes['first_name'].' - '.$releasedFromDetailes['department'];
 			$actor = $transferToDetails['last_name'].', '.$transferToDetails['first_name'].' - '.$transferToDetails['department'];
+			$actress = $releasedFromDetailes['last_name'].', '.$releasedFromDetailes['first_name'].' - '.$releasedFromDetailes['department'];
 
 			$db->insert("transfer_request_history", [
 				"ctrl_no" => $ctrl_no,
@@ -63,6 +64,7 @@
 				"sno"=> $propertyDetails['sno'],
 				"description"=> $propertyDetails['description'],
 				"actor"=>  $actor,
+				"actress" => $actress,
 				"cost"=> $propertyDetails['cost'],
 				"date"=> $dateToday,
 				"property_id"=> $transferRequestData['id'],
