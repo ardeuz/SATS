@@ -69,7 +69,7 @@
           <tbody class='small'>
           <?php
 
-            $sql = "SELECT a.borrow_status, b.pcode, b.description, c.location as old_loc, d.location as new_loc, (SELECT major_category.description from major_category where major_category.id =  b.major_category) as property_type, e.condition_info, CONCAT(f.last_name,', ',f.first_name) as borrowed_to, CONCAT(g.last_name,', ',g.first_name) as Released_From, a.remarks , a.date_approved , a.date_returned FROM borrow_request_history AS a LEFT JOIN property AS b ON a.id = b.id LEFT JOIN location AS c ON a.old_loc_id = c.id LEFT JOIN location AS d ON a.new_loc_id = d.id LEFT JOIN condition_info AS e ON a.condition_id = e.id LEFT JOIN account_table AS f on a.borrowed_to = f.emp_id LEFT JOIN account_table AS g on a.released_from = g.emp_id WHERE a.ctrl_no= '$ctrl_no'";
+            $sql = "SELECT a.borrow_status, b.pcode,a.date_actual_returned, b.description, c.location as old_loc, d.location as new_loc, (SELECT major_category.description from major_category where major_category.id =  b.major_category) as property_type, e.condition_info, CONCAT(f.last_name,', ',f.first_name) as borrowed_to, CONCAT(g.last_name,', ',g.first_name) as Released_From, a.remarks , a.date_approved , a.date_returned FROM borrow_request_history AS a LEFT JOIN property AS b ON a.id = b.id LEFT JOIN location AS c ON a.old_loc_id = c.id LEFT JOIN location AS d ON a.new_loc_id = d.id LEFT JOIN condition_info AS e ON a.condition_id = e.id LEFT JOIN account_table AS f on a.borrowed_to = f.emp_id LEFT JOIN account_table AS g on a.released_from = g.emp_id WHERE a.ctrl_no= '$ctrl_no'";
             $transferReportDatas = $db->query($sql)->fetchAll();
             foreach ($transferReportDatas as $transferReportData) {
 
@@ -93,7 +93,7 @@
                       ";
                   }
                   elseif($transferReportData['borrow_status']=="returned"){
-                    $borrowdatas .= "  <td>".$transferReportData['date_returned']."</td>
+                    $borrowdatas .= "  <td>".date('M d, Y',strtotime($transferReportData['date_actual_returned']))."</td>
                       <td>".$transferReportData['borrow_status']."</td>
                     </tr>
                     <tr>

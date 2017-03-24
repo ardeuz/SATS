@@ -30,7 +30,7 @@
 		        	<br />
 		            <span class='sub-header'>" . $transferRequestGroupData['emp_name'] . "</span>
 		            <p><small>" . $transferRequestGroupData['department']  . " Department</small></p>
-							  <p><small><b>Date Borrow:</b> " . date("M d, Y H:i A", strtotime($transferRequestGroupData['date_borrow']))  . "</small></p>
+							  <p><small><b>Date Borrow:</b> " . date("M d, Y H:i A", strtotime($transferRequestGroupData['date_request']))  . "</small></p>
 		            <hr class='thin' />";
 
 		            echo "<div style='overflow-y: scroll; height: 300px'>";

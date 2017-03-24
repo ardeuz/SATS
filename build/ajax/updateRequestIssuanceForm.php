@@ -30,6 +30,17 @@
 		]);
 
 		foreach ($transferRequestDatas as $transferRequestData) {
+			//get all datas to be inserted in audit trail location
+			$propertyDetails = $db->get('property',[
+				"pcode","sno","description","cost","brand","uom","or_number"
+			],[ "id"=> $transferRequestData['id']]);
+			$transferToDetails = $db->get('account_table',["last_name","first_name","department"],["emp_id" => $transferRequestData['transfer_to']]);
+			$releasedFromDetailes = $db->get('account_table',["last_name","first_name","department"],["emp_id" => $transferRequestData['released_from']]);
+			$oldLocation = $db->get('location',"location",["id"=>$transferRequestData['old_loc_id']]);
+			$newLocation = $db->get('location',"location",["id"=>$transferRequestData['new_loc_id']]);
+			$action  = 'This property is issued to '.$transferToDetails['last_name'].', '.$transferToDetails['first_name'].' - '.$transferToDetails['department'].' by '.$releasedFromDetailes['last_name'].', '.$releasedFromDetailes['first_name'].' - '.$releasedFromDetailes['department'];
+			$actor = $transferToDetails['last_name'].', '.$transferToDetails['first_name'].' - '.$transferToDetails['department'];
+
 			$db->insert("transfer_request_history", [
 				"ctrl_no" => $ctrl_no,
 				"sy" => $sy,
@@ -46,6 +57,23 @@
 				"date_approved" => $dateToday,
 				"transfer_type" => $transferRequestData['transfer_type']
 			]); //insert things to history
+			$db->insert('audit_trail_location',[
+				"action"=> $action,
+				"pcode"=> $propertyDetails['pcode'],
+				"sno"=> $propertyDetails['sno'],
+				"description"=> $propertyDetails['description'],
+				"actor"=>  $actor,
+				"cost"=> $propertyDetails['cost'],
+				"date"=> $dateToday,
+				"property_id"=> $transferRequestData['id'],
+				"remarks"=> $transferRequestData['remarks'],
+				"recommendation"=> " ",
+				"brand"=> $propertyDetails['brand'],
+				"uom"=> $propertyDetails['uom'],
+				"po_number"=> $propertyDetails['or_number'],
+				"old_location"=> $oldLocation,
+				"new_location"=> $newLocation
+			]); //inserting in audit trail
 
 			$item_qty = $db->get("property_accountability", "qty", [
 				"AND" => [

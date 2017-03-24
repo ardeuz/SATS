@@ -14,9 +14,9 @@
     <li <?php if ($thisPage == "accountabilities") {echo "class='active'";} ?>>
       <a href="accountabilities.php">Accountabilities</a>
     </li>
-    <li <?php if($thisPage == "issueProperty") {echo "class='active'";}?>>
+    <!-- <li <?php if($thisPage == "issueProperty") {echo "class='active'";}?>>
       <a href="issueProperty.php"> Property Issuance</a>
-    </li>
+    </li> -->
     <li <?php if($thisPage == "borrow" || $thisPage == "transfer") {echo "class='active'";}?>>
       <a href="" class="dropdown-toggle"> Request For</a>
       <ul class="d-menu" data-role="dropdown">

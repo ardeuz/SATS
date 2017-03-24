@@ -41,9 +41,10 @@ $('body').delegate('.showConfirmation','click',function()
 {
     var showCon = $(this).attr("idUp");
 
-    if (confirm("Are you sure you want to approved this transfer request?")) {
+    if (confirm("Are you sure you want to approved this borrow request?")) {
         $.post("build/ajax/updateBorrowForm.php",{confirmation_id:showCon},function(data)
         {
+          console.log(data);
             if(data==1)
             {
                 $.Notify({

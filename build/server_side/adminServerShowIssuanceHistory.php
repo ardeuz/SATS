@@ -2,7 +2,7 @@
   require( '../dataTables/ssp.php' );
   session_start();
   $emp_id = $_SESSION['account']['emp_id'];
-  $table = "showpropertytransfer";
+  $table = "showPropertyTransfer";
   $pkey = "ctrl_no";
   $columns = array(
     array('db' => '`u`.`ctrl_no`', 'dt' => 0,'field'=> 'ctrl_no',"formatter" => function($ctrl_no)
@@ -25,8 +25,8 @@
   	'db'   => "sats",
   	'host' => "localhost"
   );
-  $joinQuery = "FROM `showpropertytransfer` AS `u`";
-  $extraWhere = 'transfer_type = "issuance"';
+  $joinQuery = "FROM `showPropertyTransfer` AS `u`";
+  $extraWhere = 'transfer_type = "issuance" or transfer_type = "issue"';
   echo json_encode(
     SSP::simple( $_GET, $sql_details, $table, $pkey, $columns, $joinQuery ,$extraWhere )
   );

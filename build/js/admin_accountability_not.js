@@ -36,6 +36,12 @@ $('body').delegate('.adminView','click',function()
 								$("#adminInformation").html(adminDatas);
 						}
 		});
+		$.post('build/ajax/adminShowRepairHistory.php',{showRequest : 1 , viewP : viewP},function(data){
+			$("#adminRepairHistory").html(data);
+		});
+		$.post('build/ajax/adminShowLocationHistory.php',{showRequests : 1 , viewPs : viewP},function(datas){
+			$("#adminLocationHistory").html(datas);
+		});
 });
 function updateAdminCondition(propertyId, locationId, oldConditionId, emp_id) {
 	var newConditionId = $("#condition" + propertyId + locationId + oldConditionId + emp_id).val();
