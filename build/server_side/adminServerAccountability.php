@@ -1,9 +1,21 @@
 <?php
   include_once("../../medoo.php");
   require( '../dataTables/ssp.php' );
+  date_default_timezone_set('Asia/Manila');
   $table = "propertyAccountability";
   $pkey = "id";
   $columns = array(
+    array('db' => '`u`.`depreciate_yr`', 'dt' => 'depreciate_yr','field'=> 'depreciate_yr','formatter'=>function($depreciate_yr,$row){
+        $date_acquired = $row['date_acquired'];
+
+        if($date_acquired > date("Y-m-d",strtotime("- ".$depreciate_yr))){
+          $depreciate_yr = 0;
+        } else {
+          $depreciate_yr = 1;
+        }
+        return $depreciate_yr;
+    }),
+    array('db' => '`u`.`date_acquired`', 'dt' => 0,'field'=> 'date_acquired'),
     array('db' => '`u`.`condition_id`', 'dt' => 0,'field'=> 'condition_id'),
     array('db' => '`u`.`location_id`', 'dt' => 0,'field'=> 'location_id'),
     array('db' => '`u`.`id`', 'dt' => 0,'field'=> 'id',"formatter" => function($id,$row)

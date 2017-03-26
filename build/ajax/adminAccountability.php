@@ -39,6 +39,20 @@ if(isset($_POST['showAccounts']))
       "ajax":"build/server_side/adminServerAccountability.php?location="+$("#locationsIDs").val()+"&condition="+$("#conditionsId").val()+"&accountability="+$("#accountsId").val(),
       oLanguage : {
         sProcessing : "<div data-role=\"preloader\" data-type=\"cycle\" data-style=\"color\"></div>"
+      },
+      "createdRow":function(row,data,dataIndex)
+      {
+        if(data.depreciate_yr == 0)
+        {
+          $(row).addClass("bg-lightRed");
+          $(row).addClass("fg-white");
+        }
+        else if(data.depreciate_yr == 1)
+        {
+          $(row).addClass("bg-white");
+          $(row).addClass("fg-black");
+
+        }
       }
     });
     setInterval(function() {

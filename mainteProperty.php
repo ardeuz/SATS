@@ -92,7 +92,7 @@
               <option disabled selected value="0">Choose a Major Category</option>
 
               <?php
-                $majorDatas = $db->select("major_category",["id","description"]) ;
+                $majorDatas = $db->select("major_category",["id","description"],["ORDER"=>["description"=>"ASC"]]);
                 foreach($majorDatas AS $majorData)
                 {
               ?>
@@ -107,7 +107,7 @@
               <option disabled selected value="0">Choose a Minor Category</option>
 
               <?php
-                $minorDatas = $db->select("minor_category",["id","description"]) ;
+                $minorDatas = $db->select("minor_category",["id","description"],["ORDER"=>["description"=>"ASC"]]) ;
                 foreach($minorDatas AS $minorData)
                 {
               ?>
@@ -121,7 +121,7 @@
             <select id="locations" style="display:none;">
               <option disabled selected value="0">Choose a Location</option>
               <?php
-                $locationDatas = $db->select("location",["id","location"]);
+                $locationDatas = $db->select("location",["id","location"],["ORDER"=>["location"=>"ASC"]]);
                 foreach($locationDatas AS $locationData)
                 {
               ?>
@@ -135,7 +135,7 @@
             <select id="conditions" style="display:none;">
               <option disabled selected value="0">Choose a Condition</option>
               <?php
-                $conditionDatas = $db->select("condition_info",["id","condition_info"]);
+                $conditionDatas = $db->select("condition_info",["id","condition_info"],["ORDER"=>["condition_info"=>"ASC"]]);
                 foreach($conditionDatas AS $conditionData)
                 {
               ?>

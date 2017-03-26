@@ -3,7 +3,6 @@
 $(document).ready(function() {
     borrowTable();
     prowareTable();
-    historyTable();
   $('body').delegate('.prowareView','click',function()
   {
       var viewP = $(this).attr("idPv");
@@ -175,24 +174,6 @@ function borrowTable()
       }
     });
 }
-function historyTable()
-{
-    $.ajax
-    ({
-      url : 'build/ajax/historyTable.php',
-      async : false,
-      type : 'POST',
-      data :
-      {
-          showTable : 1
-      },
-      success : function(historyTable)
-      {
-          $("#tableRepairHistory").html(historyTable);
-      }
-    });
-}
-
 function pushMessage(t)
 {
   var mes = 'Info|Implement independently';

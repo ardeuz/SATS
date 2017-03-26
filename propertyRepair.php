@@ -3,7 +3,7 @@
   require_once('connection.php');
   include ('validatePage.php');
 
-  $thisPage='accountabilities';
+  $thisPage='propertyRepair';
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,8 +23,7 @@
     <script src="build/js/select2.min.js"></script>
     <script src="build/js/jquery.dataTables.min.js"></script>
     <script src="build/js/metro.js"></script>
-    <script src="build/js/proware.js"></script>
-    <script src="build/js/admin.js"></script>
+    <script src="build/js/propertyRepair.js"></script>
 
 </head>
 <body>
@@ -33,15 +32,10 @@
     <h1 class="text-light">Accountabilities<span class="mif-stack2 place-right"></span></h1>
     <hr class="thin bg-grayLighter">
     <div id="tableProware"></div>
-    <br/>
-    <br/>
-    <br/>
-    <h1 class="text-light">Borrowed Property<span class="mif-paper-plane place-right"></span></h1>
-    <hr class="thin bg-grayLighter">
-    <div id="tableBorrowedProware"></div>
   </div>
   <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-place="top-center" data-height="85%" data-width="65%" data-overlay-click-close="true" id="prowaredialog" data-close-button="true" style="overflow-y:scroll;">
     <div class="tabcontrol padding20" data-role="tabcontrol">
+      <input type="hidden" id="historyID"/>
       <ul class="tabs">
           <li><a href="#propertyInformation">Property Information</a></li>
           <li><a href="#repairHistory">Repair History</a></li>
@@ -52,30 +46,24 @@
               <div class="padding20" id="propertyInformations" style="padding-top:0;" ></div>
             </div>
             <div class="frame bg-white" id="repairHistory">
+              <button class="button cycle-button place-right shadow" onClick="addNewHistoryRepair();">+</button><br/><br/>
+              <div class="padding20" style="display:none;" id="addHistory">
+                <h5 class="text-light">Add History</h5>
+                <div class="input-control full-size">
+                  <input type="text" placeholder="Remarks" id="remarks"/>
+                </div>
+                <div class="input-control full-size">
+                  <input type="text" placeholder="Recommendation" id="recommendation"/>
+                </div>
+                <div class="input-control full-size">
+                  <input type="text" placeholder="Cost" id="cost"/>
+                </div>
+                <button class="button" onClick="addHistoryRepair();" >Add History</button>
+              </div>
               <div class="" id="propertyRepairHistory" style="padding-top:0;" ></div>
             </div>
             <div class="frame bg-white" id="locationHistory">
               <div class="" id="propertyLocationHistory" style="padding-top:0;" ></div>
-            </div>
-        </div>
-    </div>
-  </div>
-  <div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-place="top-center" data-height="85%" data-width="65%" data-overlay-click-close="true" id="borrowedDialog" data-close-button="true" style="overflow-y:scroll;">
-    <div class="tabcontrol padding20" data-role="tabcontrol">
-      <ul class="tabs">
-          <li><a href="#borrowPropertyInformation">Property Information</a></li>
-          <li><a href="#repairBorrowHistory">Repair History</a></li>
-          <li><a href="#locationBorrowHistory">Location History</a></li>
-      </ul>
-        <div class="frames">
-            <div class="frame bg-white" id="borrowPropertyInformation">
-              <div class="padding20" id="currentBorrowInformations" style="padding-top:0;" ></div>
-            </div>
-            <div class="frame bg-white" id="repairBorrowHistory">
-              <div class="" id="propertyBorrowRepairHistory" style="padding-top:0;" ></div>
-            </div>
-            <div class="frame bg-white" id="locationBorrowHistory">
-              <div class="" id="propertyBorrowLocationHistory" style="padding-top:0;" ></div>
             </div>
         </div>
     </div>
@@ -127,7 +115,4 @@
   </div>
 
 </body>
-<script>
-
-</script>
 </html>

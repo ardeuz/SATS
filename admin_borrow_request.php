@@ -42,6 +42,7 @@
               <div class="cell auto-size padding20" style="height:77.5vh;" data-role="preloader" data-type="cycle" data-style="color"  id="history_loader"></div>
             </center>
             <br/>
+                        <br/>
             <h1 class="text-light fg-brown">Returned History<span class="mif-notification place-right text-light"></span></h1>
             <hr class="thin bg-grayLighter">
             <div id="history_returned_div"  style="display:none;"></div>
