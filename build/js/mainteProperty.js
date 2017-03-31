@@ -163,6 +163,7 @@ function addProperty(){
 			$('#minorCategory').select2("val","0");
 			$('#conditions').select2("val","0");
 			// $('#location').prop('selectedIndex', -1);
+			if($('#propertyUploader')[0].files.length == 0){
 			$("#addProperty").ajaxForm(function(data) {
 				console.log(data);
 				$.Notify({
@@ -172,6 +173,15 @@ function addProperty(){
 						type: "success"
 				});
 			}).submit();
+			} else {
+				$.Notify({
+					caption: 'Update Property Success',
+						content: 'Property Updated',
+						icon: "<span class='mif-checkmark mif-ani-heartbeat mif-ani-fast icon'></span>",
+						type: "success"
+				});
+			}
+
 			hideMetroDialog("#adminAdd");
 			if($("#parent").show()){
 				addPropertyWithSub();
@@ -292,15 +302,27 @@ function updateProperty()
 		var result = parseInt(data);
 		if(result == 1)
 		{
-			$("#formUpload").ajaxForm(function(datas) {
-				console.log(datas);
+			if($('#mainteUploader')[0].files.length == 0){
+				console.log("empty file");
 				$.Notify({
 					caption: 'Update Property Success',
 						content: 'Property Updated',
 						icon: "<span class='mif-checkmark mif-ani-heartbeat mif-ani-fast icon'></span>",
 						type: "success"
 				});
-			}).submit();
+			} else {
+				console.log("updating..");
+				$("#formUpload").ajaxForm(function(datas) {
+					console.log(datas);
+					$.Notify({
+						caption: 'Update Property Success',
+							content: 'Property Updated',
+							icon: "<span class='mif-checkmark mif-ani-heartbeat mif-ani-fast icon'></span>",
+							type: "success"
+					});
+				}).submit();
+			}
+
 			hideMetroDialog("#editPropertyDialog");
 		}
 		else if(result == 2)

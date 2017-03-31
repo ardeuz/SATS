@@ -83,7 +83,7 @@
           </div>
           <form method="POST" action="build/ajax/uploadInsertImage.php" enctype="multipart/form-data" id="addProperty">
             <div class="input-control file full-size" data-role="input">
-                <input type="file" name="propertyUploader">
+                <input type="file" name="propertyUploader" id="propertyUploader">
                 <button class="button" type="button"><span class="mif-folder"></span></button>
             </div>
           </form>
@@ -290,7 +290,7 @@
         <form method="POST" action="build/ajax/uploadUpdateImage.php" enctype="multipart/form-data" id="formUpload">
           <input type="hidden" name="propertiesId" id="propertiesId" />
           <div class="input-control file full-size" data-role="input">
-              <input type="file" name="mainteUploader">
+              <input type="file" name="mainteUploader" id="mainteUploader">
               <button class="button" type="button"><span class="mif-folder"></span></button>
           </div>
         </form>
