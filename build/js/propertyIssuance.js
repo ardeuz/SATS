@@ -85,7 +85,7 @@ function insertQuantity()
                 icon: "<span class='mif-pencil icon'></span>",
                 type: "success"
             });
-						$('#accountabilitySelect').val('0');
+						$('#accountabilitySelect').select2("val","0");
 						hideMetroDialog("#transferdialog");
             $("#transferForm").html(data);
         });
@@ -157,7 +157,6 @@ function requestTransfer(empId) {
         else if(response.code==2)
         {
 					console.log(data);
-					prowareTable();
 
             $.Notify({
                 caption: "Item Request Error",
