@@ -6,7 +6,7 @@
   $remarks = $_POST['remarks'];
   $recommendation = $_POST['recommendation'];
   $cost = $_POST['cost'];
-  $dateToday = date('Y-m-d H:i:s');
+  $dateToday = date('Y-m-d H:i:s',strtotime($_POST['date']));
   $historyDatas = $db->get("property",["pcode","brand","sno","description","uom","or_number"],["id"=>$audit_id]);
   $db->insert("audit_trail_condition",[
     "action"=>"admin added another remarks",

@@ -56,6 +56,9 @@
               <div class="input-control full-size">
                 <input type="text" placeholder="Cost" id="cost"/>
               </div>
+              <div class="input-control full-size">
+                <input type="datetime-local" placeholder="Date" id="date"/>
+              </div>
               <button class="button" onClick="addAnotherHistory();" >Add History</button>
             </div>
             <div  id="adminEditRepairHistory"></div>

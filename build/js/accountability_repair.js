@@ -32,7 +32,8 @@ function addAnotherHistory(){
 	var remarks = $("#remarks").val();
 	var recommendation = $("#recommendation").val();
 	var cost = $("#cost").val();
-	$.post("build/ajax/addAnotherHistory.php",{ audit_id:audit_id, remarks:remarks, recommendation:recommendation, cost:cost},function(data){
+	var date = $("#date").val();
+	$.post("build/ajax/addAnotherHistory.php",{ date:date , audit_id:audit_id, remarks:remarks, recommendation:recommendation, cost:cost},function(data){
 		$.Notify({
 			caption: 'Repair History Added',
 				content: ' ' ,
@@ -43,6 +44,7 @@ function addAnotherHistory(){
 		$("#cost").val("");
 		$("#recommendation").val("");
 		$("#remarks").val("");
+		// $("#date").val("");
 		$("#showAddHistory").slideUp(100);
 	});
 }
